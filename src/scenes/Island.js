@@ -5,6 +5,7 @@ class Island extends Phaser.Scene {
     
     preload() {
         // images
+        this.load.image('bg', './assets/bg.png');
 
 
         // obstacles
@@ -21,7 +22,7 @@ class Island extends Phaser.Scene {
         this.playBGM.play();
         */
         // place tile sprite
-        //this.lab = this.add.tileSprite(0, 0, 3840, 480, 'lab').setOrigin(0, 0); 
+        this.bg = this.add.tileSprite(0, 0, 1280, 720, 'bg').setOrigin(0, 0); 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
