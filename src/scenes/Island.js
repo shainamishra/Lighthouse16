@@ -33,6 +33,13 @@ class Island extends Phaser.Scene {
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
         keyI = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.I);
 
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // cursor
+        this.input.on('gameobjectdown', (pointer, gameObject, event) => { 
+            console.log(pointer);
+            console.log(gameObject);
+            cosolde.log(event);
+        }
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
