@@ -39,7 +39,7 @@ class Island extends Phaser.Scene {
             console.log(pointer);
             console.log(gameObject);
             cosolde.log(event);
-        }
+        });
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
