@@ -35,9 +35,10 @@ class IslandNorth extends Phaser.Scene {
         this.input.on('gameobjectdown', (pointer, gameObject, event) => { 
             console.log(pointer);
             console.log(gameObject);
-            cosolde.log(event);
+            console.log(event);
         });
         
+    
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
         this.add.rectangle(0, 0, 10, game.config.height, 0x042630).setOrigin(0, 0);
@@ -45,9 +46,15 @@ class IslandNorth extends Phaser.Scene {
         this.add.rectangle(0, 0, game.config.width, 10, 0x042630).setOrigin(0, 0);
         this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x042630).setOrigin(0, 0);
         
+        //objects
         this.lighthouse = this.add.sprite(750,250, 'hitbox');
         this.lighthouse.setDisplaySize(300, 400);
         this.lighthouse.setInteractive({
+            useHandCursor: true
+        });
+        this.cellar = this.add.sprite(100, 550, 'hitbox');
+        this.cellar.setDisplaySize(300, 200);
+        this.cellar.setInteractive({
             useHandCursor: true
         });
     }
