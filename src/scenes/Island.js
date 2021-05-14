@@ -47,7 +47,8 @@ class Island extends Phaser.Scene {
         this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x042630).setOrigin(0, 0);
         this.add.rectangle(0, 0, game.config.width, 10, 0x042630).setOrigin(0, 0);
         this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x042630).setOrigin(0, 0);
-        this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'WASD for movement, left click to interact');
+        this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'WASD for movement').setFontSize(50);
+        this.add.text(borderUISize + borderPadding * 15, borderUISize + borderPadding * 5, 'Left click to interact').setFontSize(50);
     }
 
     update() {
