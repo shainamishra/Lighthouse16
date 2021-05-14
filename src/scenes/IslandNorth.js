@@ -53,7 +53,9 @@ class IslandNorth extends Phaser.Scene {
         this.lighthouse.setInteractive({
             useHandCursor: true
         });
-        this.lighthouse.text = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'Door is locked').setFontSize(50).setVisible(false);
+        this.lighthouse.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'Door is locked');
+        this.lighthouse.interText.setFontSize(50);
+        this.lighthouse.interText.setVisible(false);
         this.cellar = this.add.sprite(100, 550, 'hitbox');
         this.cellar.setDisplaySize(300, 200);
         this.cellar.setInteractive({
@@ -64,7 +66,7 @@ class IslandNorth extends Phaser.Scene {
     
     update() {
         this.lighthouse.on('pointerdown', function (pointer){
-            lighthouse.text.setVisible(true);
+            this.interText.setVisible(true);
         });
         // option to restart game
         /*
