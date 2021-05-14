@@ -6,6 +6,7 @@ class Menu extends Phaser.Scene {
     preload(){
         // load assets
         this.load.image('start', './assets/start.png');
+        this.load.audio('CrashingWaves', './assets/CrashingWave2.wav');
     }
 
     create() {
@@ -36,7 +37,7 @@ class Menu extends Phaser.Scene {
             }  
             
             //this.menuBGM.stop();
-            //this.sound.play('possible_spider');
+            this.sound.play("CrashingWaves");
             this.scene.start("islandScene");  
         }
         /*
