@@ -58,7 +58,7 @@ class IslandSouth extends Phaser.Scene {
             this.scene.start("islandwest");
         };
         if(Phaser.Input.Keyboard.JustDown(keyS)){
-            this.scene.start("islandnorth");
+            this.scene.start("islandnorthScene");
         };
         // option to restart game
         /*
