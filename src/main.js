@@ -27,3 +27,9 @@ let keySPACE, keyW, keyA, keyS, keyD, keyI;
 // global variables
 let textTimerLight = 0;
 let textTimerCell = 0;
+let textTimerStatue = 0;
+let textTimerSBox = 0;
+let textTimerRod = 0;
+let textTimerBucket = 0;
+let textTimerGraves = 0;
+let textTimerGBox = 0;
