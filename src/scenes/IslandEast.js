@@ -1,14 +1,17 @@
-class IslandNorth extends Phaser.Scene {
+class IslandEast extends Phaser.Scene {
     constructor() {
-        super("islandnorthScene");
+        super("islandeast");
     }
     
     preload() {
         // images
-        this.load.image('islandnorth', './assets/IslandNorth.PNG');
-        this.load.image('hitbox', './assets/HitBox2.png');
+        this.load.image('islandeast', './assets/IslandEast.PNG');
 
 
+        // obstacles
+
+
+        // spritesheets
 
     }
 
@@ -19,7 +22,7 @@ class IslandNorth extends Phaser.Scene {
         this.playBGM.play();
         */
         // place tile sprite
-        this.islandnorth = this.add.tileSprite(0, 0, 1280, 720, 'islandnorth').setOrigin(0, 0); 
+        this.islandeast = this.add.tileSprite(0, 0, 1280, 720, 'islandeast').setOrigin(0, 0); 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
@@ -35,55 +38,27 @@ class IslandNorth extends Phaser.Scene {
         this.input.on('gameobjectdown', (pointer, gameObject, event) => { 
             console.log(pointer);
             console.log(gameObject);
-            console.log(event);
+            cosolde.log(event);
         });
         
-    
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'Door is locked').setFontSize(50).setVisible(false);
         // borders
         this.add.rectangle(0, 0, 10, game.config.height, 0x042630).setOrigin(0, 0);
         this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x042630).setOrigin(0, 0);
         this.add.rectangle(0, 0, game.config.width, 10, 0x042630).setOrigin(0, 0);
         this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x042630).setOrigin(0, 0);
-        
-        //objects
-        this.lighthouse = this.add.sprite(750,250, 'hitbox');
-        this.lighthouse.setDisplaySize(300, 400);
-        this.lighthouse.setInteractive({
-            useHandCursor: true
-        });
-        this.lighthouse.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'Door is locked');
-        this.lighthouse.interText.setFontSize(50);
-        this.lighthouse.interText.setVisible(false);
-        this.cellar = this.add.sprite(100, 550, 'hitbox');
-        this.cellar.setDisplaySize(300, 200);
-        this.cellar.setInteractive({
-            useHandCursor: true
-        });
-        this.cellar.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'Chains block the cellar');
-        this.cellar.interText.setFontSize(50);
-        this.cellar.interText.setVisible(false);  
+      
     }
-    
-    update() {
-        this.lighthouse.on('pointerdown', function (pointer){
-            this.interText.setVisible(true);
-            
-        });
-        
-        this.cellar.on('pointerdown', function (pointer){
-            this.interText.setVisible(true);
-        });
 
+    update() {
         if(Phaser.Input.Keyboard.JustDown(keyA)){
-            this.scene.start("islandwest");
+            this.scene.start("islandnorth");
         };
         if(Phaser.Input.Keyboard.JustDown(keyD)){
-            this.scene.start("islandeast");
+            this.scene.start("islandsouth");
         };
         if(Phaser.Input.Keyboard.JustDown(keyS)){
-            this.scene.start("islandsouth");
+            this.scene.start("islandwest");
         };
         // option to restart game
         /*
