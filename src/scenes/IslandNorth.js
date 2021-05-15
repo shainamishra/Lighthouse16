@@ -1,13 +1,13 @@
 class IslandNorth extends Phaser.Scene {
     constructor() {
-        super("islandnorthScene");
+        super("islandNorth");
     }
     
     preload() {
         // images
         this.load.image('islandnorth', './assets/IslandNorth.PNG');
         this.load.image('hitbox', './assets/HitBox2.png');
-
+        this.load.image('hook', './assets/manDoorHandHookCarDoor.png');
     }
 
     create() {
@@ -16,6 +16,7 @@ class IslandNorth extends Phaser.Scene {
         this.playBGM = this.sound.add('bgm', {volume: 0.4, loop: true});
         this.playBGM.play();
         */
+       
         // place tile sprite
         this.islandnorth = this.add.tileSprite(0, 0, 1280, 720, 'islandnorth').setOrigin(0, 0); 
 
@@ -35,9 +36,6 @@ class IslandNorth extends Phaser.Scene {
             console.log(gameObject);
             console.log(event);
         });
-        
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        //this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'Door is locked').setFontSize(50).setVisible(false);
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         //objects
@@ -68,10 +66,12 @@ class IslandNorth extends Phaser.Scene {
         this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x042630).setOrigin(0, 0);
         this.add.rectangle(0, 0, game.config.width, 10, 0x042630).setOrigin(0, 0);
         this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x042630).setOrigin(0, 0);
-        
     }
     
     update() {
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // lighthouse text
+
         // if lighthouse text is not on screen 
         if(textTimerLight == 0){
             // if click on lighthouse
@@ -91,6 +91,9 @@ class IslandNorth extends Phaser.Scene {
             textTimerLight = 0;
         }
 
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // cellar text
+        
         // if cellar text is not on screen 
         if(textTimerCell == 0){
             // if click on cellar
@@ -111,24 +114,21 @@ class IslandNorth extends Phaser.Scene {
         }
     
 
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // scene change on keypress
+
         if(Phaser.Input.Keyboard.JustDown(keyA)){
-            this.scene.start("islandwest");
+            this.scene.start("islandWest");
         };
         if(Phaser.Input.Keyboard.JustDown(keyD)){
-            this.scene.start("islandeast");
+            this.scene.start("islandEast");
         };
         if(Phaser.Input.Keyboard.JustDown(keyS)){
-            this.scene.start("islandsouth");
+            this.scene.start("islandSouth");
         };
-
-        // option to restart game
-        /*
-        if(this.gameOver && Phaser.Input.Keyboard.JustDown(keySPACE)) {
-            this.scene.start("menuScene");
-        }
-
-        // makes background scroll 
-        this.lab.tilePositionX += 15;
-        */
+        // temporary
+        if(Phaser.Input.Keyboard.JustDown(keyW)){
+            this.scene.start("lighthouse");
+        };
     }
 }

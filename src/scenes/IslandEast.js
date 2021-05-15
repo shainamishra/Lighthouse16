@@ -1,6 +1,6 @@
 class IslandEast extends Phaser.Scene {
     constructor() {
-        super("islandeast");
+        super("islandEast");
     }
     
     preload() {
@@ -52,24 +52,18 @@ class IslandEast extends Phaser.Scene {
     }
 
     update() {
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // scene change on keypress
+
         if(Phaser.Input.Keyboard.JustDown(keyA)){
-            this.scene.start("islandnorthScene");
+            this.scene.start("islandNorth");
         };
         if(Phaser.Input.Keyboard.JustDown(keyD)){
-            this.scene.start("islandsouth");
+            this.scene.start("islandSouth");
         };
         if(Phaser.Input.Keyboard.JustDown(keyS)){
-            this.scene.start("islandwest");
+            this.scene.start("islandWest");
         };
-        
-        // option to restart game
-        /*
-        if(this.gameOver && Phaser.Input.Keyboard.JustDown(keySPACE)) {
-            this.scene.start("menuScene");
-        }
-
-        // makes background scroll 
-        this.lab.tilePositionX += 15;
-        */
     }
 }

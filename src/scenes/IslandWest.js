@@ -1,6 +1,6 @@
 class IslandWest extends Phaser.Scene {
     constructor() {
-        super("islandwest");
+        super("islandWest");
     }
     
     preload() {
@@ -52,13 +52,13 @@ class IslandWest extends Phaser.Scene {
 
     update() {
         if(Phaser.Input.Keyboard.JustDown(keyA)){
-            this.scene.start("islandsouth");
+            this.scene.start("islandSouth");
         };
         if(Phaser.Input.Keyboard.JustDown(keyD)){
-            this.scene.start("islandnorthScene");
+            this.scene.start("islandNorth");
         };
         if(Phaser.Input.Keyboard.JustDown(keyS)){
-            this.scene.start("islandeast");
+            this.scene.start("islandEast");
         };
         // option to restart game
         /*

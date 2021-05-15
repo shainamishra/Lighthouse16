@@ -52,15 +52,6 @@ class Island extends Phaser.Scene {
     }
 
     update() {
-        // option to restart game
-        /*
-        if(this.gameOver && Phaser.Input.Keyboard.JustDown(keySPACE)) {
-            this.scene.start("menuScene");
-        }
-
-        // makes background scroll 
-        this.lab.tilePositionX += 15;
-        */
         if (Phaser.Input.Keyboard.JustDown(keySPACE)) {
             game.settings = {
               obSpeed: 15,
@@ -68,7 +59,7 @@ class Island extends Phaser.Scene {
             
             //this.menuBGM.stop();
             this.sound.play("CrashingWaves");
-            this.scene.start("islandnorthScene");  
+            this.scene.start("islandNorth");  
         }
     }
 }

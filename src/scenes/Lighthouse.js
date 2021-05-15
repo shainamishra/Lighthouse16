@@ -1,11 +1,11 @@
-class IslandSouth extends Phaser.Scene {
+class Lighthouse extends Phaser.Scene {
     constructor() {
-        super("islandSouth");
+        super("lighthouse");
     }
     
     preload() {
         // images
-        this.load.image('islandsouth', './assets/IslandSouth.PNG');
+        this.load.image('islandeast', './assets/bg.png');
 
 
         // obstacles
@@ -21,8 +21,9 @@ class IslandSouth extends Phaser.Scene {
         this.playBGM = this.sound.add('bgm', {volume: 0.4, loop: true});
         this.playBGM.play();
         */
+
         // place tile sprite
-        this.islandsouth = this.add.tileSprite(0, 0, 1280, 720, 'islandsouth').setOrigin(0, 0); 
+        this.islandeast = this.add.tileSprite(0, 0, 1280, 720, 'islandeast').setOrigin(0, 0); 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
@@ -51,18 +52,18 @@ class IslandSouth extends Phaser.Scene {
     }
 
     update() {
-        
+        /*
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // scene change on keypress
-
         if(Phaser.Input.Keyboard.JustDown(keyA)){
-            this.scene.start("islandEast");
-        };
-        if(Phaser.Input.Keyboard.JustDown(keyD)){
-            this.scene.start("islandWest");
-        };
-        if(Phaser.Input.Keyboard.JustDown(keyS)){
             this.scene.start("islandnorthScene");
         };
+        if(Phaser.Input.Keyboard.JustDown(keyD)){
+            this.scene.start("islandsouth");
+        };
+        if(Phaser.Input.Keyboard.JustDown(keyS)){
+            this.scene.start("islandwest");
+        };
+        */
     }
 }

@@ -2,7 +2,7 @@ let config = {
     type: Phaser.CANVAS,
     width: 1280,
     height: 720,
-    scene: [ Menu, Island, IslandNorth, IslandWest, IslandEast, IslandSouth, End ],
+    scene: [ Menu, Island, IslandNorth, IslandWest, IslandEast, IslandSouth, Lighthouse, End ],
     physics: {
       default: 'arcade',
       arcade: {
