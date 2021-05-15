@@ -25,5 +25,5 @@ let borderPadding = borderUISize / 3;
 let keySPACE, keyW, keyA, keyS, keyD, keyI;
 
 // global variables
-let highScore = 0;
-let newHighScore = false;
+let textTimerLight = 0;
+let textTimerCell = 0;

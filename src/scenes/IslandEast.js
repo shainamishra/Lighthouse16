@@ -21,6 +21,7 @@ class IslandEast extends Phaser.Scene {
         this.playBGM = this.sound.add('bgm', {volume: 0.4, loop: true});
         this.playBGM.play();
         */
+
         // place tile sprite
         this.islandeast = this.add.tileSprite(0, 0, 1280, 720, 'islandeast').setOrigin(0, 0); 
 
@@ -60,6 +61,7 @@ class IslandEast extends Phaser.Scene {
         if(Phaser.Input.Keyboard.JustDown(keyS)){
             this.scene.start("islandwest");
         };
+        
         // option to restart game
         /*
         if(this.gameOver && Phaser.Input.Keyboard.JustDown(keySPACE)) {
