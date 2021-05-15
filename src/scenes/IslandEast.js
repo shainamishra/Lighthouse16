@@ -52,7 +52,7 @@ class IslandEast extends Phaser.Scene {
 
     update() {
         if(Phaser.Input.Keyboard.JustDown(keyA)){
-            this.scene.start("islandnorth");
+            this.scene.start("islandnorthScene");
         };
         if(Phaser.Input.Keyboard.JustDown(keyD)){
             this.scene.start("islandsouth");
