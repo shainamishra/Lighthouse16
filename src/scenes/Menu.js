@@ -7,6 +7,7 @@ class Menu extends Phaser.Scene {
         // load assets
         this.load.image('start', './assets/start.png');
         this.load.audio('CrashingWaves', './assets/CrashingWave2.wav');
+        this.load.audio('menu_music', './assets/The_lighthouse.wav');
     }
 
     create() {
@@ -19,11 +20,11 @@ class Menu extends Phaser.Scene {
         this.add.rectangle(0, 0, game.config.width, 10, 0x042630).setOrigin(0, 0);
         this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x042630).setOrigin(0, 0);
         
-        /*
+        
         //music
-        this.menuBGM = this.sound.add('menu_music', {volume: 0.4, loop: true});
+        this.menuBGM = this.sound.add('menu_music', {volume: 0.1, loop: true});
         this.menuBGM.play();
-        */
+        
 
         // define keys
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
@@ -32,25 +33,9 @@ class Menu extends Phaser.Scene {
 
     update() {
         if (Phaser.Input.Keyboard.JustDown(keySPACE)) {
-            game.settings = {
-              obSpeed: 15,
-            }  
-            
             //this.menuBGM.stop();
             this.sound.play("CrashingWaves");
             this.scene.start("islandScene");  
         }
-        /*
-
-        //will remove this, kept for now to test
-        if (Phaser.Input.Keyboard.JustDown(keyA)) {
-            game.settings = {
-              obSpeed: 20,   
-            }
-            this.menuBGM.stop();
-            this.sound.play('possible_spider');
-            this.scene.start("level2Scene");  
-        }
-        */
     }
 }

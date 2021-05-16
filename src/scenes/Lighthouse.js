@@ -5,8 +5,8 @@ class Lighthouse extends Phaser.Scene {
     
     preload() {
         // images
-        this.load.image('islandeast', './assets/bg.png');
-
+        this.load.image('bg', './assets/bg.png');
+        this.load.image('inventory', './assets/Inventory.png');
 
         // obstacles
 
@@ -23,7 +23,7 @@ class Lighthouse extends Phaser.Scene {
         */
 
         // place tile sprite
-        this.islandeast = this.add.tileSprite(0, 0, 1280, 720, 'islandeast').setOrigin(0, 0); 
+        this.bg = this.add.tileSprite(0, 0, 1280, 720, 'bg').setOrigin(0, 0); 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
@@ -48,10 +48,10 @@ class Lighthouse extends Phaser.Scene {
         this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x042630).setOrigin(0, 0);
         this.add.rectangle(0, 0, game.config.width, 10, 0x042630).setOrigin(0, 0);
         this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x042630).setOrigin(0, 0);
-      
     }
 
     update() {
+
         /*
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // scene change on keypress
@@ -65,5 +65,10 @@ class Lighthouse extends Phaser.Scene {
             this.scene.start("islandwest");
         };
         */
+
+        // temp, back to outside
+        if (Phaser.Input.Keyboard.JustDown(keySPACE)) {
+            this.scene.start("islandNorth");  
+        }
     }
 }
