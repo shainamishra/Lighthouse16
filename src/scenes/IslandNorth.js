@@ -8,6 +8,13 @@ class IslandNorth extends Phaser.Scene {
         this.load.image('islandnorth', './assets/IslandNorth.PNG');
         this.load.image('hitbox', './assets/HitBox2.png');
         this.load.image('hook', './assets/manDoorHandHookCarDoor.png');
+
+        // inventory
+        this.load.image('inventory', './assets/Inventory.png');
+        this.load.image('x', './assets/x.png');
+        this.load.image('next', './assets/next.png');
+        this.load.image('invent1', './assets/5spread.png');
+        this.load.image('invent2', './assets/inventory_interior.png');
     }
 
     create() {
@@ -32,14 +39,13 @@ class IslandNorth extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // cursor
         this.input.on('gameobjectdown', (pointer, gameObject, event) => { 
-            console.log(pointer);
-            console.log(gameObject);
-            console.log(event);
+            //console.log(pointer);
+            //console.log(gameObject);
+            //console.log(event);
         });
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        //objects
-
+        // objects
         // lighthouse
         this.lighthouse = this.add.sprite(750,250, 'hitbox');
         this.lighthouse.setDisplaySize(300, 400);
@@ -59,6 +65,40 @@ class IslandNorth extends Phaser.Scene {
         this.cellar.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 +50, 'chains block the cellar');
         this.cellar.interText.setFontSize(50);
         this.cellar.interText.setVisible(false);  
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // inventory 
+        this.invent = this.add.sprite(60,60, 'inventory');
+        this.invent.setDisplaySize(100, 100);
+        this.invent.setInteractive({
+            useHandCursor: true
+        });
+
+        // page 1
+        this.page1 = this.add.sprite(650,350, 'invent1');
+        this.page1.setDisplaySize(1280, 720);
+        this.page1.setVisible(false);
+
+        // page 2
+        this.page2 = this.add.sprite(650,350, 'invent2');
+        this.page2.setDisplaySize(1280, 720);
+        this.page2.setVisible(false);
+
+        // close
+        this.closeInven = this.add.sprite(50, 50, 'x');
+        this.closeInven.setDisplaySize(50, 50);
+        this.closeInven.setVisible(false);
+        this.closeInven.setInteractive({
+            useHandCursor: true
+        });
+
+        // next
+        this.next = this.add.sprite(1240, 680, 'next');
+        this.next.setDisplaySize(50, 50);
+        this.next.setVisible(false);
+        this.next.setInteractive({
+            useHandCursor: true
+        });
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -93,7 +133,6 @@ class IslandNorth extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // cellar text
-        
         // if cellar text is not on screen 
         if(textTimerCell == 0){
             // if click on cellar
@@ -114,6 +153,58 @@ class IslandNorth extends Phaser.Scene {
         }
     
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // inventory
+        // clicks inventory
+        this.invent.on('pointerdown', function (pointer){
+            console.log("click")
+            inventory = true;
+        });
+
+        // "x" to close inventory
+        this.closeInven.on('pointerdown', function (pointer){
+            console.log("close")
+            inventory = false;
+        });
+
+        // inventory is open
+        if(inventory == true){
+            console.log("open")
+            // hide inventory icon
+            this.invent.setVisible(false);
+            // show inventory close button
+            this.closeInven.setVisible(true);
+            // show next button
+            this.next.setVisible(true);
+            
+            if (page == 1){
+                this.page1.setVisible(true);
+            }
+            // click next button
+            this.next.on('pointerdown', function (pointer){
+                console.log("next")
+                // open inventory
+                page += 1;
+                console.log(page)
+                this.scene.pageTurn(page);
+            });
+        } else if(inventory == false){
+            // show inventory icon
+            this.invent.setVisible(true);
+            // hide inventory close button
+            this.closeInven.setVisible(false);
+            // hide next button
+            this.next.setVisible(false);
+            
+            // hide pages
+            page = 1;
+            this.page1.setVisible(false);
+            this.page2.setVisible(false);
+            //this.page3.setVisible(false);
+            //this.page4.setVisible(false);
+            //this.page5.setVisible(false);
+        }
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // scene change on keypress
 
         if(Phaser.Input.Keyboard.JustDown(keyA)){
@@ -125,10 +216,40 @@ class IslandNorth extends Phaser.Scene {
         if(Phaser.Input.Keyboard.JustDown(keyS)){
             this.scene.start("islandSouth");
         };
+
         // temporary
         if(Phaser.Input.Keyboard.JustDown(keyW)){
             //this.menuBGM.stop();
             this.scene.start("lighthouse");
         };
     }
-}
+
+    pageTurn(page)
+    {
+        if(page == 1){
+            // show page one, hide others
+            // should hide prev
+            this.page1.setVisible(true);
+            this.page2.setVisible(false);
+            //this.page3.setVisible(false);
+            //this.page4.setVisible(false);
+            //this.page5.setVisible(false);
+
+        } else if(page == 2){
+            this.page1.setVisible(false);
+            this.page2.setVisible(true);
+            //this.page3.setVisible(false);
+            //this.page4.setVisible(false);
+            //this.page5.setVisible(false);
+
+        } else if(page == 3){
+
+        } else if(page == 4){
+
+        } else if(page == 5){
+
+            // should hide next on 
+        } 
+    }
+}    
+

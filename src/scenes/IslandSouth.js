@@ -8,8 +8,10 @@ class IslandSouth extends Phaser.Scene {
         this.load.image('islandsouth', './assets/IslandSouth.PNG');
         this.load.image('hitbox', './assets/HitBox2.png');
 
-        // obstacles
-
+        // inventory
+        this.load.image('inventory', './assets/Inventory.png');
+        this.load.image('inventBG', './assets/inventory_interior.png');
+        this.load.image('x', './assets/x.png');
 
         // spritesheets
 
@@ -38,15 +40,8 @@ class IslandSouth extends Phaser.Scene {
         this.input.on('gameobjectdown', (pointer, gameObject, event) => { 
             console.log(pointer);
             console.log(gameObject);
-            cosolde.log(event);
+            console.log(event);
         });
-        
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // borders
-        this.add.rectangle(0, 0, 10, game.config.height, 0x042630).setOrigin(0, 0);
-        this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x042630).setOrigin(0, 0);
-        this.add.rectangle(0, 0, game.config.width, 10, 0x042630).setOrigin(0, 0);
-        this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x042630).setOrigin(0, 0);
         
         ////////////////////////////////////////////////////
         this.graves = this.add.sprite(850, 250, 'hitbox');
@@ -57,6 +52,35 @@ class IslandSouth extends Phaser.Scene {
         this.graves.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'Strange text instead of names');
         this.graves.interText.setFontSize(50);
         this.graves.interText.setVisible(false);
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // inventory 
+        this.invent = this.add.sprite(60,60, 'inventory');
+        this.invent.setDisplaySize(100, 100);
+        this.invent.setInteractive({
+            useHandCursor: true
+        });
+
+        // box bg
+        this.boxBG = this.add.sprite(650,350, 'inventBG');
+        this.boxBG.setDisplaySize(1280, 720);
+        this.boxBG.setVisible(false);
+
+        // close
+        this.closeInven = this.add.sprite(50, 50, 'x');
+        this.closeInven.setDisplaySize(50, 50);
+        this.closeInven.setVisible(false);
+        this.closeInven.setInteractive({
+            useHandCursor: true
+        });
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // borders
+        this.add.rectangle(0, 0, 10, game.config.height, 0x042630).setOrigin(0, 0);
+        this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x042630).setOrigin(0, 0);
+        this.add.rectangle(0, 0, game.config.width, 10, 0x042630).setOrigin(0, 0);
+        this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x042630).setOrigin(0, 0);
+        
     }
 
     update() {
@@ -77,6 +101,41 @@ class IslandSouth extends Phaser.Scene {
             this.graves.interText.setVisible(false);
             textTimerGraves = 0;
         }
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // inventory
+        // clicks inventory
+        this.invent.on('pointerdown', function (pointer){
+            console.log("click")
+            inventory = true;
+        });
+
+        // inventory is open
+        if(inventory == true){
+            // hide inventory icon
+            this.invent.setVisible(false);
+            // show inventory bg
+            this.boxBG.setVisible(true);
+            // show inventory close button
+            this.closeInven.setVisible(true);
+        }
+
+        // "x" to close inventory
+        this.closeInven.on('pointerdown', function (pointer){
+            console.log("close")
+            inventory = false;
+        });
+
+        // inventory is closed
+        if(inventory == false){
+            // show inventory icon
+            this.invent.setVisible(true);
+            // hide inventory bg
+            this.boxBG.setVisible(false);
+            // hide inventory close button
+            this.closeInven.setVisible(false);
+        }
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // scene change on keypress
 
