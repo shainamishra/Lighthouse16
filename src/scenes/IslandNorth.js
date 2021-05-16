@@ -113,7 +113,6 @@ class IslandNorth extends Phaser.Scene {
             textTimerCell = 0;
         }
     
-
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // scene change on keypress
 
@@ -128,6 +127,7 @@ class IslandNorth extends Phaser.Scene {
         };
         // temporary
         if(Phaser.Input.Keyboard.JustDown(keyW)){
+            //this.menuBGM.stop();
             this.scene.start("lighthouse");
         };
     }
