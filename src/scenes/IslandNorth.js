@@ -5,7 +5,7 @@ class IslandNorth extends Phaser.Scene {
     
     preload() {
         // images
-        this.load.image('islandnorth', './assets/IslandNorth.png');
+        this.load.image('islandnorth', './assets/islandNorth.png');
         this.load.image('hitbox', './assets/HitBox2.png');
         this.load.image('hook', './assets/manDoorHandHookCarDoor.png');
 
@@ -25,6 +25,7 @@ class IslandNorth extends Phaser.Scene {
         */
        
         // place tile sprite
+        // WHAT IS THE ISSUE
         this.islandnorth = this.add.tileSprite(0, 0, 1280, 720, 'islandnorth').setOrigin(0, 0); 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
