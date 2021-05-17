@@ -7,7 +7,7 @@ class Menu extends Phaser.Scene {
         // load assets
         this.load.image('start', './assets/start.png');
         this.load.audio('CrashingWaves', './assets/CrashingWave2.wav');
-        this.load.audio('menu_music', './assets/The_lighthouse.wav');
+        this.load.audio('menu_music', './assets/theLighthouse.wav');
     }
 
     create() {
@@ -22,7 +22,7 @@ class Menu extends Phaser.Scene {
         
         
         //music
-        this.menuBGM = this.sound.add('menu_music', {volume: 0.1, loop: true});
+        this.menuBGM = this.sound.add('menu_music', {volume: 0.2, loop: true});
         this.menuBGM.play();
         
 

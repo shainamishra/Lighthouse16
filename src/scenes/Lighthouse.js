@@ -7,7 +7,7 @@ class Lighthouse extends Phaser.Scene {
         // images
         this.load.image('bg', './assets/bg.png');
         this.load.image('inventory', './assets/Inventory.png');
-        this.load.image('inventBG', './assets/inventory_interior.png');
+        this.load.image('inventBG', './assets/inventoryInterior.png');
         this.load.image('x', './assets/x.png');
 
         // obstacles
