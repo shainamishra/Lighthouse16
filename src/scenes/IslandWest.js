@@ -5,7 +5,7 @@ class IslandWest extends Phaser.Scene {
     
     preload() {
         // images
-        this.load.image('islandwest', './assets/islandWest.png');
+        this.load.image('islandwest', './assets/islandWest');
         this.load.image('hitbox', './assets/HitBox2.png');
 
         // inventory
