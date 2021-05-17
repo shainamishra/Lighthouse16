@@ -25,7 +25,6 @@ class IslandNorth extends Phaser.Scene {
         */
        
         // place tile sprite
-        // WHAT IS THE ISSUE
         this.islandnorth = this.add.tileSprite(0, 0, 1280, 720, 'islandnorth').setOrigin(0, 0); 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
