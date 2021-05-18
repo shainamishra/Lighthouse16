@@ -114,12 +114,12 @@ class IslandEast extends Phaser.Scene {
         
         if(textTimerBucket == 0){
             // if click on bucket
-            console.log('nothing here');
+        
             this.bucket.on('pointerdown', function (pointer){
 
                 this.interText.setVisible(true);
-                console.log('there is nothing here');
-                this.interText.setText('There is nothing else here');
+                //console.log('there is nothing here');
+                //this.interText.setText('There is nothing else here');
                 textTimerBucket = 1;
             });
         }
