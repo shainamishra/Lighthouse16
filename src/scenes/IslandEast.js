@@ -7,7 +7,7 @@ class IslandEast extends Phaser.Scene {
         // images
         this.load.image('islandeast', './assets/IslandEast.PNG');
         this.load.image('hitbox', './assets/HitBox2.png');
-
+        this.load.image('key', './assets/key.PNG');
         // inventory
         this.load.image('inventory', './assets/Inventory.png');
         this.load.image('inventBG', './assets/inventbg.png');
@@ -84,6 +84,12 @@ class IslandEast extends Phaser.Scene {
             useHandCursor: true
         });
 
+        this.key = this.add.sprite(100,550, 'key');
+        this.key.setVisible(false);
+        //this.key.setInteractive({
+          //  useHandCursor: true
+        //});
+        
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
         this.add.rectangle(0, 0, 10, game.config.height, 0x042630).setOrigin(0, 0);
@@ -121,6 +127,7 @@ class IslandEast extends Phaser.Scene {
                 //console.log('there is nothing here');
                 //this.interText.setText('There is nothing else here');
                 textTimerBucket = 1;
+                keyGot = 1;
             });
         }
 
@@ -133,7 +140,10 @@ class IslandEast extends Phaser.Scene {
             this.bucket.interText.setVisible(false);
             textTimerBucket = 0;
         }
-
+        
+        if(keyGot ==1){
+            this.key.setVisible(true);
+        }
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // inventory
         // clicks inventory
