@@ -17,7 +17,7 @@ class IslandNorth extends Phaser.Scene {
         this.load.image('page3', './assets/Page3.png');
         this.load.image('page4', './assets/Page4.png');
         this.load.image('page5', './assets/Page5.png');
-        this.load.image('page6', './assets/inventbg.png');
+        this.load.image('page6', './assets/Page6.png');
         this.load.image('page7', './assets/inventbg.png');
 
         // table of contents
