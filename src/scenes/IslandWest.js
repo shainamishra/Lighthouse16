@@ -10,7 +10,7 @@ class IslandWest extends Phaser.Scene {
 
         // inventory
         this.load.image('inventory', './assets/Inventory.png');
-        this.load.image('inventBG', './assets/inventoryInterior.png');
+        this.load.image('inventBG', './assets/inventbg.png');
         this.load.image('x', './assets/x.png');
 
         // spritesheets
