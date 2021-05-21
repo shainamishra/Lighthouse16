@@ -7,7 +7,7 @@ class IslandEast extends Phaser.Scene {
         // images
         this.load.image('islandeast', './assets/IslandEast.PNG');
         this.load.image('hitbox', './assets/HitBox2.png');
-
+        this.load.image('key', './assets/key.PNG');
         // inventory
         this.load.image('inventory', './assets/Inventory.png');
         this.load.image('inventBG', './assets/inventbg.png');
@@ -63,6 +63,14 @@ class IslandEast extends Phaser.Scene {
         this.bucket.interText.setFontSize(50);
         this.bucket.interText.setVisible(false);
         
+        this.pillars = this.add.sprite(800,400, 'hitbox');
+        this.pillars.setDisplaySize(300, 100);
+        this.pillars.setInteractive({
+            useHandCursor: true
+        });
+        this.pillars.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 50, 'You cant see much \n past the dock');
+        this.pillars.interText.setFontSize(50);
+        this.pillars.interText.setVisible(false);
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // inventory 
         this.invent = this.add.sprite(60,60, 'inventory');
@@ -84,6 +92,12 @@ class IslandEast extends Phaser.Scene {
             useHandCursor: true
         });
 
+        this.key = this.add.sprite(100,550, 'key');
+        this.key.setVisible(false);
+        //this.key.setInteractive({
+          //  useHandCursor: true
+        //});
+        
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
         this.add.rectangle(0, 0, 10, game.config.height, 0x042630).setOrigin(0, 0);
@@ -94,11 +108,21 @@ class IslandEast extends Phaser.Scene {
     }
 
     update() {
-        if(textTimerRod== 0){
+        if(textTimerRod== 0 && reelGot == 0){
             // if click on lighthouse
             this.fishingpole.on('pointerdown', function (pointer){
                 this.interText.setVisible(true);
                 textTimerRod = 1;
+            });
+        }
+        else if(textTimerRod== 0 && reelGot == 1){
+            this.fishingpole.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'The fishingpole brings \n     up a telescope');
+            this.fishingpole.interText.setFontSize(50);
+            this.fishingpole.interText.setVisible(false);
+            this.fishingpole.on('pointerdown', function (pointer){
+                this.interText.setVisible(true);
+                textTimerRod = 1;
+                scopeGot = 1;
             });
         }
 
@@ -121,6 +145,7 @@ class IslandEast extends Phaser.Scene {
                 //console.log('there is nothing here');
                 //this.interText.setText('There is nothing else here');
                 textTimerBucket = 1;
+                keyGot = 1;
             });
         }
 
@@ -133,6 +158,44 @@ class IslandEast extends Phaser.Scene {
             this.bucket.interText.setVisible(false);
             textTimerBucket = 0;
         }
+        
+        if(keyGot ==1){
+            this.key.setVisible(true);
+        }
+
+        if(textTimerDock == 0 && scopeGot == 0){
+            // if click on dock
+        
+            this.pillars.on('pointerdown', function (pointer){
+
+                this.interText.setVisible(true);
+                //console.log('there is nothing here');
+                //this.interText.setText('There is nothing else here');
+                textTimerDock = 1;
+            });
+        }
+        else if(textTimerDock == 0 && scopeGot == 1){
+            this.pillars.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'There are two large stone \n pillars out in the sea');
+            this.pillars.interText.setFontSize(50);
+            this.pillars.interText.setVisible(false);
+            this.pillars.on('pointerdown', function (pointer){
+
+                this.interText.setVisible(true);
+                //console.log('there is nothing here');
+                //this.interText.setText('There is nothing else here');
+                textTimerDock = 1;
+            });
+        }
+        // text on screen
+        if(textTimerDock > 0 && textTimerDock < 150) {
+            textTimerDock += 1;
+        } 
+        else if(textTimerDock >= 150){
+            // hide text
+            this.pillars.interText.setVisible(false);
+            textTimerDock = 0;
+        }
+        
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // inventory
