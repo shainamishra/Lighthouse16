@@ -53,6 +53,14 @@ class IslandSouth extends Phaser.Scene {
         this.graves.interText.setFontSize(50);
         this.graves.interText.setVisible(false);
 
+        this.gravebox = this.add.sprite(550, 400, 'hitbox');
+        this.gravebox.setDisplaySize(100,100);
+        this.gravebox.setInteractive({
+            useHandCursor: true
+        });
+        this.gravebox.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'A small locked box');
+        this.gravebox.interText.setFontSize(50);
+        this.gravebox.interText.setVisible(false);
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // inventory 
         this.invent = this.add.sprite(60,60, 'inventory');
@@ -100,6 +108,24 @@ class IslandSouth extends Phaser.Scene {
             // hide text
             this.graves.interText.setVisible(false);
             textTimerGraves = 0;
+        }
+
+        if(textTimerGBox == 0){
+            // if click on lighthouse
+            this.gravebox.on('pointerdown', function (pointer){
+                this.interText.setVisible(true);
+                textTimerGBox = 1;
+            });
+        }
+
+        // text on screen
+        if(textTimerGBox> 0 && textTimerGBox < 150) {
+            textTimerGBox += 1;
+        } 
+        else if(textTimerGBox >= 150){
+            // hide text
+            this.gravebox.interText.setVisible(false);
+            textTimerGBox = 0;
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
