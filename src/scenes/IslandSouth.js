@@ -110,14 +110,23 @@ class IslandSouth extends Phaser.Scene {
             textTimerGraves = 0;
         }
 
-        if(textTimerGBox == 0){
+        if(textTimerGBox == 0 && keyGot == 0){
             // if click on lighthouse
             this.gravebox.on('pointerdown', function (pointer){
                 this.interText.setVisible(true);
                 textTimerGBox = 1;
             });
         }
-
+        else if(textTimerGBox ==0 && keyGot == 1){
+            this.gravebox.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, "A reel was inside");
+            this.gravebox.interText.setFontSize(50);
+            this.gravebox.interText.setVisible(false);
+            this.gravebox.on('pointerdown', function (pointer){
+                this.interText.setVisible(true);
+                textTimerGBox = 1;
+                reelGot =1;
+            });
+        }
         // text on screen
         if(textTimerGBox> 0 && textTimerGBox < 150) {
             textTimerGBox += 1;
