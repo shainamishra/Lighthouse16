@@ -2,12 +2,13 @@ class IslandNorth extends Phaser.Scene {
     constructor() {
         super("islandNorth");
     }
-    
+
+    highPriestess;
+
     preload() {
         // images
         this.load.image('islandnorth', './assets/IslandNorth.PNG');
         this.load.image('hitbox', './assets/HitBox2.png');
-        this.load.image('hook', './assets/manDoorHandHookCarDoor.png');
 
         // inventory
         this.load.image('inventory', './assets/Inventory.png');
@@ -29,6 +30,9 @@ class IslandNorth extends Phaser.Scene {
         this.load.image('content6', './assets/6.png');
         this.load.image('content7', './assets/7.png');
 
+        // card descriptions
+        this.load.image('highPriestess', './assets/highPriestess.png');
+
     }
 
     create() {
@@ -48,7 +52,6 @@ class IslandNorth extends Phaser.Scene {
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-        keyI = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.I);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // cursor
