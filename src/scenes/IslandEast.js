@@ -63,6 +63,14 @@ class IslandEast extends Phaser.Scene {
         this.bucket.interText.setFontSize(50);
         this.bucket.interText.setVisible(false);
         
+        this.pillars = this.add.sprite(800,400, 'hitbox');
+        this.pillars.setDisplaySize(300, 100);
+        this.pillars.setInteractive({
+            useHandCursor: true
+        });
+        this.pillars.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 50, 'You cant see much \n past the dock');
+        this.pillars.interText.setFontSize(50);
+        this.pillars.interText.setVisible(false);
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // inventory 
         this.invent = this.add.sprite(60,60, 'inventory');
@@ -114,6 +122,7 @@ class IslandEast extends Phaser.Scene {
             this.fishingpole.on('pointerdown', function (pointer){
                 this.interText.setVisible(true);
                 textTimerRod = 1;
+                scopeGot = 1;
             });
         }
 
@@ -153,6 +162,41 @@ class IslandEast extends Phaser.Scene {
         if(keyGot ==1){
             this.key.setVisible(true);
         }
+
+        if(textTimerDock == 0 && scopeGot == 0){
+            // if click on dock
+        
+            this.pillars.on('pointerdown', function (pointer){
+
+                this.interText.setVisible(true);
+                //console.log('there is nothing here');
+                //this.interText.setText('There is nothing else here');
+                textTimerDock = 1;
+            });
+        }
+        else if(textTimerDock == 0 && scopeGot == 1){
+            this.pillars.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'There are two large stone \n pillars out in the sea');
+            this.pillars.interText.setFontSize(50);
+            this.pillars.interText.setVisible(false);
+            this.pillars.on('pointerdown', function (pointer){
+
+                this.interText.setVisible(true);
+                //console.log('there is nothing here');
+                //this.interText.setText('There is nothing else here');
+                textTimerDock = 1;
+            });
+        }
+        // text on screen
+        if(textTimerDock > 0 && textTimerDock < 150) {
+            textTimerDock += 1;
+        } 
+        else if(textTimerDock >= 150){
+            // hide text
+            this.pillars.interText.setVisible(false);
+            textTimerDock = 0;
+        }
+        
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // inventory
         // clicks inventory
