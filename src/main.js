@@ -36,3 +36,4 @@ let textTimerGBox = 0;
 let inventory = false;
 let page = 1;
 let keyGot = 0;
+let reelGot =0;

@@ -100,8 +100,17 @@ class IslandEast extends Phaser.Scene {
     }
 
     update() {
-        if(textTimerRod== 0){
+        if(textTimerRod== 0 && reelGot == 0){
             // if click on lighthouse
+            this.fishingpole.on('pointerdown', function (pointer){
+                this.interText.setVisible(true);
+                textTimerRod = 1;
+            });
+        }
+        else if(textTimerRod== 0 && reelGot == 1){
+            this.fishingpole.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'The fishingpole brings \n     up a telescope');
+            this.fishingpole.interText.setFontSize(50);
+            this.fishingpole.interText.setVisible(false);
             this.fishingpole.on('pointerdown', function (pointer){
                 this.interText.setVisible(true);
                 textTimerRod = 1;
