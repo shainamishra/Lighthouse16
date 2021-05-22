@@ -2,23 +2,24 @@ class IslandNorth extends Phaser.Scene {
     constructor() {
         super("islandNorth");
     }
-    
+
+    highPriestess;
+
     preload() {
         // images
         this.load.image('islandnorth', './assets/IslandNorth.PNG');
         this.load.image('hitbox', './assets/HitBox2.png');
-        this.load.image('hook', './assets/manDoorHandHookCarDoor.png');
 
         // inventory
         this.load.image('inventory', './assets/Inventory.png');
         this.load.image('x', './assets/x.png');
-        this.load.image('page1', './assets/Page1.png');
-        this.load.image('page2', './assets/Page2.png');
-        this.load.image('page3', './assets/Page3.png');
-        this.load.image('page4', './assets/Page4.png');
-        this.load.image('page5', './assets/Page5.png');
-        this.load.image('page6', './assets/Page6.png');
-        this.load.image('page7', './assets/inventbg.png');
+        this.load.image('set1', './assets/Puzzle1.png');
+        this.load.image('set2', './assets/Puzzle2.png');
+        this.load.image('set3', './assets/Puzzle3.png');
+        this.load.image('set4', './assets/Puzzle4.png');
+        this.load.image('set5', './assets/Puzzle5.png');
+        this.load.image('end', './assets/End.png');
+        this.load.image('woodbg', './assets/woodbg.png');
 
         // table of contents
         this.load.image('content1', './assets/1.png');
@@ -28,6 +29,9 @@ class IslandNorth extends Phaser.Scene {
         this.load.image('content5', './assets/5.png');
         this.load.image('content6', './assets/6.png');
         this.load.image('content7', './assets/7.png');
+
+        // card descriptions
+        this.load.image('highPriestess', './assets/highPriestess.png');
 
     }
 
@@ -48,7 +52,6 @@ class IslandNorth extends Phaser.Scene {
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-        keyI = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.I);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // cursor
@@ -76,7 +79,7 @@ class IslandNorth extends Phaser.Scene {
         this.cellar.setInteractive({
             useHandCursor: true
         });
-        this.cellar.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 +50, 'chains block the cellar');
+        this.cellar.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 50, 'chains block the cellar');
         this.cellar.interText.setFontSize(50);
         this.cellar.interText.setVisible(false);  
 
@@ -89,37 +92,37 @@ class IslandNorth extends Phaser.Scene {
         });
 
         // page 1
-        this.page1 = this.add.sprite(650,350, 'page1');
+        this.page1 = this.add.sprite(650,350, 'woodbg');
         this.page1.setDisplaySize(1280, 720);
         this.page1.setVisible(false);
 
         // page 2
-        this.page2 = this.add.sprite(650,350, 'page2');
+        this.page2 = this.add.sprite(650,350, 'set1');
         this.page2.setDisplaySize(1280, 720);
         this.page2.setVisible(false);
 
         // page 3
-        this.page3 = this.add.sprite(650,350, 'page3');
+        this.page3 = this.add.sprite(650,350, 'set2');
         this.page3.setDisplaySize(1280, 720);
         this.page3.setVisible(false);
 
         // page 4
-        this.page4 = this.add.sprite(650,350, 'page4');
+        this.page4 = this.add.sprite(650,350, 'set3');
         this.page4.setDisplaySize(1280, 720);
         this.page4.setVisible(false);
 
         // page 5
-        this.page5 = this.add.sprite(650,350, 'page5');
+        this.page5 = this.add.sprite(650,350, 'set4');
         this.page5.setDisplaySize(1280, 720);
         this.page5.setVisible(false);
 
         // page 6
-        this.page6 = this.add.sprite(650,350, 'page6');
+        this.page6 = this.add.sprite(650,350, 'set5');
         this.page6.setDisplaySize(1280, 720);
         this.page6.setVisible(false);
 
         // page 7
-        this.page7 = this.add.sprite(650,350, 'page7');
+        this.page7 = this.add.sprite(650,350, 'end');
         this.page7.setDisplaySize(1280, 720);
         this.page7.setVisible(false);
 
@@ -188,6 +191,13 @@ class IslandNorth extends Phaser.Scene {
         });
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // god forsaken variables
+        this.inventoryOn = false;
+        this.page = 1;
+        this.textTimerLight = 0;
+        this.textTimerCell = 0;
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
         this.add.rectangle(0, 0, 10, game.config.height, 0x042630).setOrigin(0, 0);
         this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x042630).setOrigin(0, 0);
@@ -198,61 +208,60 @@ class IslandNorth extends Phaser.Scene {
     update() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // lighthouse text
-
         // if lighthouse text is not on screen 
-        if(textTimerLight == 0){
+        if(this.textTimerLight == 0){
             // if click on lighthouse
-            this.lighthouse.on('pointerdown', function (pointer){
-                this.interText.setVisible(true);
-                textTimerLight = 1;
+            this.lighthouse.on('pointerdown', (pointer) => {
+                this.lighthouse.interText.setVisible(true);
+                this.textTimerLight = 1;
             });
         }
 
         // text on screen
-        if(textTimerLight > 0 && textTimerLight < 150) {
-            textTimerLight += 1;
+        if(this.textTimerLight > 0 && this.textTimerLight < 150) {
+            this.textTimerLight += 1;
         } 
-        else if(textTimerLight >= 150){
+        else if(this.textTimerLight >= 150){
             // hide text
             this.lighthouse.interText.setVisible(false);
-            textTimerLight = 0;
+            this.textTimerLight = 0;
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // cellar text
         // if cellar text is not on screen 
-        if(textTimerCell == 0){
+        if(this.textTimerCell == 0){
             // if click on cellar
-            this.cellar.on('pointerdown', function (pointer){
-                this.interText.setVisible(true);
-                textTimerCell = 1;
+            this.cellar.on('pointerdown', (pointer) => {
+                this.cellar.interText.setVisible(true);
+                this.textTimerCell = 1;
             });
         }
 
         // text on screen
-        if(textTimerCell > 0 && textTimerCell < 150) {
-            textTimerCell += 1;
+        if(this.textTimerCell > 0 && this.textTimerCell < 150) {
+            this.textTimerCell += 1;
         } 
-        else if(textTimerCell >= 150){
+        else if(this.textTimerCell >= 150){
             // hide text
             this.cellar.interText.setVisible(false);
-            textTimerCell = 0;
+            this.textTimerCell = 0;
         }
     
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // inventory
         // clicks inventory
-        this.invent.on('pointerdown', function (pointer){
-            inventory = true;
+        this.invent.on('pointerdown', (pointer) => {
+            this.inventoryOn = true;
         });
 
         // "x" to close inventory
-        this.closeInven.on('pointerdown', function (pointer){
-            inventory = false;
+        this.closeInven.on('pointerdown', (pointer) => {
+            this.inventoryOn = false;
         });
 
         // inventory is open
-        if(inventory == true){
+        if(this.inventoryOn == true){
             // hide inventory icon
             this.invent.setVisible(false);
             // show inventory close button
@@ -273,82 +282,82 @@ class IslandNorth extends Phaser.Scene {
             this.content7.setVisible(true);
             
             // first page
-            if (page == 1){
+            if (this.page == 1){
                 // show page1
                 this.page1.setVisible(true);
             }
 
             // click content 1
-            this.content1.on('pointerdown', function (pointer){
+            this.content1.on('pointerdown', (pointer) => {
                 // show page1
-                if(page != 1){
-                    page = 1;
-                    this.scene.pageTurn(page);
+                if(this.page != 1){
+                    this.page = 1;
+                    this.pageTurn(this.page);
                 }
             });
 
             // click content 2
-            this.content2.on('pointerdown', function (pointer){
+            this.content2.on('pointerdown', (pointer) => {
                 // show page1
-                if(page != 2){
-                    page = 2;
-                    this.scene.pageTurn(page);
+                if(this.page != 2){
+                    this.page = 2;
+                    this.pageTurn(this.page);
                 }
             });
 
             // click content 3
-            this.content3.on('pointerdown', function (pointer){
+            this.content3.on('pointerdown', (pointer) => {
                 // show page1
-                if(page != 3){
-                    page = 3;
-                    this.scene.pageTurn(page);
+                if(this.page != 3){
+                    this.page = 3;
+                    this.pageTurn(this.page);
                 }
             });
 
             // click content 4
-            this.content4.on('pointerdown', function (pointer){
+            this.content4.on('pointerdown', (pointer) => {
                 // show page1
-                if(page != 4){
-                    page = 4;
-                    this.scene.pageTurn(page);
+                if(this.page != 4){
+                    this.page = 4;
+                    this.pageTurn(this.page);
                 }
             });
 
             // click content 5
-            this.content5.on('pointerdown', function (pointer){
+            this.content5.on('pointerdown', (pointer) => {
                 // show page1
-                if(page != 5){
-                    page = 5;
-                    this.scene.pageTurn(page);
+                if(this.page != 5){
+                    this.page = 5;
+                    this.pageTurn(this.page);
                 }
             });
 
             // click content 6
-            this.content6.on('pointerdown', function (pointer){
+            this.content6.on('pointerdown', (pointer) => {
                 // show page1
-                if(page != 6){
-                    page = 6;
-                    this.scene.pageTurn(page);
+                if(this.page != 6){
+                    this.page = 6;
+                    this.pageTurn(this.page);
                 }
             });
 
             // click content 7
-            this.content7.on('pointerdown', function (pointer){
+            this.content7.on('pointerdown', (pointer) => {
                 // show page1
-                if(page != 7){
-                    page = 7;
-                    this.scene.pageTurn(page);
+                if(this.page != 7){
+                    this.page = 7;
+                    this.pageTurn(this.page);
                 }
             });
 
-        } else if(inventory == false){
+        } else if(this.inventoryOn == false){
             // show inventory icon
             this.invent.setVisible(true);
             // hide inventory close button
             this.closeInven.setVisible(false);
             
             // hide pages
-            page = 1;
+            this.page = 1;
             this.page1.setVisible(false);
             this.page2.setVisible(false);
             this.page3.setVisible(false);
@@ -390,7 +399,6 @@ class IslandNorth extends Phaser.Scene {
     pageTurn(page)
     {
         if(page == 1){
-            console.log("page 1")
             this.page1.setVisible(true);
             this.page2.setVisible(false);
             this.page3.setVisible(false);
@@ -400,7 +408,6 @@ class IslandNorth extends Phaser.Scene {
             this.page7.setVisible(false);
 
         } else if(page == 2){
-            console.log("page 2")
             this.page1.setVisible(false);
             this.page2.setVisible(true);
             this.page3.setVisible(false);
@@ -410,7 +417,6 @@ class IslandNorth extends Phaser.Scene {
             this.page7.setVisible(false);
 
         } else if(page == 3){
-            console.log("page 3")
             this.page1.setVisible(false);
             this.page2.setVisible(false);
             this.page3.setVisible(true);
@@ -420,7 +426,6 @@ class IslandNorth extends Phaser.Scene {
             this.page7.setVisible(false);
 
         } else if(page == 4){
-            console.log("page 4")
             this.page1.setVisible(false);
             this.page2.setVisible(false);
             this.page3.setVisible(false);
@@ -430,7 +435,6 @@ class IslandNorth extends Phaser.Scene {
             this.page7.setVisible(false);
 
         } else if(page == 5){
-            console.log("page 5")
             this.page1.setVisible(false);
             this.page2.setVisible(false);
             this.page3.setVisible(false);
@@ -440,7 +444,6 @@ class IslandNorth extends Phaser.Scene {
             this.page7.setVisible(false);
             
         } else if(page == 6){
-            console.log("page 6")
             this.page1.setVisible(false);
             this.page2.setVisible(false);
             this.page3.setVisible(false);
@@ -450,7 +453,6 @@ class IslandNorth extends Phaser.Scene {
             this.page7.setVisible(false);
             
         } else if(page == 7){
-            console.log("page 7")
             this.page1.setVisible(false);
             this.page2.setVisible(false);
             this.page3.setVisible(false);

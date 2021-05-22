@@ -2,13 +2,13 @@ class Lighthouse extends Phaser.Scene {
     constructor() {
         super("lighthouse");
     }
-    
+
     preload() {
         // images
         this.load.image('bg', './assets/bg.png');
-        this.load.image('inventory', './assets/Inventory.png');
-        this.load.image('inventBG', './assets/inventoryInterior.png');
-        this.load.image('x', './assets/x.png');
+        this.load.image('ph', './assets/placeholder.png');
+        this.load.image('highPriestess', './assets/highPriestess.png');
+        this.load.image('death', './assets/Death.png');
 
         // obstacles
 
@@ -34,37 +34,40 @@ class Lighthouse extends Phaser.Scene {
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-        keyI = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.I);
 
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // inventory 
-        this.invent = this.add.sprite(60,60, 'inventory');
-        this.invent.setDisplaySize(100, 100);
-        this.invent.setInteractive({
+        // hover testing nonsense
+        
+        this.ph = this.add.sprite(160, 330, 'ph');
+        this.ph.setDisplaySize(210, 360);
+        this.ph.setVisible(true);
+        this.ph.setInteractive({
             useHandCursor: true
         });
 
-        // box bg
-        this.boxBG = this.add.sprite(650,350, 'inventBG');
-        this.boxBG.setDisplaySize(1280, 720);
-        this.boxBG.setVisible(false);
-
-        // close
-        this.closeInven = this.add.sprite(50, 50, 'x');
-        this.closeInven.setDisplaySize(50, 50);
-        this.closeInven.setVisible(false);
-        this.closeInven.setInteractive({
+        this.ph2 = this.add.sprite(400, 330, 'ph');
+        this.ph2.setDisplaySize(210, 360);
+        this.ph2.setVisible(true);
+        this.ph2.setInteractive({
             useHandCursor: true
         });
-        
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // cursor
-        this.input.on('gameobjectdown', (pointer, gameObject, event) => { 
-            //console.log(pointer);
-            //console.log(gameObject);
-            //console.log(event);
+
+        this.hp = this.add.sprite(650, 350, 'highPriestess');
+        this.hp.setDisplaySize(1280, 720);
+        this.hp.setVisible(false);
+        this.hp.setInteractive({
+            useHandCursor: true
         });
-        
+
+        this.d = this.add.sprite(650, 350, 'death');
+        this.d.setDisplaySize(1280, 720);
+        this.d.setVisible(false);
+        this.d.setInteractive({
+            useHandCursor: true
+        });
+
+        // hover var
+        this.onCard = 0;
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
         this.add.rectangle(0, 0, 10, game.config.height, 0x042630).setOrigin(0, 0);
@@ -74,36 +77,40 @@ class Lighthouse extends Phaser.Scene {
     }
 
     update() {
-        // clicks inventory
-        this.invent.on('pointerdown', function (pointer){
-            //console.log("click")
-            inventory = true;
-        });
+        if(this.onCard == 0){
+            // if hover on hp
+            this.ph.on('pointerover', (pointer) => {
+                console.log("on hp");
+                this.hp.setVisible(true);
+                this.onCard = 1;
+            });
 
-        // inventory is open
-        if(inventory == true){
-            // hide inventory icon
-            this.invent.setVisible(false);
-            // show inventory bg
-            this.boxBG.setVisible(true);
-            // show inventory close button
-            this.closeInven.setVisible(true);
+            // if hover on hp
+            this.ph2.on('pointerover', (pointer) => {
+                console.log("on death");
+                this.d.setVisible(true);
+                this.onCard = 1;
+            });
         }
 
-        // "x" to close inventory
-        this.closeInven.on('pointerdown', function (pointer){
-            inventory = false;
-        });
-
-        // inventory is closed
-        if(inventory == false){
-            // show inventory icon
-            this.invent.setVisible(true);
-            // hide inventory bg
-            this.boxBG.setVisible(false);
-            // hide inventory close button
-            this.closeInven.setVisible(false);
+        // text on screen
+        if(this.onCard > 0 && this.onCard < 100) {
+            this.onCard += 1;
+        } 
+        else if(this.onCard >= 100){
+            console.log("OUT")
+            this.hp.setVisible(false);
+            this.d.setVisible(false);
+            this.onCard = 0;
         }
+
+        // hover shit
+        /*
+        this.input.pointerOver()
+        {
+            console.log("on card")
+        }
+        */
 
         // temp, back to outside
         if (Phaser.Input.Keyboard.JustDown(keySPACE)) {
