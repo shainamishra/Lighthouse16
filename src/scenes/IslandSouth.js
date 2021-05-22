@@ -29,7 +29,7 @@ class IslandSouth extends Phaser.Scene {
         this.load.image('content7', './assets/7.png');
 
         // spritesheets
-
+        this.load.audio('itemtake', './assets/ItemTake.wav');
     }
 
     create() {
@@ -218,6 +218,7 @@ class IslandSouth extends Phaser.Scene {
         this.add.rectangle(0, 0, game.config.width, 10, 0x042630).setOrigin(0, 0);
         this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x042630).setOrigin(0, 0);
         
+    
     }
 
     update() {
@@ -255,6 +256,9 @@ class IslandSouth extends Phaser.Scene {
                 this.textTimerGBox = 1;
                 reelGot =1;
             });
+        }
+        if(this.textTimerGBox == 1 && reelGot == 1){
+            this.sound.play("itemtake");
         }
         // text on screen
         if(this.textTimerGBox> 0 && this.textTimerGBox < 150) {

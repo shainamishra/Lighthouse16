@@ -30,7 +30,7 @@ class IslandEast extends Phaser.Scene {
         this.load.image('content7', './assets/7.png');
 
         // spritesheets
-
+        this.load.audio('itemtake', './assets/ItemTake.wav');
     }
 
     create() {
@@ -238,7 +238,6 @@ class IslandEast extends Phaser.Scene {
 
     update() {
         if(this.textTimerRod== 0 && reelGot == 0){
-            // if click on lighthouse
             this.fishingpole.on('pointerdown', (pointer) => {
                 this.fishingpole.interText.setVisible(true);
                 this.textTimerRod = 1;
@@ -254,7 +253,9 @@ class IslandEast extends Phaser.Scene {
                 scopeGot = 1;
             });
         }
-
+        if(this.textTimerRod == 1 && scopeGot == 1){
+            this.sound.play("itemtake");
+        }
         // text on screen
         if(this.textTimerRod > 0 && this.textTimerRod < 150) {
             this.textTimerRod += 1;
@@ -276,8 +277,11 @@ class IslandEast extends Phaser.Scene {
                 keyGot = 1;
             });
         }
-
-        // text on screen
+        if(this.textTimerBucket == 1 && keyGot == 1){
+            this.sound.play("itemtake");
+        }
+        // text on
+        screen
         if(this.textTimerBucket > 0 && this.textTimerBucket < 150) {
             this.textTimerBucket += 1;
         } 
