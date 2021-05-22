@@ -51,19 +51,14 @@ class Lighthouse extends Phaser.Scene {
             useHandCursor: true
         });
 
-        this.hp = this.add.sprite(650, 350, 'highPriestess');
+        this.hp = this.add.image(650, 350, 'highPriestess');
         this.hp.setDisplaySize(1280, 720);
         this.hp.setVisible(false);
-        this.hp.setInteractive({
-            useHandCursor: true
-        });
 
-        this.d = this.add.sprite(650, 350, 'death');
+        this.d = this.add.image(650, 350, 'death');
         this.d.setDisplaySize(1280, 720);
         this.d.setVisible(false);
-        this.d.setInteractive({
-            useHandCursor: true
-        });
+        
 
         // hover var
         this.onCard = 0;
@@ -77,7 +72,7 @@ class Lighthouse extends Phaser.Scene {
     }
 
     update() {
-        if(this.onCard == 0){
+        //if(this.onCard == 0){
             // if hover on hp
             this.ph.on('pointerover', (pointer) => {
                 console.log("on hp");
@@ -91,8 +86,23 @@ class Lighthouse extends Phaser.Scene {
                 this.d.setVisible(true);
                 this.onCard = 1;
             });
-        }
+        //}
 
+        // if hover off death
+        this.ph2.on('pointerout', (pointer) => {
+            console.log("off death");
+            this.d.setVisible(false);
+            //this.onCard = 1;
+        });
+
+        // if hover off hp
+        this.ph.on('pointerout', (pointer) => {
+            //console.log("off hp");
+            this.hp.setVisible(false);
+            //this.onCard = 1;
+        });
+
+        /*
         // text on screen
         if(this.onCard > 0 && this.onCard < 100) {
             this.onCard += 1;
@@ -102,7 +112,7 @@ class Lighthouse extends Phaser.Scene {
             this.hp.setVisible(false);
             this.d.setVisible(false);
             this.onCard = 0;
-        }
+        }*/
 
         // hover shit
         /*
