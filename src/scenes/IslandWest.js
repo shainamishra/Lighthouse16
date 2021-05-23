@@ -290,6 +290,7 @@ class IslandWest extends Phaser.Scene {
                     this.box.interText.setVisible(true);
                     this.combo.setVisible(true);
                     this.textTimerBox = 1;
+                    
                 });
             }
             if(unlocked == 1){
@@ -322,6 +323,9 @@ class IslandWest extends Phaser.Scene {
                 this.sound.play("itemtake");
             }
             if(boltGot == 0){
+                this.openEmPic.setVisible(true);
+            }
+            else{
                 this.openPic.setVisible(true);
             }
         }
@@ -339,13 +343,11 @@ class IslandWest extends Phaser.Scene {
 
         // take boltcutters
         if(unlocked == 1){
-            console.log("in")
             this.box.on('pointerdown', (pointer) => {
-                console.log("clicked")
                 this.openEmPic.setVisible(true);
                 this.openPic.setVisible(false);
-                boltGot == 1;
             });
+            boltGot = 1;
         }
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////

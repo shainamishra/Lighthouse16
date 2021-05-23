@@ -5,7 +5,7 @@ class IslandEast extends Phaser.Scene {
     
     preload() {
         // images
-        this.load.image('islandeast', './assets/IslandEast.PNG');
+        this.load.image('islandeast', './assets/IslandEastPH.PNG');
         this.load.image('hitbox', './assets/HitBox2.png');
         this.load.image('key', './assets/puzzle1/key.PNG');
         
@@ -84,7 +84,7 @@ class IslandEast extends Phaser.Scene {
         this.pillars.setInteractive({
             useHandCursor: true
         });
-        this.pillars.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 100, 'You cant see much \n past the dock');
+        this.pillars.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 100, 'You cant see much \n past the fog');
         this.pillars.interText.setFontSize(50);
         this.pillars.interText.setVisible(false);
 
@@ -97,7 +97,7 @@ class IslandEast extends Phaser.Scene {
         });
 
         // box bg
-        this.boxBG = this.add.sprite(650,350, 'woodbg   ');
+        this.boxBG = this.add.sprite(650,350, 'woodbg');
         this.boxBG.setDisplaySize(1280, 720);
         this.boxBG.setVisible(false);
 

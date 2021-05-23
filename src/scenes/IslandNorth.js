@@ -65,7 +65,7 @@ class IslandNorth extends Phaser.Scene {
         this.lighthouse.setInteractive({
             useHandCursor: true
         });
-        this.lighthouse.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'door is locked');
+        this.lighthouse.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'The door is locked');
         this.lighthouse.interText.setFontSize(50);
         this.lighthouse.interText.setVisible(false);
 
@@ -78,6 +78,11 @@ class IslandNorth extends Phaser.Scene {
         this.cellar.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 50, 'chains block the cellar');
         this.cellar.interText.setFontSize(50);
         this.cellar.interText.setVisible(false);  
+
+        // cellar unlocked
+        this.cellOpen = this.add.image(640, 360, 'cellarUnlocked');
+        this.cellOpen.setDisplaySize(1280, 720);
+        this.cellOpen.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // inventory 
@@ -234,11 +239,12 @@ class IslandNorth extends Phaser.Scene {
                     this.textTimerCell = 1;
                 });
             }
-            else if(boltGot ==1){
+            else if(boltGot == 1){
                 this.cellar.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 50, 'You cut the chains');
                 this.cellar.interText.setFontSize(50);
                 this.cellar.interText.setVisible(false);
                 this.cellar.on('pointerdown', (pointer) => {
+                    this.cellOpen.setVisible(true);
                     this.cellar.interText.setVisible(true);
                     this.textTimerCell = 1;
                 });

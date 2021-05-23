@@ -251,7 +251,7 @@ class IslandSouth extends Phaser.Scene {
             });
         }
         else if(this.textTimerGBox ==0 && keyGot == 1){
-            this.gravebox.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, "A reel was inside");
+            this.gravebox.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 50, "A reel was inside");
             this.gravebox.interText.setFontSize(50);
             this.gravebox.interText.setVisible(false);
             this.gravebox.on('pointerdown', (pointer) => {
