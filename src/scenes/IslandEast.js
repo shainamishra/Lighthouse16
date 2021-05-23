@@ -291,10 +291,11 @@ class IslandEast extends Phaser.Scene {
             this.textTimerBucket = 0;
         }
         
-        if(keyGot ==1){
+        /*if(keyGot ==1){
             this.key.setVisible(true);
         }
-
+        */
+       
         if(this.textTimerDock == 0 && scopeGot == 0){
             // if click on dock
         
