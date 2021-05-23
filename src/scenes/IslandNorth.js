@@ -227,10 +227,21 @@ class IslandNorth extends Phaser.Scene {
         // if cellar text is not on screen 
         if(this.textTimerCell == 0){
             // if click on cellar
-            this.cellar.on('pointerdown', (pointer) => {
-                this.cellar.interText.setVisible(true);
-                this.textTimerCell = 1;
-            });
+            if(boltGot == 0){
+                this.cellar.on('pointerdown', (pointer) => {
+                    this.cellar.interText.setVisible(true);
+                    this.textTimerCell = 1;
+                });
+            }
+            else if(boltGot ==1){
+                this.cellar.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 50, 'You cut the chains');
+                this.cellar.interText.setFontSize(50);
+                this.cellar.interText.setVisible(false);
+                this.cellar.on('pointerdown', (pointer) => {
+                    this.cellar.interText.setVisible(true);
+                    this.textTimerCell = 1;
+                });
+            }
         }
 
         // text on screen

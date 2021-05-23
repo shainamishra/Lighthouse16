@@ -30,6 +30,7 @@ class IslandWest extends Phaser.Scene {
         this.load.image('content6', './assets/6.png');
         this.load.image('content7', './assets/7.png');
 
+        this.load.audio('itemtake', './assets/ItemTake.wav');
     }
 
     create() {
@@ -266,24 +267,45 @@ class IslandWest extends Phaser.Scene {
 
         // box
         if(this.textTimerBox == 0){
-            // if click on lighthouse
-            this.box.on('pointerdown', (pointer) =>{
-                this.box.interText.setVisible(true);
-                this.combo.setVisible(true);
-                this.textTimerBox = 1;
-            });
+            if(unlocked == 0){
+                this.box.on('pointerdown', (pointer) =>{
+                    this.box.interText.setVisible(true);
+                    this.combo.setVisible(true);
+                    this.textTimerBox = 1;
+                });
+            }
+            if(unlocked == 1){
+                this.box.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 150, ' The box has \n boltcutters inside');
+                this.box.interText.setFontSize(50);
+                this.box.interText.setVisible(false);
+                this.box.on('pointerdown', (pointer) =>{
+                    this.box.interText.setVisible(true);
+                    this.combo.setVisible(true);
+                    this.textTimerBox = 1;
+                });
+            }
         }
 
         // text on screen
-        if(this.textTimerBox > 0 && this.textTimerBox < 150) {
+        if(this.textTimerBox > 0 && this.textTimerBox < 150 && unlocked == 0) {
             this.textTimerBox += 1;
 
             //check num input
             this.inputCombo = this.checkCombo();
             if(this.inputCombo == 352){
                 console.log("solved")
+                unlocked = 1;
+                //this.sound.play("itemtake");
+
             }
         } 
+        else if(this.textTimerBox > 0 && this.textTimerBox < 150 && unlocked == 1) {
+            this.textTimerBox += 1;
+            this.box.interText.setVisible(true);
+            if(this.textTimerBox == 2){
+                this.sound.play("itemtake");
+            }
+        }
         else if(this.textTimerBox >= 150){
             // hide text
             this.box.interText.setVisible(false);

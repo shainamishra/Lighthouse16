@@ -20,3 +20,5 @@ let reelGot = 0;
 let scopeGot = 0;
 let combo = '';
 let pos = 0;
+let boltGot = 0;
+let unlocked = 0;
