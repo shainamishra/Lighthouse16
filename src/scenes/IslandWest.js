@@ -81,8 +81,8 @@ class IslandWest extends Phaser.Scene {
         this.statue.interText.setVisible(false);
 
         // box
-        this.box = this.add.sprite(860, 600, 'hitbox');
-        this.box.setDisplaySize(420, 100);
+        this.box = this.add.sprite(860, 550, 'hitbox');
+        this.box.setDisplaySize(220, 30);
         this.box.setInteractive({
             useHandCursor: true
         });
