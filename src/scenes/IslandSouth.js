@@ -7,6 +7,7 @@ class IslandSouth extends Phaser.Scene {
         // images
         this.load.image('islandsouth', './assets/IslandSouth.PNG');
         this.load.image('hitbox', './assets/HitBox2.png');
+        this.load.image('gravebox', './assets/puzzle1/gravebox.png');
 
         // inventory
         this.load.image('inventory', './assets/Inventory.png');
@@ -20,13 +21,13 @@ class IslandSouth extends Phaser.Scene {
         this.load.image('woodbg', './assets/woodbg.png');
 
         // table of contents
-        this.load.image('content1', './assets/1.png');
-        this.load.image('content2', './assets/2.png');
-        this.load.image('content3', './assets/3.png');
-        this.load.image('content4', './assets/4.png');
-        this.load.image('content5', './assets/5.png');
-        this.load.image('content6', './assets/6.png');
-        this.load.image('content7', './assets/7.png');
+        this.load.image('content1', './assets/toc/1.png');
+        this.load.image('content2', './assets/toc/2.png');
+        this.load.image('content3', './assets/toc/3.png');
+        this.load.image('content4', './assets/toc/4.png');
+        this.load.image('content5', './assets/toc/5.png');
+        this.load.image('content6', './assets/toc/6.png');
+        this.load.image('content7', './assets/toc/7.png');
 
         // spritesheets
         this.load.audio('itemtake', './assets/ItemTake.wav');
@@ -68,14 +69,16 @@ class IslandSouth extends Phaser.Scene {
         this.graves.interText.setFontSize(50);
         this.graves.interText.setVisible(false);
 
-        this.gravebox = this.add.sprite(550, 400, 'hitbox');
-        this.gravebox.setDisplaySize(100,100);
+        this.gravebox = this.add.sprite(600, 400, 'gravebox');
+        this.gravebox.setDisplaySize(107, 82);
+        this.gravebox.setVisible(true);
         this.gravebox.setInteractive({
             useHandCursor: true
         });
         this.gravebox.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 50, 'A small locked box');
         this.gravebox.interText.setFontSize(50);
         this.gravebox.interText.setVisible(false);
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // inventory 
         this.invent = this.add.sprite(60,60, 'inventory');

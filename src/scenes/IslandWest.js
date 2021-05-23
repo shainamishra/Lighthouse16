@@ -9,6 +9,8 @@ class IslandWest extends Phaser.Scene {
         this.load.image('hitbox', './assets/HitBox2.png');
         this.load.image('hitbox2', './assets/HitBox.png');
         this.load.image('combo', './assets/comboPH.png');
+        this.load.image('open', './assets/puzzle1/statueUnlocked.png');
+        this.load.image('openEmpty', './assets/puzzle1/statueUnlockednoItem.png');
 
         // inventory
         this.load.image('inventory', './assets/Inventory.png');
@@ -22,13 +24,13 @@ class IslandWest extends Phaser.Scene {
         this.load.image('woodbg', './assets/woodbg.png');
 
         // table of contents
-        this.load.image('content1', './assets/1.png');
-        this.load.image('content2', './assets/2.png');
-        this.load.image('content3', './assets/3.png');
-        this.load.image('content4', './assets/4.png');
-        this.load.image('content5', './assets/5.png');
-        this.load.image('content6', './assets/6.png');
-        this.load.image('content7', './assets/7.png');
+        this.load.image('content1', './assets/toc/1.png');
+        this.load.image('content2', './assets/toc/2.png');
+        this.load.image('content3', './assets/toc/3.png');
+        this.load.image('content4', './assets/toc/4.png');
+        this.load.image('content5', './assets/toc/5.png');
+        this.load.image('content6', './assets/toc/6.png');
+        this.load.image('content7', './assets/toc/7.png');
 
         this.load.audio('itemtake', './assets/ItemTake.wav');
     }
@@ -80,6 +82,24 @@ class IslandWest extends Phaser.Scene {
         this.statue.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'A crying statue with \n the numeral five');
         this.statue.interText.setFontSize(50);
         this.statue.interText.setVisible(false);
+
+        // box
+        this.openPic = this.add.sprite(630, 350, 'open');
+        this.openPic.setDisplaySize(1280, 720);
+        this.openPic.setVisible(false);
+
+        this.openEmPic = this.add.sprite(630, 350, 'openEmpty');
+        this.openEmPic.setDisplaySize(1280, 720);
+        this.openEmPic.setVisible(false);
+
+        this.open = this.add.sprite(860, 550, 'hitbox');
+        this.open.setDisplaySize(220, 30);
+        this.open.setInteractive({
+            useHandCursor: true
+        });
+        //this.open.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 150, 'A pair of bolt cutters');
+        //this.open.interText.setFontSize(50);
+        //this.open.interText.setVisible(false);
 
         // box
         this.box = this.add.sprite(860, 550, 'hitbox');
@@ -210,8 +230,6 @@ class IslandWest extends Phaser.Scene {
         this.textTimerStatue = 0;
         this.textTimerBox = 0;
         this.inputCombo = 0;
-        this.digit2 = 0;
-        this.digit3 = 0;
 
         // digits
         this.digit1 = this.add.sprite(50, 50, 'hitbox2');
@@ -275,12 +293,11 @@ class IslandWest extends Phaser.Scene {
                 });
             }
             if(unlocked == 1){
-                this.box.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 150, ' The box has \n boltcutters inside');
+                this.box.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 150, 'You took the \nboltcutters');
                 this.box.interText.setFontSize(50);
                 this.box.interText.setVisible(false);
                 this.box.on('pointerdown', (pointer) =>{
-                    this.box.interText.setVisible(true);
-                    this.combo.setVisible(true);
+                    this.combo.setVisible(false);
                     this.textTimerBox = 1;
                 });
             }
@@ -296,7 +313,6 @@ class IslandWest extends Phaser.Scene {
                 console.log("solved")
                 unlocked = 1;
                 //this.sound.play("itemtake");
-
             }
         } 
         else if(this.textTimerBox > 0 && this.textTimerBox < 150 && unlocked == 1) {
@@ -305,7 +321,9 @@ class IslandWest extends Phaser.Scene {
             if(this.textTimerBox == 2){
                 this.sound.play("itemtake");
             }
-            boltGot == 1;
+            if(boltGot == 0){
+                this.openPic.setVisible(true);
+            }
         }
         else if(this.textTimerBox >= 150){
             // hide text
@@ -317,6 +335,17 @@ class IslandWest extends Phaser.Scene {
             this.digit3.interText.setVisible(false);
             combo = '';
             pos = 0;
+        }
+
+        // take boltcutters
+        if(unlocked == 1){
+            console.log("in")
+            this.box.on('pointerdown', (pointer) => {
+                console.log("clicked")
+                this.openEmPic.setVisible(true);
+                this.openPic.setVisible(false);
+                boltGot == 1;
+            });
         }
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -530,7 +559,6 @@ class IslandWest extends Phaser.Scene {
     checkCombo(){
         // 1
         if(Phaser.Input.Keyboard.JustDown(key1)){
-            console.log("one")
             if (pos == 0){
                 combo = combo.concat('100');
                 pos = 1;
@@ -557,7 +585,6 @@ class IslandWest extends Phaser.Scene {
 
         // 2
         if(Phaser.Input.Keyboard.JustDown(key2)){
-            console.log("two")
             if (pos == 0){
                 combo = combo.concat('200');
                 pos = 1;
@@ -583,7 +610,6 @@ class IslandWest extends Phaser.Scene {
 
         // 3
         if(Phaser.Input.Keyboard.JustDown(key3)){
-            console.log("three")
             if (pos == 0){
                 combo = combo.concat('300');
                 pos = 1;
@@ -609,7 +635,6 @@ class IslandWest extends Phaser.Scene {
 
         // 4
         if(Phaser.Input.Keyboard.JustDown(key4)){
-            console.log("four")
             if (pos == 0){
                 combo = combo.concat('400');
                 pos = 1;
@@ -635,7 +660,6 @@ class IslandWest extends Phaser.Scene {
 
         // 5
         if(Phaser.Input.Keyboard.JustDown(key5)){
-            console.log("five")
             if (pos == 0){
                 combo = combo.concat('500');
                 pos = 1;
@@ -661,7 +685,6 @@ class IslandWest extends Phaser.Scene {
 
         // 6
         if(Phaser.Input.Keyboard.JustDown(key6)){
-            console.log("six")
             if (pos == 0){
                 combo = combo.concat('600');
                 pos = 1;
@@ -687,7 +710,6 @@ class IslandWest extends Phaser.Scene {
 
         // 7
         if(Phaser.Input.Keyboard.JustDown(key7)){
-            console.log("seven")
             if (pos == 0){
                 combo = combo.concat('700');
                 pos = 1;
@@ -713,7 +735,6 @@ class IslandWest extends Phaser.Scene {
 
         // 8
         if(Phaser.Input.Keyboard.JustDown(key8)){
-            console.log("eight")
             if (pos == 0){
                 combo = combo.concat('800');
                 pos = 1;
@@ -739,7 +760,6 @@ class IslandWest extends Phaser.Scene {
 
         // 9
         if(Phaser.Input.Keyboard.JustDown(key9)){
-            console.log("nine")
             if (pos == 0){
                 combo = combo.concat('900');
                 pos = 1;

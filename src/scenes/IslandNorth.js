@@ -7,6 +7,7 @@ class IslandNorth extends Phaser.Scene {
         // images
         this.load.image('islandnorth', './assets/IslandNorth.PNG');
         this.load.image('hitbox', './assets/HitBox2.png');
+        this.load.image('cellarUnlocked', './assets/puzzle1/cellarUnlocked.png');
 
         // inventory
         this.load.image('inventory', './assets/Inventory.png');
@@ -20,13 +21,13 @@ class IslandNorth extends Phaser.Scene {
         this.load.image('woodbg', './assets/woodbg.png');
 
         // table of contents
-        this.load.image('content1', './assets/1.png');
-        this.load.image('content2', './assets/2.png');
-        this.load.image('content3', './assets/3.png');
-        this.load.image('content4', './assets/4.png');
-        this.load.image('content5', './assets/5.png');
-        this.load.image('content6', './assets/6.png');
-        this.load.image('content7', './assets/7.png');
+        this.load.image('content1', './assets/toc/1.png');
+        this.load.image('content2', './assets/toc/2.png');
+        this.load.image('content3', './assets/toc/3.png');
+        this.load.image('content4', './assets/toc/4.png');
+        this.load.image('content5', './assets/toc/5.png');
+        this.load.image('content6', './assets/toc/6.png');
+        this.load.image('content7', './assets/toc/7.png');
 
     }
 
