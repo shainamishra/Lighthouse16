@@ -3,8 +3,6 @@ class IslandNorth extends Phaser.Scene {
         super("islandNorth");
     }
 
-    highPriestess;
-
     preload() {
         // images
         this.load.image('islandnorth', './assets/IslandNorth.PNG');
@@ -29,9 +27,6 @@ class IslandNorth extends Phaser.Scene {
         this.load.image('content5', './assets/5.png');
         this.load.image('content6', './assets/6.png');
         this.load.image('content7', './assets/7.png');
-
-        // card descriptions
-        this.load.image('highPriestess', './assets/highPriestess.png');
 
     }
 

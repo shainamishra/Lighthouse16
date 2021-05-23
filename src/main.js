@@ -12,9 +12,11 @@ let borderUISize = game.config.height / 15;
 let borderPadding = borderUISize / 3;
 
 // reserve keyboard vars
-let keySPACE, keyW, keyA, keyS, keyD, keyI;
+let keySPACE, keyW, keyA, keyS, keyD, keyI, key1, key2, key3, key4, key5, key6, key7, key8, key9;
 
 // global variables
 let keyGot = 0;
 let reelGot = 0;
 let scopeGot = 0;
+let combo = '';
+let pos = 0;

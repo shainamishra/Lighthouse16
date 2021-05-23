@@ -7,6 +7,8 @@ class IslandWest extends Phaser.Scene {
         // images
         this.load.image('islandwest', './assets/IslandWest.PNG');
         this.load.image('hitbox', './assets/HitBox2.png');
+        this.load.image('hitbox2', './assets/HitBox.png');
+        this.load.image('combo', './assets/comboPH.png');
 
         // inventory
         this.load.image('inventory', './assets/Inventory.png');
@@ -48,6 +50,17 @@ class IslandWest extends Phaser.Scene {
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
         keyI = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.I);
 
+        // numbers
+        key1 = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ONE);
+        key2 = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TWO);
+        key3 = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.THREE);
+        key4 = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.FOUR);
+        key5 = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.FIVE);
+        key6 = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SIX);
+        key7 = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SEVEN);
+        key8 = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.EIGHT);
+        key9 = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NINE);
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // cursor
         this.input.on('gameobjectdown', (pointer, gameObject, event) => { 
@@ -57,7 +70,7 @@ class IslandWest extends Phaser.Scene {
         });
         
         //////////////
-        //hitboxes
+        // hitboxes
         this.statue = this.add.sprite(850, 300, 'hitbox');
         this.statue.setDisplaySize(300,400);
         this.statue.setInteractive({
@@ -67,26 +80,20 @@ class IslandWest extends Phaser.Scene {
         this.statue.interText.setFontSize(50);
         this.statue.interText.setVisible(false);
 
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // inventory 
-        this.invent = this.add.sprite(60,60, 'inventory');
-        this.invent.setDisplaySize(100, 100);
-        this.invent.setInteractive({
+        // box
+        this.box = this.add.sprite(860, 600, 'hitbox');
+        this.box.setDisplaySize(420, 100);
+        this.box.setInteractive({
             useHandCursor: true
         });
+        this.box.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 150, ' The box needs a \nthree digit combo');
+        this.box.interText.setFontSize(50);
+        this.box.interText.setVisible(false);
 
-        // box bg
-        this.boxBG = this.add.sprite(650,350, 'inventBG');
-        this.boxBG.setDisplaySize(1280, 720);
-        this.boxBG.setVisible(false);
-
-        // close
-        this.closeInven = this.add.sprite(50, 50, 'x');
-        this.closeInven.setDisplaySize(50, 50);
-        this.closeInven.setVisible(false);
-        this.closeInven.setInteractive({
-            useHandCursor: true
-        });
+        // combo pop up
+        this.combo = this.add.image(630, 500, 'combo');
+        this.combo.setDisplaySize(600, 300);
+        this.combo.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // inventory 
@@ -200,6 +207,34 @@ class IslandWest extends Phaser.Scene {
         this.inventoryOn = false;
         this.page = 1;
         this.textTimerStatue = 0;
+        this.textTimerBox = 0;
+        this.inputCombo = 0;
+        this.digit2 = 0;
+        this.digit3 = 0;
+
+        // digits
+        this.digit1 = this.add.sprite(50, 50, 'hitbox2');
+        this.digit1.setDisplaySize(50, 50);
+        this.digit1.setVisible(false);
+        this.digit1.interText = this.add.text(430, 455, '1');
+        this.digit1.interText.setFontSize(50);
+        this.digit1.interText.setVisible(false);
+
+        // digits
+        this.digit2 = this.add.sprite(50, 50, 'hitbox2');
+        this.digit2.setDisplaySize(50, 50);
+        this.digit2.setVisible(false);
+        this.digit2.interText = this.add.text(615, 455, '1');
+        this.digit2.interText.setFontSize(50);
+        this.digit2.interText.setVisible(false);
+
+        // digits
+        this.digit3 = this.add.sprite(50, 50, 'hitbox2');
+        this.digit3.setDisplaySize(50, 50);
+        this.digit3.setVisible(false);
+        this.digit3.interText = this.add.text(800, 455, '1');
+        this.digit3.interText.setFontSize(50);
+        this.digit3.interText.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -207,10 +242,10 @@ class IslandWest extends Phaser.Scene {
         this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x042630).setOrigin(0, 0);
         this.add.rectangle(0, 0, game.config.width, 10, 0x042630).setOrigin(0, 0);
         this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x042630).setOrigin(0, 0);
-       
     }
 
     update() {
+        // statue
         if(this.textTimerStatue == 0){
             // if click on lighthouse
             this.statue.on('pointerdown', (pointer) =>{
@@ -227,6 +262,38 @@ class IslandWest extends Phaser.Scene {
             // hide text
             this.statue.interText.setVisible(false);
             this.textTimerStatue = 0;
+        }
+
+        // box
+        if(this.textTimerBox == 0){
+            // if click on lighthouse
+            this.box.on('pointerdown', (pointer) =>{
+                this.box.interText.setVisible(true);
+                this.combo.setVisible(true);
+                this.textTimerBox = 1;
+            });
+        }
+
+        // text on screen
+        if(this.textTimerBox > 0 && this.textTimerBox < 150) {
+            this.textTimerBox += 1;
+
+            //check num input
+            this.inputCombo = this.checkCombo();
+            if(this.inputCombo == 352){
+                console.log("solved")
+            }
+        } 
+        else if(this.textTimerBox >= 150){
+            // hide text
+            this.box.interText.setVisible(false);
+            this.combo.setVisible(false);
+            this.textTimerBox = 0;
+            this.digit1.interText.setVisible(false);
+            this.digit2.interText.setVisible(false);
+            this.digit3.interText.setVisible(false);
+            combo = '';
+            pos = 0;
         }
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -435,5 +502,244 @@ class IslandWest extends Phaser.Scene {
             this.page7.setVisible(true);
             
         } 
+    }
+
+    checkCombo(){
+        // 1
+        if(Phaser.Input.Keyboard.JustDown(key1)){
+            console.log("one")
+            if (pos == 0){
+                combo = combo.concat('100');
+                pos = 1;
+                this.digit1.interText = this.add.text(430, 455, '1');
+                this.digit1.interText.setFontSize(50);
+                this.digit1.interText.setVisible(true);
+
+            } 
+            else if (pos == 1){
+                combo = combo.concat('+ 10');
+                pos = 2;
+                this.digit2.interText = this.add.text(615, 455, '1');
+                this.digit2.interText.setFontSize(50);
+                this.digit2.interText.setVisible(true);
+            } 
+            else if (pos == 2){
+                combo = combo.concat('+ 1');
+                pos = 3;
+                this.digit3.interText = this.add.text(800, 455, '1');
+                this.digit3.interText.setFontSize(50);
+                this.digit3.interText.setVisible(true);
+            }
+        };
+
+        // 2
+        if(Phaser.Input.Keyboard.JustDown(key2)){
+            console.log("two")
+            if (pos == 0){
+                combo = combo.concat('200');
+                pos = 1;
+                this.digit1.interText = this.add.text(430, 455, '2');
+                this.digit1.interText.setFontSize(50);
+                this.digit1.interText.setVisible(true);
+            } 
+            else if (pos == 1){
+                combo = combo.concat('+ 20');
+                pos = 2;
+                this.digit2.interText = this.add.text(615, 455, '2');
+                this.digit2.interText.setFontSize(50);
+                this.digit2.interText.setVisible(true);
+            } 
+            else if (pos == 2){
+                combo = combo.concat('+ 2');
+                pos = 3;
+                this.digit3.interText = this.add.text(800, 455, '2');
+                this.digit3.interText.setFontSize(50);
+                this.digit3.interText.setVisible(true);
+            }
+        };
+
+        // 3
+        if(Phaser.Input.Keyboard.JustDown(key3)){
+            console.log("three")
+            if (pos == 0){
+                combo = combo.concat('300');
+                pos = 1;
+                this.digit1.interText = this.add.text(430, 455, '3');
+                this.digit1.interText.setFontSize(50);
+                this.digit1.interText.setVisible(true);
+            } 
+            else if (pos == 1){
+                combo = combo.concat('+ 30');
+                pos = 2;
+                this.digit2.interText = this.add.text(615, 455, '3');
+                this.digit2.interText.setFontSize(50);
+                this.digit2.interText.setVisible(true);
+            } 
+            else if (pos == 2){
+                combo = combo.concat('+ 3');
+                pos = 3;
+                this.digit3.interText = this.add.text(800, 455, '3');
+                this.digit3.interText.setFontSize(50);
+                this.digit3.interText.setVisible(true);
+            }
+        };
+
+        // 4
+        if(Phaser.Input.Keyboard.JustDown(key4)){
+            console.log("four")
+            if (pos == 0){
+                combo = combo.concat('400');
+                pos = 1;
+                this.digit1.interText = this.add.text(430, 455, '4');
+                this.digit1.interText.setFontSize(50);
+                this.digit1.interText.setVisible(true);
+            } 
+            else if (pos == 1){
+                combo = combo.concat('+ 40');
+                pos = 2;
+                this.digit2.interText = this.add.text(615, 455, '4');
+                this.digit2.interText.setFontSize(50);
+                this.digit2.interText.setVisible(true);
+            } 
+            else if (pos == 2){
+                combo = combo.concat('+ 4');
+                pos = 3;
+                this.digit3.interText = this.add.text(800, 455, '4');
+                this.digit3.interText.setFontSize(50);
+                this.digit3.interText.setVisible(true);
+            }
+        };
+
+        // 5
+        if(Phaser.Input.Keyboard.JustDown(key5)){
+            console.log("five")
+            if (pos == 0){
+                combo = combo.concat('500');
+                pos = 1;
+                this.digit1.interText = this.add.text(430, 455, '5');
+                this.digit1.interText.setFontSize(50);
+                this.digit1.interText.setVisible(true);
+            } 
+            else if (pos == 1){
+                combo = combo.concat('+ 50');
+                pos = 2;
+                this.digit2.interText = this.add.text(615, 455, '5');
+                this.digit2.interText.setFontSize(50);
+                this.digit2.interText.setVisible(true);
+            } 
+            else if (pos == 2){
+                combo = combo.concat('+ 5');
+                pos = 3;
+                this.digit3.interText = this.add.text(800, 455, '5');
+                this.digit3.interText.setFontSize(50);
+                this.digit3.interText.setVisible(true);
+            }
+        };
+
+        // 6
+        if(Phaser.Input.Keyboard.JustDown(key6)){
+            console.log("six")
+            if (pos == 0){
+                combo = combo.concat('600');
+                pos = 1;
+                this.digit1.interText = this.add.text(430, 455, '6');
+                this.digit1.interText.setFontSize(50);
+                this.digit1.interText.setVisible(true);
+            } 
+            else if (pos == 1){
+                combo = combo.concat('+ 60');
+                pos = 2;
+                this.digit2.interText = this.add.text(615, 455, '6');
+                this.digit2.interText.setFontSize(50);
+                this.digit2.interText.setVisible(true);
+            } 
+            else if (pos == 2){
+                combo = combo.concat('+ 6');
+                pos = 3;
+                this.digit3.interText = this.add.text(800, 455, '6');
+                this.digit3.interText.setFontSize(50);
+                this.digit3.interText.setVisible(true);
+            }
+        };
+
+        // 7
+        if(Phaser.Input.Keyboard.JustDown(key7)){
+            console.log("seven")
+            if (pos == 0){
+                combo = combo.concat('700');
+                pos = 1;
+                this.digit1.interText = this.add.text(430, 455, '7');
+                this.digit1.interText.setFontSize(50);
+                this.digit1.interText.setVisible(true);
+            } 
+            else if (pos == 1){
+                combo = combo.concat('+ 70');
+                pos = 2;
+                this.digit2.interText = this.add.text(615, 455, '7');
+                this.digit2.interText.setFontSize(50);
+                this.digit2.interText.setVisible(true);
+            } 
+            else if (pos == 2){
+                combo = combo.concat('+ 7');
+                pos = 3;
+                this.digit3.interText = this.add.text(800, 455, '7');
+                this.digit3.interText.setFontSize(50);
+                this.digit3.interText.setVisible(true);
+            }
+        };
+
+        // 8
+        if(Phaser.Input.Keyboard.JustDown(key8)){
+            console.log("eight")
+            if (pos == 0){
+                combo = combo.concat('800');
+                pos = 1;
+                this.digit1.interText = this.add.text(430, 455, '8');
+                this.digit1.interText.setFontSize(50);
+                this.digit1.interText.setVisible(true);
+            } 
+            else if (pos == 1){
+                combo = combo.concat('+ 80');
+                pos = 2;
+                this.digit2.interText = this.add.text(615, 455, '8');
+                this.digit2.interText.setFontSize(50);
+                this.digit2.interText.setVisible(true);
+            } 
+            else if (pos == 2){
+                combo = combo.concat('+ 8');
+                pos = 3;
+                this.digit3.interText = this.add.text(800, 455, '8');
+                this.digit3.interText.setFontSize(50);
+                this.digit3.interText.setVisible(true);
+            }
+        };
+
+        // 9
+        if(Phaser.Input.Keyboard.JustDown(key9)){
+            console.log("nine")
+            if (pos == 0){
+                combo = combo.concat('900');
+                pos = 1;
+                this.digit1.interText = this.add.text(430, 455, '9');
+                this.digit1.interText.setFontSize(50);
+                this.digit1.interText.setVisible(true);
+            } 
+            else if (pos == 1){
+                combo = combo.concat('+ 90');
+                pos = 2;
+                this.digit2.interText = this.add.text(615, 455, '9');
+                this.digit2.interText.setFontSize(50);
+                this.digit2.interText.setVisible(true);
+            } 
+            else if (pos == 2){
+                combo = combo.concat('+ 9');
+                pos = 3;
+                this.digit3.interText = this.add.text(800, 455, '9');
+                this.digit3.interText.setFontSize(50);
+                this.digit3.interText.setVisible(true);
+            }
+        };
+        
+        return eval(combo);
     }
 }
