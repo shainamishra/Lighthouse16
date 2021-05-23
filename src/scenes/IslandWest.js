@@ -305,6 +305,7 @@ class IslandWest extends Phaser.Scene {
             if(this.textTimerBox == 2){
                 this.sound.play("itemtake");
             }
+            boltGot == 1;
         }
         else if(this.textTimerBox >= 150){
             // hide text
