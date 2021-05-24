@@ -8,6 +8,7 @@ class IslandSouth extends Phaser.Scene {
         this.load.image('islandsouth', './assets/IslandSouth.PNG');
         this.load.image('hitbox', './assets/HitBox2.png');
         this.load.image('gravebox', './assets/puzzle1/gravebox.png');
+        this.load.image('graveboxEmpty', './assets/puzzle1/graveboxUsed.png');
 
         // inventory
         this.load.image('inventory', './assets/Inventory.png');
@@ -59,7 +60,9 @@ class IslandSouth extends Phaser.Scene {
             //console.log(event);
         });
         
-        ////////////////////////////////////////////////////
+        
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // graves
         this.graves = this.add.sprite(850, 250, 'hitbox');
         this.graves.setDisplaySize(600, 400);
         this.graves.setInteractive({
@@ -69,8 +72,9 @@ class IslandSouth extends Phaser.Scene {
         this.graves.interText.setFontSize(50);
         this.graves.interText.setVisible(false);
 
-        this.gravebox = this.add.sprite(600, 400, 'gravebox');
-        this.gravebox.setDisplaySize(107, 82);
+        // grave box
+        this.gravebox = this.add.sprite(520, 400, 'hitbox');
+        this.gravebox.setDisplaySize(90, 82);
         this.gravebox.setVisible(true);
         this.gravebox.setInteractive({
             useHandCursor: true
@@ -78,6 +82,16 @@ class IslandSouth extends Phaser.Scene {
         this.gravebox.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 50, 'A small locked box');
         this.gravebox.interText.setFontSize(50);
         this.gravebox.interText.setVisible(false);
+
+        // grave box closed
+        this.graveboxClosed = this.add.sprite(650, 350, 'gravebox');
+        this.graveboxClosed.setDisplaySize(1280, 720);
+        this.graveboxClosed.setVisible(true);
+
+        // grave box empty
+        this.graveboxEmpty = this.add.sprite(650, 350, 'graveboxEmpty');
+        this.graveboxEmpty.setDisplaySize(1280, 720);
+        this.graveboxEmpty.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // inventory 
@@ -220,8 +234,6 @@ class IslandSouth extends Phaser.Scene {
         this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x042630).setOrigin(0, 0);
         this.add.rectangle(0, 0, game.config.width, 10, 0x042630).setOrigin(0, 0);
         this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x042630).setOrigin(0, 0);
-        
-    
     }
 
     update() {
@@ -255,9 +267,11 @@ class IslandSouth extends Phaser.Scene {
             this.gravebox.interText.setFontSize(50);
             this.gravebox.interText.setVisible(false);
             this.gravebox.on('pointerdown', (pointer) => {
+                this.graveboxClosed.setVisible(false);
+                this.graveboxEmpty.setVisible(true);
                 this.gravebox.interText.setVisible(true);
                 this.textTimerGBox = 1;
-                reelGot =1;
+                reelGot =1 ;
             });
         }
         if(this.textTimerGBox == 1 && reelGot == 1){
@@ -271,6 +285,11 @@ class IslandSouth extends Phaser.Scene {
             // hide text
             this.gravebox.interText.setVisible(false);
             this.textTimerGBox = 0;
+        }
+
+        if(keyGot == 1 && reelGot == 1){
+            this.graveboxClosed.setVisible(false);
+            this.graveboxEmpty.setVisible(true);
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
