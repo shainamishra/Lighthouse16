@@ -7,11 +7,11 @@ class IslandEast extends Phaser.Scene {
         // images
         this.load.image('islandeast', './assets/puzzle1/IslandEast.png');
         this.load.image('hitbox', './assets/HitBox2.png');
-        this.load.image('key', './assets/puzzle1/items/key.PNG');
-        this.load.image('reel', './assets/puzzle1/overlays/reelUsed.PNG');
+        this.load.image('key', './assets/puzzle1/items/key.png');
+        this.load.image('reel', './assets/puzzle1/overlays/reelUsed.png');
         this.load.image('rocks', './assets/puzzle1/IslandEastScope.png');
-        this.load.image('rod', './assets/puzzle1/overlays/rodEmpty.PNG');
-        this.load.image('rodCage', './assets/puzzle1/overlays/rodCage.PNG');
+        this.load.image('rod', './assets/puzzle1/overlays/rodEmpty.png');
+        this.load.image('rodCage', './assets/puzzle1/overlays/rodCage.png');
         this.load.image('rodEmpty', './assets/puzzle1/overlays/rodCagenoItem.png');
         
         // inventory
