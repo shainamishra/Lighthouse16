@@ -401,9 +401,7 @@ class IslandNorth extends Phaser.Scene {
         if(Phaser.Input.Keyboard.JustDown(keyS)){
             this.scene.start("islandSouth");
         };
-
-        // temporary
-        if(Phaser.Input.Keyboard.JustDown(keyW)){
+        if(Phaser.Input.Keyboard.JustDown(keySPACE) && this.cellOpen.setVisible(true) ){
             //this.menuBGM.stop();
             this.scene.start("lighthouse");
         };
