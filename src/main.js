@@ -18,6 +18,7 @@ let keySPACE, keyW, keyA, keyS, keyD, keyI, key1, key2, key3, key4, key5, key6, 
 let keyGot = 0;
 let reelGot = 0;
 let scopeGot = 0;
+let found = false;
 let combo = '';
 let pos = 0;
 let boltGot = 0;
