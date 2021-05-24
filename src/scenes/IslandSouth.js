@@ -35,6 +35,16 @@ class IslandSouth extends Phaser.Scene {
             //console.log(event);
         });
         
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        // inventory box set up
+        this.invent = this.add.sprite(60,60, 'inventory');
+        this.invent.setDisplaySize(100, 100);
+        this.invent.setInteractive({
+            useHandCursor: true
+        });
+
+        prevScene = this.scene.key;
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // graves
@@ -82,6 +92,11 @@ class IslandSouth extends Phaser.Scene {
     }
 
     update() {
+        // clicks inventory box: puts this scene to sleep (no updates), switches to cards
+        this.invent.on('pointerdown', (pointer) => {
+            this.scene.switch("cardBox");
+        });
+
         if(this.textTimerGraves == 0){
             // if click on lighthouse
             this.graves.on('pointerdown', (pointer) => {

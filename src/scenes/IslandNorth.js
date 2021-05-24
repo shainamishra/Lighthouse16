@@ -8,6 +8,7 @@ class IslandNorth extends Phaser.Scene {
         this.load.image('islandnorth', './assets/puzzle1/IslandNorth.png');
         this.load.image('hitbox', './assets/HitBox2.png');
         this.load.image('cellarUnlocked', './assets/puzzle1/overlays/cellarUnlocked.png');
+        this.load.image('inventory', './assets/Inventory.png');
     }
 
     create() {
@@ -32,6 +33,18 @@ class IslandNorth extends Phaser.Scene {
         });
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        
+        // inventory box set up
+        this.invent = this.add.sprite(60,60, 'inventory');
+        this.invent.setDisplaySize(100, 100);
+        this.invent.setInteractive({
+            useHandCursor: true
+        });
+
+        prevScene = this.scene.key;
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         // lighthouse
         this.lighthouse = this.add.sprite(750,250, 'hitbox');
         this.lighthouse.setDisplaySize(300, 400);
@@ -72,6 +85,11 @@ class IslandNorth extends Phaser.Scene {
     }
     
     update() {
+        // clicks inventory box: puts this scene to sleep (no updates), switches to cards
+        this.invent.on('pointerdown', (pointer) => {
+            this.scene.switch("cardBox");
+        });
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // lighthouse text
         // if lighthouse text is not on screen 

@@ -47,6 +47,17 @@ class IslandWest extends Phaser.Scene {
             //console.log(gameObject);
             //console.log(event);
         });
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        
+        // inventory box set up
+        this.invent = this.add.sprite(60,60, 'inventory');
+        this.invent.setDisplaySize(100, 100);
+        this.invent.setInteractive({
+            useHandCursor: true
+        });
+
+        prevScene = this.scene.key;
         
         //////////////
         // hitboxes
@@ -131,6 +142,11 @@ class IslandWest extends Phaser.Scene {
     }
 
     update() {
+        // clicks inventory box: puts this scene to sleep (no updates), switches to cards
+        this.invent.on('pointerdown', (pointer) => {
+            this.scene.switch("cardBox");
+        });
+
         // statue
         if(this.textTimerStatue == 0){
             // if click on lighthouse

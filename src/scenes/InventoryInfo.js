@@ -1,40 +1,10 @@
-class IslandNorth extends Phaser.Scene {
+class cardBox extends Phaser.Scene {
     constructor() {
-        super("islandNorth");
-    }
-
-    preload() {
-        // inventory
-        this.load.image('inventory', './assets/Inventory.png');
-        this.load.image('x', './assets/x.png');
-        this.load.image('set1', './assets/Puzzle1.png');
-        this.load.image('set2', './assets/Puzzle2.png');
-        this.load.image('set3', './assets/Puzzle3.png');
-        this.load.image('set4', './assets/Puzzle4.png');
-        this.load.image('set5', './assets/Puzzle5.png');
-        this.load.image('end', './assets/End.png');
-        this.load.image('woodbg', './assets/woodbg.png');
-
-        // table of contents
-        this.load.image('content1', './assets/toc/1.png');
-        this.load.image('content2', './assets/toc/2.png');
-        this.load.image('content3', './assets/toc/3.png');
-        this.load.image('content4', './assets/toc/4.png');
-        this.load.image('content5', './assets/toc/5.png');
-        this.load.image('content6', './assets/toc/6.png');
-        this.load.image('content7', './assets/toc/7.png');
-
+        super("cardBox");
     }
 
     create() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // inventory 
-        this.invent = this.add.sprite(60,60, 'inventory');
-        this.invent.setDisplaySize(100, 100);
-        this.invent.setInteractive({
-            useHandCursor: true
-        });
-
         // page 1
         this.page1 = this.add.sprite(650,350, 'woodbg');
         this.page1.setDisplaySize(1280, 720);
@@ -135,139 +105,103 @@ class IslandNorth extends Phaser.Scene {
         });
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // god forsaken variables
-        this.inventoryOn = false;
+        //god forsaken variables
         this.page = 1;
     }
     
     update() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // inventory
-        // clicks inventory
-        this.invent.on('pointerdown', (pointer) => {
-            this.inventoryOn = true;
-        });
-
         // "x" to close inventory
         this.closeInven.on('pointerdown', (pointer) => {
-            this.inventoryOn = false;
+            this.scene.stop("cardBox");
+            this.scene.wake(prevScene);
         });
 
-        // inventory is open
-        if(this.inventoryOn == true){
-            // hide inventory icon
-            this.invent.setVisible(false);
-            // show inventory close button
-            this.closeInven.setVisible(true);
-            // 1 button
-            this.content1.setVisible(true);
-            // 2 button
-            this.content2.setVisible(true);
-            // 3 button
-            this.content3.setVisible(true);
-            // 4 button
-            this.content4.setVisible(true);
-            // 5 button
-            this.content5.setVisible(true);
-            // 6 button
-            this.content6.setVisible(true);
-            // 7 button
-            this.content7.setVisible(true);
-            
-            // first page
-            if (this.page == 1){
-                // show page1
-                this.page1.setVisible(true);
-            }
-
-            // click content 1
-            this.content1.on('pointerdown', (pointer) => {
-                // show page1
-                if(this.page != 1){
-                    this.page = 1;
-                    this.pageTurn(this.page);
-                }
-            });
-
-            // click content 2
-            this.content2.on('pointerdown', (pointer) => {
-                // show page1
-                if(this.page != 2){
-                    this.page = 2;
-                    this.pageTurn(this.page);
-                }
-            });
-
-            // click content 3
-            this.content3.on('pointerdown', (pointer) => {
-                // show page1
-                if(this.page != 3){
-                    this.page = 3;
-                    this.pageTurn(this.page);
-                }
-            });
-
-            // click content 4
-            this.content4.on('pointerdown', (pointer) => {
-                // show page1
-                if(this.page != 4){
-                    this.page = 4;
-                    this.pageTurn(this.page);
-                }
-            });
-
-            // click content 5
-            this.content5.on('pointerdown', (pointer) => {
-                // show page1
-                if(this.page != 5){
-                    this.page = 5;
-                    this.pageTurn(this.page);
-                }
-            });
-
-            // click content 6
-            this.content6.on('pointerdown', (pointer) => {
-                // show page1
-                if(this.page != 6){
-                    this.page = 6;
-                    this.pageTurn(this.page);
-                }
-            });
-
-            // click content 7
-            this.content7.on('pointerdown', (pointer) => {
-                // show page1
-                if(this.page != 7){
-                    this.page = 7;
-                    this.pageTurn(this.page);
-                }
-            });
-
-        } else if(this.inventoryOn == false){
-            // show inventory icon
-            this.invent.setVisible(true);
-            // hide inventory close button
-            this.closeInven.setVisible(false);
-            
-            // hide pages
-            this.page = 1;
-            this.page1.setVisible(false);
-            this.page2.setVisible(false);
-            this.page3.setVisible(false);
-            this.page4.setVisible(false);
-            this.page5.setVisible(false);
-            this.page6.setVisible(false);
-            this.page7.setVisible(false);
-
-            // hide table of contents
-            this.content1.setVisible(false);
-            this.content2.setVisible(false);
-            this.content3.setVisible(false);
-            this.content4.setVisible(false);
-            this.content5.setVisible(false);
-            this.content6.setVisible(false);
-            this.content7.setVisible(false);
+        // show inventory close button
+        this.closeInven.setVisible(true);
+        // 1 button
+        this.content1.setVisible(true);
+        // 2 button
+        this.content2.setVisible(true);
+        // 3 button
+        this.content3.setVisible(true);
+        // 4 button
+        this.content4.setVisible(true);
+        // 5 button
+        this.content5.setVisible(true);
+        // 6 button
+        this.content6.setVisible(true);
+        // 7 button
+        this.content7.setVisible(true);
+        
+        // first page
+        if (this.page == 1){
+            // show page1
+            this.page1.setVisible(true);
         }
+
+        // click content 1
+        this.content1.on('pointerdown', (pointer) => {
+            // show page1
+            if(this.page != 1){
+                this.page = 1;
+                this.pageTurn(this.page);
+            }
+        });
+
+        // click content 2
+        this.content2.on('pointerdown', (pointer) => {
+            // show page1
+            if(this.page != 2){
+                this.page = 2;
+                this.pageTurn(this.page);
+            }
+        });
+
+        // click content 3
+        this.content3.on('pointerdown', (pointer) => {
+            // show page1
+            if(this.page != 3){
+                this.page = 3;
+                this.pageTurn(this.page);
+            }
+        });
+
+        // click content 4
+        this.content4.on('pointerdown', (pointer) => {
+            // show page1
+            if(this.page != 4){
+                this.page = 4;
+                this.pageTurn(this.page);
+            }
+        });
+
+        // click content 5
+        this.content5.on('pointerdown', (pointer) => {
+            // show page1
+            if(this.page != 5){
+                this.page = 5;
+                this.pageTurn(this.page);
+            }
+        });
+
+        // click content 6
+        this.content6.on('pointerdown', (pointer) => {
+            // show page1
+            if(this.page != 6){
+                this.page = 6;
+                this.pageTurn(this.page);
+            }
+        });
+
+        // click content 7
+        this.content7.on('pointerdown', (pointer) => {
+            // show page1
+            if(this.page != 7){
+                this.page = 7;
+                this.pageTurn(this.page);
+            }
+        });
     }
 
     pageTurn(page)
@@ -338,4 +272,3 @@ class IslandNorth extends Phaser.Scene {
         } 
     }
 }    
-

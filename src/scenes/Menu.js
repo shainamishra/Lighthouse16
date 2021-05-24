@@ -8,6 +8,26 @@ class Menu extends Phaser.Scene {
         this.load.image('start', './assets/start.png');
         this.load.audio('CrashingWaves', './assets/CrashingWave2.wav');
         this.load.audio('menu_music', './assets/theLighthouse.wav');
+
+        // card collection box assets -- loading them here makes the inventory load almost seamlessly
+        this.load.image('x', './assets/x.png');
+        this.load.image('woodbg', './assets/woodbg.png');
+        //sets are placeholders
+        this.load.image('set1', './assets/transitions/spread1.png');
+        this.load.image('set2', './assets/transitions/spread2.png');
+        this.load.image('set3', './assets/transitions/spread3.png');
+        this.load.image('set4', './assets/transitions/spread4.png');
+        this.load.image('set5', './assets/transitions/spread5.png');
+        this.load.image('end', './assets/End.png');
+
+        // table of contents in card box
+        this.load.image('content1', './assets/toc/1.png');
+        this.load.image('content2', './assets/toc/2.png');
+        this.load.image('content3', './assets/toc/3.png');
+        this.load.image('content4', './assets/toc/4.png');
+        this.load.image('content5', './assets/toc/5.png');
+        this.load.image('content6', './assets/toc/6.png');
+        this.load.image('content7', './assets/toc/7.png');
     }
 
     create() {
