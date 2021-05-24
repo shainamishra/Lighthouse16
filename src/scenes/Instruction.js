@@ -6,13 +6,6 @@ class Instruction extends Phaser.Scene {
     preload() {
         // images
         this.load.image('bg', './assets/bg.png');
-
-
-        // obstacles
-
-
-        // spritesheets
-
     }
 
     create() {

@@ -13,12 +13,6 @@ class Lighthouse extends Phaser.Scene {
         this.load.image('ph5', './assets/cards/hermit.png');
         this.load.image('highPriestess', './assets/info/highPriestess.png');
         this.load.image('death', './assets/info/death.png');
-
-        // obstacles
-
-
-        // spritesheets
-
     }
 
     create() {

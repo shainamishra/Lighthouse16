@@ -5,12 +5,12 @@ class IslandWest extends Phaser.Scene {
     
     preload() {
         // images
-        this.load.image('islandwest', './assets/IslandWest.PNG');
+        this.load.image('islandwest', './assets/puzzle1/IslandWest.png');
         this.load.image('hitbox', './assets/HitBox2.png');
         this.load.image('hitbox2', './assets/HitBox.png');
         this.load.image('combo', './assets/comboPH.png');
-        this.load.image('open', './assets/puzzle1/statueUnlocked.png');
-        this.load.image('openEmpty', './assets/puzzle1/statueUnlockednoItem.png');
+        this.load.image('open', './assets/puzzle1/overlays/statueUnlocked.png');
+        this.load.image('openEmpty', './assets/puzzle1/overlays/statueUnlockednoItem.png');
 
         // inventory
         this.load.image('inventory', './assets/Inventory.png');
