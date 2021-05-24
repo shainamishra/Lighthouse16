@@ -5,7 +5,7 @@ class IslandWest extends Phaser.Scene {
     
     preload() {
         // images
-        this.load.image('islandwest', './assets/islandWest.PNG');
+        this.load.image('islandwest', './assets/IslandWest.PNG');
         this.load.image('hitbox', './assets/HitBox2.png');
         this.load.image('hitbox2', './assets/HitBox.png');
         this.load.image('combo', './assets/comboPH.png');
@@ -37,6 +37,10 @@ class IslandWest extends Phaser.Scene {
 
     create() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /*
+        this.playBGM = this.sound.add('bgm', {volume: 0.4, loop: true});
+        this.playBGM.play();
+        */
         // place tile sprite
         this.islandwest = this.add.tileSprite(0, 0, 1280, 720, 'islandwest').setOrigin(0, 0); 
 
