@@ -36,11 +36,6 @@ class IslandSouth extends Phaser.Scene {
 
     create() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /*
-        this.playBGM = this.sound.add('bgm', {volume: 0.4, loop: true});
-        this.playBGM.play();
-        */
-        // place tile sprite
         this.islandsouth = this.add.tileSprite(0, 0, 1280, 720, 'islandsouth').setOrigin(0, 0); 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
