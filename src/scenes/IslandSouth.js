@@ -5,7 +5,7 @@ class IslandSouth extends Phaser.Scene {
     
     preload() {
         // images
-        this.load.image('islandsouth', './assets/islandSouth.png');
+        this.load.image('islandsouth', './assets/islandSouth.PNG');
         this.load.image('hitbox', './assets/HitBox2.png');
         this.load.image('gravebox', './assets/puzzle1/gravebox.png');
         this.load.image('graveboxEmpty', './assets/puzzle1/graveboxUsed.png');
@@ -36,11 +36,6 @@ class IslandSouth extends Phaser.Scene {
 
     create() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /*
-        this.playBGM = this.sound.add('bgm', {volume: 0.4, loop: true});
-        this.playBGM.play();
-        */
-        // place tile sprite
         this.islandsouth = this.add.tileSprite(0, 0, 1280, 720, 'islandsouth').setOrigin(0, 0); 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
