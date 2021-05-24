@@ -2,7 +2,7 @@ let config = {
     type: Phaser.CANVAS,
     width: 1280,
     height: 720,
-    scene: [ Menu, Instruction, IslandNorth, IslandWest, IslandEast, IslandSouth, Lighthouse, End ],
+    scene: [ Menu, Instruction, Start, IslandNorth, IslandWest, IslandEast, IslandSouth, Transition1, End ],
   }
 
 let game = new Phaser.Game(config);

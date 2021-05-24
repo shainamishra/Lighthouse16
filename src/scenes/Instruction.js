@@ -17,7 +17,7 @@ class Instruction extends Phaser.Scene {
         // change scenes
         this.input.keyboard.on('keydown-SPACE', () => {
 			this.sound.play("CrashingWaves");
-            this.scene.start("islandNorth"); 
+            this.scene.start("start"); 
 		});
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
