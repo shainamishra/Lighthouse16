@@ -5,7 +5,7 @@ class IslandSouth extends Phaser.Scene {
     
     preload() {
         // images
-        this.load.image('islandsouth', './assets/puzzle1/IslandSouth.png');
+        this.load.image('islandsouth', './assets/puzzle1/IslandSouth.PNG');
         this.load.image('hitbox', './assets/HitBox2.png');
         this.load.image('gravebox', './assets/puzzle1/overlays/gravebox.png');
         this.load.image('graveboxEmpty', './assets/puzzle1/overlays/graveboxUsed.png');
