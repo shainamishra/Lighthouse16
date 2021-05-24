@@ -7,6 +7,9 @@ class IslandEast extends Phaser.Scene {
         // images
         this.load.image('islandeast', './assets/puzzle1/IslandEast.png');
         this.load.image('hitbox', './assets/HitBox2.png');
+        this.load.image('bucket', './assets/puzzle1/overlays/bucket.png');
+        this.load.image('bucketEmpty', './assets/puzzle1/overlays/bucketUsed.png');
+        this.load.image('rodEmpty', './assets/puzzle1/overlays/rodCagenoItem.png');
         this.load.image('key', './assets/puzzle1/items/key.PNG');
         this.load.image('reel', './assets/puzzle1/overlays/reelUsed.png');
         this.load.image('rocks', './assets/puzzle1/IslandEastScope.png');
@@ -70,6 +73,7 @@ class IslandEast extends Phaser.Scene {
         this.fishingpole.interText.setFontSize(50);
         this.fishingpole.interText.setVisible(false);
 
+        // bucket
         this.bucket = this.add.sprite(250, 440, 'hitbox');
         this.bucket.setDisplaySize(100, 110);
         this.bucket.setInteractive({
@@ -78,7 +82,18 @@ class IslandEast extends Phaser.Scene {
         this.bucket.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 50, 'There is a key in the bucket');
         this.bucket.interText.setFontSize(50);
         this.bucket.interText.setVisible(false);
-        
+
+        // bucket image
+        this.bucketUp = this.add.sprite(650, 350, 'bucket');
+        this.bucketUp.setDisplaySize(1280, 720);
+        this.bucketUp.setVisible(true);
+
+        // bucket used
+        this.bucketEm = this.add.sprite(650, 350, 'bucketEmpty');
+        this.bucketEm.setDisplaySize(1280, 720);
+        this.bucketEm.setVisible(false);
+
+        // rock
         this.pillars = this.add.sprite(930, 250, 'hitbox');
         this.pillars.setDisplaySize(300, 100);
         this.pillars.setInteractive({
@@ -161,6 +176,8 @@ class IslandEast extends Phaser.Scene {
             this.bucket.on('pointerdown', (pointer) => {
 
                 this.bucket.interText.setVisible(true);
+                this.bucketUp.setVisible(false);
+                this.bucketEm.setVisible(true);
                 this.textTimerBucket = 1;
                 keyGot = 1;
             });
@@ -178,10 +195,11 @@ class IslandEast extends Phaser.Scene {
             this.textTimerBucket = 0;
         }
         
-        /*if(keyGot ==1){
-            this.key.setVisible(true);
+        if(keyGot ==1){
+            this.bucketUp.setVisible(false);
+            this.bucketEm.setVisible(true);
         }
-        */
+        
        
         if(this.textTimerDock == 0 && scopeGot == 0){
             // if click on dock

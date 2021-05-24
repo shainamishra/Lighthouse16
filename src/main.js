@@ -2,7 +2,7 @@ let config = {
     type: Phaser.CANVAS,
     width: 1280,
     height: 720,
-    scene: [ Menu, Instruction, Start, IslandNorth, IslandWest, IslandEast, IslandSouth, Transition1, End ],
+    scene: [ Menu, Instruction, Start, IslandNorth, IslandWest, IslandEast, IslandSouth, Transition1, CellarNorth, CellarWest, CellarEast, CellarSouth, End ],
   }
 
 let game = new Phaser.Game(config);
@@ -23,3 +23,4 @@ let combo = '';
 let pos = 0;
 let boltGot = 0;
 let unlocked = 0;
+let deskKey = 0;

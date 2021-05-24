@@ -150,5 +150,4 @@ class IslandNorth extends Phaser.Scene {
             this.scene.start("transition1");
         };
     }
-}    
-
+}
