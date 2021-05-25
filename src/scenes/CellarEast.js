@@ -5,14 +5,14 @@ class CellarEast extends Phaser.Scene {
 
     preload() {
         // images
-        this.load.image('cellartemp', './assets/puzzle2/eastTemp.png');
-        this.load.image('hitbox', './assets/HitBox2.png');
+        this.load.image('cellar', './assets/puzzle2/cellar.png');
+        this.load.image('buttons', './assets/puzzle2/overlays/buttons.png');
     }
 
     create() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // place tile sprite
-        this.cellarnorth = this.add.tileSprite(0, 0, 1280, 720, 'cellartemp').setOrigin(0, 0); 
+        this.cellarnorth = this.add.tileSprite(0, 0, 1280, 720, 'cellar').setOrigin(0, 0); 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
@@ -30,6 +30,11 @@ class CellarEast extends Phaser.Scene {
         });
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // pannel image
+        this.pannel = this.add.image(640, 360, 'buttons');
+        this.pannel.setDisplaySize(1280, 720);
+        this.pannel.setVisible(true);
+        
         // red
         this.red = this.add.sprite(250, 215, 'hitbox');
         this.red.setDisplaySize(50, 50);
@@ -104,10 +109,10 @@ class CellarEast extends Phaser.Scene {
         });
         this.pink.setVisible(true); 
 
-        // pannel image
-        //this.pannel = this.add.image(640, 360, 'shelves');
-        //this.pannel.setDisplaySize(1280, 720);
-        //this.pannel.setVisible(true);
+        // dark
+        this.dark = this.add.image(640, 360, 'dark');
+        this.dark.setDisplaySize(1280, 720);
+        this.dark.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
@@ -133,5 +138,14 @@ class CellarEast extends Phaser.Scene {
         if(Phaser.Input.Keyboard.JustDown(keyS)){
             this.scene.start("cellarWest");
         };
+
+        // end states
+
+        // lights on or off
+        if(lightState == 0){
+            this.dark.setVisible(false);
+        } else if (lightState == 1) {
+            this.dark.setVisible(true);
+        }
     }
 }    

@@ -11,9 +11,6 @@ class CellarWest extends Phaser.Scene {
         this.load.image('deskOpen', './assets/puzzle2/overlays/westDeskOpen.png');
         this.load.image('book', './assets/puzzle2/overlays/westBook.png');
         this.load.image('key2', './assets/puzzle2/overlays/westKey.png');
-
-
-        this.load.image('hitbox2', './assets/HitBox.png');
     }
 
     create() {
@@ -53,7 +50,7 @@ class CellarWest extends Phaser.Scene {
         this.shelfIm.setVisible(true);
 
         // desk
-        this.desk = this.add.sprite(382, 550, 'hitbox2');
+        this.desk = this.add.sprite(382, 550, 'hitbox');
         this.desk.setDisplaySize(510, 300);
         this.desk.setInteractive({
             useHandCursor: true
@@ -79,7 +76,7 @@ class CellarWest extends Phaser.Scene {
         this.book.setVisible(false);
 
         // key
-        this.key = this.add.sprite(990, 555, 'hitbox2');
+        this.key = this.add.sprite(990, 555, 'hitbox');
         this.key.setDisplaySize(80, 170);
         this.key.setVisible(false);
         this.key.setInteractive({
@@ -92,6 +89,11 @@ class CellarWest extends Phaser.Scene {
         this.keyIm = this.add.image(640, 360, 'key2');
         this.keyIm.setDisplaySize(1280, 720);
         this.keyIm.setVisible(false);
+
+        // dark
+        this.dark = this.add.image(640, 360, 'dark');
+        this.dark.setDisplaySize(1280, 720);
+        this.dark.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
@@ -113,16 +115,14 @@ class CellarWest extends Phaser.Scene {
         if(this.textTimerShelf == 0){
             if(deskKey == 0){
                 this.desk.on('pointerdown', (pointer) => {
-                    console.log("dk:", deskKey)
-                    console.log("1")
                     this.desk.interText.setVisible(true);
                     this.textTimerDesk = 1;
                 });
             }
             else if(deskKey == 1){
                 this.desk.on('pointerdown', (pointer) => {
+                    switchGot = 1;
                     this.desk.interText.setVisible(false);
-                    deskUnlocked = 1;
                     this.deskOpen.interText.setVisible(true);
                     this.deskOpen.setVisible(true);
                     this.textTimerDesk = 1;
@@ -136,7 +136,6 @@ class CellarWest extends Phaser.Scene {
         } 
         else if(this.textTimerDesk >= 150){
             // hide text
-            console.log("3")
             this.desk.interText.setVisible(false);
             this.deskOpen.interText.setVisible(false);
             this.textTimerDesk = 0;
@@ -146,7 +145,6 @@ class CellarWest extends Phaser.Scene {
         // shelf
         // click on shelf
         this.shelf.on('pointerdown', (pointer) => {
-            console.log("4")
             this.shelf.interText.setVisible(true); 
             this.book.setVisible(true);
             this.desk.setVisible(false);
@@ -161,10 +159,8 @@ class CellarWest extends Phaser.Scene {
 
         // desk shelf timer
         if(this.textTimerShelf > 0 && this.textTimerShelf < 200) {
-            console.log("5")
             this.textTimerShelf += 1;
             this.key.on('pointerdown', (pointer) => {
-                console.log("6")
                 this.key.setVisible(false);
                 this.key.interText.setVisible(true);
                 this.keyIm.setVisible(false);
@@ -173,7 +169,6 @@ class CellarWest extends Phaser.Scene {
         } 
         else if(this.textTimerShelf >= 200){
             // hide text
-            console.log("7")
             this.book.setVisible(false);
             this.shelf.interText.setVisible(false);
             this.key.setVisible(false);
@@ -183,13 +178,17 @@ class CellarWest extends Phaser.Scene {
             this.desk.setVisible(true);
         }
 
-
-
         // show open state
-        if(deskKey == 1 && deskUnlocked == 1){
+        if(deskKey == 1 && switchGot == 1){
             this.deskOpen.setVisible(true);
-}
-
+        }
+        
+        // lights on or off
+        if(lightState == 0){
+            this.dark.setVisible(false);
+        } else if (lightState == 1) {
+            this.dark.setVisible(true);
+        }
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // scene change on keypress

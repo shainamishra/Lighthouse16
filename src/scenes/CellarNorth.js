@@ -6,6 +6,8 @@ class CellarNorth extends Phaser.Scene {
     preload() {
         // images
         this.load.image('cellarnorth', './assets/puzzle2/cellarNorth.png');
+        this.load.image('cellarNorthDark', './assets/puzzle2/cellarNorthDark.png');
+
         this.load.image('hitbox', './assets/HitBox2.png');
     }
 
@@ -32,7 +34,17 @@ class CellarNorth extends Phaser.Scene {
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
-        
+
+
+        // lights off CN
+        this.textDark = this.add.image(640, 360, 'cellarNorthDark');
+        this.textDark.setDisplaySize(1280, 720);
+        this.textDark.setVisible(false);
+
+        // dark
+        this.dark = this.add.image(640, 360, 'dark');
+        this.dark.setDisplaySize(1280, 720);
+        this.dark.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
@@ -58,5 +70,15 @@ class CellarNorth extends Phaser.Scene {
         if(Phaser.Input.Keyboard.JustDown(keyS)){
             this.scene.start("cellarSouth");
         };
+
+        // end states
+        
+        // lights on or off
+        if(lightState == 0){
+            this.dark.setVisible(false);
+            this.textDark.setVisible(false);
+        } else if (lightState == 1) {
+            this.textDark.setVisible(true);
+        }
     }
 }    
