@@ -121,6 +121,7 @@ class CellarWest extends Phaser.Scene {
             }
             else if(deskKey == 1){
                 this.desk.on('pointerdown', (pointer) => {
+                    this.desk.interText.setVisible(false);
                     deskUnlocked = 1;
                     this.deskOpen.interText.setVisible(true);
                     this.deskOpen.setVisible(true);
