@@ -66,7 +66,7 @@ class IslandWest extends Phaser.Scene {
         this.statue.setInteractive({
             useHandCursor: true
         });
-        this.statue.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'A crying statue with \n the numeral five');
+        this.statue.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'A crying statue with \nthe numeral five');
         this.statue.interText.setFontSize(50);
         this.statue.interText.setVisible(false);
 

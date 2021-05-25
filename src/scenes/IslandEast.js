@@ -82,7 +82,7 @@ class IslandEast extends Phaser.Scene {
         this.fishingpole.setInteractive({
             useHandCursor: true
         });
-        this.fishingpole.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'The reel is missing');
+        this.fishingpole.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'The reel is missing\nfrom the fishing pole');
         this.fishingpole.interText.setFontSize(50);
         this.fishingpole.interText.setVisible(false);
 
@@ -92,7 +92,7 @@ class IslandEast extends Phaser.Scene {
         this.bucket.setInteractive({
             useHandCursor: true
         });
-        this.bucket.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 50, 'There is a key in the bucket');
+        this.bucket.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 100, 'There is a key in the bucket');
         this.bucket.interText.setFontSize(50);
         this.bucket.interText.setVisible(false);
 
@@ -231,7 +231,7 @@ class IslandEast extends Phaser.Scene {
             });
         }
         else if(this.textTimerDock == 0 && scopeGot == 1){
-            this.pillars.interText = this.add.text(320, 70, 'There are two large stone \n pillars out in the sea');
+            this.pillars.interText = this.add.text(320, 70, 'There are two large stone \n pillars standing out in the sea');
             this.pillars.interText.setFontSize(50);
             this.pillars.interText.setVisible(false);
             this.pillars.on('pointerdown', (pointer) => {

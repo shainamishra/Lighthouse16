@@ -53,7 +53,7 @@ class IslandSouth extends Phaser.Scene {
         this.graves.setInteractive({
             useHandCursor: true
         });
-        this.graves.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'Strange text instead of names');
+        this.graves.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'Three graves with strange\ntext instead of names\nI wonder what they mean?');
         this.graves.interText.setFontSize(50);
         this.graves.interText.setVisible(false);
 
@@ -64,7 +64,7 @@ class IslandSouth extends Phaser.Scene {
         this.gravebox.setInteractive({
             useHandCursor: true
         });
-        this.gravebox.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 50, 'A small locked box');
+        this.gravebox.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 150, 'A small locked box sits\ninfront of the graves');
         this.gravebox.interText.setFontSize(50);
         this.gravebox.interText.setVisible(false);
 

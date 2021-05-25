@@ -51,7 +51,7 @@ class IslandNorth extends Phaser.Scene {
         this.lighthouse.setInteractive({
             useHandCursor: true
         });
-        this.lighthouse.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'The door is locked');
+        this.lighthouse.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'The door to the \nlighthouse is locked');
         this.lighthouse.interText.setFontSize(50);
         this.lighthouse.interText.setVisible(false);
 
@@ -61,7 +61,7 @@ class IslandNorth extends Phaser.Scene {
         this.cellar.setInteractive({
             useHandCursor: true
         });
-        this.cellar.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 50, 'chains block the cellar');
+        this.cellar.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 100, 'There are chains\nblocking the cellar');
         this.cellar.interText.setFontSize(50);
         this.cellar.interText.setVisible(false);  
 
@@ -123,7 +123,7 @@ class IslandNorth extends Phaser.Scene {
                 });
             }
             else if(boltGot == 1){
-                this.cellar.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 50, 'You cut the chains');
+                this.cellar.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 100, 'You cut the chains');
                 this.cellar.interText.setFontSize(50);
                 this.cellar.interText.setVisible(false);
                 this.cellar.on('pointerdown', (pointer) => {
