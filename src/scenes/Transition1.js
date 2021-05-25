@@ -119,7 +119,7 @@ class Transition1 extends Phaser.Scene {
 
         // temp, back to outside
         if (Phaser.Input.Keyboard.JustDown(keySPACE)) {
-            this.scene.start("islandNorth");  
+            this.scene.start("cellarNorth");  
         }
     }
 }

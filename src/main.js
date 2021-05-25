@@ -25,3 +25,4 @@ let boltGot = 0;
 let unlocked = 0;
 let deskKey = 0;
 let prevScene = '';
+let deskUnlocked = 0;

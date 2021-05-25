@@ -8,6 +8,7 @@ class CellarWest extends Phaser.Scene {
         this.load.image('cellar', './assets/puzzle2/cellar.png');
         this.load.image('shelves', './assets/puzzle2/overlays/westBookshelf.png');
         this.load.image('desk', './assets/puzzle2/overlays/westDeskLocked.png');
+        this.load.image('deskOpen', './assets/puzzle2/overlays/westDeskOpen.png');
         this.load.image('book', './assets/puzzle2/overlays/westBook.png');
         this.load.image('key2', './assets/puzzle2/overlays/westKey.png');
 
@@ -52,7 +53,7 @@ class CellarWest extends Phaser.Scene {
         this.shelfIm.setVisible(true);
 
         // desk
-        this.desk = this.add.sprite(382, 550, 'hitbox');
+        this.desk = this.add.sprite(382, 550, 'hitbox2');
         this.desk.setDisplaySize(510, 300);
         this.desk.setInteractive({
             useHandCursor: true
@@ -64,6 +65,13 @@ class CellarWest extends Phaser.Scene {
         this.deskClose = this.add.image(640, 360, 'desk');
         this.deskClose.setDisplaySize(1280, 720);
         this.deskClose.setVisible(true);
+        // opened desk image
+        this.deskOpen = this.add.image(640, 360, 'deskOpen');
+        this.deskOpen.setDisplaySize(1280, 720);
+        this.deskOpen.setVisible(false);
+        this.deskOpen.interText = this.add.text(700, 450, 'You found a\nlight switch');
+        this.deskOpen.interText.setFontSize(50);
+        this.deskOpen.interText.setVisible(false);
 
         // book image
         this.book = this.add.image(640, 360, 'book');
@@ -71,14 +79,15 @@ class CellarWest extends Phaser.Scene {
         this.book.setVisible(false);
 
         // key
-        this.desk = this.add.sprite(382, 550, 'hitbox');
-        this.desk.setDisplaySize(510, 300);
-        this.desk.setInteractive({
+        this.key = this.add.sprite(990, 555, 'hitbox2');
+        this.key.setDisplaySize(80, 170);
+        this.key.setVisible(false);
+        this.key.setInteractive({
             useHandCursor: true
         });
-        this.desk.interText = this.add.text(700, 450, 'The desk drawer\n   is locked');
-        this.desk.interText.setFontSize(50);
-        this.desk.interText.setVisible(false); 
+        this.key.interText = this.add.text(515, 520, 'You found a\nstrange key');
+        this.key.interText.setFontSize(50);
+        this.key.interText.setVisible(false); 
         // key image
         this.keyIm = this.add.image(640, 360, 'key2');
         this.keyIm.setDisplaySize(1280, 720);
@@ -88,7 +97,6 @@ class CellarWest extends Phaser.Scene {
         // god forsaken variables
         this.textTimerDesk = 0;
         this.textTimerShelf = 0;
-        
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -102,16 +110,24 @@ class CellarWest extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // desk
         // click on desk
-        this.desk.on('pointerdown', (pointer) => {
+        if(this.textTimerShelf == 0){
             if(deskKey == 0){
-                this.desk.interText.setVisible(true); 
-                this.textTimerDesk = 1;
+                this.desk.on('pointerdown', (pointer) => {
+                    console.log("dk:", deskKey)
+                    console.log("1")
+                    this.desk.interText.setVisible(true);
+                    this.textTimerDesk = 1;
+                });
             }
-
-            if(deskKey == 1){
-
+            else if(deskKey == 1){
+                this.desk.on('pointerdown', (pointer) => {
+                    deskUnlocked = 1;
+                    this.deskOpen.interText.setVisible(true);
+                    this.deskOpen.setVisible(true);
+                    this.textTimerDesk = 1;
+                });
             }
-        });
+        }
 
         // desk text timer
         if(this.textTimerDesk > 0 && this.textTimerDesk < 150) {
@@ -119,35 +135,59 @@ class CellarWest extends Phaser.Scene {
         } 
         else if(this.textTimerDesk >= 150){
             // hide text
+            console.log("3")
             this.desk.interText.setVisible(false);
+            this.deskOpen.interText.setVisible(false);
             this.textTimerDesk = 0;
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // shelf
-        // click on desk
+        // click on shelf
         this.shelf.on('pointerdown', (pointer) => {
+            console.log("4")
             this.shelf.interText.setVisible(true); 
             this.book.setVisible(true);
-            this.keyIm.setVisible(true);
+            this.desk.setVisible(false);
+            this.desk.interText.setVisible(false); 
             this.textTimerShelf = 1;
+
+            if(deskKey == 0){
+                this.key.setVisible(true);
+                this.keyIm.setVisible(true);
+            }
         });
 
-        // desk text timer
+        // desk shelf timer
         if(this.textTimerShelf > 0 && this.textTimerShelf < 200) {
+            console.log("5")
             this.textTimerShelf += 1;
+            this.key.on('pointerdown', (pointer) => {
+                console.log("6")
+                this.key.setVisible(false);
+                this.key.interText.setVisible(true);
+                this.keyIm.setVisible(false);
+                deskKey = 1;
+            });
         } 
         else if(this.textTimerShelf >= 200){
             // hide text
+            console.log("7")
             this.book.setVisible(false);
             this.shelf.interText.setVisible(false);
+            this.key.setVisible(false);
             this.keyIm.setVisible(false);
+            this.key.interText.setVisible(false);
             this.textTimerShelf = 0;
+            this.desk.setVisible(true);
         }
 
 
 
-
+        // show open state
+        if(deskKey == 1 && deskUnlocked == 1){
+            this.deskOpen.setVisible(true);
+}
 
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
