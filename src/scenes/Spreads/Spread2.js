@@ -1,145 +1,136 @@
-class Start extends Phaser.Scene {
+class Spread2 extends Phaser.Scene {
     constructor() {
-        super("start");
+        super("spread2");
     }
 
     preload() {
         // images
-        this.load.image('bg1', './assets/transitions/spread1.png');
-        this.load.image('cardHit', './assets/cards/hitbox.png');
-        this.load.image('info1', './assets/info/highPriestess.png');
-        this.load.image('info2', './assets/info/death.png');
-        this.load.image('info3', './assets/info/Fool.png');
-        this.load.image('info4', './assets/info/moon.png');
-        this.load.image('info5', './assets/info/hermit.png');
+        this.load.image('bg2', './assets/transitions/spread2.png');
+        this.load.image('info1-2', './assets/info/hangedMan.png');
+        this.load.image('info2-2', './assets/info/chariot.png');
+        this.load.image('info3-2', './assets/info/strength.png');
+        this.load.image('info4-2', './assets/info/devil.png');
     }
 
     create() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // place tile sprite
-        this.bg = this.add.tileSprite(0, 0, 1280, 720, 'bg1').setOrigin(0, 0); 
+        this.bg = this.add.tileSprite(0, 0, 1280, 720, 'bg2').setOrigin(0, 0); 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+        keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+        keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+        keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+        keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
 
         // hover testing nonsense
         
-        this.one = this.add.sprite(150, 340, 'cardHit');
-        this.one.setDisplaySize(210, 360);
+        this.one = this.add.sprite(190, 340, 'cardHit');
+        this.one.setDisplaySize(240, 420);
         this.one.setVisible(true);
         this.one.setInteractive({
             useHandCursor: true
         });
 
-        this.info1 = this.add.image(650, 350, 'info1');
+        this.info1 = this.add.image(650, 350, 'info1-2');
         this.info1.setDisplaySize(1280, 720);
         this.info1.setVisible(false);
 
-        this.two = this.add.sprite(400, 340, 'cardHit');
-        this.two.setDisplaySize(210, 360);
+        this.two = this.add.sprite(485, 340, 'cardHit');
+        this.two.setDisplaySize(240, 420);
         this.two.setVisible(true);
         this.two.setInteractive({
             useHandCursor: true
         });
 
-        this.info2 = this.add.image(650, 350, 'info2');
+        this.info2 = this.add.image(650, 350, 'info2-2');
         this.info2.setDisplaySize(1280, 720);
         this.info2.setVisible(false);
 
-        this.three = this.add.sprite(645, 340, 'cardHit');
-        this.three.setDisplaySize(210, 360);
+        this.three = this.add.sprite(795, 340, 'cardHit');
+        this.three.setDisplaySize(240, 420);
         this.three.setVisible(true);
         this.three.setInteractive({
             useHandCursor: true
         });
 
-        this.info3 = this.add.image(650, 350, 'info3');
+        this.info3 = this.add.image(650, 350, 'info3-2');
         this.info3.setDisplaySize(1280, 720);
         this.info3.setVisible(false);
 
-        this.four = this.add.sprite(890, 340, 'cardHit');
-        this.four.setDisplaySize(210, 360);
+        this.four = this.add.sprite(1090, 340, 'cardHit');
+        this.four.setDisplaySize(240, 420);
         this.four.setVisible(true);
         this.four.setInteractive({
             useHandCursor: true
         });
 
-        this.info4 = this.add.image(650, 350, 'info4');
+        this.info4 = this.add.image(650, 350, 'info4-2');
         this.info4.setDisplaySize(1280, 720);
         this.info4.setVisible(false);
 
-        this.five = this.add.sprite(1135, 340, 'cardHit');
-        this.five.setDisplaySize(210, 360);
-        this.five.setVisible(true);
-        this.five.setInteractive({
-            useHandCursor: true
-        });
-
-        this.info5 = this.add.image(650, 350, 'info5');
-        this.info5.setDisplaySize(1280, 720);
-        this.info5.setVisible(false);
-
+        this.instruct = this.add.image(650, 360, 'instruct');
+        this.instruct.setDisplaySize(1280, 720);
+        this.instruct.setVisible(true);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
-        this.add.rectangle(0, 0, 10, game.config.height, 0x042630).setOrigin(0, 0);
-        this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x042630).setOrigin(0, 0);
-        this.add.rectangle(0, 0, game.config.width, 10, 0x042630).setOrigin(0, 0);
-        this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x042630).setOrigin(0, 0);
-
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // change scenes
-        this.input.keyboard.on('keydown-SPACE', () => {
-			this.sound.play("CrashingWaves");
-            this.scene.start("islandNorth"); 
-		});
+        this.add.rectangle(0, 0, 10, game.config.height, 0x0c141c).setOrigin(0, 0);
+        this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x0c141c).setOrigin(0, 0);
+        this.add.rectangle(0, 0, game.config.width, 10, 0x0c141c).setOrigin(0, 0);
+        this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x0c141c).setOrigin(0, 0);
     }
 
     update() {
         // if hover oh card1
         this.one.on('pointerover', (pointer) => {
+            this.instruct.setVisible(false);
             this.info1.setVisible(true);
         });
         // if hover off card1
         this.one.on('pointerout', (pointer) => {
+            this.instruct.setVisible(true);
             this.info1.setVisible(false);
         });
 
         // if hover on card2
         this.two.on('pointerover', (pointer) => {
+            this.instruct.setVisible(false);
             this.info2.setVisible(true);
         });
         // if hover off card2
         this.two.on('pointerout', (pointer) => {
+            this.instruct.setVisible(true);
             this.info2.setVisible(false);
         });
 
         // if hover on card3
         this.three.on('pointerover', (pointer) => {
+            this.instruct.setVisible(false);
             this.info3.setVisible(true);
         });
         // if hover off card3
         this.three.on('pointerout', (pointer) => {
+            this.instruct.setVisible(true);
             this.info3.setVisible(false);
         });
 
         // if hover on card4
         this.four.on('pointerover', (pointer) => {
+            this.instruct.setVisible(false);
             this.info4.setVisible(true);
         });
         // if hover off card4
         this.four.on('pointerout', (pointer) => {
+            this.instruct.setVisible(true);
             this.info4.setVisible(false);
         });
 
-        // if hover on card5
-        this.five.on('pointerover', (pointer) => {
-            this.info5.setVisible(true);
-        });
-        // if hover off card5
-        this.five.on('pointerout', (pointer) => {
-            this.info5.setVisible(false);
-        });
+        // move to cellar
+        if (Phaser.Input.Keyboard.JustDown(keySPACE)) {
+            this.scene.start("cellarNorth");  
+        }
     }
 }

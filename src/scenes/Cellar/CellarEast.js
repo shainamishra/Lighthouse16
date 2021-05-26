@@ -6,7 +6,9 @@ class CellarEast extends Phaser.Scene {
     preload() {
         // images
         this.load.image('cellar', './assets/puzzle2/cellar.png');
+        this.load.image('cardHit', './assets/cards/hitbox.png');
         this.load.image('buttons', './assets/puzzle2/overlays/buttons.png');
+        this.load.image('instruct', './assets/transitions/transitionInstructions.png');
     }
 
     create() {
@@ -16,6 +18,7 @@ class CellarEast extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
+        keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
@@ -129,6 +132,7 @@ class CellarEast extends Phaser.Scene {
         this.inputNum = 0;
         this.textTimerButton = 0;
         this.inside = false;
+        this.correct = false;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -266,6 +270,7 @@ class CellarEast extends Phaser.Scene {
                 }
                 else{
                     console.log('pog')
+                    this.correct = true;
                     // move on to next level
                 }
             }
@@ -319,6 +324,11 @@ class CellarEast extends Phaser.Scene {
         };
         if(Phaser.Input.Keyboard.JustDown(keyS)){
             this.scene.start("cellarWest");
+        };
+        if(Phaser.Input.Keyboard.JustDown(keySPACE)){
+            //if(this.correct == true){
+                this.scene.start("spread3");
+            //}
         };
     }
 

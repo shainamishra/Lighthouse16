@@ -165,7 +165,7 @@ class IslandNorth extends Phaser.Scene {
         //if(Phaser.Input.Keyboard.JustDown(keySPACE) && this.cellerOpen == true){
         if(Phaser.Input.Keyboard.JustDown(keySPACE)){
             //this.menuBGM.stop();
-            this.scene.start("transition1");
+            this.scene.start("spread2");
         };
     }
 }

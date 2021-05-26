@@ -1,21 +1,21 @@
-class Transition1 extends Phaser.Scene {
+class Spread3 extends Phaser.Scene {
     constructor() {
-        super("transition1");
+        super("spread3");
     }
 
     preload() {
         // images
-        this.load.image('bg2', './assets/transitions/spread2.png');
-        this.load.image('info1-2', './assets/info/hangedMan.png');
-        this.load.image('info2-2', './assets/info/chariot.png');
-        this.load.image('info3-2', './assets/info/strength.png');
-        this.load.image('info4-2', './assets/info/devil.png');
+        this.load.image('bg3', './assets/transitions/spread3.png');
+        this.load.image('info1-3', './assets/info/justice.png');
+        this.load.image('info2-3', './assets/info/emperor.png');
+        this.load.image('info3-3', './assets/info/lovers.png');
+        this.load.image('info4-3', './assets/info/wheelOfFortune.png');
     }
 
     create() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // place tile sprite
-        this.bg = this.add.tileSprite(0, 0, 1280, 720, 'bg2').setOrigin(0, 0); 
+        this.bg = this.add.tileSprite(0, 0, 1280, 720, 'bg3').setOrigin(0, 0); 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
@@ -34,7 +34,7 @@ class Transition1 extends Phaser.Scene {
             useHandCursor: true
         });
 
-        this.info1 = this.add.image(650, 350, 'info1-2');
+        this.info1 = this.add.image(650, 350, 'info1-3');
         this.info1.setDisplaySize(1280, 720);
         this.info1.setVisible(false);
 
@@ -45,7 +45,7 @@ class Transition1 extends Phaser.Scene {
             useHandCursor: true
         });
 
-        this.info2 = this.add.image(650, 350, 'info2-2');
+        this.info2 = this.add.image(650, 350, 'info2-3');
         this.info2.setDisplaySize(1280, 720);
         this.info2.setVisible(false);
 
@@ -56,7 +56,7 @@ class Transition1 extends Phaser.Scene {
             useHandCursor: true
         });
 
-        this.info3 = this.add.image(650, 350, 'info3-2');
+        this.info3 = this.add.image(650, 350, 'info3-3');
         this.info3.setDisplaySize(1280, 720);
         this.info3.setVisible(false);
 
@@ -67,9 +67,13 @@ class Transition1 extends Phaser.Scene {
             useHandCursor: true
         });
 
-        this.info4 = this.add.image(650, 350, 'info4-2');
+        this.info4 = this.add.image(650, 350, 'info4-3');
         this.info4.setDisplaySize(1280, 720);
         this.info4.setVisible(false);
+
+        this.instruct = this.add.image(650, 360, 'instruct');
+        this.instruct.setDisplaySize(1280, 720);
+        this.instruct.setVisible(true);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -82,43 +86,51 @@ class Transition1 extends Phaser.Scene {
     update() {
         // if hover oh card1
         this.one.on('pointerover', (pointer) => {
+            this.instruct.setVisible(false);
             this.info1.setVisible(true);
         });
         // if hover off card1
         this.one.on('pointerout', (pointer) => {
+            this.instruct.setVisible(true);
             this.info1.setVisible(false);
         });
 
         // if hover on card2
         this.two.on('pointerover', (pointer) => {
+            this.instruct.setVisible(false);
             this.info2.setVisible(true);
         });
         // if hover off card2
         this.two.on('pointerout', (pointer) => {
+            this.instruct.setVisible(true);
             this.info2.setVisible(false);
         });
 
         // if hover on card3
         this.three.on('pointerover', (pointer) => {
+            this.instruct.setVisible(false);
             this.info3.setVisible(true);
         });
         // if hover off card3
         this.three.on('pointerout', (pointer) => {
+            this.instruct.setVisible(true);
             this.info3.setVisible(false);
         });
 
         // if hover on card4
         this.four.on('pointerover', (pointer) => {
+            this.instruct.setVisible(false);
             this.info4.setVisible(true);
         });
         // if hover off card4
         this.four.on('pointerout', (pointer) => {
+            this.instruct.setVisible(true);
             this.info4.setVisible(false);
         });
 
-        // temp, back to outside
+        // move to puzzle 3
         if (Phaser.Input.Keyboard.JustDown(keySPACE)) {
-            this.scene.start("cellarNorth");  
+            //this.scene.start("cellarNorth");  
         }
     }
 }
