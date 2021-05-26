@@ -1,6 +1,6 @@
-class Transition1 extends Phaser.Scene {
+class Spread2 extends Phaser.Scene {
     constructor() {
-        super("transition1");
+        super("spread2");
     }
 
     preload() {
@@ -10,7 +10,6 @@ class Transition1 extends Phaser.Scene {
         this.load.image('info2-2', './assets/info/chariot.png');
         this.load.image('info3-2', './assets/info/strength.png');
         this.load.image('info4-2', './assets/info/devil.png');
-        this.load.image('info5-2', './assets/info/devil.png');
     }
 
     create() {
@@ -72,52 +71,68 @@ class Transition1 extends Phaser.Scene {
         this.info4.setDisplaySize(1280, 720);
         this.info4.setVisible(false);
 
+        this.instruct = this.add.image(650, 360, 'instruct');
+        this.instruct.setDisplaySize(1280, 720);
+        this.instruct.setVisible(true);
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // set level
+        level = 2;
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
-        this.add.rectangle(0, 0, 10, game.config.height, 0x042630).setOrigin(0, 0);
-        this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x042630).setOrigin(0, 0);
-        this.add.rectangle(0, 0, game.config.width, 10, 0x042630).setOrigin(0, 0);
-        this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x042630).setOrigin(0, 0);
+        this.add.rectangle(0, 0, 10, game.config.height, 0x0c141c).setOrigin(0, 0);
+        this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x0c141c).setOrigin(0, 0);
+        this.add.rectangle(0, 0, game.config.width, 10, 0x0c141c).setOrigin(0, 0);
+        this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x0c141c).setOrigin(0, 0);
     }
 
     update() {
         // if hover oh card1
         this.one.on('pointerover', (pointer) => {
+            this.instruct.setVisible(false);
             this.info1.setVisible(true);
         });
         // if hover off card1
         this.one.on('pointerout', (pointer) => {
+            this.instruct.setVisible(true);
             this.info1.setVisible(false);
         });
 
         // if hover on card2
         this.two.on('pointerover', (pointer) => {
+            this.instruct.setVisible(false);
             this.info2.setVisible(true);
         });
         // if hover off card2
         this.two.on('pointerout', (pointer) => {
+            this.instruct.setVisible(true);
             this.info2.setVisible(false);
         });
 
         // if hover on card3
         this.three.on('pointerover', (pointer) => {
+            this.instruct.setVisible(false);
             this.info3.setVisible(true);
         });
         // if hover off card3
         this.three.on('pointerout', (pointer) => {
+            this.instruct.setVisible(true);
             this.info3.setVisible(false);
         });
 
         // if hover on card4
         this.four.on('pointerover', (pointer) => {
+            this.instruct.setVisible(false);
             this.info4.setVisible(true);
         });
         // if hover off card4
         this.four.on('pointerout', (pointer) => {
+            this.instruct.setVisible(true);
             this.info4.setVisible(false);
         });
 
-        // temp, back to outside
+        // move to cellar
         if (Phaser.Input.Keyboard.JustDown(keySPACE)) {
             this.scene.start("cellarNorth");  
         }

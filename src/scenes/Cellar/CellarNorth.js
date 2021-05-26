@@ -31,11 +31,19 @@ class CellarNorth extends Phaser.Scene {
             //console.log(gameObject);
             //console.log(event);
         });
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // inventory box set up
+        this.invent = this.add.sprite(60,60, 'inventory');
+        this.invent.setDisplaySize(100, 100);
+        this.invent.setInteractive({
+            useHandCursor: true
+        });
+
+        prevScene = this.scene.key;
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
-
-
         // lights off CN
         this.textDark = this.add.image(640, 360, 'cellarNorthDark');
         this.textDark.setDisplaySize(1280, 720);
@@ -59,6 +67,12 @@ class CellarNorth extends Phaser.Scene {
     }
     
     update() {
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // clicks inventory box: puts this scene to sleep (no updates), switches to cards
+        this.invent.on('pointerdown', (pointer) => {
+            this.scene.switch("cardBox");
+        });
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // scene change on keypress
         if(Phaser.Input.Keyboard.JustDown(keyA)){

@@ -1,15 +1,17 @@
-class Start extends Phaser.Scene {
+class Spread1 extends Phaser.Scene {
     constructor() {
-        super("start");
+        super("spread1");
     }
 
     preload() {
         // images
         this.load.image('bg1', './assets/transitions/spread1.png');
         this.load.image('cardHit', './assets/cards/hitbox.png');
+        this.load.image('instruct', './assets/transitions/transitionInstructions.png');
+
         this.load.image('info1', './assets/info/highPriestess.png');
         this.load.image('info2', './assets/info/death.png');
-        this.load.image('info3', './assets/info/fool.png');
+        this.load.image('info3', './assets/info/Fool.png');
         this.load.image('info4', './assets/info/moon.png');
         this.load.image('info5', './assets/info/hermit.png');
     }
@@ -80,6 +82,10 @@ class Start extends Phaser.Scene {
         this.info5.setDisplaySize(1280, 720);
         this.info5.setVisible(false);
 
+        this.instruct = this.add.image(650, 360, 'instruct');
+        this.instruct.setDisplaySize(1280, 720);
+        this.instruct.setVisible(true);
+
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -94,51 +100,65 @@ class Start extends Phaser.Scene {
 			this.sound.play("CrashingWaves");
             this.scene.start("islandNorth"); 
 		});
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // set level
+        level = 1;
     }
 
     update() {
         // if hover oh card1
         this.one.on('pointerover', (pointer) => {
+            this.instruct.setVisible(false);
             this.info1.setVisible(true);
         });
         // if hover off card1
         this.one.on('pointerout', (pointer) => {
+            this.instruct.setVisible(true);
             this.info1.setVisible(false);
         });
 
         // if hover on card2
         this.two.on('pointerover', (pointer) => {
+            this.instruct.setVisible(false);
             this.info2.setVisible(true);
         });
         // if hover off card2
         this.two.on('pointerout', (pointer) => {
+            this.instruct.setVisible(true);
             this.info2.setVisible(false);
         });
 
         // if hover on card3
         this.three.on('pointerover', (pointer) => {
+            this.instruct.setVisible(false);
             this.info3.setVisible(true);
         });
         // if hover off card3
         this.three.on('pointerout', (pointer) => {
+            this.instruct.setVisible(true);
             this.info3.setVisible(false);
         });
 
         // if hover on card4
         this.four.on('pointerover', (pointer) => {
+            this.instruct.setVisible(false);
             this.info4.setVisible(true);
         });
         // if hover off card4
         this.four.on('pointerout', (pointer) => {
+            this.instruct.setVisible(true);
             this.info4.setVisible(false);
         });
 
         // if hover on card5
         this.five.on('pointerover', (pointer) => {
+            this.instruct.setVisible(false);
             this.info5.setVisible(true);
         });
         // if hover off card5
         this.five.on('pointerout', (pointer) => {
+            this.instruct.setVisible(true);
             this.info5.setVisible(false);
         });
     }

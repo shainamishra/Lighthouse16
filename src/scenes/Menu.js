@@ -28,6 +28,10 @@ class Menu extends Phaser.Scene {
         this.load.image('content5', './assets/toc/5.png');
         this.load.image('content6', './assets/toc/6.png');
         this.load.image('content7', './assets/toc/7.png');
+
+        // velvet bgs
+        this.load.image('velvet4', './assets/cards/velvet4.png');
+        this.load.image('velvet5', './assets/cards/velvet5.png');
     }
 
     create() {

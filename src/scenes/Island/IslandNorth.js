@@ -33,7 +33,6 @@ class IslandNorth extends Phaser.Scene {
         });
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        
         // inventory box set up
         this.invent = this.add.sprite(60,60, 'inventory');
         this.invent.setDisplaySize(100, 100);
@@ -165,7 +164,7 @@ class IslandNorth extends Phaser.Scene {
         //if(Phaser.Input.Keyboard.JustDown(keySPACE) && this.cellerOpen == true){
         if(Phaser.Input.Keyboard.JustDown(keySPACE)){
             //this.menuBGM.stop();
-            this.scene.start("transition1");
+            this.scene.start("spread2");
         };
     }
 }
