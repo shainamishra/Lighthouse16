@@ -202,6 +202,9 @@ class IslandWest extends Phaser.Scene {
                 //this.textTimerBox = 250;
                 //this.sound.play("itemtake");
             }
+            else if(pos == 3){
+                this.textTimerBox = 251;
+            }
         } 
         else if(this.textTimerBox > 0 && this.textTimerBox < 250 && unlocked == 1) {
             this.textTimerBox += 1;
