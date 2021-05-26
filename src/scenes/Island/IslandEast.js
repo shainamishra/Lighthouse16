@@ -242,9 +242,14 @@ class IslandEast extends Phaser.Scene {
             });
         }
         // text on screen
-        if(this.textTimerDock > 0 && this.textTimerDock < 300) {
+        if(this.textTimerDock > 0 && this.textTimerDock < 300 && scopeGot == 0) {
             this.textTimerDock += 1;
         } 
+        else if(this.textTimerDock > 0 && this.textTimerDock < 300 && scopeGot == 1){
+            if (this.input.on('pointerdown', (pointer) => {
+                this.textTimerDock = 301;
+            }));
+        }
         else if(this.textTimerDock >= 300){
             // hide text
             this.pillars.interText.setVisible(false);
