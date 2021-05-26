@@ -202,4 +202,4 @@ class CellarWest extends Phaser.Scene {
             this.scene.start("cellarEast");
         };
     }
-}    
+}

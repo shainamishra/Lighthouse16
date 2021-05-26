@@ -10,7 +10,6 @@ class Transition1 extends Phaser.Scene {
         this.load.image('info2-2', './assets/info/chariot.png');
         this.load.image('info3-2', './assets/info/strength.png');
         this.load.image('info4-2', './assets/info/devil.png');
-        this.load.image('info5-2', './assets/info/devil.png');
     }
 
     create() {
@@ -74,10 +73,10 @@ class Transition1 extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
-        this.add.rectangle(0, 0, 10, game.config.height, 0x042630).setOrigin(0, 0);
-        this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x042630).setOrigin(0, 0);
-        this.add.rectangle(0, 0, game.config.width, 10, 0x042630).setOrigin(0, 0);
-        this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x042630).setOrigin(0, 0);
+        this.add.rectangle(0, 0, 10, game.config.height, 0x0c141c).setOrigin(0, 0);
+        this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x0c141c).setOrigin(0, 0);
+        this.add.rectangle(0, 0, game.config.width, 10, 0x0c141c).setOrigin(0, 0);
+        this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x0c141c).setOrigin(0, 0);
     }
 
     update() {
