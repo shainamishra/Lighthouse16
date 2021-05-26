@@ -9,7 +9,7 @@ class Start extends Phaser.Scene {
         this.load.image('cardHit', './assets/cards/hitbox.png');
         this.load.image('info1', './assets/info/highPriestess.png');
         this.load.image('info2', './assets/info/death.png');
-        this.load.image('info3', './assets/info/fool.png');
+        this.load.image('info3', './assets/info/Fool.png');
         this.load.image('info4', './assets/info/moon.png');
         this.load.image('info5', './assets/info/hermit.png');
     }
