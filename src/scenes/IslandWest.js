@@ -189,12 +189,17 @@ class IslandWest extends Phaser.Scene {
 
         // text on screen
         if(this.textTimerBox > 0 && this.textTimerBox < 250 && unlocked == 0) {
-            this.textTimerBox += 1;
+            //this.textTimerBox += 1;
 
             //check num input
+            if (this.input.on('pointerdown', (pointer) => {
+                this.textTimerBox = 251;
+            }))
+
             this.inputCombo = this.checkCombo();
             if(this.inputCombo == 352){
                 unlocked = 1;
+                //this.textTimerBox = 250;
                 //this.sound.play("itemtake");
             }
         } 
