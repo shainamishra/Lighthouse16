@@ -75,6 +75,11 @@ class Spread3 extends Phaser.Scene {
         this.instruct.setDisplaySize(1280, 720);
         this.instruct.setVisible(true);
 
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // set level
+        level = 3;
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
         this.add.rectangle(0, 0, 10, game.config.height, 0x0c141c).setOrigin(0, 0);

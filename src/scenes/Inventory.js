@@ -40,6 +40,16 @@ class Inventory extends Phaser.Scene {
         this.page7.setDisplaySize(1280, 720);
         this.page7.setVisible(false);
 
+        // 4 card bg
+        this.v4 = this.add.sprite(650, 350, 'velvet4');
+        this.v4.setDisplaySize(1280, 720);
+        this.v4.setVisible(false);
+
+        // 5 card bg
+        this.v5 = this.add.sprite(650, 350, 'velvet5');
+        this.v5.setDisplaySize(1280, 720);
+        this.v5.setVisible(false);
+
         // close
         this.closeInven = this.add.sprite(50, 50, 'x');
         this.closeInven.setDisplaySize(50, 50);
@@ -214,26 +224,43 @@ class Inventory extends Phaser.Scene {
             this.page5.setVisible(false);
             this.page6.setVisible(false);
             this.page7.setVisible(false);
+            this.v4.setVisible(false);
+            this.v5.setVisible(false);
 
         } else if(page == 2){
-            this.page1.setVisible(false);
-            this.page2.setVisible(true);
-            this.page3.setVisible(false);
-            this.page4.setVisible(false);
-            this.page5.setVisible(false);
-            this.page6.setVisible(false);
-            this.page7.setVisible(false);
+            if(level >= 1){
+                this.page1.setVisible(false);
+                this.page2.setVisible(true);
+                this.page3.setVisible(false);
+                this.page4.setVisible(false);
+                this.page5.setVisible(false);
+                this.page6.setVisible(false);
+                this.page7.setVisible(false);
+                this.v4.setVisible(false);
+                this.v5.setVisible(false);
+            }
+            else{
+                this.v5.setVisible(true);
+            }
 
         } else if(page == 3){
-            this.page1.setVisible(false);
-            this.page2.setVisible(false);
-            this.page3.setVisible(true);
-            this.page4.setVisible(false);
-            this.page5.setVisible(false);
-            this.page6.setVisible(false);
-            this.page7.setVisible(false);
+            if(level >= 2){
+                this.page1.setVisible(false);
+                this.page2.setVisible(false);
+                this.page3.setVisible(true);
+                this.page4.setVisible(false);
+                this.page5.setVisible(false);
+                this.page6.setVisible(false);
+                this.page7.setVisible(false);
+                this.v4.setVisible(false);
+                this.v5.setVisible(false);
+            }
+            else{
+                this.v4.setVisible(true);
+            }
 
         } else if(page == 4){
+            if(level >= 3){
             this.page1.setVisible(false);
             this.page2.setVisible(false);
             this.page3.setVisible(false);
@@ -241,8 +268,15 @@ class Inventory extends Phaser.Scene {
             this.page5.setVisible(false);
             this.page6.setVisible(false);
             this.page7.setVisible(false);
+            this.v4.setVisible(false);
+            this.v5.setVisible(false);
+            }
+            else{
+                this.v4.setVisible(true);
+            }
 
         } else if(page == 5){
+            if(level >= 4){
             this.page1.setVisible(false);
             this.page2.setVisible(false);
             this.page3.setVisible(false);
@@ -250,8 +284,15 @@ class Inventory extends Phaser.Scene {
             this.page5.setVisible(true);
             this.page6.setVisible(false);
             this.page7.setVisible(false);
+            this.v4.setVisible(false);
+            this.v5.setVisible(false);
+            }
+            else{
+                this.v4.setVisible(true);
+            }
             
         } else if(page == 6){
+            if(level >= 5){
             this.page1.setVisible(false);
             this.page2.setVisible(false);
             this.page3.setVisible(false);
@@ -259,8 +300,15 @@ class Inventory extends Phaser.Scene {
             this.page5.setVisible(false);
             this.page6.setVisible(true);
             this.page7.setVisible(false);
+            this.v4.setVisible(false);
+            this.v5.setVisible(false);
+            }
+            else{
+                this.v4.setVisible(true);
+            }
             
         } else if(page == 7){
+            if(level >= 6){
             this.page1.setVisible(false);
             this.page2.setVisible(false);
             this.page3.setVisible(false);
@@ -268,7 +316,12 @@ class Inventory extends Phaser.Scene {
             this.page5.setVisible(false);
             this.page6.setVisible(false);
             this.page7.setVisible(true);
-            
+            this.v4.setVisible(false);
+            this.v5.setVisible(false);
+            }
+            else{
+                this.v4.setVisible(true);
+            }
         } 
     }
 }    

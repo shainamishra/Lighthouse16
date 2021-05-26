@@ -15,6 +15,7 @@ let borderPadding = borderUISize / 3;
 let keySPACE, keyW, keyA, keyS, keyD, keyI, key1, key2, key3, key4, key5, key6, key7, key8, key9;
 
 // global variables
+let level = 0;
 let keyGot = 0;
 let reelGot = 0;
 let scopeGot = 0;

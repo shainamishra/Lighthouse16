@@ -33,7 +33,6 @@ class IslandNorth extends Phaser.Scene {
         });
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        
         // inventory box set up
         this.invent = this.add.sprite(60,60, 'inventory');
         this.invent.setDisplaySize(100, 100);

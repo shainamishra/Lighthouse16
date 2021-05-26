@@ -100,6 +100,10 @@ class Spread1 extends Phaser.Scene {
 			this.sound.play("CrashingWaves");
             this.scene.start("islandNorth"); 
 		});
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // set level
+        level = 1;
     }
 
     update() {
