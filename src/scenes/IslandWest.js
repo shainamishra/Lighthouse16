@@ -188,7 +188,7 @@ class IslandWest extends Phaser.Scene {
         }
 
         // text on screen
-        if(this.textTimerBox > 0 && this.textTimerBox < 150 && unlocked == 0) {
+        if(this.textTimerBox > 0 && this.textTimerBox < 250 && unlocked == 0) {
             this.textTimerBox += 1;
 
             //check num input
@@ -198,7 +198,7 @@ class IslandWest extends Phaser.Scene {
                 //this.sound.play("itemtake");
             }
         } 
-        else if(this.textTimerBox > 0 && this.textTimerBox < 150 && unlocked == 1) {
+        else if(this.textTimerBox > 0 && this.textTimerBox < 250 && unlocked == 1) {
             this.textTimerBox += 1;
             this.box.interText.setVisible(true);
             if(this.textTimerBox == 2){
@@ -211,7 +211,7 @@ class IslandWest extends Phaser.Scene {
                 this.openEmPic.setVisible(true);
             }
         }
-        else if(this.textTimerBox >= 150){
+        else if(this.textTimerBox >= 250){
             // hide text
             this.box.interText.setVisible(false);
             this.combo.setVisible(false);
