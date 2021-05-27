@@ -9,6 +9,7 @@ class IslandNorth extends Phaser.Scene {
         this.load.image('hitbox', './assets/HitBox2.png');
         this.load.image('cellarUnlocked', './assets/puzzle1/overlays/cellarUnlocked.png');
         this.load.image('inventory', './assets/Inventory.png');
+        this.load.audio('break', './assets/Breakapart.wav');
     }
 
     create() {
@@ -122,10 +123,12 @@ class IslandNorth extends Phaser.Scene {
                 });
             }
             else if(boltGot == 1){
+                
                 this.cellar.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 100, 'You cut the chains');
                 this.cellar.interText.setFontSize(50);
                 this.cellar.interText.setVisible(false);
                 this.cellar.on('pointerdown', (pointer) => {
+                    this.sound.play('break');
                     this.cellOpen.setVisible(true);
                     this.cellar.interText.setVisible(true);
                     this.textTimerCell = 1;
