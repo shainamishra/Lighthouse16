@@ -117,6 +117,13 @@ class Inventory extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         //god forsaken variables
         this.page = 1;
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // borders
+        this.add.rectangle(0, 0, 10, game.config.height, 0x291745).setOrigin(0, 0);
+        this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x291745).setOrigin(0, 0);
+        this.add.rectangle(0, 0, game.config.width, 10, 0x291745).setOrigin(0, 0);
+        this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x291745).setOrigin(0, 0);
     }
     
     update() {
@@ -229,6 +236,7 @@ class Inventory extends Phaser.Scene {
 
         } else if(page == 2){
             if(level >= 1){
+                console.log("level: ", level)
                 this.page1.setVisible(false);
                 this.page2.setVisible(true);
                 this.page3.setVisible(false);

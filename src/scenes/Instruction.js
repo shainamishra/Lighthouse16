@@ -23,8 +23,10 @@ class Instruction extends Phaser.Scene {
         // TAKE OUT THIS TIME, SHAINA!!!!!
         // change scenes
         this.input.keyboard.on('keydown-X', () => {
-			this.sound.play("CrashingWaves");
             this.scene.start("cellarNorth"); 
+		});// change scenes
+        this.input.keyboard.on('keydown-D', () => {
+            this.scene.start("mainNorth"); 
 		});
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////

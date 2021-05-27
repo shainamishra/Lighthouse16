@@ -135,7 +135,7 @@ class Spread3 extends Phaser.Scene {
 
         // move to puzzle 3
         if (Phaser.Input.Keyboard.JustDown(keySPACE)) {
-            //this.scene.start("cellarNorth");  
+            this.scene.start("mainNorth");  
         }
     }
 }
