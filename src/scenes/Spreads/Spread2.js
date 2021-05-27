@@ -79,6 +79,9 @@ class Spread2 extends Phaser.Scene {
         // set level
         level = 2;
 
+        // global variable reset
+        unlocked = 0;
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
         this.add.rectangle(0, 0, 10, game.config.height, 0x0c141c).setOrigin(0, 0);

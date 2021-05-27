@@ -9,6 +9,16 @@ class CellarEast extends Phaser.Scene {
         this.load.image('cardHit', './assets/cards/hitbox.png');
         this.load.image('buttons', './assets/puzzle2/overlays/buttons.png');
         this.load.image('instruct', './assets/transitions/transitionInstructions.png');
+
+        // buttonsOn
+        this.load.image('red', './assets/puzzle2/overlays/buttonsOn/buttonRed.png');
+        this.load.image('orange', './assets/puzzle2/overlays/buttonsOn/buttonOrange.png');
+        this.load.image('yellow', './assets/puzzle2/overlays/buttonsOn/buttonYellow.png');
+        this.load.image('green', './assets/puzzle2/overlays/buttonsOn/buttonLime.png');
+        this.load.image('cyan', './assets/puzzle2/overlays/buttonsOn/buttonCyan.png');
+        this.load.image('blue', './assets/puzzle2/overlays/buttonsOn/buttonBlue.png');
+        this.load.image('purple', './assets/puzzle2/overlays/buttonsOn/buttonPurple.png');
+        this.load.image('pink', './assets/puzzle2/overlays/buttonsOn/buttonPink.png');
     }
 
     create() {
@@ -18,7 +28,6 @@ class CellarEast extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
-        keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
@@ -131,9 +140,43 @@ class CellarEast extends Phaser.Scene {
             useHandCursor: true
         });
         this.pink.setVisible(true); 
-        this.pink.interText = this.add.text(80, 400, 'pink');
+        this.pink.interText = this.add.text(80, 400, 'womr on a string');
         this.pink.interText.setFontSize(50);
         this.pink.interText.setVisible(false); 
+
+        // buttonsOn
+        // redOn
+        this.redOn = this.add.image(640, 360, 'red');
+        this.redOn.setDisplaySize(1280, 720);
+        this.redOn.setVisible(false);
+        // orangeOn
+        this.orangeOn = this.add.image(640, 360, 'orange');
+        this.orangeOn.setDisplaySize(1280, 720);
+        this.orangeOn.setVisible(false);
+        // yellowON
+        this.yellowOn = this.add.image(640, 360, 'yellow');
+        this.yellowOn.setDisplaySize(1280, 720);
+        this.yellowOn.setVisible(false);
+        // greenOn
+        this.greenOn = this.add.image(640, 360, 'green');
+        this.greenOn.setDisplaySize(1280, 720);
+        this.greenOn.setVisible(false);
+        // cyanOn
+        this.cyanOn = this.add.image(640, 360, 'cyan');
+        this.cyanOn.setDisplaySize(1280, 720);
+        this.cyanOn.setVisible(false);
+        // blueOn
+        this.blueOn = this.add.image(640, 360, 'blue');
+        this.blueOn.setDisplaySize(1280, 720);
+        this.blueOn.setVisible(false);
+        // purpleOn
+        this.purpleOn = this.add.image(640, 360, 'purple');
+        this.purpleOn.setDisplaySize(1280, 720);
+        this.purpleOn.setVisible(false);
+        // pinkOn
+        this.pinkOn = this.add.image(640, 360, 'pink');
+        this.pinkOn.setDisplaySize(1280, 720);
+        this.pinkOn.setVisible(false);
 
         // dark
         this.dark = this.add.image(640, 360, 'dark');
@@ -170,6 +213,7 @@ class CellarEast extends Phaser.Scene {
             // red
             this.red.on('pointerdown', (pointer) => {
                 this.red.interText.setVisible(true);
+                this.redOn.setVisible(true);
                 this.hideButtons();
                 this.textTimerButton = 1;
 
@@ -184,6 +228,7 @@ class CellarEast extends Phaser.Scene {
             // orange
             this.orange.on('pointerdown', (pointer) => {
                 this.orange.interText.setVisible(true);
+                this.orangeOn.setVisible(true);
                 this.hideButtons();
                 this.textTimerButton = 1;
                 
@@ -198,6 +243,7 @@ class CellarEast extends Phaser.Scene {
             // yellow
             this.yellow.on('pointerdown', (pointer) => {
                 this.yellow.interText.setVisible(true);
+                this.yellowOn.setVisible(true);
                 this.hideButtons();
                 this.textTimerButton = 1;
                 
@@ -212,6 +258,7 @@ class CellarEast extends Phaser.Scene {
             // green
             this.green.on('pointerdown', (pointer) => {
                 this.green.interText.setVisible(true);
+                this.greenOn.setVisible(true);
                 this.hideButtons();
                 this.textTimerButton = 1;
                 
@@ -226,6 +273,7 @@ class CellarEast extends Phaser.Scene {
             // cyan
             this.cyan.on('pointerdown', (pointer) => {
                 this.cyan.interText.setVisible(true);
+                this.cyanOn.setVisible(true);
                 this.hideButtons();
                 this.textTimerButton = 1;
                 
@@ -240,6 +288,7 @@ class CellarEast extends Phaser.Scene {
             // blue
             this.blue.on('pointerdown', (pointer) => {
                 this.blue.interText.setVisible(true);
+                this.blueOn.setVisible(true);
                 this.hideButtons();
                 this.textTimerButton = 1;
                 
@@ -254,6 +303,7 @@ class CellarEast extends Phaser.Scene {
             // purple
             this.purple.on('pointerdown', (pointer) => {
                 this.purple.interText.setVisible(true);
+                this.purpleOn.setVisible(true);
                 this.hideButtons();
                 this.textTimerButton = 1;
                 
@@ -268,6 +318,7 @@ class CellarEast extends Phaser.Scene {
             // pink
             this.pink.on('pointerdown', (pointer) => {
                 this.pink.interText.setVisible(true);
+                this.pinkOn.setVisible(true);
                 this.hideButtons();
                 this.textTimerButton = 1;
                 
@@ -285,14 +336,16 @@ class CellarEast extends Phaser.Scene {
         if(this.inputNum == 5){
             for (var i = 0; i < 5; i++) {
                 if(this.inputArr[i] != this.correctArr[i]){
+                    // reset
                     console.log('fuck')
                     this.inputArr = ['', '', '', '', ''];
                     this.inputNum = 0;
                 }
                 else{
-                    console.log('pog')
-                    this.correct = true;
                     // move on to next level
+                    console.log('pog')
+                    this.correct = true; 
+                    unlocked = 1;
                 }
             }
         }
@@ -323,6 +376,16 @@ class CellarEast extends Phaser.Scene {
             this.purple.setVisible(true); 
             this.pink.setVisible(true); 
 
+            // turn buttons off
+            this.redOn.setVisible(false); 
+            this.orangeOn.setVisible(false); 
+            this.yellowOn.setVisible(false); 
+            this.greenOn.setVisible(false); 
+            this.cyanOn.setVisible(false); 
+            this.blueOn.setVisible(false); 
+            this.purpleOn.setVisible(false); 
+            this.pinkOn.setVisible(false); 
+
             this.textTimerButton = 0;
             this.inside = false;
         }
@@ -345,11 +408,6 @@ class CellarEast extends Phaser.Scene {
         };
         if(Phaser.Input.Keyboard.JustDown(keyS)){
             this.scene.start("cellarWest");
-        };
-        if(Phaser.Input.Keyboard.JustDown(keySPACE)){
-            //if(this.correct == true){
-                this.scene.start("spread3");
-            //}
         };
     }
 

@@ -61,7 +61,7 @@ class IslandNorth extends Phaser.Scene {
         this.cellar.setInteractive({
             useHandCursor: true
         });
-        this.cellar.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 100, 'There are chains\nblocking the cellar');
+        this.cellar.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 100, '  There are chains\nblocking the cellar');
         this.cellar.interText.setFontSize(50);
         this.cellar.interText.setVisible(false);  
 
@@ -69,6 +69,9 @@ class IslandNorth extends Phaser.Scene {
         this.cellOpen = this.add.image(640, 360, 'cellarUnlocked');
         this.cellOpen.setDisplaySize(1280, 720);
         this.cellOpen.setVisible(false);
+        this.cellOpen.interText = this.add.text(100, borderUISize + borderPadding * 2 + 100, 'Press space\n to enter\nthe cellar');
+        this.cellOpen.interText.setFontSize(50);
+        this.cellOpen.interText.setVisible(false); 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
@@ -123,14 +126,9 @@ class IslandNorth extends Phaser.Scene {
                 });
             }
             else if(boltGot == 1){
-                
-                this.cellar.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 100, 'You cut the chains');
-                this.cellar.interText.setFontSize(50);
-                this.cellar.interText.setVisible(false);
                 this.cellar.on('pointerdown', (pointer) => {
                     this.sound.play('break');
                     this.cellOpen.setVisible(true);
-                    this.cellar.interText.setVisible(true);
                     this.textTimerCell = 1;
                     this.cellerOpen = true;
                     unlocked = 2;
@@ -147,10 +145,14 @@ class IslandNorth extends Phaser.Scene {
             this.cellar.interText.setVisible(false);
             this.textTimerCell = 0;
         }
-
+        
         // show open state
         if(boltGot == 1 && unlocked == 2){
             this.cellOpen.setVisible(true);
+            this.cellOpen.interText.setVisible(true); 
+            if(Phaser.Input.Keyboard.JustDown(keySPACE)){
+                this.scene.start("spread2");
+            };
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -163,11 +165,6 @@ class IslandNorth extends Phaser.Scene {
         };
         if(Phaser.Input.Keyboard.JustDown(keyS)){
             this.scene.start("islandSouth");
-        };
-        //if(Phaser.Input.Keyboard.JustDown(keySPACE) && this.cellerOpen == true){
-        if(Phaser.Input.Keyboard.JustDown(keySPACE)){
-            //this.menuBGM.stop();
-            this.scene.start("spread2");
         };
     }
 }

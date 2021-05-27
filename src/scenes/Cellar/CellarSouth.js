@@ -10,6 +10,7 @@ class CellarSouth extends Phaser.Scene {
         this.load.image('lightOn', './assets/puzzle2/overlays/southLight.png');
         this.load.image('lightOff', './assets/puzzle2/overlays/southDark.png');
         this.load.image('plate', './assets/puzzle2/overlays/southSwitch.png');
+        this.load.image('door', './assets/puzzle2/overlays/southDoor.png');
         this.load.image('switchOn', './assets/puzzle2/overlays/southSwitchOn.png');
         this.load.image('switchOff', './assets/puzzle2/overlays/southSwitchOff.png');
     }
@@ -21,6 +22,7 @@ class CellarSouth extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
+        keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
@@ -87,6 +89,14 @@ class CellarSouth extends Phaser.Scene {
         this.dark = this.add.image(640, 360, 'dark');
         this.dark.setDisplaySize(1280, 720);
         this.dark.setVisible(false);
+        
+        // door image
+        this.door = this.add.image(640, 360, 'door');
+        this.door.setDisplaySize(1280, 720);
+        this.door.setVisible(false);
+        this.door.interText = this.add.text(460, 70, 'Press  space\nto enter the\n main  room');
+        this.door.interText.setFontSize(50);
+        this.door.interText.setVisible(false); 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
@@ -165,11 +175,6 @@ class CellarSouth extends Phaser.Scene {
                         lightState = 0;
                         this.textTimerSwitch = 1;
                     }
-                    //this.cellOpen.setVisible(true);
-                    //this.cellar.interText.setVisible(true);
-                    //this.textTimerSwitch = 1;
-                    //this.cellerOpen = true;
-                    //unlocked = 2;
                 });
             }
         }
@@ -187,6 +192,13 @@ class CellarSouth extends Phaser.Scene {
         }
 
         // end states
+        if(unlocked == 1){
+            this.door.setVisible(true);
+            this.door.interText.setVisible(true); 
+            if(Phaser.Input.Keyboard.JustDown(keySPACE)){
+                this.scene.start("spread3");
+            };
+        }
 
         // lights on or off
         if(lightState == 0){

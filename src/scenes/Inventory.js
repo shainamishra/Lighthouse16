@@ -36,7 +36,7 @@ class Inventory extends Phaser.Scene {
         this.page6.setVisible(false);
 
         // page 7
-        this.page7 = this.add.sprite(650,350, 'end');
+        this.page7 = this.add.sprite(650,350, 'velvet1');
         this.page7.setDisplaySize(1280, 720);
         this.page7.setVisible(false);
 
@@ -308,7 +308,6 @@ class Inventory extends Phaser.Scene {
             }
             
         } else if(page == 7){
-            if(level >= 6){
             this.page1.setVisible(false);
             this.page2.setVisible(false);
             this.page3.setVisible(false);
@@ -318,10 +317,6 @@ class Inventory extends Phaser.Scene {
             this.page7.setVisible(true);
             this.v4.setVisible(false);
             this.v5.setVisible(false);
-            }
-            else{
-                this.v4.setVisible(true);
-            }
         } 
     }
 }    
