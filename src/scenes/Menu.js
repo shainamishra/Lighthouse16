@@ -6,8 +6,8 @@ class Menu extends Phaser.Scene {
     preload(){
         // load assets
         this.load.image('start', './assets/start.png');
-        this.load.audio('CrashingWaves', './assets/CrashingWave2.wav');
-        this.load.audio('menu_music', './assets/theLighthouse.wav');
+        this.load.audio('CrashingWaves', './assets/sfx/CrashingWave2.wav');
+        this.load.audio('menu_music', './assets/sfx/theLighthouse.wav');
 
         // card collection box assets -- loading them here makes the inventory load almost seamlessly
         this.load.image('x', './assets/x.png');

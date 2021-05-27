@@ -13,7 +13,7 @@ class IslandWest extends Phaser.Scene {
         this.load.image('openEmpty', './assets/puzzle1/overlays/statueUnlockednoItem.png');
 
         // audio
-        this.load.audio('itemtake', './assets/ItemTake.wav');
+        this.load.audio('itemtake', './assets/sfx/ItemTake.wav');
     }
 
     create() {

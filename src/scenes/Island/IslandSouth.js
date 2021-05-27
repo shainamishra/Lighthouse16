@@ -11,7 +11,7 @@ class IslandSouth extends Phaser.Scene {
         this.load.image('graveboxEmpty', './assets/puzzle1/overlays/graveboxUsed.png');
 
         // audio
-        this.load.audio('itemtake', './assets/ItemTake.wav');
+        this.load.audio('itemtake', './assets/sfx/ItemTake.wav');
     }
 
     create() {

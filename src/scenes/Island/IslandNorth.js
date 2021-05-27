@@ -9,7 +9,7 @@ class IslandNorth extends Phaser.Scene {
         this.load.image('hitbox', './assets/HitBox2.png');
         this.load.image('cellarUnlocked', './assets/puzzle1/overlays/cellarUnlocked.png');
         this.load.image('inventory', './assets/Inventory.png');
-        this.load.audio('break', './assets/Breakapart.wav');
+        this.load.audio('break', './assets/sfx/Breakapart.wav');
     }
 
     create() {

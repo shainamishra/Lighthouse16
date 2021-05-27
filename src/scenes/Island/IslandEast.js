@@ -18,7 +18,7 @@ class IslandEast extends Phaser.Scene {
         this.load.image('rodEmpty', './assets/puzzle1/overlays/rodCagenoItem.png');
         
         // audio
-        this.load.audio('itemtake', './assets/ItemTake.wav');
+        this.load.audio('itemtake', './assets/sfx/ItemTake.wav');
     }
 
     create() {
