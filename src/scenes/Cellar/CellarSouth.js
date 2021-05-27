@@ -9,8 +9,8 @@ class CellarSouth extends Phaser.Scene {
         this.load.image('dark', './assets/puzzle2/overlays/lightsOff.png');
         this.load.image('lightOn', './assets/puzzle2/overlays/southLight.png');
         this.load.image('lightOff', './assets/puzzle2/overlays/southDark.png');
-        this.load.image('plate', './assets/puzzle2/overlays/southSwitch.png');
         this.load.image('door', './assets/puzzle2/overlays/southDoor.png');
+        this.load.image('plate', './assets/puzzle2/overlays/southSwitch.png');
         this.load.image('switchOn', './assets/puzzle2/overlays/southSwitchOn.png');
         this.load.image('switchOff', './assets/puzzle2/overlays/southSwitchOff.png');
     }
@@ -85,6 +85,29 @@ class CellarSouth extends Phaser.Scene {
         this.switchOff.interText.setFontSize(50);
         this.switchOff.interText.setVisible(false);
 
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // hot bar 
+        this.hotbar = this.add.image(640, 350, 'hotbar');
+        this.hotbar.setDisplaySize(1280, 720);
+        this.hotbar.setVisible(true);
+ 
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // items
+        this.key2Hot = this.add.sprite(460, 659, 'key2Hot');
+        this.key2Hot.setDisplaySize(100, 100);
+        this.key2Hot.setInteractive({
+            useHandCursor: true
+        });
+        this.key2Hot.setVisible(false);
+
+        this.plateHot = this.add.sprite(560, 660, 'plateHot');
+        this.plateHot.setDisplaySize(150, 150);
+        this.plateHot.setInteractive({
+            useHandCursor: true
+        });
+        this.plateHot.setVisible(false);
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // dark
         this.dark = this.add.image(640, 360, 'dark');
         this.dark.setDisplaySize(1280, 720);
@@ -101,6 +124,7 @@ class CellarSouth extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
         this.textTimerSwitch = 0;
+        this.hotOn = true;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -111,6 +135,10 @@ class CellarSouth extends Phaser.Scene {
     }
     
     update() {
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // update hotbar
+        this.hotBarItems(this.hotOn);
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // clicks inventory box: puts this scene to sleep (no updates), switches to cards
         this.invent.on('pointerdown', (pointer) => {
@@ -192,6 +220,7 @@ class CellarSouth extends Phaser.Scene {
         }
 
         // end states
+        unlocked = 1;
         if(unlocked == 1){
             this.door.setVisible(true);
             this.door.interText.setVisible(true); 
@@ -218,6 +247,25 @@ class CellarSouth extends Phaser.Scene {
             this.lightOff.setVisible(true);
             this.switchOn.setVisible(false);
             this.switchOff.setVisible(true);
+        }
+    }
+    
+    hotBarItems(on){
+        if(on == true){
+            this.hotbar.setVisible(true);
+
+            if (deskKey == 1){
+                this.key2Hot.setVisible(true);
+            }
+
+            if (switchGot == 1){
+                this.plateHot.setVisible(true);
+            }
+        }
+        else {
+            this.hotbar.setVisible(false);
+            this.key2Hot.setVisible(false);
+            this.plateHot.setVisible(false);
         }
     }
 }    

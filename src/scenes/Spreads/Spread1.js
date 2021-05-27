@@ -16,6 +16,7 @@ class Spread1 extends Phaser.Scene {
         this.load.image('info5', './assets/info/hermit.png');
 
         // items
+        this.load.image('hotbar', './assets/hotbar.png');
         this.load.image('keyHot', './assets/puzzle1/items/key.PNG');
         this.load.image('reelHot', './assets/puzzle1/items/reel.PNG');
         this.load.image('telescopeHot', './assets/puzzle1/items/telescope.PNG');

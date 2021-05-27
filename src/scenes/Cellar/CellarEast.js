@@ -182,6 +182,29 @@ class CellarEast extends Phaser.Scene {
         this.pinkOn.setDisplaySize(1280, 720);
         this.pinkOn.setVisible(false);
 
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // hot bar 
+        this.hotbar = this.add.image(640, 350, 'hotbar');
+        this.hotbar.setDisplaySize(1280, 720);
+        this.hotbar.setVisible(true);
+ 
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // items
+        this.key2Hot = this.add.sprite(460, 659, 'key2Hot');
+        this.key2Hot.setDisplaySize(100, 100);
+        this.key2Hot.setInteractive({
+            useHandCursor: true
+        });
+        this.key2Hot.setVisible(false);
+
+        this.plateHot = this.add.sprite(560, 660, 'plateHot');
+        this.plateHot.setDisplaySize(150, 150);
+        this.plateHot.setInteractive({
+            useHandCursor: true
+        });
+        this.plateHot.setVisible(false);
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // dark
         this.dark = this.add.image(640, 360, 'dark');
         this.dark.setDisplaySize(1280, 720);
@@ -195,6 +218,7 @@ class CellarEast extends Phaser.Scene {
         this.textTimerButton = 0;
         this.inside = false;
         this.correct = false;
+        this.hotOn = true;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -205,6 +229,10 @@ class CellarEast extends Phaser.Scene {
     }
     
     update() {
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // update hotbar
+        this.hotBarItems(this.hotOn);
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // clicks inventory box: puts this scene to sleep (no updates), switches to cards
         this.invent.on('pointerdown', (pointer) => {
@@ -415,5 +443,24 @@ class CellarEast extends Phaser.Scene {
         this.blue.setVisible(false); 
         this.purple.setVisible(false); 
         this.pink.setVisible(false); 
+    }
+    
+    hotBarItems(on){
+        if(on == true){
+            this.hotbar.setVisible(true);
+
+            if (deskKey == 1){
+                this.key2Hot.setVisible(true);
+            }
+
+            if (switchGot == 1){
+                this.plateHot.setVisible(true);
+            }
+        }
+        else {
+            this.hotbar.setVisible(false);
+            this.key2Hot.setVisible(false);
+            this.plateHot.setVisible(false);
+        }
     }
 }    

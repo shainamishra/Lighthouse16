@@ -10,9 +10,6 @@ class IslandNorth extends Phaser.Scene {
         this.load.image('cellarUnlocked', './assets/puzzle1/overlays/cellarUnlocked.png');
         this.load.image('inventory', './assets/Inventory.png');
         this.load.audio('break', './assets/sfx/Breakapart.wav');
-        this.load.image('hotbar', './assets/hotbar.png');
-
-        this.load.image('cursor', './assets/manDoorHandHookCarDoor.png');
     }
 
     create() {
@@ -107,7 +104,7 @@ class IslandNorth extends Phaser.Scene {
         this.boltcuttersHot = this.add.sprite(755, 659, 'boltcuttersHot');
         this.boltcuttersHot.setDisplaySize(70, 70);
         this.boltcuttersHot.setInteractive({
-            cursor: 'url(./assets/manDoorHandHookCarDoor.png), pointer' 
+            useHandCursor: true
         });
         this.boltcuttersHot.setVisible(false);
 
@@ -188,6 +185,10 @@ class IslandNorth extends Phaser.Scene {
             this.cellar.interText.setVisible(false);
             this.textTimerCell = 0;
         }
+        
+        // remove these
+        boltGot = 1;
+        unlocked = 2;
         
         // show open state
         if(boltGot == 1 && unlocked == 2){
