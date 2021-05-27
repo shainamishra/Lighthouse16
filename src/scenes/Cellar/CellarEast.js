@@ -222,7 +222,6 @@ class CellarEast extends Phaser.Scene {
                 this.textTimerButton = 1;
 
                 if(this.inputArr[this.inputNum] == '' && this.inside == false){
-                    console.log('red');
                     this.inputArr[this.inputNum] = 'red';
                     this.inputNum += 1;
                     this.inside = true;
@@ -237,7 +236,6 @@ class CellarEast extends Phaser.Scene {
                 this.textTimerButton = 1;
                 
                 if(this.inputArr[this.inputNum] == '' && this.inside == false){
-                    console.log('red');
                     this.inputArr[this.inputNum] = 'orange';
                     this.inputNum += 1;
                     this.inside = true;
@@ -252,7 +250,6 @@ class CellarEast extends Phaser.Scene {
                 this.textTimerButton = 1;
                 
                 if(this.inputArr[this.inputNum] == '' && this.inside == false){
-                    console.log('yellow');
                     this.inputArr[this.inputNum] = 'yellow';
                     this.inputNum += 1;
                     this.inside = true;
@@ -267,7 +264,6 @@ class CellarEast extends Phaser.Scene {
                 this.textTimerButton = 1;
                 
                 if(this.inputArr[this.inputNum] == '' && this.inside == false){
-                    console.log('green');
                     this.inputArr[this.inputNum] = 'green';
                     this.inputNum += 1;
                     this.inside = true;
@@ -282,7 +278,6 @@ class CellarEast extends Phaser.Scene {
                 this.textTimerButton = 1;
                 
                 if(this.inputArr[this.inputNum] == '' && this.inside == false){
-                    console.log('cyan');
                     this.inputArr[this.inputNum] = 'cyan';
                     this.inputNum += 1;
                     this.inside = true;
@@ -297,7 +292,6 @@ class CellarEast extends Phaser.Scene {
                 this.textTimerButton = 1;
                 
                 if(this.inputArr[this.inputNum] == '' && this.inside == false){
-                    console.log('blue');
                     this.inputArr[this.inputNum] = 'blue';
                     this.inputNum += 1;
                     this.inside = true;
@@ -312,7 +306,6 @@ class CellarEast extends Phaser.Scene {
                 this.textTimerButton = 1;
                 
                 if(this.inputArr[this.inputNum] == '' && this.inside == false){
-                    console.log('purple');
                     this.inputArr[this.inputNum] = 'purple';
                     this.inputNum += 1;
                     this.inside = true;
@@ -327,7 +320,6 @@ class CellarEast extends Phaser.Scene {
                 this.textTimerButton = 1;
                 
                 if(this.inputArr[this.inputNum] == '' && this.inside == false){
-                    console.log('pink');
                     this.inputArr[this.inputNum] = 'pink';
                     this.inputNum += 1;
                     this.inside = true;
@@ -341,13 +333,11 @@ class CellarEast extends Phaser.Scene {
             for (var i = 0; i < 5; i++) {
                 if(this.inputArr[i] != this.correctArr[i]){
                     // reset
-                    console.log('fuck')
                     this.inputArr = ['', '', '', '', ''];
                     this.inputNum = 0;
                 }
                 else{
                     // move on to next level
-                    console.log('pog')
                     this.correct = true; 
                     unlocked = 1;
                 }

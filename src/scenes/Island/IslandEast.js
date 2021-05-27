@@ -10,7 +10,6 @@ class IslandEast extends Phaser.Scene {
         this.load.image('bucket', './assets/puzzle1/overlays/bucket.png');
         this.load.image('bucketEmpty', './assets/puzzle1/overlays/bucketUsed.png');
         this.load.image('rodEmpty', './assets/puzzle1/overlays/rodCagenoItem.png');
-        this.load.image('key', './assets/puzzle1/items/key.PNG');
         this.load.image('reel', './assets/puzzle1/overlays/reelUsed.png');
         this.load.image('rocks', './assets/puzzle1/IslandEastScope.png');
         this.load.image('rod', './assets/puzzle1/overlays/rodEmpty.png');
@@ -122,10 +121,47 @@ class IslandEast extends Phaser.Scene {
         this.rocks.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // hot bar 
+        this.hotbar = this.add.image(640, 350, 'hotbar');
+        this.hotbar.setDisplaySize(1280, 720);
+        this.hotbar.setVisible(true);
+ 
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // items
+        this.keyHot = this.add.sprite(460, 659, 'keyHot');
+        this.keyHot.setDisplaySize(60, 60);
+        this.keyHot.setInteractive({
+            useHandCursor: true
+        });
+        this.keyHot.setVisible(false);
+
+        this.reelHot = this.add.sprite(560, 660, 'reelHot');
+        this.reelHot.setDisplaySize(75, 75);
+        this.reelHot.setInteractive({
+            useHandCursor: true
+        });
+        this.reelHot.setVisible(false);
+
+        this.telescopeHot = this.add.sprite(655, 660, 'telescopeHot');
+        this.telescopeHot.setDisplaySize(80, 80);
+        this.telescopeHot.setInteractive({
+            useHandCursor: true
+        });
+        this.telescopeHot.setVisible(false);
+
+        this.boltcuttersHot = this.add.sprite(755, 659, 'boltcuttersHot');
+        this.boltcuttersHot.setDisplaySize(70, 70);
+        this.boltcuttersHot.setInteractive({
+            cursor: 'url(./assets/manDoorHandHookCarDoor.png), pointer' 
+        });
+        this.boltcuttersHot.setVisible(false);
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
         this.textTimerRod = 0;
         this.textTimerBucket = 0;
         this.textTimerDock = 0;
+        this.hotOn = true;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -137,6 +173,10 @@ class IslandEast extends Phaser.Scene {
     }
 
     update() {
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // update hotbar
+        this.hotBarItems(this.hotOn);
+        
         // clicks inventory box: puts this scene to sleep (no updates), switches to cards
         this.invent.on('pointerdown', (pointer) => {
             this.scene.switch("cardBox");
@@ -172,6 +212,7 @@ class IslandEast extends Phaser.Scene {
                 this.rodEmpty.setVisible(true);
                 this.textTimerRod = 1;
                 found = true;
+                scopeGot = 2;
             });
         }
 
@@ -230,7 +271,7 @@ class IslandEast extends Phaser.Scene {
                 this.textTimerDock = 1;
             });
         }
-        else if(this.textTimerDock == 0 && scopeGot == 1){
+        else if(this.textTimerDock == 0 && scopeGot > 0){
             this.pillars.interText = this.add.text(320, 70, 'There are two large stone \n pillars standing out in the sea');
             this.pillars.interText.setFontSize(50);
             this.pillars.interText.setVisible(false);
@@ -239,13 +280,14 @@ class IslandEast extends Phaser.Scene {
                 this.pillars.interText.setVisible(true);
                 this.rocks.setVisible(true);
                 this.textTimerDock = 1;
+                this.hotOn = false;
             });
         }
         // text on screen
         if(this.textTimerDock > 0 && this.textTimerDock < 300 && scopeGot == 0) {
             this.textTimerDock += 1;
         } 
-        else if(this.textTimerDock > 0 && this.textTimerDock < 300 && scopeGot == 1){
+        else if(this.textTimerDock > 0 && this.textTimerDock < 300 && scopeGot > 0){
             if (this.input.on('pointerdown', (pointer) => {
                 this.textTimerDock = 301;
             }));
@@ -253,8 +295,10 @@ class IslandEast extends Phaser.Scene {
         else if(this.textTimerDock >= 300){
             // hide text
             this.pillars.interText.setVisible(false);
+            this.hotbar.setVisible(true);
             this.textTimerDock = 0;
-            if(scopeGot == 1){
+            this.hotOn = true;
+            if(scopeGot > 0){
                 this.rocks.setVisible(false);
             }
         }
@@ -278,5 +322,34 @@ class IslandEast extends Phaser.Scene {
         if(Phaser.Input.Keyboard.JustDown(keyS)){
             this.scene.start("islandWest");
         };
+    }
+
+    hotBarItems(on){
+        if(on == true){
+            this.hotbar.setVisible(true);
+
+            if (keyGot == 1){
+                this.keyHot.setVisible(true);
+            }
+
+            if (reelGot == 1){
+                this.reelHot.setVisible(true);
+            }
+
+            if (scopeGot == 2){
+                this.telescopeHot.setVisible(true);
+            }
+
+            if (boltGot == 1){
+                this.boltcuttersHot.setVisible(true);
+            }
+        }
+        else {
+            this.hotbar.setVisible(false);
+            this.keyHot.setVisible(false);
+            this.reelHot.setVisible(false);
+            this.telescopeHot.setVisible(false);
+            this.boltcuttersHot.setVisible(false);
+        }
     }
 }

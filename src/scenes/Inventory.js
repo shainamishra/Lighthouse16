@@ -236,7 +236,6 @@ class Inventory extends Phaser.Scene {
 
         } else if(page == 2){
             if(level > 0){
-                console.log("level: ", level)
                 this.page1.setVisible(false);
                 this.page2.setVisible(true);
                 this.page3.setVisible(false);
@@ -301,8 +300,6 @@ class Inventory extends Phaser.Scene {
             
         } else if(page == 6){
             if(level > 4){
-                console.log("level: ", level)
-                console.log("page: ", page)
                 this.page1.setVisible(false);
                 this.page2.setVisible(false);
                 this.page3.setVisible(false);

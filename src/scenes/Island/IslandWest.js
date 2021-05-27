@@ -8,7 +8,7 @@ class IslandWest extends Phaser.Scene {
         this.load.image('islandwest', './assets/puzzle1/IslandWest.png');
         this.load.image('hitbox', './assets/HitBox2.png');
         this.load.image('hitbox2', './assets/HitBox.png');
-        this.load.image('combo', './assets/puzzle1/comboPH.png');
+        this.load.image('combo', './assets/puzzle1/overlays/combo.png');
         this.load.image('open', './assets/puzzle1/overlays/statueUnlocked.png');
         this.load.image('openEmpty', './assets/puzzle1/overlays/statueUnlockednoItem.png');
 
@@ -99,16 +99,54 @@ class IslandWest extends Phaser.Scene {
         this.box.interText.setVisible(false);
 
         // combo pop up
-        this.combo = this.add.image(630, 500, 'combo');
+        this.combo = this.add.image(630, 490, 'combo');
         this.combo.setDisplaySize(600, 300);
         this.combo.setVisible(false);
+ 
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // hot bar 
+        this.hotbar = this.add.image(640, 350, 'hotbar');
+        this.hotbar.setDisplaySize(1280, 720);
+        this.hotbar.setVisible(true);
+ 
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // items
+        this.keyHot = this.add.sprite(460, 659, 'keyHot');
+        this.keyHot.setDisplaySize(60, 60);
+        this.keyHot.setInteractive({
+            useHandCursor: true
+        });
+        this.keyHot.setVisible(false);
+
+        this.reelHot = this.add.sprite(560, 660, 'reelHot');
+        this.reelHot.setDisplaySize(75, 75);
+        this.reelHot.setInteractive({
+            useHandCursor: true
+        });
+        this.reelHot.setVisible(false);
+
+        this.telescopeHot = this.add.sprite(655, 660, 'telescopeHot');
+        this.telescopeHot.setDisplaySize(80, 80);
+        this.telescopeHot.setInteractive({
+            useHandCursor: true
+        });
+        this.telescopeHot.setVisible(false);
+
+        this.boltcuttersHot = this.add.sprite(755, 659, 'boltcuttersHot');
+        this.boltcuttersHot.setDisplaySize(70, 70);
+        this.boltcuttersHot.setInteractive({
+            cursor: 'url(./assets/manDoorHandHookCarDoor.png), pointer' 
+        });
+        this.boltcuttersHot.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
         this.textTimerStatue = 0;
         this.textTimerBox = 0;
         this.inputCombo = 0;
+        this.hotOn = true;
 
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // digits
         this.digit1 = this.add.sprite(50, 50, 'hitbox2');
         this.digit1.setDisplaySize(50, 50);
@@ -142,6 +180,10 @@ class IslandWest extends Phaser.Scene {
     }
 
     update() {
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // update hotbar
+        this.hotBarItems(this.hotOn);
+        
         // clicks inventory box: puts this scene to sleep (no updates), switches to cards
         this.invent.on('pointerdown', (pointer) => {
             this.scene.switch("cardBox");
@@ -257,6 +299,35 @@ class IslandWest extends Phaser.Scene {
         if(Phaser.Input.Keyboard.JustDown(keyS)){
             this.scene.start("islandEast");
         };
+    }
+
+    hotBarItems(on){
+        if(on == true){
+            this.hotbar.setVisible(true);
+
+            if (keyGot == 1){
+                this.keyHot.setVisible(true);
+            }
+
+            if (reelGot == 1){
+                this.reelHot.setVisible(true);
+            }
+
+            if (scopeGot == 2){
+                this.telescopeHot.setVisible(true);
+            }
+
+            if (boltGot == 1){
+                this.boltcuttersHot.setVisible(true);
+            }
+        }
+        else {
+            this.hotbar.setVisible(false);
+            this.keyHot.setVisible(false);
+            this.reelHot.setVisible(false);
+            this.telescopeHot.setVisible(false);
+            this.boltcuttersHot.setVisible(false);
+        }
     }
 
     checkCombo(){

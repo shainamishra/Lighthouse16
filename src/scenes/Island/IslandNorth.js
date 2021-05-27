@@ -10,6 +10,9 @@ class IslandNorth extends Phaser.Scene {
         this.load.image('cellarUnlocked', './assets/puzzle1/overlays/cellarUnlocked.png');
         this.load.image('inventory', './assets/Inventory.png');
         this.load.audio('break', './assets/sfx/Breakapart.wav');
+        this.load.image('hotbar', './assets/hotbar.png');
+
+        this.load.image('cursor', './assets/manDoorHandHookCarDoor.png');
     }
 
     create() {
@@ -44,7 +47,6 @@ class IslandNorth extends Phaser.Scene {
         prevScene = this.scene.key;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-
         // lighthouse
         this.lighthouse = this.add.sprite(750,250, 'hitbox');
         this.lighthouse.setDisplaySize(300, 400);
@@ -74,10 +76,47 @@ class IslandNorth extends Phaser.Scene {
         this.cellOpen.interText.setVisible(false); 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // hot bar 
+        this.hotbar = this.add.image(640, 350, 'hotbar');
+        this.hotbar.setDisplaySize(1280, 720);
+        this.hotbar.setVisible(true);
+ 
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // items
+        this.keyHot = this.add.sprite(460, 659, 'keyHot');
+        this.keyHot.setDisplaySize(60, 60);
+        this.keyHot.setInteractive({
+            useHandCursor: true
+        });
+        this.keyHot.setVisible(false);
+
+        this.reelHot = this.add.sprite(560, 660, 'reelHot');
+        this.reelHot.setDisplaySize(75, 75);
+        this.reelHot.setInteractive({
+            useHandCursor: true
+        });
+        this.reelHot.setVisible(false);
+
+        this.telescopeHot = this.add.sprite(655, 660, 'telescopeHot');
+        this.telescopeHot.setDisplaySize(80, 80);
+        this.telescopeHot.setInteractive({
+            useHandCursor: true
+        });
+        this.telescopeHot.setVisible(false);
+
+        this.boltcuttersHot = this.add.sprite(755, 659, 'boltcuttersHot');
+        this.boltcuttersHot.setDisplaySize(70, 70);
+        this.boltcuttersHot.setInteractive({
+            cursor: 'url(./assets/manDoorHandHookCarDoor.png), pointer' 
+        });
+        this.boltcuttersHot.setVisible(false);
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
         this.textTimerLight = 0;
         this.textTimerCell = 0;
         this.cellerOpen = false;
+        this.hotOn = true;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -88,6 +127,10 @@ class IslandNorth extends Phaser.Scene {
     }
     
     update() {
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // update hotbar
+        this.hotBarItems(this.hotOn);
+
         // clicks inventory box: puts this scene to sleep (no updates), switches to cards
         this.invent.on('pointerdown', (pointer) => {
             this.scene.switch("cardBox");
@@ -167,5 +210,34 @@ class IslandNorth extends Phaser.Scene {
         if(Phaser.Input.Keyboard.JustDown(keyS)){
             this.scene.start("islandSouth");
         };
+    }
+
+    hotBarItems(on){
+        if(on == true){
+            this.hotbar.setVisible(true);
+
+            if (keyGot == 1){
+                this.keyHot.setVisible(true);
+            }
+
+            if (reelGot == 1){
+                this.reelHot.setVisible(true);
+            }
+
+            if (scopeGot == 2){
+                this.telescopeHot.setVisible(true);
+            }
+
+            if (boltGot == 1){
+                this.boltcuttersHot.setVisible(true);
+            }
+        }
+        else {
+            this.hotbar.setVisible(false);
+            this.keyHot.setVisible(false);
+            this.reelHot.setVisible(false);
+            this.telescopeHot.setVisible(false);
+            this.boltcuttersHot.setVisible(false);
+        }
     }
 }
