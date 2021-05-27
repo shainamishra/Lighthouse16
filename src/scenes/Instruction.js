@@ -22,11 +22,20 @@ class Instruction extends Phaser.Scene {
 
         // TAKE OUT THIS TIME, SHAINA!!!!!
         // change scenes
+        this.input.keyboard.on('keydown-Z', () => {
+            this.scene.start("islandNorth"); 
+		});// change scenes
         this.input.keyboard.on('keydown-X', () => {
             this.scene.start("cellarNorth"); 
-		});// change scenes
-        this.input.keyboard.on('keydown-D', () => {
+		});
+        this.input.keyboard.on('keydown-C', () => {
             this.scene.start("mainNorth"); 
+		});
+        this.input.keyboard.on('keydown-V', () => {
+            this.scene.start("lookoutNorth"); 
+		});
+        this.input.keyboard.on('keydown-B', () => {
+            this.scene.start("ritualNorth"); 
 		});
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////

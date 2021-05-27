@@ -1,11 +1,11 @@
-class MainNorth extends Phaser.Scene {
+class RitualWest extends Phaser.Scene {
     constructor() {
-        super("mainNorth");
+        super("ritualWest");
     }
 
     preload() {
         // images
-        this.load.image('mainNorth', './assets/puzzle3/wall1.png');
+        this.load.image('ritualWest', './assets/puzzle5/ritualWest.png');
 
         this.load.image('hitbox', './assets/HitBox2.png');
     }
@@ -13,7 +13,7 @@ class MainNorth extends Phaser.Scene {
     create() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // place tile sprite
-        this.cellarnorth = this.add.tileSprite(0, 0, 1280, 720, 'mainNorth').setOrigin(0, 0); 
+        this.cellarnorth = this.add.tileSprite(0, 0, 1280, 720, 'ritualWest').setOrigin(0, 0); 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
@@ -63,16 +63,13 @@ class MainNorth extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // scene change on keypress
         if(Phaser.Input.Keyboard.JustDown(keyA)){
-            this.scene.start("mainWest");
+            this.scene.start("ritualSouth");
         };
         if(Phaser.Input.Keyboard.JustDown(keyD)){
-            this.scene.start("mainEast");
+            this.scene.start("ritualNorth");
         };
         if(Phaser.Input.Keyboard.JustDown(keyS)){
-            this.scene.start("mainSouth");
-        };
-        if(Phaser.Input.Keyboard.JustDown(keySPACE)){
-            this.scene.start("spread4");
+            this.scene.start("ritualEast");
         };
     }
 }

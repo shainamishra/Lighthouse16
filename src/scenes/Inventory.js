@@ -235,7 +235,7 @@ class Inventory extends Phaser.Scene {
             this.v5.setVisible(false);
 
         } else if(page == 2){
-            if(level >= 1){
+            if(level > 0){
                 console.log("level: ", level)
                 this.page1.setVisible(false);
                 this.page2.setVisible(true);
@@ -252,7 +252,7 @@ class Inventory extends Phaser.Scene {
             }
 
         } else if(page == 3){
-            if(level >= 2){
+            if(level > 1){
                 this.page1.setVisible(false);
                 this.page2.setVisible(false);
                 this.page3.setVisible(true);
@@ -268,48 +268,50 @@ class Inventory extends Phaser.Scene {
             }
 
         } else if(page == 4){
-            if(level >= 3){
-            this.page1.setVisible(false);
-            this.page2.setVisible(false);
-            this.page3.setVisible(false);
-            this.page4.setVisible(true);
-            this.page5.setVisible(false);
-            this.page6.setVisible(false);
-            this.page7.setVisible(false);
-            this.v4.setVisible(false);
-            this.v5.setVisible(false);
+            if(level > 2){
+                this.page1.setVisible(false);
+                this.page2.setVisible(false);
+                this.page3.setVisible(false);
+                this.page4.setVisible(true);
+                this.page5.setVisible(false);
+                this.page6.setVisible(false);
+                this.page7.setVisible(false);
+                this.v4.setVisible(false);
+                this.v5.setVisible(false);
             }
             else{
                 this.v4.setVisible(true);
             }
 
         } else if(page == 5){
-            if(level >= 4){
-            this.page1.setVisible(false);
-            this.page2.setVisible(false);
-            this.page3.setVisible(false);
-            this.page4.setVisible(false);
-            this.page5.setVisible(true);
-            this.page6.setVisible(false);
-            this.page7.setVisible(false);
-            this.v4.setVisible(false);
-            this.v5.setVisible(false);
+            if(level > 3){
+                this.page1.setVisible(false);
+                this.page2.setVisible(false);
+                this.page3.setVisible(false);
+                this.page4.setVisible(false);
+                this.page5.setVisible(true);
+                this.page6.setVisible(false);
+                this.page7.setVisible(false);
+                this.v4.setVisible(false);
+                this.v5.setVisible(false);
             }
             else{
                 this.v4.setVisible(true);
             }
             
         } else if(page == 6){
-            if(level >= 5){
-            this.page1.setVisible(false);
-            this.page2.setVisible(false);
-            this.page3.setVisible(false);
-            this.page4.setVisible(false);
-            this.page5.setVisible(false);
-            this.page6.setVisible(true);
-            this.page7.setVisible(false);
-            this.v4.setVisible(false);
-            this.v5.setVisible(false);
+            if(level > 4){
+                console.log("level: ", level)
+                console.log("page: ", page)
+                this.page1.setVisible(false);
+                this.page2.setVisible(false);
+                this.page3.setVisible(false);
+                this.page4.setVisible(false);
+                this.page5.setVisible(false);
+                this.page6.setVisible(true);
+                this.page7.setVisible(false);
+                this.v4.setVisible(false);
+                this.v5.setVisible(false);
             }
             else{
                 this.v4.setVisible(true);
