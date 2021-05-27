@@ -151,6 +151,7 @@ class IslandNorth extends Phaser.Scene {
             this.cellOpen.setVisible(true);
             this.cellOpen.interText.setVisible(true); 
             if(Phaser.Input.Keyboard.JustDown(keySPACE)){
+                this.sound.get('menu_music').stop();
                 this.scene.start("spread2");
             };
         }

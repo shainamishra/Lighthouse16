@@ -19,6 +19,10 @@ class CellarEast extends Phaser.Scene {
         this.load.image('blue', './assets/puzzle2/overlays/buttonsOn/buttonBlue.png');
         this.load.image('purple', './assets/puzzle2/overlays/buttonsOn/buttonPurple.png');
         this.load.image('pink', './assets/puzzle2/overlays/buttonsOn/buttonPink.png');
+
+        // audio
+        this.load.audio('scratch2', './assets/sfx/scratch2.wav');
+        // this.sound.play("scratch2");
     }
 
     create() {

@@ -12,8 +12,7 @@ class Spread2 extends Phaser.Scene {
         this.load.image('info4-2', './assets/info/devil.png');
 
         // audio
-
-        this.load.audio('cellar_music', './assets/sfx/theLighthouse.wav');
+        this.load.audio('cellar_music', './assets/sfx/Ambience.wav');
     }
 
     create() {
@@ -21,6 +20,11 @@ class Spread2 extends Phaser.Scene {
         // place tile sprite
         this.bg = this.add.tileSprite(0, 0, 1280, 720, 'bg2').setOrigin(0, 0); 
 
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // music
+        this.cellarBGM = this.sound.add('cellar_music', {volume: 0.1, loop: true});
+        this.cellarBGM.play();
+        
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
