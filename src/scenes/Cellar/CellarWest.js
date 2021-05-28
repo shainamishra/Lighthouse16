@@ -69,11 +69,11 @@ class CellarWest extends Phaser.Scene {
         this.desk.interText.setFontSize(50);
         this.desk.interText.setVisible(false); 
         // closed desk image
-        this.deskClose = this.add.image(640, 360, 'desk');
+        this.deskClose = this.add.image(620, 320, 'desk');
         this.deskClose.setDisplaySize(1280, 720);
         this.deskClose.setVisible(true);
         // opened desk image
-        this.deskOpen = this.add.image(640, 360, 'deskOpen');
+        this.deskOpen = this.add.image(620, 320, 'deskOpen');
         this.deskOpen.setDisplaySize(1280, 720);
         this.deskOpen.setVisible(false);
         this.deskOpen.interText = this.add.text(700, 450, 'You found a\nlight switch');

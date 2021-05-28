@@ -84,6 +84,20 @@ class CellarSouth extends Phaser.Scene {
         this.switchOff.interText = this.add.text(430, 290, 'You turned the\n  lights on');
         this.switchOff.interText.setFontSize(50);
         this.switchOff.interText.setVisible(false);
+        
+        // door image
+        this.door = this.add.image(640, 360, 'door');
+        this.door.setDisplaySize(1280, 720);
+        this.door.setVisible(false);
+        this.door.interText = this.add.text(460, 70, 'Press  space\nto enter the\n main  room');
+        this.door.interText.setFontSize(50);
+        this.door.interText.setVisible(false); 
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // dark
+        this.dark = this.add.image(640, 360, 'dark');
+        this.dark.setDisplaySize(1280, 720);
+        this.dark.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // hot bar 
@@ -106,20 +120,6 @@ class CellarSouth extends Phaser.Scene {
             useHandCursor: true
         });
         this.plateHot.setVisible(false);
-
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // dark
-        this.dark = this.add.image(640, 360, 'dark');
-        this.dark.setDisplaySize(1280, 720);
-        this.dark.setVisible(false);
-        
-        // door image
-        this.door = this.add.image(640, 360, 'door');
-        this.door.setDisplaySize(1280, 720);
-        this.door.setVisible(false);
-        this.door.interText = this.add.text(460, 70, 'Press  space\nto enter the\n main  room');
-        this.door.interText.setFontSize(50);
-        this.door.interText.setVisible(false); 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
