@@ -36,10 +36,17 @@ class MainEast extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
         // lights off CN
-
+        this.hammer = this.add.sprite(500, 450, 'hitbox');
+        this.hammer.setDisplaySize(100, 100);
+        this.hammer.setInteractive({
+            useHandCursor: true
+        });
+        this.hammer.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'The door leads outside...\nand it is locked');
+        this.hammer.interText.setFontSize(50);
+        this.hammer.interText.setVisible(false);
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
-        
+        this.textTimerhammer = 0;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -58,7 +65,21 @@ class MainEast extends Phaser.Scene {
 
 
         // end states
-        
+        if(this.textTimerHammer == 0){
+            this.hammer.on('pointerdown', (pointer) => {
+                this.hammer.interText.setVisible(true);
+                this.textTimerHammer = 1;
+            });
+        }
+        // text on screen
+        if(this.textTimerHammer > 0 && this.textTimerHammer < 150) {
+            this.textTimerHammer += 1;
+        } 
+        else if(this.textTimerHammer >= 150){
+            // hide text
+            this.hammer.interText.setVisible(false);
+            this.textTimerHammer = 0;
+        }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // scene change on keypress
