@@ -13,7 +13,7 @@ class MainNorth extends Phaser.Scene {
     create() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // place tile sprite
-        this.cellarnorth = this.add.tileSprite(0, 0, 1280, 720, 'mainNorth').setOrigin(0, 0); 
+        this.mainnorth = this.add.tileSprite(0, 0, 1280, 720, 'mainNorth').setOrigin(0, 0); 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
@@ -36,10 +36,27 @@ class MainNorth extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
         // lights off CN
+        this.indoor = this.add.sprite(450, 350, 'hitbox');
+        this.indoor.setDisplaySize(350, 700);
+        this.indoor.setInteractive({
+            useHandCursor: true
+        });
+        this.indoor.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'The door leads outside...\nand it is locked');
+        this.indoor.interText.setFontSize(50);
+        this.indoor.interText.setVisible(false);
 
+        this.gclock = this.add.sprite(975, 350, 'hitbox');
+        this.gclock.setDisplaySize(150, 700);
+        this.gclock.setInteractive({
+            useHandCursor: true
+        });
+        this.gclock.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 100, 'The clock has stopped');
+        this.gclock.interText.setFontSize(50);
+        this.gclock.interText.setVisible(false);
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
-        
+        this.textTimerIndoor = 0;
+        this.textTimerGclock = 0;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -58,8 +75,39 @@ class MainNorth extends Phaser.Scene {
 
 
         // end states
-        
+        if(this.textTimerIndoor == 0){
+            this.indoor.on('pointerdown', (pointer) => {
+                this.indoor.interText.setVisible(true);
+                this.textTimerIndoor = 1;
+            });
+        }
 
+        // text on screen
+        if(this.textTimerIndoor > 0 && this.textTimerIndoor < 150) {
+            this.textTimerIndoor += 1;
+        } 
+        else if(this.textTimerIndoor >= 150){
+            // hide text
+            this.indoor.interText.setVisible(false);
+            this.textTimerIndoor = 0;
+        }
+
+        if(this.textTimerGclock == 0){
+            this.gclock.on('pointerdown', (pointer) => {
+                this.gclock.interText.setVisible(true);
+                this.textTimerGclock = 1;
+            });
+        }
+
+        // text on screen
+        if(this.textTimerGclock> 0 && this.textTimerGclock < 150) {
+            this.textTimerGclock += 1;
+        } 
+        else if(this.textTimerGclock >= 150){
+            // hide text
+            this.gclock.interText.setVisible(false);
+            this.textTimerGclock = 0;
+        }
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // scene change on keypress
         if(Phaser.Input.Keyboard.JustDown(keyA)){
