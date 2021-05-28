@@ -5,7 +5,11 @@ class LookoutWest extends Phaser.Scene {
 
     preload() {
         // images
-        this.load.image('lookoutWest', './assets/puzzle4/wall4.png');
+        this.load.image('lookoutWest', './assets/puzzle4/blank_wall.png');
+        this.load.image('rag', './assets/puzzle4/overlays/rag.png');
+        this.load.image('outline', './assets/puzzle4/overlays/secret_outline.png');
+        this.load.image('scales', './assets/puzzle4/overlays/scales.png');
+        this.load.image('westLight', './assets/puzzle4/overlays/blank_wall_light.png');
 
         this.load.image('hitbox', './assets/HitBox2.png');
     }
@@ -35,11 +39,57 @@ class LookoutWest extends Phaser.Scene {
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
-        // lights off CN
+        // rag
+        this.rag = this.add.image(640, 350, 'rag');
+        this.rag.setDisplaySize(1280, 720);
+        this.rag.setVisible(true);
+        // rag hitbox
+        this.ragHit = this.add.sprite(270, 650, 'hitbox');
+        this.ragHit.setDisplaySize(250, 100);
+        this.ragHit.setInteractive({
+            useHandCursor: true
+        });
+        this.ragHit.interText = this.add.text(350, 550, 'You took the rag.');
+        this.ragHit.interText.setFontSize(50);
+        this.ragHit.interText.setVisible(false);
+        this.ragHit.setVisible(true);
+
+        // hatch hitbox
+        this.hatch = this.add.sprite(600, 235, 'hitbox');
+        this.hatch.setDisplaySize(230, 156);
+        this.hatch.setVisible(false);
+        this.hatch.setInteractive({
+            useHandCursor: true
+        });
+
+        // window light
+        this.light = this.add.image(640, 350, 'westLight');
+        this.light.setDisplaySize(1280, 720);
+        this.light.setVisible(false);
+
+        // scales
+        this.scales = this.add.image(640, 350, 'scales');
+        this.scales.setDisplaySize(1280, 720);
+        this.scales.setVisible(false);
+
+        // secret outline
+        this.outline = this.add.image(640, 350, 'outline');
+        this.outline.setDisplaySize(1280, 720);
+        this.outline.setVisible(false);
+        this.outline.interText = this.add.text(200, 550, 'You opened a hatch in the wall.');
+        this.outline.interText.setFontSize(50);
+        this.outline.interText.setVisible(false);
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // hot bar 
+        this.hotbar = this.add.image(640, 350, 'hotbar');
+        this.hotbar.setDisplaySize(1280, 720);
+        this.hotbar.setVisible(true);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
-        
+        this.hotOn = true;
+        this.textTimer = 0;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -51,14 +101,63 @@ class LookoutWest extends Phaser.Scene {
     
     update() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // update hotbar
+        this.hotBarItems(this.hotOn);
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // clicks inventory box: puts this scene to sleep (no updates), switches to cards
         this.invent.on('pointerdown', (pointer) => {
             this.scene.switch("cardBox");
         });
 
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // rag
+        this.ragHit.on('pointerdown', (pointer) => {
+            rag = 1;
+            this.rag.setVisible(false);
+            this.ragHit.interText.setVisible(true);
+            this.textTimer = 1;
+        });
 
+        // hatch
+        this.hatch.on('pointerdown', (pointer) => {
+            if (hatch == 0){
+                this.scales.setVisible(true);
+                this.outline.interText.setVisible(true);
+                this.textTimer = 1;
+                hatch = 1;
+            }
+            if(hatch == 1){
+                // open scales image
+            }
+        });
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // text timers
+        if(this.textTimer > 0 && this.textTimer < 150) {
+            this.textTimer += 1;
+        } 
+        else if(this.textTimer >= 150){
+            // hide text
+            this.ragHit.interText.setVisible(false);
+            this.outline.interText.setVisible(false);
+            this.textTimer = 0;
+        }
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // end states
-        
+        if(rag == 1){
+            this.rag.setVisible(false);
+            this.ragHit.setVisible(false);
+        }
+        if(windowClean == 1){
+            this.light.setVisible(true);
+            this.outline.setVisible(true);
+            this.hatch.setVisible(true);
+        }
+        if(hatch == 1){
+            this.scales.setVisible(true);
+        }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // scene change on keypress
@@ -71,5 +170,26 @@ class LookoutWest extends Phaser.Scene {
         if(Phaser.Input.Keyboard.JustDown(keyS)){
             this.scene.start("lookoutEast");
         };
+    }
+    
+    hotBarItems(on){
+        if(on == true){
+            this.hotbar.setVisible(true);
+
+            if (rag == 1){
+                //this.rag.setVisible(true);
+            }
+
+            if (rock == 1){
+                //this.plateHot.setVisible(true);
+            }
+
+            if (rope == 1){
+                //this.plateHot.setVisible(true);
+            }
+        }
+        else {
+            //this.hotbar.setVisible(false);
+        }
     }
 }

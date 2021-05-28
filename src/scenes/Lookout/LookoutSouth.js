@@ -5,7 +5,9 @@ class LookoutSouth extends Phaser.Scene {
 
     preload() {
         // images
-        this.load.image('lookoutSouth', './assets/puzzle4/wall3.png');
+        this.load.image('lookoutSouth', './assets/puzzle4/diagrams.png');
+        this.load.image('lightSouth', './assets/puzzle4/overlays/light_over_diagrams.png');
+        //this.load.image('rope', './assets/puzzle4/overlays/rope.png');
 
         this.load.image('hitbox', './assets/HitBox2.png');
     }
@@ -35,7 +37,27 @@ class LookoutSouth extends Phaser.Scene {
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
-        // lights off CN
+        // rope
+        this.ropeHit = this.add.sprite(1025, 625, 'hitbox');
+        this.ropeHit.setDisplaySize(200, 100);
+        this.ropeHit.setInteractive({
+            useHandCursor: true
+        });
+        this.ropeHit.interText = this.add.text(350, 550, 'You took the rope.');
+        this.ropeHit.interText.setFontSize(50);
+        this.ropeHit.interText.setVisible(false);
+        this.ropeHit.setVisible(true);
+
+        // light
+        this.lightSouth = this.add.image(640, 360, 'lightSouth');
+        this.lightSouth.setDisplaySize(1280, 720);
+        this.lightSouth.setVisible(false);
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // hot bar 
+        this.hotbar = this.add.image(640, 350, 'hotbar');
+        this.hotbar.setDisplaySize(1280, 720);
+        this.hotbar.setVisible(true);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
@@ -56,8 +78,31 @@ class LookoutSouth extends Phaser.Scene {
             this.scene.switch("cardBox");
         });
 
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // rope
+        this.ropeHit.on('pointerdown', (pointer) => {
+            rope = 1;
+            //this.rope.setVisible(false);
+            this.ropeHit.interText.setVisible(true);
+            this.textTimer = 1;
+        });
+
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // text timers
+        if(this.textTimer > 0 && this.textTimer < 150) {
+            this.textTimer += 1;
+        } 
+        else if(this.textTimer >= 150){
+            // hide text
+            //this.rope.setVisible(false);
+            this.textTimer = 0;
+        }
 
         // end states
+        if(rope == 1){
+            //this.rope.setVisible(false);
+        }
         
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -5,12 +5,18 @@ class LookoutNorth extends Phaser.Scene {
 
     preload() {
         // images
-        this.load.image('lookoutNorth', './assets/puzzle4/wall1.png');
+        this.load.image('lookoutNorth', './assets/puzzle4/starchart.png');
+        this.load.image('pendulum_top', './assets/puzzle4/overlays/pendulum_top.png');
+        this.load.image('pendulum_rope', './assets/puzzle4/overlays/pendulum_rope.png');
+        this.load.image('pendulum_rock', './assets/puzzle4/overlays/pendulum_rock.png');
+        this.load.image('pendulum', './assets/puzzle4/overlays/pendulum.png');
+        this.load.image('lightNorth', './assets/puzzle4/overlays/light_over_chart.png');
 
-        this.load.image('hitbox', './assets/HitBox2.png');
+        this.load.image('hitbox', './assets/HitBox.png');
     }
 
     create() {
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // place tile sprite
         this.cellarnorth = this.add.tileSprite(0, 0, 1280, 720, 'lookoutNorth').setOrigin(0, 0); 
@@ -35,7 +41,61 @@ class LookoutNorth extends Phaser.Scene {
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
-        // lights off CN
+        // pendulum top
+        this.top = this.add.image(640, 360, 'pendulum_top');
+        this.top.setDisplaySize(1280, 720);
+        this.top.setVisible(true);
+
+        // pendulum rope
+        this.penRope = this.add.image(640, 360, 'pendulum_rope');
+        this.penRope.setDisplaySize(1280, 720);
+        this.penRope.setVisible(false);
+
+        // pendulum rock
+        this.penRock = this.add.image(640, 360, 'pendulum_rock');
+        this.penRock.setDisplaySize(1280, 720);
+        this.penRock.setVisible(false);
+        // pendulum rock hit box
+        this.penRockHit = this.add.image(640, 410, 'hitbox');
+        this.penRockHit.setDisplaySize(35, 80);
+        this.penRockHit.setInteractive({
+            useHandCursor: true
+        });
+        this.penRockHit.setVisible(false);
+
+        // pendulum
+        this.pendulum = this.add.image(640, 360, 'pendulum');
+        this.pendulum.setDisplaySize(1280, 720);
+        this.pendulum.setVisible(false);
+
+        // light
+        this.lightNorth = this.add.image(640, 360, 'lightNorth');
+        this.lightNorth.setDisplaySize(1280, 720);
+        this.lightNorth.setVisible(false);
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // hot bar 
+        this.top = this.add.image(640, 350, 'hotbar');
+        this.top.setDisplaySize(1280, 720);
+        this.top.setVisible(true);
+ 
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // items
+        /*
+        this.key2Hot = this.add.sprite(460, 659, 'key2Hot');
+        this.key2Hot.setDisplaySize(100, 100);
+        this.key2Hot.setInteractive({
+            useHandCursor: true
+        });
+        this.key2Hot.setVisible(false);
+
+        this.plateHot = this.add.sprite(560, 660, 'plateHot');
+        this.plateHot.setDisplaySize(150, 150);
+        this.plateHot.setInteractive({
+            useHandCursor: true
+        });
+        this.plateHot.setVisible(false);
+        */
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
@@ -56,9 +116,23 @@ class LookoutNorth extends Phaser.Scene {
             this.scene.switch("cardBox");
         });
 
+        this.penRockHit.on('pointerdown', (pointer) => {
+            console.log("pendulum")
+            // start animation
+        });
+
 
         // end states
-        
+        if(windowClean == 1){
+            this.lightNorth.setVisible(true);
+        }
+        if(rope == 1){
+            this.penRope.setVisible(true);
+        }
+        if(rock == 1 && rope == 1){
+            this.penRock.setVisible(true);
+            this.penRockHit.setVisible(true);
+        }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // scene change on keypress

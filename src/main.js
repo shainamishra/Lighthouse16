@@ -15,6 +15,7 @@ let borderPadding = borderUISize / 3;
 let keySPACE, keyW, keyA, keyS, keyD, keyI, key1, key2, key3, key4, key5, key6, key7, key8, key9;
 
 // global variables
+// puzzle 1
 let level = 0;
 let keyGot = 0;
 let reelGot = 0;
@@ -24,7 +25,18 @@ let combo = '';
 let pos = 0;
 let boltGot = 0;
 let unlocked = 0;
+
+// puzzle 2
 let deskKey = 0;
 let prevScene = '';
 let switchGot = 0;
 let lightState = 0;
+
+// puzzle 3
+
+// puzzle 4
+let rag = 0;
+let windowClean = 0;
+let rock = 0;
+let rope = 0;
+let hatch = 0;

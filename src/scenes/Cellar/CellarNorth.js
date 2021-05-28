@@ -110,8 +110,6 @@ class CellarNorth extends Phaser.Scene {
         if(Phaser.Input.Keyboard.JustDown(keyS)){
             this.scene.start("cellarSouth");
         };
-
-        // end states
         
         // lights on or off
         if(lightState == 0){
@@ -119,6 +117,14 @@ class CellarNorth extends Phaser.Scene {
             this.textDark.setVisible(false);
         } else if (lightState == 1) {
             this.textDark.setVisible(true);
+        }
+
+        // delete this
+        unlocked = 1;
+        if(unlocked == 1){
+            if(Phaser.Input.Keyboard.JustDown(keySPACE)){
+                this.scene.start("spread3");
+            };
         }
     }
     
