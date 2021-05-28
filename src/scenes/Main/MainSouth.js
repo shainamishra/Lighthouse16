@@ -36,8 +36,8 @@ class MainSouth extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
         // lights off CN
-        this.skull = this.add.sprite(975, 300, 'hitbox');
-        this.skull.setDisplaySize(150, 150);
+        this.skull = this.add.sprite(975, 150, 'hitbox');
+        this.skull.setDisplaySize(150, 200);
         this.skull.setInteractive({
             useHandCursor: true
         });
