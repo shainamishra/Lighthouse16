@@ -203,13 +203,16 @@ class CellarWest extends Phaser.Scene {
 
         // desk shelf timer
         if(this.textTimerShelf > 0 && this.textTimerShelf < 200) {
-            this.textTimerShelf += 1;
+            //this.textTimerShelf += 1;
             this.key.on('pointerdown', (pointer) => {
                 this.key.setVisible(false);
                 this.key.interText.setVisible(true);
                 this.keyIm.setVisible(false);
                 deskKey = 1;
             });
+            this.input.on('pointerdown', (pointer) => {
+                this.textTimerShelf = 251;
+            })
         } 
         else if(this.textTimerShelf >= 200){
             // hide text
