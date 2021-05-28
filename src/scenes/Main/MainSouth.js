@@ -13,7 +13,7 @@ class MainSouth extends Phaser.Scene {
     create() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // place tile sprite
-        this.cellarnorth = this.add.tileSprite(0, 0, 1280, 720, 'mainSouth').setOrigin(0, 0); 
+        this.mainsouth = this.add.tileSprite(0, 0, 1280, 720, 'mainSouth').setOrigin(0, 0); 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
@@ -36,10 +36,17 @@ class MainSouth extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
         // lights off CN
-
+        this.skull = this.add.sprite(975, 300, 'hitbox');
+        this.skull.setDisplaySize(150, 150);
+        this.skull.setInteractive({
+            useHandCursor: true
+        });
+        this.skull.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 100, 'A...fake skull hangs here?');
+        this.skull.interText.setFontSize(50);
+        this.skull.interText.setVisible(false);
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
-        
+        this.textTimerSkull = 0;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -58,7 +65,23 @@ class MainSouth extends Phaser.Scene {
 
 
         // end states
-        
+        // end states
+        if(this.textTimerSkull == 0){
+            this.skull.on('pointerdown', (pointer) => {
+                this.skull.interText.setVisible(true);
+                this.textTimerSkull = 1;
+            });
+        }
+
+        // text on screen
+        if(this.textTimerSkull > 0 && this.textTimerSkull < 150) {
+            this.textTimerSkull += 1;
+        } 
+        else if(this.textTimerSkull >= 150){
+            // hide text
+            this.skull.interText.setVisible(false);
+            this.textTimerSkull = 0;
+        }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // scene change on keypress

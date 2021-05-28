@@ -41,12 +41,12 @@ class MainEast extends Phaser.Scene {
         this.hammer.setInteractive({
             useHandCursor: true
         });
-        this.hammer.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'The door leads outside...\nand it is locked');
+        this.hammer.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'You picked up the hammer');
         this.hammer.interText.setFontSize(50);
         this.hammer.interText.setVisible(false);
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
-        this.textTimerhammer = 0;
+        this.textTimerHammer = 0;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
