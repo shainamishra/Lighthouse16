@@ -36,10 +36,17 @@ class MainWest extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
         // lights off CN
-        
+        this.knife = this.add.sprite(920, 500, 'hitbox');
+        this.knife.setDisplaySize(100, 100);
+        this.knife.setInteractive({
+            useHandCursor: true
+        });
+        this.knife.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 100, 'You picked up the knife');
+        this.knife.interText.setFontSize(50);
+        this.knife.interText.setVisible(false);
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
-        
+        this.textTimerKnife =0;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -59,7 +66,22 @@ class MainWest extends Phaser.Scene {
 
 
         // end states
-       
+        if(this.textTimerKnife == 0){
+            this.knife.on('pointerdown', (pointer) => {
+                this.knife.interText.setVisible(true);
+                this.textTimerKnife = 1;
+            });
+        }
+
+        // text on screen
+        if(this.textTimerKnife> 0 && this.textTimerKnife < 150) {
+            this.textTimerKnife += 1;
+        } 
+        else if(this.textTimerKnife >= 150){
+            // hide text
+            this.knife.interText.setVisible(false);
+            this.textTimerKnife = 0;
+        }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // scene change on keypress
