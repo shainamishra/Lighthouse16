@@ -87,6 +87,20 @@ class LookoutWest extends Phaser.Scene {
         this.hotbar.setVisible(true);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // items
+        this.ragHot= this.add.sprite(460, 660, 'ragHot');
+        this.ragHot.setDisplaySize(50, 50);
+        this.ragHot.setVisible(false);
+
+        this.ropeHot = this.add.sprite(560, 660, 'ropeHot');
+        this.ropeHot.setDisplaySize(50, 50);
+        this.ropeHot.setVisible(false);
+
+        this.citrineHot = this.add.sprite(660, 659, 'citrineHot');
+        this.citrineHot.setDisplaySize(50, 50);
+        this.citrineHot.setVisible(false);
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
         this.hotOn = true;
         this.textTimer = 0;
@@ -177,19 +191,22 @@ class LookoutWest extends Phaser.Scene {
             this.hotbar.setVisible(true);
 
             if (rag == 1){
-                //this.rag.setVisible(true);
+                this.ragHot.setVisible(true);
             }
 
             if (rock == 1){
-                //this.plateHot.setVisible(true);
+                this.citrineHot.setVisible(true);
             }
 
             if (rope == 1){
-                //this.plateHot.setVisible(true);
+                this.ropeHot.setVisible(true);
             }
         }
         else {
-            //this.hotbar.setVisible(false);
+            this.hotbar.setVisible(false);
+            this.ragHot.setVisible(false);
+            this.citrineHot.setVisible(false);
+            this.ropeHot.setVisible(false);
         }
     }
 }

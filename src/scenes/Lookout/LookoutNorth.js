@@ -75,31 +75,27 @@ class LookoutNorth extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // hot bar 
-        this.top = this.add.image(640, 350, 'hotbar');
-        this.top.setDisplaySize(1280, 720);
-        this.top.setVisible(true);
+        this.hotbar = this.add.image(640, 350, 'hotbar');
+        this.hotbar.setDisplaySize(1280, 720);
+        this.hotbar.setVisible(true);
  
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // items
-        /*
-        this.key2Hot = this.add.sprite(460, 659, 'key2Hot');
-        this.key2Hot.setDisplaySize(100, 100);
-        this.key2Hot.setInteractive({
-            useHandCursor: true
-        });
-        this.key2Hot.setVisible(false);
+        this.ragHot= this.add.sprite(460, 660, 'ragHot');
+        this.ragHot.setDisplaySize(50, 50);
+        this.ragHot.setVisible(false);
 
-        this.plateHot = this.add.sprite(560, 660, 'plateHot');
-        this.plateHot.setDisplaySize(150, 150);
-        this.plateHot.setInteractive({
-            useHandCursor: true
-        });
-        this.plateHot.setVisible(false);
-        */
+        this.ropeHot = this.add.sprite(560, 660, 'ropeHot');
+        this.ropeHot.setDisplaySize(50, 50);
+        this.ropeHot.setVisible(false);
+
+        this.citrineHot = this.add.sprite(660, 659, 'citrineHot');
+        this.citrineHot.setDisplaySize(50, 50);
+        this.citrineHot.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
-        
+        this.hotOn = true;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -111,11 +107,17 @@ class LookoutNorth extends Phaser.Scene {
     
     update() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // update hotbar
+        this.hotBarItems(this.hotOn);
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // clicks inventory box: puts this scene to sleep (no updates), switches to cards
         this.invent.on('pointerdown', (pointer) => {
             this.scene.switch("cardBox");
         });
 
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // pendulum anim
         this.penRockHit.on('pointerdown', (pointer) => {
             console.log("pendulum")
             // start animation
@@ -148,5 +150,29 @@ class LookoutNorth extends Phaser.Scene {
         if(Phaser.Input.Keyboard.JustDown(keySPACE)){
             this.scene.start("spread5");
         };
+    }
+    
+    hotBarItems(on){
+        if(on == true){
+            this.hotbar.setVisible(true);
+
+            if (rag == 1){
+                this.ragHot.setVisible(true);
+            }
+
+            if (rock == 1){
+                this.citrineHot.setVisible(true);
+            }
+
+            if (rope == 1){
+                this.ropeHot.setVisible(true);
+            }
+        }
+        else {
+            this.hotbar.setVisible(false);
+            this.ragHot.setVisible(false);
+            this.citrineHot.setVisible(false);
+            this.ropeHot.setVisible(false);
+        }
     }
 }

@@ -10,6 +10,12 @@ class Spread4 extends Phaser.Scene {
         this.load.image('info2-4', './assets/info/magician.png');
         this.load.image('info3-4', './assets/info/empress.png');
         this.load.image('info4-4', './assets/info/sun.png');
+
+        // hot bar items
+        this.load.image('ragHot', './assets/puzzle4/items/rag.png');
+        this.load.image('ropeHot', './assets/puzzle4/items/rope.png');
+        this.load.image('citrineHot', './assets/puzzle4/items/citrine.png');
+
     }
 
     create() {

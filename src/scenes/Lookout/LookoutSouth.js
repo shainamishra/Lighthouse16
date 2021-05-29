@@ -7,7 +7,7 @@ class LookoutSouth extends Phaser.Scene {
         // images
         this.load.image('lookoutSouth', './assets/puzzle4/diagrams.png');
         this.load.image('lightSouth', './assets/puzzle4/overlays/light_over_diagrams.png');
-        //this.load.image('rope', './assets/puzzle4/overlays/rope.png');
+        this.load.image('rope', './assets/puzzle4/overlays/rope_overlay.png');
 
         this.load.image('hitbox', './assets/HitBox2.png');
     }
@@ -38,6 +38,10 @@ class LookoutSouth extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
         // rope
+        this.rope = this.add.image(640, 360, 'rope');
+        this.rope.setDisplaySize(1280, 720);
+        this.rope.setVisible(true);
+        // rope hitbox
         this.ropeHit = this.add.sprite(1025, 625, 'hitbox');
         this.ropeHit.setDisplaySize(200, 100);
         this.ropeHit.setInteractive({
@@ -60,8 +64,22 @@ class LookoutSouth extends Phaser.Scene {
         this.hotbar.setVisible(true);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // items
+        this.ragHot= this.add.sprite(460, 660, 'ragHot');
+        this.ragHot.setDisplaySize(50, 50);
+        this.ragHot.setVisible(false);
+
+        this.ropeHot = this.add.sprite(560, 660, 'ropeHot');
+        this.ropeHot.setDisplaySize(50, 50);
+        this.ropeHot.setVisible(false);
+
+        this.citrineHot = this.add.sprite(660, 659, 'citrineHot');
+        this.citrineHot.setDisplaySize(50, 50);
+        this.citrineHot.setVisible(false);
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
-        
+        this.hotOn = true;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -73,6 +91,10 @@ class LookoutSouth extends Phaser.Scene {
     
     update() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // update hotbar
+        this.hotBarItems(this.hotOn);
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // clicks inventory box: puts this scene to sleep (no updates), switches to cards
         this.invent.on('pointerdown', (pointer) => {
             this.scene.switch("cardBox");
@@ -82,7 +104,7 @@ class LookoutSouth extends Phaser.Scene {
         // rope
         this.ropeHit.on('pointerdown', (pointer) => {
             rope = 1;
-            //this.rope.setVisible(false);
+            this.rope.setVisible(false);
             this.ropeHit.interText.setVisible(true);
             this.textTimer = 1;
         });
@@ -95,13 +117,16 @@ class LookoutSouth extends Phaser.Scene {
         } 
         else if(this.textTimer >= 150){
             // hide text
-            //this.rope.setVisible(false);
+            this.ropeHit.interText.setVisible(false);
             this.textTimer = 0;
         }
 
         // end states
         if(rope == 1){
-            //this.rope.setVisible(false);
+            this.rope.setVisible(false);
+        }
+        if(windowClean == 1){
+            this.lightSouth.setVisible(true);
         }
         
 
@@ -116,5 +141,29 @@ class LookoutSouth extends Phaser.Scene {
         if(Phaser.Input.Keyboard.JustDown(keyS)){
             this.scene.start("lookoutNorth");
         };
+    }
+    
+    hotBarItems(on){
+        if(on == true){
+            this.hotbar.setVisible(true);
+
+            if (rag == 1){
+                this.ragHot.setVisible(true);
+            }
+
+            if (rock == 1){
+                this.citrineHot.setVisible(true);
+            }
+
+            if (rope == 1){
+                this.ropeHot.setVisible(true);
+            }
+        }
+        else {
+            this.hotbar.setVisible(false);
+            this.ragHot.setVisible(false);
+            this.citrineHot.setVisible(false);
+            this.ropeHot.setVisible(false);
+        }
     }
 }
