@@ -45,6 +45,17 @@ class LookoutNorth extends Phaser.Scene {
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // board hit boxes
+        // board
+        this.queen = this.add.sprite(650, 320, 'hitbox');
+        this.queen.setDisplaySize(450, 450);
+        this.queen.setInteractive({
+            useHandCursor: true
+        });
+        this.queen.interText = this.add.text(350, 550, 'An empty board.');
+        this.queen.interText.setFontSize(50);
+        this.queen.interText.setVisible(false);
+        this.queen.setVisible(true);
+
         // row 1
         this.one1 = this.add.sprite(460, 135, 'hitbox');
         this.one1.setDisplaySize(60, 60);
@@ -300,16 +311,50 @@ class LookoutNorth extends Phaser.Scene {
         this.citrineHot.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //rocks
+        this.purple = this.add.image(this.setX, this.setY, 'purple');
+        this.purple.setDisplaySize(60, 60);
+        this.purple.setVisible(false);
+
+        this.blue = this.add.image(this.setX, this.setY, 'blue');
+        this.blue.setDisplaySize(60, 60);
+        this.blue.setVisible(false);
+        
+        this.cyan = this.add.image(this.setX, this.setY, 'cyan');
+        this.cyan.setDisplaySize(60, 60);
+        this.cyan.setVisible(false);
+
+        this.green = this.add.image(this.setX, this.setY, 'green');
+        this.green.setDisplaySize(60, 60);
+        this.green.setVisible(false);
+
+        this.orange = this.add.image(this.setX, this.setY, 'orange');
+        this.orange.setDisplaySize(60, 60);
+        this.orange.setVisible(false);
+
+        this.red = this.add.image(this.setX, this.setY, 'red');
+        this.red.setDisplaySize(60, 60);
+        this.red.setVisible(false);
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
         this.hotOn = true;
-        this.textTimerQueen = 0;
+        this.showQueenTimer = 0;
         this.state = false;
+
         this.correctArr1 = [2, 4, 6, 1, 3, 5];
         this.correctArr2 = [3, 6, 2, 5, 1, 4];
-        this.correctArr2 = [4, 1, 5, 2, 6, 3];
+        this.correctArr3 = [4, 1, 5, 2, 6, 3];
         this.correctArr4 = [5, 3, 1, 6, 4, 2];
         this.inputArr = [0, 0, 0, 0, 0, 0];
+
+        this.inputTotal = 0;
         this.inputNum1 = false;
+        this.inputNum2 = false;
+        this.inputNum3 = false;
+        this.inputNum4 = false;
+        this.inputNum5 = false;
+        this.inputNum6 = false;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -334,218 +379,435 @@ class LookoutNorth extends Phaser.Scene {
         });
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // check hit on board
+        this.queen.on('pointerdown', (pointer) => {
+            this.queen.interText.setVisible(true);
+            this.showQueenTimer = 1;
+        });
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // click on row 1
         if(this.inputArr[0] == 0){
-            console.log(this.inputArr[0])
             this.one1.on('pointerdown', (pointer) => {
-                this.rockY(1, 1);
-                this.purple.setVisible(true);
-                this.inputArr[0] = 1;
-                this.inputNum1 = true;
+                if(this.inputNum1 == false){
+                    this.rockY(1, 1);
+                    this.purple.setVisible(true);
+                    this.inputArr[0] = 1;
+                    this.inputNum1 = true;
+                    this.inputTotal += 1;
+                }
             });
             this.one2.on('pointerdown', (pointer) => {
-                this.rockY(2, 1);
-                this.purple.setVisible(true);
-                this.inputArr[0] = 2;
+                if(this.inputNum1 == false){
+                    this.rockY(2, 1);
+                    this.purple.setVisible(true);
+                    this.inputArr[0] = 2;
+                    this.inputNum1 = true;
+                    this.inputTotal += 1;
+                }
             });
             this.one3.on('pointerdown', (pointer) => {
-                this.rockY(3, 1);
-                this.purple.setVisible(true);
-                this.inputArr[0] = 3;
+                if(this.inputNum1 == false){
+                    this.rockY(3, 1);
+                    this.purple.setVisible(true);
+                    this.inputArr[0] = 3;
+                    this.inputNum1 = true;
+                    this.inputTotal += 1;
+                }
             });
             this.one4.on('pointerdown', (pointer) => {
-                this.rockY(4, 1);
-                this.purple.setVisible(true);
-                this.inputArr[0] = 4;
+                if(this.inputNum1 == false){
+                    this.rockY(4, 1);
+                    this.purple.setVisible(true);
+                    this.inputArr[0] = 4;
+                    this.inputNum1 = true;
+                    this.inputTotal += 1;
+                }
             });
             this.one5.on('pointerdown', (pointer) => {
-                this.rockY(5, 1);
-                this.purple.setVisible(true);
-                this.inputArr[0] = 5;
+                if(this.inputNum1 == false){
+                    this.rockY(5, 1);
+                    this.purple.setVisible(true);
+                    this.inputArr[0] = 5;
+                    this.inputNum1 = true;
+                    this.inputTotal += 1;
+                }
             });
             this.one6.on('pointerdown', (pointer) => {
-                this.rockY(6, 1);
-                this.purple.setVisible(true);
-                this.inputArr[0] = 6;
+                if(this.inputNum1 == false){
+                    this.rockY(6, 1);
+                    this.purple.setVisible(true);
+                    this.inputArr[0] = 6;
+                    this.inputNum1 = true;
+                    this.inputTotal += 1;
+                }
             });
         }
 
         if(this.inputArr[1] == 0){
             // row2
             this.two1.on('pointerdown', (pointer) => {
-                this.rockY(1, 2);
-                this.blue.setVisible(true);
-                this.inputArr[1] = 1;
+                if(this.inputNum2 == false){
+                    this.rockY(1, 2);
+                    this.blue.setVisible(true);
+                    this.inputArr[1] = 1;
+                    this.inputNum2 = true;
+                    this.inputTotal += 1;
+                }
             });
             this.two2.on('pointerdown', (pointer) => {
-                this.rockY(2, 2);
-                this.blue.setVisible(true);
-                this.inputArr[1] = 2;
+                if(this.inputNum2 == false){
+                    this.rockY(2, 2);
+                    this.blue.setVisible(true);
+                    this.inputArr[1] = 2;
+                    this.inputNum2 = true;
+                    this.inputTotal += 1;
+                }
             });
             this.two3.on('pointerdown', (pointer) => {
-                this.rockY(3, 2);
-                this.blue.setVisible(true);
-                this.inputArr[1] = 3;
+                if(this.inputNum2 == false){
+                    this.rockY(3, 2);
+                    this.blue.setVisible(true);
+                    this.inputArr[1] = 3;
+                    this.inputNum2 = true;
+                    this.inputTotal += 1;
+                }
             });
             this.two4.on('pointerdown', (pointer) => {
-                this.rockY(4, 2);
-                this.blue.setVisible(true);
-                this.inputArr[1] = 4;
+                if(this.inputNum2 == false){
+                    this.rockY(4, 2);
+                    this.blue.setVisible(true);
+                    this.inputArr[1] = 4;
+                    this.inputNum2 = true;
+                    this.inputTotal += 1;
+                }
             });
             this.two5.on('pointerdown', (pointer) => {
-                this.rockY(5, 2);
-                this.blue.setVisible(true);
-                this.inputArr[1] = 5;
+                if(this.inputNum2 == false){
+                    this.rockY(5, 2);
+                    this.blue.setVisible(true);
+                    this.inputArr[1] = 5;
+                    this.inputNum2 = true;
+                    this.inputTotal += 1;
+                }
             });
             this.two6.on('pointerdown', (pointer) => {
-                this.rockY(6, 2);
-                this.blue.setVisible(true);
-                this.inputArr[1] = 6;
+                if(this.inputNum2 == false){
+                    this.rockY(6, 2);
+                    this.blue.setVisible(true);
+                    this.inputArr[1] = 6;
+                    this.inputNum2 = true;
+                    this.inputTotal += 1;
+                }
             });
         }
 
         if(this.inputArr[2] == 0){
             // row3
             this.three1.on('pointerdown', (pointer) => {
-                this.rockY(1, 3);
-                this.cyan.setVisible(true);
-                this.inputArr[2] = 1;
+                if(this.inputNum3 == false){
+                    this.rockY(1, 3);
+                    this.cyan.setVisible(true);
+                    this.inputArr[2] = 1;
+                    this.inputNum3 = true;
+                    this.inputTotal += 1;
+                }
             });
             this.three2.on('pointerdown', (pointer) => {
-                this.rockY(2, 3);
-                this.cyan.setVisible(true);
-                this.inputArr[2] = 2;
+                if(this.inputNum3 == false){
+                    this.rockY(2, 3);
+                    this.cyan.setVisible(true);
+                    this.inputArr[2] = 2;
+                    this.inputNum3 = true;
+                    this.inputTotal += 1;
+                }
             });
             this.three3.on('pointerdown', (pointer) => {
-                this.rockY(3, 3);
-                this.cyan.setVisible(true);
-                this.inputArr[2] = 3;
+                if(this.inputNum3 == false){
+                    this.rockY(3, 3);
+                    this.cyan.setVisible(true);
+                    this.inputArr[2] = 3;
+                    this.inputNum3 = true;
+                    this.inputTotal += 1;
+                }
             });
             this.three4.on('pointerdown', (pointer) => {
-                this.rockY(4, 3);
-                this.cyan.setVisible(true);
-                this.inputArr[2] = 4;
+                if(this.inputNum3 == false){
+                    this.rockY(4, 3);
+                    this.cyan.setVisible(true);
+                    this.inputArr[2] = 4;
+                    this.inputNum3 = true;
+                    this.inputTotal += 1;
+                }
             });
             this.three5.on('pointerdown', (pointer) => {
-                this.rockY(5, 3);
-                this.cyan.setVisible(true);
-                this.inputArr[2] = 5;
+                if(this.inputNum3 == false){
+                    this.rockY(5, 3);
+                    this.cyan.setVisible(true);
+                    this.inputArr[2] = 5;
+                    this.inputNum3 = true;
+                    this.inputTotal += 1;
+                }
             });
             this.three6.on('pointerdown', (pointer) => {
-                this.rockY(6, 3);
-                this.cyan.setVisible(true);
-                this.inputArr[2] = 6;
+                if(this.inputNum3 == false){
+                    this.rockY(6, 3);
+                    this.cyan.setVisible(true);
+                    this.inputArr[2] = 6;
+                    this.inputNum3 = true;
+                    this.inputTotal += 1;
+                }
             });
         }
 
         if(this.inputArr[3] == 0){
             // row4
             this.four1.on('pointerdown', (pointer) => {
-                this.rockY(1, 4);
-                this.green.setVisible(true);
-                this.inputArr[3] = 1;
+                if(this.inputNum4 == false){
+                    this.rockY(1, 4);
+                    this.green.setVisible(true);
+                    this.inputArr[3] = 1;
+                    this.inputNum4 = true;
+                    this.inputTotal += 1;
+                }
             });
             this.four2.on('pointerdown', (pointer) => {
-                this.rockY(2, 4);
-                this.green.setVisible(true);
-                this.inputArr[3] = 2;
+                if(this.inputNum4 == false){
+                    this.rockY(2, 4);
+                    this.green.setVisible(true);
+                    this.inputArr[3] = 2;
+                    this.inputNum4 = true;
+                    this.inputTotal += 1;
+                }
             });
             this.four3.on('pointerdown', (pointer) => {
-                this.rockY(3, 4);
-                this.green.setVisible(true);
-                this.inputArr[3] = 3;
+                if(this.inputNum4 == false){
+                    this.rockY(3, 4);
+                    this.green.setVisible(true);
+                    this.inputArr[3] = 3;
+                    this.inputNum4 = true;
+                    this.inputTotal += 1;
+                }
             });
             this.four4.on('pointerdown', (pointer) => {
-                this.rockY(4, 4);
-                this.green.setVisible(true);
-                this.inputArr[3] = 4;
+                if(this.inputNum4 == false){
+                    this.rockY(4, 4);
+                    this.green.setVisible(true);
+                    this.inputArr[3] = 4;
+                    this.inputNum4 = true;
+                    this.inputTotal += 1;
+                }
             });
             this.four5.on('pointerdown', (pointer) => {
-                this.rockY(5, 4);
-                this.green.setVisible(true);
-                this.inputArr[3] = 5;
+                if(this.inputNum4 == false){
+                    this.rockY(5, 4);
+                    this.green.setVisible(true);
+                    this.inputArr[3] = 5;
+                    this.inputNum4 = true;
+                    this.inputTotal += 1;
+                }
             });
             this.four6.on('pointerdown', (pointer) => {
-                this.rockY(6, 4);
-                this.green.setVisible(true);
-                this.inputArr[3] = 6;
+                if(this.inputNum4 == false){
+                    this.rockY(6, 4);
+                    this.green.setVisible(true);
+                    this.inputArr[3] = 6;
+                    this.inputNum4 = true;
+                    this.inputTotal += 1;
+                };
             });
         }
 
         if(this.inputArr[4] == 0){
             // row5
             this.five1.on('pointerdown', (pointer) => {
-                this.rockY(1, 5);
-                this.orange.setVisible(true);
-                this.inputArr[4] = 1;
+                if(this.inputNum5 == false){
+                    this.rockY(1, 5);
+                    this.orange.setVisible(true);
+                    this.inputArr[4] = 1;
+                    this.inputNum5 = true;
+                    this.inputTotal += 1;
+                }
             });
             this.five2.on('pointerdown', (pointer) => {
-                this.rockY(2, 5);
-                this.orange.setVisible(true);
-                this.inputArr[4] = 2;
+                if(this.inputNum5 == false){
+                    this.rockY(2, 5);
+                    this.orange.setVisible(true);
+                    this.inputArr[4] = 2;
+                    this.inputNum5 = true;
+                    this.inputTotal += 1;
+                }
             });
             this.five3.on('pointerdown', (pointer) => {
-                this.rockY(3, 5);
-                this.orange.setVisible(true);
-                this.inputArr[4] = 3;
+                if(this.inputNum5 == false){
+                    this.rockY(3, 5);
+                    this.orange.setVisible(true);
+                    this.inputArr[4] = 3;
+                    this.inputNum5 = true;
+                    this.inputTotal += 1;
+                }
             });
             this.five4.on('pointerdown', (pointer) => {
-                this.rockY(4, 5);
-                this.orange.setVisible(true);
-                this.inputArr[4] = 4;
+                if(this.inputNum5 == false){
+                    this.rockY(4, 5);
+                    this.orange.setVisible(true);
+                    this.inputArr[4] = 4;
+                    this.inputNum5 = true;
+                    this.inputTotal += 1;
+                }
             });
             this.five5.on('pointerdown', (pointer) => {
-                this.rockY(5, 5);
-                this.orange.setVisible(true);
-                this.inputArr[4] = 5;
+                if(this.inputNum5 == false){
+                    this.rockY(5, 5);
+                    this.orange.setVisible(true);
+                    this.inputArr[4] = 5;
+                    this.inputNum5 = true;
+                    this.inputTotal += 1;
+                }
             });
             this.five6.on('pointerdown', (pointer) => {
-                this.rockY(6, 5);
-                this.orange.setVisible(true);
-                this.inputArr[4] = 6;
+                if(this.inputNum5 == false){
+                    this.rockY(6, 5);
+                    this.orange.setVisible(true);
+                    this.inputArr[4] = 6;
+                    this.inputNum5 = true;
+                    this.inputTotal += 1;
+                }
             });
         }
 
         if(this.inputArr[5] == 0){
             // row6
             this.six1.on('pointerdown', (pointer) => {
-                this.rockY(1, 6);
-                this.red.setVisible(true);
-                this.inputArr[5] = 1;
+                if(this.inputNum6 == false){
+                    this.rockY(1, 6);
+                    this.red.setVisible(true);
+                    this.inputArr[5] = 1;
+                    this.inputNum6 = true;
+                    this.inputTotal += 1;
+                    this.showQueenTimer = 1;
+                }
             });
             this.six2.on('pointerdown', (pointer) => {
-                this.rockY(2, 6);
-                this.red.setVisible(true);
-                this.inputArr[5] = 2;
+                if(this.inputNum6 == false){
+                    this.rockY(2, 6);
+                    this.red.setVisible(true);
+                    this.inputArr[5] = 2;
+                    this.inputNum6 = true;
+                    this.inputTotal += 1;
+                    this.showQueenTimer = 1;
+                }
             });
             this.six3.on('pointerdown', (pointer) => {
-                this.rockY(3, 6);
-                this.red.setVisible(true);
-                this.inputArr[5] = 3;
+                if(this.inputNum6 == false){
+                    this.rockY(3, 6);
+                    this.red.setVisible(true);
+                    this.inputArr[5] = 3;
+                    this.inputNum6 = true;
+                    this.inputTotal += 1;
+                    this.showQueenTimer = 1;
+                }
             });
             this.six4.on('pointerdown', (pointer) => {
-                this.rockY(4, 6);
-                this.red.setVisible(true);
-                this.inputArr[5] = 4;
+                if(this.inputNum6 == false){
+                    this.rockY(4, 6);
+                    this.red.setVisible(true);
+                    this.inputArr[5] = 4;
+                    this.inputNum6 = true;
+                    this.inputTotal += 1;
+                    this.showQueenTimer = 1;
+                }
             });
             this.six5.on('pointerdown', (pointer) => {
-                this.rockY(5, 6);
-                this.red.setVisible(true);
-                this.inputArr[5] = 5;
+                if(this.inputNum6 == false){
+                    this.rockY(5, 6);
+                    this.red.setVisible(true);
+                    this.inputArr[5] = 5;
+                    this.inputNum6 = true;
+                    this.inputTotal += 1;
+                    this.showQueenTimer = 1;
+                }
             });
             this.six6.on('pointerdown', (pointer) => {
-                this.rockY(6, 6);
-                this.red.setVisible(true);
-                this.inputArr[5] = 6;
-                console.log(this.inputArr)
+                if(this.inputNum6 == false){
+                    this.rockY(6, 6);
+                    this.red.setVisible(true);
+                    this.inputArr[5] = 6;
+                    this.inputNum6 = true;
+                    this.inputTotal += 1;
+                    this.showQueenTimer = 1;
+                }
             });
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // show rocks timer
+        if(this.showQueenTimer > 0 && this.showQueenTimer < 75) {
+            this.showQueenTimer += 1;
+        } 
+        else if(this.showQueenTimer >= 75){
+            this.showQueenTimer = 0;
+            this.queen.interText.setVisible(false);
+        }
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // check is button order is correct
+        if(this.inputTotal == 6 && this.showQueenTimer == 0){
+            this.check1 = this.checkQueens(1);
+            this.check2 = this.checkQueens(2);
+            this.check3 = this.checkQueens(3);
+            this.check4 = this.checkQueens(4);
+
+            // check if 1 || 2|| 3|| 4 return true
+            if(this.check1 == true || this.check2 == true || this.check3 == true || this.check4 == true){
+                // move on to next level
+                this.queen.interText = this.add.text(350, 550, 'You took the chakra stones.');
+                this.queen.interText.setFontSize(50);
+                this.showQueenTimer = 1;
+
+                weights = 1;
+                this.boardOn(false);
+                this.state = false;
+
+                this.purple.setVisible(false);
+                this.blue.setVisible(false);
+                this.cyan.setVisible(false);
+                this.green.setVisible(false);
+                this.orange.setVisible(false);
+                this.red.setVisible(false);
+            }
+            else{
+                // reset
+                this.queen.interText = this.add.text(350, 550, 'The pattern didnt work.');
+                this.queen.interText.setFontSize(50);
+                this.showQueenTimer = 1;
+
+                this.purple.setVisible(false);
+                this.blue.setVisible(false);
+                this.cyan.setVisible(false);
+                this.green.setVisible(false);
+                this.orange.setVisible(false);
+                this.red.setVisible(false);
+
+                this.inputArr = [0, 0, 0, 0, 0, 0];
+                this.inputTotal = 0;
+                this.inputNum1 = false;
+                this.inputNum2 = false;
+                this.inputNum3 = false;
+                this.inputNum4 = false;
+                this.inputNum5 = false;
+                this.inputNum6 = false;
+            }
+        }
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // end states
-        if(windowClean == 1 && this.textTimerQueen == 0){
+        if(windowClean == 1 && weights == 0){
             this.lightNorth.setVisible(true);
             this.state = true;
+        }
+        if(weights == 1){
+            this.state = false;
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -588,7 +850,7 @@ class LookoutNorth extends Phaser.Scene {
         }
     }
 
-    setRockPosition(x){
+    rockX(x){
         if(x == 1){
             // purple
             this.setX = 460;
@@ -615,38 +877,38 @@ class LookoutNorth extends Phaser.Scene {
         if(y == 1){
             // column 1
             this.setY = 135;
-            this.setX = this.setRockPosition(x);
-            this.purple = this.add.image(this.setX, this.setY, 'purple');
+            this.setX = this.rockX(x);
+            this.purple.setPosition(this.setX, this.setY);
             this.purple.setDisplaySize(60, 60);
         } else if (y == 2){
             // column 2
             this.setY = 205;
-            this.setX = this.setRockPosition(x);
-            this.blue = this.add.image(this.setX, this.setY, 'blue');
+            this.setX = this.rockX(x);
+            this.blue.setPosition(this.setX, this.setY);
             this.blue.setDisplaySize(60, 60);
         } else if (y == 3){
             // column 3
             this.setY = 278;
-            this.setX = this.setRockPosition(x);
-            this.cyan = this.add.image(this.setX, this.setY, 'cyan');
+            this.setX = this.rockX(x);
+            this.cyan.setPosition(this.setX, this.setY);
             this.cyan.setDisplaySize(60, 60);
         } else if (y == 4){
             // column 4
             this.setY = 355;
-            this.setX = this.setRockPosition(x);
-            this.green = this.add.image(this.setX, this.setY, 'green');
+            this.setX = this.rockX(x);
+            this.green.setPosition(this.setX, this.setY);
             this.green.setDisplaySize(60, 60);
         } else if (y == 5){
             // column 5
             this.setY = 429;
-            this.setX = this.setRockPosition(x);
-            this.orange = this.add.image(this.setX, this.setY, 'orange');
+            this.setX = this.rockX(x);
+            this.orange.setPosition(this.setX, this.setY);
             this.orange.setDisplaySize(60, 60);
         } else if (y == 6){
             // column 6
             this.setY = 500;
-            this.setX = this.setRockPosition(x);
-            this.red = this.add.image(this.setX, this.setY, 'red');
+            this.setX = this.rockX(x);
+            this.red.setPosition(this.setX, this.setY);
             this.red.setDisplaySize(60, 60);
         }
         return this.setY;
@@ -654,6 +916,9 @@ class LookoutNorth extends Phaser.Scene {
     
     boardOn(state){
         if(state == true){
+            // hide board
+            this.queen.setVisible(false);
+
             // row 1
             this.one1.setVisible(true);
             this.one2.setVisible(true);
@@ -702,7 +967,12 @@ class LookoutNorth extends Phaser.Scene {
             this.six4.setVisible(true);
             this.six5.setVisible(true);
             this.six6.setVisible(true);
-        } else if(state == false){
+        } 
+        else if(state == false)
+        {
+            // show board
+            this.queen.setVisible(true);
+            
             // row 1
             this.one1.setVisible(false);
             this.one2.setVisible(false);
@@ -754,7 +1024,51 @@ class LookoutNorth extends Phaser.Scene {
         }
     }
 
-    nQueensCheck(){
+    checkQueens(arrVal){
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // check is button order is correct
+        if(arrVal == 1){
+            for (var i = 0; i < 6; i++) {
+                if((this.inputArr[i] != this.correctArr1[i])){
+                    // reset
+                    console.log("1: ", this.inputArr);
+                    return false;
+                }
+            }
+            return true;
+        }
 
+        if(arrVal == 2){
+            for (var i = 0; i < 6; i++) {
+                if((this.inputArr[i] != this.correctArr2[i])){
+                    // reset
+                    console.log(this.inputArr);
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        if(arrVal == 3){
+            for (var i = 0; i < 6; i++) {
+                if((this.inputArr[i] != this.correctArr3[i])){
+                    // reset
+                    console.log(this.inputArr);
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        if(arrVal == 4){
+            for (var i = 0; i < 6; i++) {
+                if((this.inputArr[i] != this.correctArr4[i])){
+                    // reset
+                    console.log(this.inputArr);
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 }

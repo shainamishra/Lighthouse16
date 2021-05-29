@@ -40,3 +40,4 @@ let windowClean = 0;
 let rock = 0;
 let rope = 0;
 let hatch = 0;
+let weights = 0;
