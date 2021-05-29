@@ -1,21 +1,25 @@
-class LookoutEast extends Phaser.Scene {
+class LookoutNorth extends Phaser.Scene {
     constructor() {
-        super("lookoutEast");
+        super("lookoutNorth");
     }
 
     preload() {
         // images
-        this.load.image('lookoutEast', './assets/puzzle4/window_dirty.png');
-        this.load.image('clean', './assets/puzzle4/overlays/window_clean.png');
-        this.load.image('citrine_window', './assets/puzzle4/overlays/citrine_window.png');
+        this.load.image('lookoutNorth', './assets/puzzle4/starchart.png');
+        this.load.image('pendulum_top', './assets/puzzle4/overlays/pendulum_top.png');
+        this.load.image('pendulum_rope', './assets/puzzle4/overlays/pendulum_rope.png');
+        this.load.image('pendulum_rock', './assets/puzzle4/overlays/pendulum_rock.png');
+        this.load.image('pendulum', './assets/puzzle4/overlays/pendulum.png');
+        this.load.image('lightNorth', './assets/puzzle4/overlays/light_over_chart.png');
 
-        this.load.image('hitbox', './assets/HitBox2.png');
+        this.load.image('hitbox', './assets/HitBox.png');
     }
 
     create() {
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // place tile sprite
-        this.cellarnorth = this.add.tileSprite(0, 0, 1280, 720, 'lookoutEast').setOrigin(0, 0); 
+        this.cellarnorth = this.add.tileSprite(0, 0, 1280, 720, 'lookoutNorth').setOrigin(0, 0); 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
@@ -24,35 +28,6 @@ class LookoutEast extends Phaser.Scene {
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-        
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // objects
-        this.windowHit = this.add.sprite(625, 260, 'hitbox');
-        this.windowHit.setDisplaySize(475, 475);
-        this.windowHit.setInteractive({
-            useHandCursor: true
-        });
-        this.windowHit.interText = this.add.text(350, 550, 'The window is dirty.');
-        this.windowHit.interText.setFontSize(50);
-        this.windowHit.interText.setVisible(false);
-        this.windowHit.setVisible(true);
-
-        // overlays
-        // clean window
-        this.clean = this.add.image(640, 360, 'clean');
-        this.clean.setDisplaySize(1280, 720);
-        this.clean.interText = this.add.text(350, 550, 'You cleaned the window.');
-        this.clean.interText.setFontSize(50);
-        this.clean.interText.setVisible(false);
-        this.clean.setVisible(false);
-
-        // citrine window
-        this.rock = this.add.image(640, 360, 'citrine_window');
-        this.rock.setDisplaySize(1280, 720);
-        this.rock.interText = this.add.text(250, 550, 'You took the piece of citrine.');
-        this.rock.interText.setFontSize(50);
-        this.rock.interText.setVisible(false);
-        this.rock.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // inventory box set up
@@ -63,13 +38,47 @@ class LookoutEast extends Phaser.Scene {
         });
 
         prevScene = this.scene.key;
+        
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // objects
+        // pendulum top
+        this.top = this.add.image(640, 360, 'pendulum_top');
+        this.top.setDisplaySize(1280, 720);
+        this.top.setVisible(true);
+
+        // pendulum rope
+        this.penRope = this.add.image(640, 360, 'pendulum_rope');
+        this.penRope.setDisplaySize(1280, 720);
+        this.penRope.setVisible(false);
+
+        // pendulum rock
+        this.penRock = this.add.image(640, 360, 'pendulum_rock');
+        this.penRock.setDisplaySize(1280, 720);
+        this.penRock.setVisible(false);
+        // pendulum rock hit box
+        this.penRockHit = this.add.image(640, 410, 'hitbox');
+        this.penRockHit.setDisplaySize(35, 80);
+        this.penRockHit.setInteractive({
+            useHandCursor: true
+        });
+        this.penRockHit.setVisible(false);
+
+        // pendulum
+        this.pendulum = this.add.image(640, 360, 'pendulum');
+        this.pendulum.setDisplaySize(1280, 720);
+        this.pendulum.setVisible(false);
+
+        // light
+        this.lightNorth = this.add.image(640, 360, 'lightNorth');
+        this.lightNorth.setDisplaySize(1280, 720);
+        this.lightNorth.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // hot bar 
         this.hotbar = this.add.image(640, 350, 'hotbar');
         this.hotbar.setDisplaySize(1280, 720);
         this.hotbar.setVisible(true);
-
+ 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // items
         this.ragHot= this.add.sprite(460, 660, 'ragHot');
@@ -87,7 +96,6 @@ class LookoutEast extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
         this.hotOn = true;
-        this.textTimer = 0;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -109,66 +117,38 @@ class LookoutEast extends Phaser.Scene {
         });
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // window
-        if(this.textTimer == 0){
-            this.windowHit.on('pointerdown', (pointer) => {
-                if(rag == 0) {
-                    this.windowHit.interText.setVisible(true);
-                    this.textTimer = 1;
-                } 
-                else if (rag == 1 && rock == 0 && windowClean == 0) {
-                    this.rock.setVisible(true);
-                    this.clean.setVisible(true);
-                    this.clean.interText.setVisible(true);
-                    this.textTimer = 1;
-                    windowClean = 1;
-                }
-                if (rag == 1 && windowClean == 1 && this.textTimer < 1){
-                    this.rock.setVisible(false);
-                    this.clean.setVisible(true);
-                    this.clean.interText.setVisible(false);
-                    this.rock.interText.setVisible(true);
-                    this.textTimer = 1;
-                    rock = 1;
-                }
-            });
-        }
+        // pendulum anim
+        this.penRockHit.on('pointerdown', (pointer) => {
+            console.log("pendulum")
+            // start animation
+        });
 
-        // text timers
-        if(this.textTimer > 0 && this.textTimer < 150) {
-            this.textTimer += 1;
-        } 
-        else if(this.textTimer >= 150){
-            // hide text
-            this.windowHit.interText.setVisible(false);
-            this.clean.interText.setVisible(false);
-            this.rock.interText.setVisible(false);
-            this.textTimer = 0;
-        }
 
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // end states
-        if (rag == 1 && windowClean == 1 && rock == 0) {
-            this.rock.setVisible(true);
-            this.clean.setVisible(true);
+        if(windowClean == 1){
+            this.lightNorth.setVisible(true);
         }
-        
-        if (windowClean == 1 & rock == 1) {
-            this.rock.setVisible(false);
-            this.clean.setVisible(true);
+        if(rope == 1){
+            this.penRope.setVisible(true);
         }
-
+        if(rock == 1 && rope == 1){
+            this.penRock.setVisible(true);
+            this.penRockHit.setVisible(true);
+        }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // scene change on keypress
         if(Phaser.Input.Keyboard.JustDown(keyA)){
-            this.scene.start("lookoutNorth");
+            this.scene.start("lookoutWest");
         };
         if(Phaser.Input.Keyboard.JustDown(keyD)){
-            this.scene.start("lookoutSouth");
+            this.scene.start("lookoutEast");
         };
         if(Phaser.Input.Keyboard.JustDown(keyS)){
-            this.scene.start("lookoutWest");
+            this.scene.start("lookoutSouth");
+        };
+        if(Phaser.Input.Keyboard.JustDown(keySPACE)){
+            this.scene.start("spread5");
         };
     }
     

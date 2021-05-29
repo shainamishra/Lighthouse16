@@ -63,7 +63,7 @@ class LookoutWest extends Phaser.Scene {
         });
 
         // window light
-        this.light = this.add.image(640, 350, 'westLight');
+        this.light = this.add.image(640, 360, 'westLight');
         this.light.setDisplaySize(1280, 720);
         this.light.setVisible(false);
 
@@ -107,10 +107,10 @@ class LookoutWest extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
-        this.add.rectangle(0, 0, 10, game.config.height, 0x61282f).setOrigin(0, 0);
-        this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x61282f).setOrigin(0, 0);
-        this.add.rectangle(0, 0, game.config.width, 10, 0x61282f).setOrigin(0, 0);
-        this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x61282f).setOrigin(0, 0);
+        this.add.rectangle(0, 0, 10, game.config.height, 0x8a8a8a).setOrigin(0, 0);
+        this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x8a8a8a).setOrigin(0, 0);
+        this.add.rectangle(0, 0, game.config.width, 10, 0x8a8a8a).setOrigin(0, 0);
+        this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x8a8a8a).setOrigin(0, 0);
     }
     
     update() {
