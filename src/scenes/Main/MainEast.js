@@ -10,6 +10,8 @@ class MainEast extends Phaser.Scene {
         this.load.image('hitbox', './assets/HitBox2.png');
         this.load.image('drawer_hammer', './assets/puzzle3/overlays/drawerhammer.png');
         this.load.image('farpaint', './assets/puzzle3/overlays/framed painting.png');
+        this.load.image('painting', './assets/puzzle3/overlays/painting.png');
+        this.load.image('ripPainting', './assets/puzzle3/overlays/rippedPainting.png');
     }
 
     create() {
@@ -34,13 +36,15 @@ class MainEast extends Phaser.Scene {
         });
 
         prevScene = this.scene.key;
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // hot bar
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
-        // lights off CN
-        this.painting = this.add.sprite(650, 350, 'farpaint');
         this.drawer = this.add.sprite(650,350,'drawer');
 
+        // hammer hit
         this.hammer = this.add.sprite(500, 450, 'hitbox');
         this.hammer.setDisplaySize(100, 100);
         this.hammer.setInteractive({
@@ -49,9 +53,23 @@ class MainEast extends Phaser.Scene {
         this.hammer.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'You picked up the hammer');
         this.hammer.interText.setFontSize(50);
         this.hammer.interText.setVisible(false);
-
-
+        // hammer image
         this.hammerIm = this.add.sprite(650,350, 'drawer_hammer');
+
+        // frame overlay
+        this.framedPainting = this.add.sprite(650, 350, 'farpaint');
+        // full painting
+        this.painting = this.add.sprite(650, 350, 'painting');
+        this.painting.setVisible(false);
+        // ripped painting
+        this.ripPainting = this.add.sprite(650, 350, 'ripPainting');
+        this.ripPainting.setVisible(false);
+        // painting hit
+        this.paintingHit = this.add.sprite(650, 170, 'hitbox');
+        this.paintingHit.setDisplaySize(860, 400);
+        this.paintingHit.setInteractive({
+            useHandCursor: true
+        });
     
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
@@ -71,9 +89,9 @@ class MainEast extends Phaser.Scene {
         this.invent.on('pointerdown', (pointer) => {
             this.scene.switch("cardBox");
         });
-
-
-        // end states
+    
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // click on hammer
         if(this.textTimerHammer == 0){
             this.hammer.on('pointerdown', (pointer) => {
                 this.hammer.interText.setVisible(true);
@@ -81,6 +99,34 @@ class MainEast extends Phaser.Scene {
                 hammerGot = 1;
             });
         }
+/*
+else if(this.textTimerDock == 0 && scopeGot > 0){
+            this.pillars.interText = this.add.text(320, 70, 'There are two large stone \n pillars standing out in the sea');
+            this.pillars.interText.setFontSize(50);
+            this.pillars.interText.setVisible(false);
+            this.pillars.on('pointerdown', (pointer) => {
+                this.fishingpole.interText.setVisible(false);
+                this.pillars.interText.setVisible(true);
+                this.rocks.setVisible(true);
+                this.textTimerDock = 1;
+                this.hotOn = false;
+            });
+            */
+        if(this.textTimerHammer == 0){
+            this.paintingHit.on('pointerdown', (pointer) => {
+                this.hammer.interText.setVisible(false);
+                this.hammer.setVisible(false);
+                this.textTimerHammer = 1;
+
+                if(knifeGot == 0){
+                    this.painting.setVisible(true);
+                }
+                if(knifeGot == 1){
+                    this.ripPainting.setVisible(true);
+                }
+            });
+        }
+
         // text on screen
         if(this.textTimerHammer > 0 && this.textTimerHammer < 150) {
             this.textTimerHammer += 1;
@@ -88,9 +134,16 @@ class MainEast extends Phaser.Scene {
         else if(this.textTimerHammer >= 150){
             // hide text
             this.hammer.interText.setVisible(false);
+            this.painting.setVisible(false);
+            this.ripPainting.setVisible(false);
             this.textTimerHammer = 0;
+
+            if(hammerGot == 0){
+                this.hammerIm.setVisible(true);
+            }
         }
         
+        // end state
         if(hammerGot == 1){
             this.hammerIm.setVisible(false);
         }
