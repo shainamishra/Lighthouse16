@@ -8,6 +8,7 @@ class MainSouth extends Phaser.Scene {
         this.load.image('mainSouth', './assets/puzzle3/overlays/base.png');
         this.load.image('southinitial', './assets/puzzle3/overlays/skull and hatch.png');
         this.load.image('hitbox', './assets/HitBox2.png');
+        this.load.image('broke', './assets/puzzle3/overlays/broken skull.png');
     }
 
     create() {
@@ -46,6 +47,9 @@ class MainSouth extends Phaser.Scene {
         this.skull.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 100, 'A...fake skull hangs here?');
         this.skull.interText.setFontSize(50);
         this.skull.interText.setVisible(false);
+
+        this.smashed = this.add.sprite(620,375, 'broke');
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
         this.textTimerSkull = 0;
@@ -69,20 +73,37 @@ class MainSouth extends Phaser.Scene {
         // end states
         // end states
         if(this.textTimerSkull == 0){
+            if(hammerGot == 1){
+                this.skull.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 100, 'You smashed the jaw\n with the hammer');
+                this.skull.interText.setFontSize(50);
+                this.skull.interText.setVisible(false);
+            }
+
             this.skull.on('pointerdown', (pointer) => {
-                this.skull.interText.setVisible(true);
-                this.textTimerSkull = 1;
+            this.skull.interText.setVisible(true);
+            this.textTimerSkull = 1;
             });
+        
         }
 
         // text on screen
         if(this.textTimerSkull > 0 && this.textTimerSkull < 150) {
             this.textTimerSkull += 1;
+            if(hammerGot ==1){
+                skullsmash =1;
+            }
         } 
         else if(this.textTimerSkull >= 150){
             // hide text
             this.skull.interText.setVisible(false);
             this.textTimerSkull = 0;
+        }
+
+        if(skullsmash == 1){
+            this.smashed.setVisible(true);
+        }
+        else{
+            this.smashed.setVisible(false);
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
