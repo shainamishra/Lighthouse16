@@ -67,9 +67,7 @@ class CellarEast extends Phaser.Scene {
         this.red.setInteractive({
             useHandCursor: true
         });
-        this.red.interText = this.add.text(80, 50, 'blood');
-        this.red.interText.setFontSize(50);
-        this.red.interText.setVisible(false); 
+        this.red.setVisible(true); 
 
         // orange
         this.orange = this.add.sprite(365, 215, 'hitbox');
@@ -78,9 +76,6 @@ class CellarEast extends Phaser.Scene {
             useHandCursor: true
         });
         this.orange.setVisible(true); 
-        this.orange.interText = this.add.text(80, 100, 'fruity');
-        this.orange.interText.setFontSize(50);
-        this.orange.interText.setVisible(false); 
 
         // yellow
         this.yellow = this.add.sprite(475, 215, 'hitbox');
@@ -88,10 +83,7 @@ class CellarEast extends Phaser.Scene {
         this.yellow.setInteractive({
             useHandCursor: true
         });
-        this.yellow.setVisible(true); 
-        this.yellow.interText = this.add.text(80, 150, 'S U N L I G H T');
-        this.yellow.interText.setFontSize(50);
-        this.yellow.interText.setVisible(false); 
+        this.yellow.setVisible(true);
 
         // green
         this.green = this.add.sprite(582, 215, 'hitbox');
@@ -100,9 +92,6 @@ class CellarEast extends Phaser.Scene {
             useHandCursor: true
         });
         this.green.setVisible(true); 
-        this.green.interText = this.add.text(80, 200, 'LIME');
-        this.green.interText.setFontSize(50);
-        this.green.interText.setVisible(false); 
 
         // cyan
         this.cyan = this.add.sprite(698, 215, 'hitbox');
@@ -110,10 +99,7 @@ class CellarEast extends Phaser.Scene {
         this.cyan.setInteractive({
             useHandCursor: true
         });
-        this.cyan.setVisible(true); 
-        this.cyan.interText = this.add.text(80, 250, 'sus');
-        this.cyan.interText.setFontSize(50);
-        this.cyan.interText.setVisible(false); 
+        this.cyan.setVisible(true);
 
         // blue
         this.blue = this.add.sprite(807, 215, 'hitbox');
@@ -122,9 +108,6 @@ class CellarEast extends Phaser.Scene {
             useHandCursor: true
         });
         this.blue.setVisible(true); 
-        this.blue.interText = this.add.text(80, 300, 'doesnt occur naturally');
-        this.blue.interText.setFontSize(50);
-        this.blue.interText.setVisible(false); 
 
         // purple
         this.purple = this.add.sprite(917, 215, 'hitbox');
@@ -133,9 +116,6 @@ class CellarEast extends Phaser.Scene {
             useHandCursor: true
         });
         this.purple.setVisible(true); 
-        this.purple.interText = this.add.text(80, 350, 'eggplant');
-        this.purple.interText.setFontSize(50);
-        this.purple.interText.setVisible(false); 
 
         // pink
         this.pink = this.add.sprite(1029, 215, 'hitbox');
@@ -144,9 +124,6 @@ class CellarEast extends Phaser.Scene {
             useHandCursor: true
         });
         this.pink.setVisible(true); 
-        this.pink.interText = this.add.text(80, 400, 'womr on a string');
-        this.pink.interText.setFontSize(50);
-        this.pink.interText.setVisible(false); 
 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -246,7 +223,6 @@ class CellarEast extends Phaser.Scene {
         if(this.textTimerButton == 0){
             // red
             this.red.on('pointerdown', (pointer) => {
-                this.red.interText.setVisible(true);
                 this.redOn.setVisible(true);
                 this.hideButtons();
                 this.textTimerButton = 1;
@@ -260,7 +236,6 @@ class CellarEast extends Phaser.Scene {
 
             // orange
             this.orange.on('pointerdown', (pointer) => {
-                this.orange.interText.setVisible(true);
                 this.orangeOn.setVisible(true);
                 this.hideButtons();
                 this.textTimerButton = 1;
@@ -274,7 +249,6 @@ class CellarEast extends Phaser.Scene {
 
             // yellow
             this.yellow.on('pointerdown', (pointer) => {
-                this.yellow.interText.setVisible(true);
                 this.yellowOn.setVisible(true);
                 this.hideButtons();
                 this.textTimerButton = 1;
@@ -288,7 +262,6 @@ class CellarEast extends Phaser.Scene {
 
             // green
             this.green.on('pointerdown', (pointer) => {
-                this.green.interText.setVisible(true);
                 this.greenOn.setVisible(true);
                 this.hideButtons();
                 this.textTimerButton = 1;
@@ -302,7 +275,6 @@ class CellarEast extends Phaser.Scene {
 
             // cyan
             this.cyan.on('pointerdown', (pointer) => {
-                this.cyan.interText.setVisible(true);
                 this.cyanOn.setVisible(true);
                 this.hideButtons();
                 this.textTimerButton = 1;
@@ -316,7 +288,6 @@ class CellarEast extends Phaser.Scene {
 
             // blue
             this.blue.on('pointerdown', (pointer) => {
-                this.blue.interText.setVisible(true);
                 this.blueOn.setVisible(true);
                 this.hideButtons();
                 this.textTimerButton = 1;
@@ -330,7 +301,6 @@ class CellarEast extends Phaser.Scene {
 
             // purple
             this.purple.on('pointerdown', (pointer) => {
-                this.purple.interText.setVisible(true);
                 this.purpleOn.setVisible(true);
                 this.hideButtons();
                 this.textTimerButton = 1;
@@ -344,7 +314,6 @@ class CellarEast extends Phaser.Scene {
 
             // pink
             this.pink.on('pointerdown', (pointer) => {
-                this.pink.interText.setVisible(true);
                 this.pinkOn.setVisible(true);
                 this.hideButtons();
                 this.textTimerButton = 1;
@@ -380,16 +349,6 @@ class CellarEast extends Phaser.Scene {
             this.textTimerButton += 1;
         } 
         else if(this.textTimerButton >= 75){
-            // hide all text text
-            this.red.interText.setVisible(false);
-            this.orange.interText.setVisible(false);
-            this.yellow.interText.setVisible(false);
-            this.green.interText.setVisible(false);
-            this.cyan.interText.setVisible(false);
-            this.blue.interText.setVisible(false);
-            this.purple.interText.setVisible(false);
-            this.pink.interText.setVisible(false);
-
             // revert all buttons back to normal
             this.red.setVisible(true); 
             this.orange.setVisible(true); 
