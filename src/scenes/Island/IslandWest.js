@@ -135,7 +135,7 @@ class IslandWest extends Phaser.Scene {
         this.boltcuttersHot = this.add.sprite(755, 659, 'boltcuttersHot');
         this.boltcuttersHot.setDisplaySize(70, 70);
         this.boltcuttersHot.setInteractive({
-            cursor: 'url(./assets/manDoorHandHookCarDoor.png), pointer' 
+            useHandCursor: true
         });
         this.boltcuttersHot.setVisible(false);
 

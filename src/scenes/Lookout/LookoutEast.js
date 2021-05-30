@@ -22,6 +22,10 @@ class LookoutEast extends Phaser.Scene {
         this.cellarnorth = this.add.tileSprite(0, 0, 1280, 720, 'lookoutEast').setOrigin(0, 0); 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // sfx
+        this.itemTake = this.sound.add('itemtake', {volume: 0.5});
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
@@ -134,7 +138,7 @@ class LookoutEast extends Phaser.Scene {
                     this.rock.interText.setVisible(true);
                     this.textTimer = 1;
                     rock = 1;
-                    this.sound.play("itemtake", {volume: 0.3});
+                    this.itemTake.play();
                 }
             });
         }

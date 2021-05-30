@@ -24,6 +24,10 @@ class LookoutWest extends Phaser.Scene {
         this.cellarnorth = this.add.tileSprite(0, 0, 1280, 720, 'lookoutWest').setOrigin(0, 0); 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // sfx
+        this.itemTake = this.sound.add('itemtake', {volume: 0.5});
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
@@ -132,7 +136,7 @@ class LookoutWest extends Phaser.Scene {
         // rag
         this.ragHit.on('pointerdown', (pointer) => {
             rag = 1;
-            this.sound.play("itemtake", {volume: 0.3});
+            this.itemTake.play();
             this.rag.setVisible(false);
             this.ragHit.interText.setVisible(true);
             this.textTimer = 1;
@@ -189,6 +193,9 @@ class LookoutWest extends Phaser.Scene {
         if(Phaser.Input.Keyboard.JustDown(keyS)){
             this.scene.start("lookoutEast");
         };
+
+        // whenever the level is done, do:
+        // this.sound.get('cellar_music').stop();
     }
     
     hotBarItems(on){

@@ -21,6 +21,10 @@ class IslandNorth extends Phaser.Scene {
         this.islandnorth = this.add.tileSprite(0, 0, 1280, 720, 'islandnorth').setOrigin(0, 0); 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // sfx
+        this.chain = this.sound.add('chain', {volume: 0.2});
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
@@ -170,7 +174,7 @@ class IslandNorth extends Phaser.Scene {
             }
             else if(boltGot == 1){
                 this.cellar.on('pointerdown', (pointer) => {
-                    this.sound.play('chain', {volume: 0.01});
+                    this.chain.play();
                     this.cellOpen.setVisible(true);
                     this.textTimerCell = 1;
                     this.cellerOpen = true;

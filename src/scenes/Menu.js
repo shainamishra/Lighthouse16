@@ -53,8 +53,7 @@ class Menu extends Phaser.Scene {
         // change scenes
         this.input.keyboard.on('keydown-SPACE', () => {
 			this.sound.play("CrashingWaves");
-            //this.scene.start("instructionScene"); 
-            this.scene.start("spread1"); 
+            this.scene.start("instructionScene"); 
 		});
     }
 }

@@ -15,13 +15,20 @@ class Spread4 extends Phaser.Scene {
         this.load.image('ragHot', './assets/puzzle4/items/rag.png');
         this.load.image('ropeHot', './assets/puzzle4/items/rope.png');
         this.load.image('citrineHot', './assets/puzzle4/items/citrine.png');
-
+        
+        // audio
+        this.load.audio('lookout_music', './assets/sfx/Musicbox.wav');
     }
 
     create() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // place tile sprite
         this.bg = this.add.tileSprite(0, 0, 1280, 720, 'bg4').setOrigin(0, 0); 
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // music
+        this.lookoutBGM = this.sound.add('lookout_music', {volume: 0.1, loop: true});
+        this.lookoutBGM.play();
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
@@ -88,10 +95,10 @@ class Spread4 extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
-        this.add.rectangle(0, 0, 10, game.config.height, 0x0c141c).setOrigin(0, 0);
-        this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x0c141c).setOrigin(0, 0);
-        this.add.rectangle(0, 0, game.config.width, 10, 0x0c141c).setOrigin(0, 0);
-        this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x0c141c).setOrigin(0, 0);
+        this.add.rectangle(0, 0, 10, game.config.height, 0x291745).setOrigin(0, 0);
+        this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x291745).setOrigin(0, 0);
+        this.add.rectangle(0, 0, game.config.width, 10, 0x291745).setOrigin(0, 0);
+        this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x291745).setOrigin(0, 0);
     }
 
     update() {

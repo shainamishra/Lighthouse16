@@ -225,6 +225,7 @@ class CellarSouth extends Phaser.Scene {
             this.door.setVisible(true);
             this.door.interText.setVisible(true); 
             if(Phaser.Input.Keyboard.JustDown(keySPACE)){
+                this.sound.get('cellar_music').stop();
                 this.scene.start("spread3");
             };
         }

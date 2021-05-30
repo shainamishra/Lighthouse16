@@ -30,6 +30,10 @@ class LookoutNorth extends Phaser.Scene {
         this.cellarnorth = this.add.tileSprite(0, 0, 1280, 720, 'lookoutNorth').setOrigin(0, 0); 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // sfx
+        this.itemTake = this.sound.add('itemtake', {volume: 0.5});
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
@@ -768,7 +772,7 @@ class LookoutNorth extends Phaser.Scene {
                 this.queen.interText = this.add.text(350, 550, 'You took the chakra stones.');
                 this.queen.interText.setFontSize(50);
                 this.showQueenTimer = 1;
-                this.sound.play("itemtake", {volume: 0.3});
+                this.itemTake.play();
 
                 weights = 1;
                 this.boardOn(false);
@@ -832,6 +836,7 @@ class LookoutNorth extends Phaser.Scene {
             this.scene.start("lookoutSouth");
         };
         if(Phaser.Input.Keyboard.JustDown(keySPACE)){
+            this.sound.get('lookout_music').stop();
             this.scene.start("spread5");
         };
     }
