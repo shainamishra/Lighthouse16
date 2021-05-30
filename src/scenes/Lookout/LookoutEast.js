@@ -9,7 +9,11 @@ class LookoutEast extends Phaser.Scene {
         this.load.image('clean', './assets/puzzle4/overlays/window_clean.png');
         this.load.image('citrine_window', './assets/puzzle4/overlays/citrine_window.png');
 
+        // hitbox
         this.load.image('hitbox', './assets/HitBox2.png');
+
+        // audio
+        this.load.audio('itemtake', './assets/sfx/ItemTake.wav');
     }
 
     create() {
@@ -130,6 +134,7 @@ class LookoutEast extends Phaser.Scene {
                     this.rock.interText.setVisible(true);
                     this.textTimer = 1;
                     rock = 1;
+                    this.sound.play("itemtake", {volume: 0.3});
                 }
             });
         }

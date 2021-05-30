@@ -11,7 +11,11 @@ class LookoutWest extends Phaser.Scene {
         this.load.image('scales', './assets/puzzle4/overlays/scales.png');
         this.load.image('westLight', './assets/puzzle4/overlays/blank_wall_light.png');
 
+        // hitbox
         this.load.image('hitbox', './assets/HitBox2.png');
+
+        // audio
+        this.load.audio('itemtake', './assets/sfx/ItemTake.wav');
     }
 
     create() {
@@ -128,6 +132,7 @@ class LookoutWest extends Phaser.Scene {
         // rag
         this.ragHit.on('pointerdown', (pointer) => {
             rag = 1;
+            this.sound.play("itemtake", {volume: 0.3});
             this.rag.setVisible(false);
             this.ragHit.interText.setVisible(true);
             this.textTimer = 1;

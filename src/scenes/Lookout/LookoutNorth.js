@@ -8,7 +8,7 @@ class LookoutNorth extends Phaser.Scene {
         this.load.image('lookoutNorth', './assets/puzzle4/nQueenTemp.png');
         this.load.image('lightNorth', './assets/puzzle4/overlays/light_over_chart.png');
 
-        //rocks
+        // rocks
         this.load.image('purple', './assets/puzzle4/items/purple_rock.png');
         this.load.image('blue', './assets/puzzle4/items/blue_rock.png');
         this.load.image('cyan', './assets/puzzle4/items/cyan_rock.png');
@@ -16,7 +16,11 @@ class LookoutNorth extends Phaser.Scene {
         this.load.image('orange', './assets/puzzle4/items/orange_rock.png');
         this.load.image('red', './assets/puzzle4/items/red_rock.png');
 
+        // hitbox
         this.load.image('hitbox', './assets/HitBox.png');
+
+        // audio
+        this.load.audio('itemtake', './assets/sfx/ItemTake.wav');
     }
 
     create() {
@@ -764,6 +768,7 @@ class LookoutNorth extends Phaser.Scene {
                 this.queen.interText = this.add.text(350, 550, 'You took the chakra stones.');
                 this.queen.interText.setFontSize(50);
                 this.showQueenTimer = 1;
+                this.sound.play("itemtake", {volume: 0.3});
 
                 weights = 1;
                 this.boardOn(false);
@@ -807,6 +812,11 @@ class LookoutNorth extends Phaser.Scene {
             this.state = true;
         }
         if(weights == 1){
+            this.queen.interText = this.add.text(350, 550, 'You took the chakra stones.');
+            this.queen.interText.setFontSize(50);
+            this.queen.interText.setVisible(false);
+
+            this.lightNorth.setVisible(true);
             this.state = false;
         }
 
@@ -1031,7 +1041,6 @@ class LookoutNorth extends Phaser.Scene {
             for (var i = 0; i < 6; i++) {
                 if((this.inputArr[i] != this.correctArr1[i])){
                     // reset
-                    console.log("1: ", this.inputArr);
                     return false;
                 }
             }
@@ -1042,7 +1051,6 @@ class LookoutNorth extends Phaser.Scene {
             for (var i = 0; i < 6; i++) {
                 if((this.inputArr[i] != this.correctArr2[i])){
                     // reset
-                    console.log(this.inputArr);
                     return false;
                 }
             }
@@ -1053,7 +1061,6 @@ class LookoutNorth extends Phaser.Scene {
             for (var i = 0; i < 6; i++) {
                 if((this.inputArr[i] != this.correctArr3[i])){
                     // reset
-                    console.log(this.inputArr);
                     return false;
                 }
             }
@@ -1064,7 +1071,6 @@ class LookoutNorth extends Phaser.Scene {
             for (var i = 0; i < 6; i++) {
                 if((this.inputArr[i] != this.correctArr4[i])){
                     // reset
-                    console.log(this.inputArr);
                     return false;
                 }
             }

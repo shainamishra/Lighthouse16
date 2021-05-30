@@ -9,7 +9,16 @@ class LookoutSouth extends Phaser.Scene {
         this.load.image('lightSouth', './assets/puzzle4/overlays/light_over_diagrams.png');
         this.load.image('rope', './assets/puzzle4/overlays/rope_overlay.png');
 
+        // penfulum parts
+        this.load.image('pendulum_top', './assets/puzzle4/overlays/pendulum_top.png');
+        this.load.image('pendulum_rope', './assets/puzzle4/overlays/pendulum_rope.png');
+        this.load.image('pendulum_rock', './assets/puzzle4/overlays/pendulum_rock.png');
+
+        // hitbox
         this.load.image('hitbox', './assets/HitBox2.png');
+
+        // audio
+        this.load.audio('itemtake', './assets/sfx/ItemTake.wav');
     }
 
     create() {
@@ -51,6 +60,26 @@ class LookoutSouth extends Phaser.Scene {
         this.ropeHit.interText.setFontSize(50);
         this.ropeHit.interText.setVisible(false);
         this.ropeHit.setVisible(true);
+
+        // pendulum top
+        this.top = this.add.image(875, 340, 'pendulum_top');
+        this.top.setDisplaySize(1280, 720);
+        this.top.setVisible(false);
+        // pendulum rope
+        this.penRope = this.add.image(875, 340, 'pendulum_rope');
+        this.penRope.setDisplaySize(1280, 720);
+        this.penRope.setVisible(false);
+        // pendulum rock
+        this.penRock = this.add.image(880, 340, 'pendulum_rock');
+        this.penRock.setDisplaySize(1280, 720);
+        this.penRock.setVisible(false);
+        // pendulum rock hit box
+        this.penRockHit = this.add.image(880, 400, 'hitbox');
+        this.penRockHit.setDisplaySize(35, 80);
+        this.penRockHit.setInteractive({
+            useHandCursor: true
+        });
+        this.penRockHit.setVisible(true);
 
         // light
         this.lightSouth = this.add.image(640, 360, 'lightSouth');
@@ -104,11 +133,18 @@ class LookoutSouth extends Phaser.Scene {
         // rope
         this.ropeHit.on('pointerdown', (pointer) => {
             rope = 1;
+            this.sound.play("itemtake", {volume: 0.3});
             this.rope.setVisible(false);
             this.ropeHit.interText.setVisible(true);
             this.textTimer = 1;
         });
 
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // pendulum anim
+        this.penRockHit.on('pointerdown', (pointer) => {
+            console.log("pendulum")
+            // start animation
+        });
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // text timers
@@ -128,8 +164,13 @@ class LookoutSouth extends Phaser.Scene {
         if(windowClean == 1){
             this.lightSouth.setVisible(true);
         }
+        if(rock == 1 && rope == 1){
+            this.top.setVisible(true);
+            this.penRope.setVisible(true);
+            this.penRock.setVisible(true);
+            this.penRockHit.setVisible(true);
+        }
         
-
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // scene change on keypress
         if(Phaser.Input.Keyboard.JustDown(keyA)){
