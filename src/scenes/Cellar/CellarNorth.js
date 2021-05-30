@@ -43,6 +43,13 @@ class CellarNorth extends Phaser.Scene {
         prevScene = this.scene.key;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // objects
+        // lights off CN
+        this.textDark = this.add.image(640, 360, 'cellarNorthDark');
+        this.textDark.setDisplaySize(1280, 720);
+        this.textDark.setVisible(false);
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // hot bar 
         this.hotbar = this.add.image(640, 350, 'hotbar');
         this.hotbar.setDisplaySize(1280, 720);
@@ -63,18 +70,6 @@ class CellarNorth extends Phaser.Scene {
             useHandCursor: true
         });
         this.plateHot.setVisible(false);
-
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // objects
-        // lights off CN
-        this.textDark = this.add.image(640, 360, 'cellarNorthDark');
-        this.textDark.setDisplaySize(1280, 720);
-        this.textDark.setVisible(false);
-
-        // dark
-        this.dark = this.add.image(640, 360, 'dark');
-        this.dark.setDisplaySize(1280, 720);
-        this.dark.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
@@ -113,14 +108,13 @@ class CellarNorth extends Phaser.Scene {
         
         // lights on or off
         if(lightState == 0){
-            this.dark.setVisible(false);
             this.textDark.setVisible(false);
         } else if (lightState == 1) {
             this.textDark.setVisible(true);
         }
 
         // delete this
-        unlocked = 1;
+        //unlocked = 1;
         if(unlocked == 1){
             if(Phaser.Input.Keyboard.JustDown(keySPACE)){
                 this.sound.get('cellar_music').stop();

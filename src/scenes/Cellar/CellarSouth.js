@@ -101,12 +101,6 @@ class CellarSouth extends Phaser.Scene {
         this.door.interText.setVisible(false); 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // dark
-        this.dark = this.add.image(640, 360, 'dark');
-        this.dark.setDisplaySize(1280, 720);
-        this.dark.setVisible(false);
-
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // hot bar 
         this.hotbar = this.add.image(640, 350, 'hotbar');
         this.hotbar.setDisplaySize(1280, 720);
@@ -127,6 +121,12 @@ class CellarSouth extends Phaser.Scene {
             useHandCursor: true
         });
         this.plateHot.setVisible(false);
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // dark
+        this.dark = this.add.image(640, 360, 'dark');
+        this.dark.setDisplaySize(1280, 720);
+        this.dark.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
@@ -229,7 +229,7 @@ class CellarSouth extends Phaser.Scene {
         }
 
         // end states
-        unlocked = 1;
+        //unlocked = 1;
         if(unlocked == 1){
             this.door.setVisible(true);
             this.door.interText.setVisible(true); 
