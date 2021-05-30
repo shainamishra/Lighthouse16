@@ -43,7 +43,7 @@ class MainEast extends Phaser.Scene {
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
-        this.drawer = this.add.sprite(650,350,'drawer');
+        this.drawer = this.add.sprite(650, 350,'drawer');
 
         // hammer hit
         this.hammer = this.add.sprite(500, 450, 'hitbox');
@@ -51,7 +51,7 @@ class MainEast extends Phaser.Scene {
         this.hammer.setInteractive({
             useHandCursor: true
         });
-        this.hammer.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'You picked up the hammer');
+        this.hammer.interText = this.add.text(295, 520, 'You picked up the hammer');
         this.hammer.interText.setFontSize(50);
         this.hammer.interText.setVisible(false);
         // hammer image
@@ -62,13 +62,13 @@ class MainEast extends Phaser.Scene {
         // full painting
         this.painting = this.add.sprite(650, 350, 'painting');
         this.painting.setVisible(false);
-        this.painting.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'A painting of an ancient\n sea goddess');
+        this.painting.interText = this.add.text(borderUISize + borderPadding * 20 + 250, borderUISize + borderPadding * 2, '  A painting of an\nancient sea goddess');
         this.painting.interText.setFontSize(50);
         this.painting.interText.setVisible(false);
         // ripped painting
         this.ripPainting = this.add.sprite(650, 350, 'ripPainting');
         this.ripPainting.setVisible(false);
-        this.ripPainting.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'You cut the painting.\n A coin was inside');
+        this.ripPainting.interText = this.add.text(borderUISize + borderPadding * 20 + 250, borderUISize + borderPadding * 2, 'You cut the painting.\n  A coin was inside');
         this.ripPainting.interText.setFontSize(50);
         this.ripPainting.interText.setVisible(false);
         // painting hit
@@ -102,10 +102,25 @@ class MainEast extends Phaser.Scene {
         // click on hammer
         if(this.textTimerHammer == 0){
             this.hammer.on('pointerdown', (pointer) => {
+                console.log("hit")
                 this.hammer.interText.setVisible(true);
+                this.hammer.setVisible(false);
                 this.textTimerHammer = 1;
                 hammerGot = 1;
             });
+        }
+
+        // text on screen
+        if(this.textTimerHammer > 0 && this.textTimerHammer < 150) {
+            this.textTimerHammer += 1;
+            if(this.textTimerHammer == 2){
+                this.sound.play("itemtake");
+            }
+        } 
+        else if(this.textTimerHammer >= 150){
+            // hide text
+            this.hammer.interText.setVisible(false);
+            this.textTimerHammer = 0;
         }
         
         if(this.textTimerPainting == 0){
@@ -125,31 +140,9 @@ class MainEast extends Phaser.Scene {
             });
         }
 
-        // text on screen
-        if(this.textTimerHammer > 0 && this.textTimerHammer < 150) {
-            this.textTimerHammer += 1;
-            if(this.textTimerHammer == 2){
-                this.sound.play("itemtake");
-            }
-        } 
-        else if(this.textTimerHammer >= 150){
-            // hide text
-            this.hammer.interText.setVisible(false);
-            this.textTimerHammer = 0;
-
-            if(hammerGot == 0){
-                this.hammerIm.setVisible(true);
-            }
-        }
-        
-        // end state
-        if(hammerGot == 1){
-            this.hammerIm.setVisible(false);
-        }
-
         if(this.textTimerPainting > 0 && this.textTimerPainting < 150){
             this.textTimerPainting += 1;
-            if(knifeGot == 1 && this.textTimerPainting ==2){
+            if(knifeGot == 1 && this.textTimerPainting == 2){
                 this.sound.play("itemtake");
             }
         }
@@ -159,6 +152,16 @@ class MainEast extends Phaser.Scene {
             this.painting.interText.setVisible(false);
             this.ripPainting.interText.setVisible(false);
             this.textTimerPainting = 0;
+
+            if(hammerGot == 0){
+                this.hammer.setVisible(true);
+                this.hammerIm.setVisible(true);
+            }
+        }
+        
+        // end state
+        if(hammerGot == 1){
+            this.hammerIm.setVisible(false);
         }
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // scene change on keypress
