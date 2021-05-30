@@ -114,7 +114,7 @@ class CellarNorth extends Phaser.Scene {
         }
 
         // delete this
-        unlocked = 1;
+        //unlocked = 1;
         if(unlocked == 1){
             if(Phaser.Input.Keyboard.JustDown(keySPACE)){
                 this.sound.get('cellar_music').stop();
