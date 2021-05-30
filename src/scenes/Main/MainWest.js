@@ -51,11 +51,18 @@ class MainWest extends Phaser.Scene {
         this.knifeIm = this.add.sprite(350, 350, 'table knife');
         this.knifeIm.setVisible(true);
         
-    
+        this.food = this.add.sprite(700, 460, 'hitbox');
+        this.food.setDisplaySize(250,100);
+        this.food.setInteractive({
+            useHandCursor: true
+        });
+        this.food.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'Ugh. The food has long rotted');
+        this.food.interText.setFontSize(50);
+        this.food.interText.setVisible(false);
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
         this.textTimerKnife =0;
-
+        this.textTimerFood =0;
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
         this.add.rectangle(0, 0, 10, game.config.height, 0x61282f).setOrigin(0, 0);
@@ -93,6 +100,23 @@ class MainWest extends Phaser.Scene {
         }
         if(knifeGot == 1){
             this.knifeIm.setVisible(false);
+        }
+
+        if(this.textTimerFood == 0){
+            this.food.on('pointerdown', (pointer) => {
+                this.food.interText.setVisible(true);
+                this.textTimerFood = 1;
+            });
+        }
+
+        // text on screen
+        if(this.textTimerFood> 0 && this.textTimerFood < 150) {
+            this.textTimerFood += 1;
+        } 
+        else if(this.textTimerFood >= 150){
+            // hide text
+            this.food.interText.setVisible(false);
+            this.textTimerFood = 0;
         }
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // scene change on keypress
