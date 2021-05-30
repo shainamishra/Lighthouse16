@@ -216,7 +216,7 @@ class IslandEast extends Phaser.Scene {
             });
         }
 
-        if(this.textTimerRod == 1 && scopeGot == 1){
+        if(this.textTimerRod == 1 && scopeGot == 2){
             this.sound.play("itemtake");
         }
 

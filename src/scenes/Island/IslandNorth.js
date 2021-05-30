@@ -10,6 +10,9 @@ class IslandNorth extends Phaser.Scene {
         this.load.image('cellarUnlocked', './assets/puzzle1/overlays/cellarUnlocked.png');
         this.load.image('inventory', './assets/Inventory.png');
         this.load.audio('break', './assets/sfx/Breakapart.wav');
+
+        // audio
+        this.load.audio('chain', './assets/sfx/chain.wav');
     }
 
     create() {
@@ -167,7 +170,7 @@ class IslandNorth extends Phaser.Scene {
             }
             else if(boltGot == 1){
                 this.cellar.on('pointerdown', (pointer) => {
-                    this.sound.play('break');
+                    this.sound.play('chain', {volume: 0.01});
                     this.cellOpen.setVisible(true);
                     this.textTimerCell = 1;
                     this.cellerOpen = true;
@@ -185,10 +188,6 @@ class IslandNorth extends Phaser.Scene {
             this.cellar.interText.setVisible(false);
             this.textTimerCell = 0;
         }
-        
-        // remove these
-        boltGot = 1;
-        unlocked = 2;
         
         // show open state
         if(boltGot == 1 && unlocked == 2){
