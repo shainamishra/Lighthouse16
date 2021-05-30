@@ -5,9 +5,10 @@ class MainWest extends Phaser.Scene {
 
     preload() {
         // images
-        this.load.image('mainWest', './assets/puzzle3/wall4.png');
-
+        this.load.image('mainWest', './assets/puzzle3/overlays/base.png');
+        this.load.image('table knife', './assets/puzzle3/overlays/table knife.png')
         this.load.image('hitbox', './assets/HitBox2.png');
+        this.load.image('table', './assets/puzzle3/overlays/dining table.png');
     }
 
     create() {
@@ -36,7 +37,9 @@ class MainWest extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
         // lights off CN
-        this.knife = this.add.sprite(920, 500, 'hitbox');
+        this.tableIm = this.add.sprite(350,350, 'table');
+
+        this.knife = this.add.sprite(470, 460, 'hitbox');
         this.knife.setDisplaySize(100, 100);
         this.knife.setInteractive({
             useHandCursor: true
@@ -45,7 +48,10 @@ class MainWest extends Phaser.Scene {
         this.knife.interText.setFontSize(50);
         this.knife.interText.setVisible(false);
         
-     
+        this.knifeIm = this.add.sprite(350, 350, 'table knife');
+        this.knifeIm.setVisible(true);
+        
+    
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
         this.textTimerKnife =0;
