@@ -6,27 +6,27 @@ class Inventory extends Phaser.Scene {
     create() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // page 1
-        this.page1 = this.add.sprite(650,350, 'set1');
+        this.page1 = this.add.sprite(650, 350, 'set1');
         this.page1.setDisplaySize(1280, 720);
         this.page1.setVisible(false);
 
         // page 2
-        this.page2 = this.add.sprite(650,350, 'set2');
+        this.page2 = this.add.sprite(650, 350, 'set2');
         this.page2.setDisplaySize(1280, 720);
         this.page2.setVisible(false);
 
         // page 3
-        this.page3 = this.add.sprite(650,350, 'set3');
+        this.page3 = this.add.sprite(650, 350, 'set3');
         this.page3.setDisplaySize(1280, 720);
         this.page3.setVisible(false);
 
         // page 4
-        this.page4 = this.add.sprite(650,350, 'set4');
+        this.page4 = this.add.sprite(650, 350, 'set4');
         this.page4.setDisplaySize(1280, 720);
         this.page4.setVisible(false);
 
         // page 5
-        this.page5 = this.add.sprite(650,350, 'set5');
+        this.page5 = this.add.sprite(650, 350, 'set5');
         this.page5.setDisplaySize(1280, 720);
         this.page5.setVisible(false);
 
@@ -36,7 +36,7 @@ class Inventory extends Phaser.Scene {
         this.page6.setVisible(false);
 
         // page 7
-        this.page7 = this.add.sprite(650,350, 'velvet1');
+        this.page7 = this.add.sprite(650, 350, 'velvet1');
         this.page7.setDisplaySize(1280, 720);
         this.page7.setVisible(false);
 
@@ -64,7 +64,7 @@ class Inventory extends Phaser.Scene {
         });
 
         // content1
-        this.content1 = this.add.sprite(140, 665, 'hitbox2');
+        this.content1 = this.add.sprite(140, 665, 'hitbox');
         this.content1.setDisplaySize(50, 70);
         this.content1.setVisible(false);
         this.content1.setInteractive({
@@ -72,7 +72,7 @@ class Inventory extends Phaser.Scene {
         });
         
         // content2
-        this.content2 = this.add.sprite(325, 665, 'hitbox2');
+        this.content2 = this.add.sprite(325, 665, 'hitbox');
         this.content2.setDisplaySize(50, 70);
         this.content2.setVisible(false);
         this.content2.setInteractive({
@@ -80,7 +80,7 @@ class Inventory extends Phaser.Scene {
         });
 
         // content3
-        this.content3 = this.add.sprite(530, 665, 'hitbox2');
+        this.content3 = this.add.sprite(530, 665, 'hitbox');
         this.content3.setDisplaySize(50, 70);
         this.content3.setVisible(false);
         this.content3.setInteractive({
@@ -88,7 +88,7 @@ class Inventory extends Phaser.Scene {
         });
 
         // content4
-        this.content4 = this.add.sprite(750, 665, 'hitbox2');
+        this.content4 = this.add.sprite(750, 665, 'hitbox');
         this.content4.setDisplaySize(50, 70);
         this.content4.setVisible(false);
         this.content4.setInteractive({
@@ -96,7 +96,7 @@ class Inventory extends Phaser.Scene {
         });
 
         // content5
-        this.content5 = this.add.sprite(960, 665, 'hitbox2');
+        this.content5 = this.add.sprite(960, 665, 'hitbox');
         this.content5.setDisplaySize(50, 70);
         this.content5.setVisible(false);
         this.content5.setInteractive({
@@ -104,17 +104,12 @@ class Inventory extends Phaser.Scene {
         });
 
         // content6
-        this.content6 = this.add.sprite(1165, 665, 'hitbox2');
+        this.content6 = this.add.sprite(1165, 665, 'hitbox');
         this.content6.setDisplaySize(50, 70);
         this.content6.setVisible(false);
         this.content6.setInteractive({
             useHandCursor: true
         });
-
-        // 7 page toc
-        this.sevenTOC = this.add.image(640, 370, '7overlay');
-        this.sevenTOC.setDisplaySize(1280, 720);
-        this.sevenTOC.setVisible(false);
         
         // 6 page toc
         this.sixTOC = this.add.image(640, 370, '6overlay');
@@ -155,16 +150,8 @@ class Inventory extends Phaser.Scene {
         this.content5.setVisible(true);
         // 6 button
         this.content6.setVisible(true);
-
-        if(level == 5){
-            // 7 page toc
-            this.sevenTOC.setVisible(true);
-            this.sixTOC.setVisible(false);
-        } else{
-            // 6 page toc
-            this.sevenTOC.setVisible(false);
-            this.sixTOC.setVisible(true);
-        }
+        // show toc
+        this.sixTOC.setVisible(true);
         
         // first page
         if (this.page == 1){

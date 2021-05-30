@@ -11,7 +11,7 @@ class Menu extends Phaser.Scene {
 
         // card collection box assets -- loading them here makes the inventory load almost seamlessly
         this.load.image('x', './assets/x.png');
-        this.load.image('woodbg', './assets/woodbg.png');
+        this.load.image('velvetbg', './assets/transitions/velvetbg.png');
 
         // sets are placeholders
         this.load.image('set1', './assets/transitions/spread1.png');

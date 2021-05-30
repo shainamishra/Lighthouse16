@@ -1,44 +1,49 @@
-class Inventory extends Phaser.Scene {
+class Inventory7 extends Phaser.Scene {
     constructor() {
-        super("cardBox");
+        super("cardBox7");
     }
 
     create() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // page 1
-        this.page1 = this.add.sprite(650,350, 'woodbg');
+        this.page1 = this.add.sprite(650, 350, 'set1');
         this.page1.setDisplaySize(1280, 720);
         this.page1.setVisible(false);
 
         // page 2
-        this.page2 = this.add.sprite(650,350, 'set1');
+        this.page2 = this.add.sprite(650, 350, 'set2');
         this.page2.setDisplaySize(1280, 720);
         this.page2.setVisible(false);
 
         // page 3
-        this.page3 = this.add.sprite(650,350, 'set2');
+        this.page3 = this.add.sprite(650, 350, 'set3');
         this.page3.setDisplaySize(1280, 720);
         this.page3.setVisible(false);
 
         // page 4
-        this.page4 = this.add.sprite(650,350, 'set3');
+        this.page4 = this.add.sprite(650, 350, 'set4');
         this.page4.setDisplaySize(1280, 720);
         this.page4.setVisible(false);
 
         // page 5
-        this.page5 = this.add.sprite(650,350, 'set4');
+        this.page5 = this.add.sprite(650, 350, 'set5');
         this.page5.setDisplaySize(1280, 720);
         this.page5.setVisible(false);
 
         // page 6
-        this.page6 = this.add.sprite(650,350, 'set5');
+        this.page6 = this.add.sprite(650, 350, 'velvet1');
         this.page6.setDisplaySize(1280, 720);
         this.page6.setVisible(false);
 
         // page 7
-        this.page7 = this.add.sprite(650,350, 'velvet1');
+        this.page7 = this.add.sprite(650, 350, 'velvetbg');
         this.page7.setDisplaySize(1280, 720);
         this.page7.setVisible(false);
+
+        // 1 card bg
+        this.v1 = this.add.sprite(650, 350, 'velvet1');
+        this.v1.setDisplaySize(1280, 720);
+        this.v1.setVisible(false);
 
         // 4 card bg
         this.v4 = this.add.sprite(650, 350, 'velvet4');
@@ -59,73 +64,65 @@ class Inventory extends Phaser.Scene {
         });
 
         // content1
-        this.content1 = this.add.sprite(160, 680, 'hitbox2');
-        this.content1.setDisplaySize(50, 50);
+        this.content1 = this.add.sprite(105, 665, 'hitbox');
+        this.content1.setDisplaySize(50, 70);
         this.content1.setVisible(false);
         this.content1.setInteractive({
             useHandCursor: true
         });
         
         // content2
-        this.content2 = this.add.sprite(320, 680, 'hitbox2');
-        this.content2.setDisplaySize(50, 50);
+        this.content2 = this.add.sprite(285, 665, 'hitbox');
+        this.content2.setDisplaySize(50, 70);
         this.content2.setVisible(false);
         this.content2.setInteractive({
             useHandCursor: true
         });
 
         // content3
-        this.content3 = this.add.sprite(480, 680, 'hitbox2');
-        this.content3.setDisplaySize(50, 50);
+        this.content3 = this.add.sprite(460, 665, 'hitbox');
+        this.content3.setDisplaySize(50, 70);
         this.content3.setVisible(false);
         this.content3.setInteractive({
             useHandCursor: true
         });
 
         // content4
-        this.content4 = this.add.sprite(640, 680, 'hitbox2');
-        this.content4.setDisplaySize(50, 50);
+        this.content4 = this.add.sprite(650, 665, 'hitbox');
+        this.content4.setDisplaySize(50, 70);
         this.content4.setVisible(false);
         this.content4.setInteractive({
             useHandCursor: true
         });
 
         // content5
-        this.content5 = this.add.sprite(800, 680, 'hitbox2');
-        this.content5.setDisplaySize(50, 50);
+        this.content5 = this.add.sprite(833, 665, 'hitbox');
+        this.content5.setDisplaySize(50, 70);
         this.content5.setVisible(false);
         this.content5.setInteractive({
             useHandCursor: true
         });
 
         // content6
-        this.content6 = this.add.sprite(960, 680, 'hitbox2');
-        this.content6.setDisplaySize(50, 50);
+        this.content6 = this.add.sprite(1010, 665, 'hitbox');
+        this.content6.setDisplaySize(50, 70);
         this.content6.setVisible(false);
         this.content6.setInteractive({
             useHandCursor: true
         });
 
         // content7
-        this.content7 = this.add.sprite(1120, 680, 'hitbox2');
-        this.content7.setDisplaySize(50, 50);
+        this.content7 = this.add.sprite(1193, 665, 'hitbox');
+        this.content7.setDisplaySize(50, 70);
         this.content7.setVisible(false);
         this.content7.setInteractive({
             useHandCursor: true
         });
 
-
-        //if(level == 5){
-            // 7 page toc
-            this.sevenTOC = this.add.image(640, 350, '7overlay');
-            this.sevenTOC.setDisplaySize(1280, 720);
-            this.sevenTOC.setVisible(false);
-        //} else{
-            // 6 page toc
-            this.sixTOC = this.add.image(640, 350, '6overlay');
-            this.sixTOC.setDisplaySize(1280, 720);
-            this.sixTOC.setVisible(true);
-        //}
+        // 7 page toc
+        this.sevenTOC = this.add.image(640, 370, '7overlay');
+        this.sevenTOC.setDisplaySize(1280, 720);
+        this.sevenTOC.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         //god forsaken variables
@@ -163,6 +160,8 @@ class Inventory extends Phaser.Scene {
         this.content6.setVisible(true);
         // 7 button
         this.content7.setVisible(true);
+        // show toc
+        this.sevenTOC.setVisible(true);
         
         // first page
         if (this.page == 1){
@@ -244,88 +243,51 @@ class Inventory extends Phaser.Scene {
             this.page5.setVisible(false);
             this.page6.setVisible(false);
             this.page7.setVisible(false);
-            this.v4.setVisible(false);
-            this.v5.setVisible(false);
-
+        
         } else if(page == 2){
-            if(level > 1){
-                this.page1.setVisible(false);
-                this.page2.setVisible(true);
-                this.page3.setVisible(false);
-                this.page4.setVisible(false);
-                this.page5.setVisible(false);
-                this.page6.setVisible(false);
-                this.page7.setVisible(false);
-                this.v4.setVisible(false);
-                this.v5.setVisible(false);
-            }
-            else{
-                this.v5.setVisible(true);
-            }
+            this.page1.setVisible(false);
+            this.page2.setVisible(true);
+            this.page3.setVisible(false);
+            this.page4.setVisible(false);
+            this.page5.setVisible(false);
+            this.page6.setVisible(false);
+            this.page7.setVisible(false);
 
         } else if(page == 3){
-            if(level > 2){
-                this.page1.setVisible(false);
-                this.page2.setVisible(false);
-                this.page3.setVisible(true);
-                this.page4.setVisible(false);
-                this.page5.setVisible(false);
-                this.page6.setVisible(false);
-                this.page7.setVisible(false);
-                this.v4.setVisible(false);
-                this.v5.setVisible(false);
-            }
-            else{
-                this.v4.setVisible(true);
-            }
+            this.page1.setVisible(false);
+            this.page2.setVisible(false);
+            this.page3.setVisible(true);
+            this.page4.setVisible(false);
+            this.page5.setVisible(false);
+            this.page6.setVisible(false);
+            this.page7.setVisible(false);
 
         } else if(page == 4){
-            if(level > 3){
-                this.page1.setVisible(false);
-                this.page2.setVisible(false);
-                this.page3.setVisible(false);
-                this.page4.setVisible(true);
-                this.page5.setVisible(false);
-                this.page6.setVisible(false);
-                this.page7.setVisible(false);
-                this.v4.setVisible(false);
-                this.v5.setVisible(false);
-            }
-            else{
-                this.v4.setVisible(true);
-            }
+            this.page1.setVisible(false);
+            this.page2.setVisible(false);
+            this.page3.setVisible(false);
+            this.page4.setVisible(true);
+            this.page5.setVisible(false);
+            this.page6.setVisible(false);
+            this.page7.setVisible(false);
 
         } else if(page == 5){
-            if(level > 4){
-                this.page1.setVisible(false);
-                this.page2.setVisible(false);
-                this.page3.setVisible(false);
-                this.page4.setVisible(false);
-                this.page5.setVisible(true);
-                this.page6.setVisible(false);
-                this.page7.setVisible(false);
-                this.v4.setVisible(false);
-                this.v5.setVisible(false);
-            }
-            else{
-                this.v4.setVisible(true);
-            }
+            this.page1.setVisible(false);
+            this.page2.setVisible(false);
+            this.page3.setVisible(false);
+            this.page4.setVisible(false);
+            this.page5.setVisible(true);
+            this.page6.setVisible(false);
+            this.page7.setVisible(false);
             
         } else if(page == 6){
-            if(level > 5){
-                this.page1.setVisible(false);
-                this.page2.setVisible(false);
-                this.page3.setVisible(false);
-                this.page4.setVisible(false);
-                this.page5.setVisible(false);
-                this.page6.setVisible(true);
-                this.page7.setVisible(false);
-                this.v4.setVisible(false);
-                this.v5.setVisible(false);
-            }
-            else{
-                this.v4.setVisible(true);
-            }
+            this.page1.setVisible(false);
+            this.page2.setVisible(false);
+            this.page3.setVisible(false);
+            this.page4.setVisible(false);
+            this.page5.setVisible(false);
+            this.page6.setVisible(true);
+            this.page7.setVisible(false);
             
         } else if(page == 7){
             this.page1.setVisible(false);
@@ -335,8 +297,6 @@ class Inventory extends Phaser.Scene {
             this.page5.setVisible(false);
             this.page6.setVisible(false);
             this.page7.setVisible(true);
-            this.v4.setVisible(false);
-            this.v5.setVisible(false);
-        } 
+        }
     }
 }    
