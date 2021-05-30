@@ -8,6 +8,8 @@ class MainSouth extends Phaser.Scene {
         this.load.image('mainSouth', './assets/puzzle3/overlays/base.png');
         this.load.image('southinitial', './assets/puzzle3/overlays/skull and hatch.png');
         this.load.image('hitbox', './assets/HitBox2.png');
+        this.load.image('broke', './assets/puzzle3/overlays/broken skull.png');
+        this.load.image('floorcoin', './assets/puzzle3/overlays/skull coin.png')
     }
 
     create() {
@@ -43,13 +45,26 @@ class MainSouth extends Phaser.Scene {
         this.skull.setInteractive({
             useHandCursor: true
         });
-        this.skull.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 100, 'A...fake skull hangs here?');
+        this.skull.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'A...fake skull hangs here?');
         this.skull.interText.setFontSize(50);
         this.skull.interText.setVisible(false);
+
+
+        this.smashed = this.add.sprite(620,375, 'broke');
+
+        this.scoin = this.add.sprite(620, 830, 'floorcoin');
+        this.scoinbox = this.add.sprite(930, 650, 'hitbox');
+        this.scoinbox.setDisplaySize(100,100);
+        this.scoinbox.setInteractive({
+            useHandCursor: true
+        });
+        this.scoinbox.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 100, 'A coin was in the skull');
+        this.scoinbox.interText.setFontSize(50);
+        this.scoinbox.interText.setVisible(false);
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
         this.textTimerSkull = 0;
-
+        this.textTimerCoin = 0;
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
         this.add.rectangle(0, 0, 10, game.config.height, 0x61282f).setOrigin(0, 0);
@@ -69,20 +84,61 @@ class MainSouth extends Phaser.Scene {
         // end states
         // end states
         if(this.textTimerSkull == 0){
+            if(hammerGot == 1){
+                this.skull.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 100, 'You smashed the jaw\n with the hammer');
+                this.skull.interText.setFontSize(50);
+                this.skull.interText.setVisible(false);
+            }
+
             this.skull.on('pointerdown', (pointer) => {
-                this.skull.interText.setVisible(true);
-                this.textTimerSkull = 1;
+            this.skull.interText.setVisible(true);
+            this.textTimerSkull = 1;
             });
+        
         }
 
         // text on screen
         if(this.textTimerSkull > 0 && this.textTimerSkull < 150) {
             this.textTimerSkull += 1;
+            if(hammerGot ==1){
+                skullsmash =1;
+            }
         } 
         else if(this.textTimerSkull >= 150){
             // hide text
             this.skull.interText.setVisible(false);
             this.textTimerSkull = 0;
+        }
+
+        if(skullsmash == 1 && scoinGot == 0){
+            this.smashed.setVisible(true);
+            this.scoin.setVisible(true);
+            this.scoinbox.setVisible(true);
+        }
+        else if(skullsmash == 1 && scoinGot == 1){
+            this.smashed.setVisible(true);
+            this.scoin.setVisible(false);
+            this.scoinbox.setVisible(false);
+        }
+        else{
+            this.smashed.setVisible(false);
+            this.scoin.setVisible(false);
+            this.scoinbox.setVisible(false);
+        }
+
+        if(this.textTimerCoin == 0){
+            this.scoinbox.on('pointerdown', (pointer) => {
+                this.scoinbox.interText.setVisible(true);
+                this.textTimerCoin = 1;
+                });
+        }
+        if(this.textTimerCoin > 0 && this.textTimerCoin <150){
+            scoinGot = 1;
+            this.textTimerCoin += 1;
+        }
+        else if(this.textTimerCoin >= 150){
+            this.scoinbox.interText.setVisible(false);
+            this.textTimerCoin = 0;
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -78,6 +78,7 @@ class MainWest extends Phaser.Scene {
             this.knife.on('pointerdown', (pointer) => {
                 this.knife.interText.setVisible(true);
                 this.textTimerKnife = 1;
+                knifeGot = 1
             });
         }
 
@@ -90,7 +91,9 @@ class MainWest extends Phaser.Scene {
             this.knife.interText.setVisible(false);
             this.textTimerKnife = 0;
         }
-
+        if(knifeGot == 1){
+            this.knifeIm.setVisible(false);
+        }
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // scene change on keypress
         if(Phaser.Input.Keyboard.JustDown(keyA)){

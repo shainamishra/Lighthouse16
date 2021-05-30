@@ -91,7 +91,7 @@ class IslandEast extends Phaser.Scene {
         this.bucket.setInteractive({
             useHandCursor: true
         });
-        this.bucket.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 100, 'There is a key in the bucket');
+        this.bucket.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 100, 'There was a key in the bucket');
         this.bucket.interText.setFontSize(50);
         this.bucket.interText.setVisible(false);
 
