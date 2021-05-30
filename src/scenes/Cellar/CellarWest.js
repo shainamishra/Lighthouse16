@@ -11,12 +11,19 @@ class CellarWest extends Phaser.Scene {
         this.load.image('deskOpen', './assets/puzzle2/overlays/westDeskOpen.png');
         this.load.image('book', './assets/puzzle2/overlays/westBook.png');
         this.load.image('key2', './assets/puzzle2/overlays/westKey.png');
+
+        // audio
+        this.load.audio('itemtake', './assets/sfx/ItemTake.wav');
     }
 
     create() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // place tile sprite
         this.cellarnorth = this.add.tileSprite(0, 0, 1280, 720, 'cellar').setOrigin(0, 0); 
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // sfx
+        this.itemTake = this.sound.add('itemtake', {volume: 0.5});
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
@@ -152,6 +159,7 @@ class CellarWest extends Phaser.Scene {
         this.invent.on('pointerdown', (pointer) => {
             this.scene.switch("cardBox");
         });
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // desk
         // click on desk
@@ -169,6 +177,7 @@ class CellarWest extends Phaser.Scene {
                     this.deskOpen.interText.setVisible(true);
                     this.deskOpen.setVisible(true);
                     this.textTimerDesk = 1;
+                    this.itemTake.play();
                 });
             }
         }
@@ -188,7 +197,6 @@ class CellarWest extends Phaser.Scene {
         // shelf
         // click on shelf
         this.shelf.on('pointerdown', (pointer) => {
-            this.shelf.interText.setVisible(true); 
             this.book.setVisible(true);
             this.desk.setVisible(false);
             this.desk.interText.setVisible(false); 
@@ -198,21 +206,21 @@ class CellarWest extends Phaser.Scene {
             if(deskKey == 0){
                 this.key.setVisible(true);
                 this.keyIm.setVisible(true);
+            } else {
+                this.shelf.interText.setVisible(true); 
             }
         });
 
         // desk shelf timer
         if(this.textTimerShelf > 0 && this.textTimerShelf < 200) {
-            //this.textTimerShelf += 1;
+            this.textTimerShelf += 1;
             this.key.on('pointerdown', (pointer) => {
                 this.key.setVisible(false);
                 this.key.interText.setVisible(true);
                 this.keyIm.setVisible(false);
                 deskKey = 1;
+                this.itemTake.play();
             });
-            this.input.on('pointerdown', (pointer) => {
-                this.textTimerShelf = 251;
-            })
         } 
         else if(this.textTimerShelf >= 200){
             // hide text

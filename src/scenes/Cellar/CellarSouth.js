@@ -13,12 +13,19 @@ class CellarSouth extends Phaser.Scene {
         this.load.image('plate', './assets/puzzle2/overlays/southSwitch.png');
         this.load.image('switchOn', './assets/puzzle2/overlays/southSwitchOn.png');
         this.load.image('switchOff', './assets/puzzle2/overlays/southSwitchOff.png');
+
+        // audio
+        this.load.audio('itemtake', './assets/sfx/ItemTake.wav');
     }
 
     create() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // place tile sprite
         this.cellarnorth = this.add.tileSprite(0, 0, 1280, 720, 'cellar').setOrigin(0, 0); 
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // sfx
+        this.itemTake = this.sound.add('itemtake', {volume: 0.5});
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
@@ -185,6 +192,7 @@ class CellarSouth extends Phaser.Scene {
                         this.switchOn.interText.setVisible(true);
                         this.switchOff.interText.setVisible(false);
 
+                        this.itemTake.play();
                         lightState = 1;
                         this.textTimerSwitch = 1;
                     }
@@ -200,6 +208,7 @@ class CellarSouth extends Phaser.Scene {
                         this.switchOn.interText.setVisible(false);
                         this.switchOff.interText.setVisible(true);
 
+                        this.itemTake.play();
                         lightState = 0;
                         this.textTimerSwitch = 1;
                     }
@@ -224,6 +233,7 @@ class CellarSouth extends Phaser.Scene {
         if(unlocked == 1){
             this.door.setVisible(true);
             this.door.interText.setVisible(true); 
+            this.switch.setVisible(false); 
             if(Phaser.Input.Keyboard.JustDown(keySPACE)){
                 this.sound.get('cellar_music').stop();
                 this.scene.start("spread3");

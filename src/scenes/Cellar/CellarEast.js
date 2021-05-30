@@ -148,6 +148,36 @@ class CellarEast extends Phaser.Scene {
         this.pink.interText.setFontSize(50);
         this.pink.interText.setVisible(false); 
 
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // hot bar 
+        this.hotbar = this.add.image(640, 350, 'hotbar');
+        this.hotbar.setDisplaySize(1280, 720);
+        this.hotbar.setVisible(true);
+ 
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // items
+        this.key2Hot = this.add.sprite(460, 659, 'key2Hot');
+        this.key2Hot.setDisplaySize(100, 100);
+        this.key2Hot.setInteractive({
+            useHandCursor: true
+        });
+        this.key2Hot.setVisible(false);
+
+        this.plateHot = this.add.sprite(560, 660, 'plateHot');
+        this.plateHot.setDisplaySize(150, 150);
+        this.plateHot.setInteractive({
+            useHandCursor: true
+        });
+        this.plateHot.setVisible(false);
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // dark
+        this.dark = this.add.image(640, 360, 'dark');
+        this.dark.setDisplaySize(1280, 720);
+        this.dark.setVisible(false);
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // buttonsOn
         // redOn
         this.redOn = this.add.image(640, 360, 'red');
@@ -181,34 +211,6 @@ class CellarEast extends Phaser.Scene {
         this.pinkOn = this.add.image(640, 360, 'pink');
         this.pinkOn.setDisplaySize(1280, 720);
         this.pinkOn.setVisible(false);
-
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // hot bar 
-        this.hotbar = this.add.image(640, 350, 'hotbar');
-        this.hotbar.setDisplaySize(1280, 720);
-        this.hotbar.setVisible(true);
- 
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // items
-        this.key2Hot = this.add.sprite(460, 659, 'key2Hot');
-        this.key2Hot.setDisplaySize(100, 100);
-        this.key2Hot.setInteractive({
-            useHandCursor: true
-        });
-        this.key2Hot.setVisible(false);
-
-        this.plateHot = this.add.sprite(560, 660, 'plateHot');
-        this.plateHot.setDisplaySize(150, 150);
-        this.plateHot.setInteractive({
-            useHandCursor: true
-        });
-        this.plateHot.setVisible(false);
-
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // dark
-        this.dark = this.add.image(640, 360, 'dark');
-        this.dark.setDisplaySize(1280, 720);
-        this.dark.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
