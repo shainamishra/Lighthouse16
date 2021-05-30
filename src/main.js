@@ -36,6 +36,7 @@ let lightState = 0;
 let knifeGot = 0;
 let hammerGot = 0;
 let skullsmash = 0;
+let scoinGot = 0;
 
 // puzzle 4
 let rag = 0;
