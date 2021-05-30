@@ -61,9 +61,15 @@ class MainEast extends Phaser.Scene {
         // full painting
         this.painting = this.add.sprite(650, 350, 'painting');
         this.painting.setVisible(false);
+        this.painting.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'A painting of an ancient\n sea goddess');
+        this.painting.interText.setFontSize(50);
+        this.painting.interText.setVisible(false);
         // ripped painting
         this.ripPainting = this.add.sprite(650, 350, 'ripPainting');
         this.ripPainting.setVisible(false);
+        this.ripPainting.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'You cut the painting.\n A coin was inside');
+        this.ripPainting.interText.setFontSize(50);
+        this.ripPainting.interText.setVisible(false);
         // painting hit
         this.paintingHit = this.add.sprite(650, 170, 'hitbox');
         this.paintingHit.setDisplaySize(860, 400);
@@ -108,9 +114,11 @@ class MainEast extends Phaser.Scene {
 
                 if(knifeGot == 0){
                     this.painting.setVisible(true);
+                    this.painting.interText.setVisible(true);
                 }
                 if(knifeGot == 1){
                     this.ripPainting.setVisible(true);
+                    this.ripPainting.interText.setVisible(true);
                 }
             });
         }
@@ -124,6 +132,8 @@ class MainEast extends Phaser.Scene {
             this.hammer.interText.setVisible(false);
             this.painting.setVisible(false);
             this.ripPainting.setVisible(false);
+            this.painting.interText.setVisible(false);
+            this.ripPainting.interText.setVisible(false);
             this.textTimerHammer = 0;
 
             if(hammerGot == 0){
