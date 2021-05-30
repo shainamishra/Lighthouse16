@@ -36,7 +36,7 @@ class MainSouth extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
         // lights off CN
-        this.initial = this.add.sprite(300, 150, 'southinitial');
+        this.initial = this.add.sprite(620, 375, 'southinitial');
         
         this.skull = this.add.sprite(975, 150, 'hitbox');
         this.skull.setDisplaySize(150, 200);
