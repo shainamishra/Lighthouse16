@@ -44,6 +44,8 @@ class MainWest extends Phaser.Scene {
         this.knife.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 100, 'You picked up the knife');
         this.knife.interText.setFontSize(50);
         this.knife.interText.setVisible(false);
+        
+     
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
         this.textTimerKnife =0;

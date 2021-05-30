@@ -5,15 +5,16 @@ class MainEast extends Phaser.Scene {
 
     preload() {
         // images
-        this.load.image('mainEast', './assets/puzzle3/wall2.png');
+        this.load.image('mainEast', './assets/puzzle3/overlays/base.png');
 
         this.load.image('hitbox', './assets/HitBox2.png');
+        this.load.image('drawer_hammer', './assets/puzzle3/overlays/drawerhammer.png');
     }
 
     create() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // place tile sprite
-        this.cellarnorth = this.add.tileSprite(0, 0, 1280, 720, 'mainEast').setOrigin(0, 0); 
+        this.maineast = this.add.tileSprite(0, 0, 1280, 720, 'mainEast').setOrigin(0, 0); 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
@@ -44,6 +45,10 @@ class MainEast extends Phaser.Scene {
         this.hammer.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'You picked up the hammer');
         this.hammer.interText.setFontSize(50);
         this.hammer.interText.setVisible(false);
+
+
+        this.hammerIm = this.add.sprite(0,0, 'drawer_hammer');
+        this.hammerIm.setVisible(true);
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
         this.textTimerHammer = 0;
