@@ -10,6 +10,7 @@ class MainSouth extends Phaser.Scene {
         this.load.image('hitbox', './assets/HitBox2.png');
         this.load.image('broke', './assets/puzzle3/overlays/broken skull.png');
         this.load.image('floorcoin', './assets/puzzle3/overlays/skull coin.png')
+        this.load.audio('itemtake', './assets/sfx/ItemTake.wav');
     }
 
     create() {
@@ -136,6 +137,9 @@ class MainSouth extends Phaser.Scene {
         if(this.textTimerCoin > 0 && this.textTimerCoin <150){
             scoinGot = 1;
             this.textTimerCoin += 1;
+            if(this.textTimerCoin == 2){
+                this.sound.play("itemtake");
+            }
         }
         else if(this.textTimerCoin >= 150){
             this.scoinbox.interText.setVisible(false);

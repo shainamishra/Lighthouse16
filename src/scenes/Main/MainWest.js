@@ -9,6 +9,7 @@ class MainWest extends Phaser.Scene {
         this.load.image('table knife', './assets/puzzle3/overlays/table knife.png')
         this.load.image('hitbox', './assets/HitBox2.png');
         this.load.image('table', './assets/puzzle3/overlays/dining table.png');
+        this.load.audio('itemtake', './assets/sfx/ItemTake.wav');
     }
 
     create() {
@@ -92,6 +93,9 @@ class MainWest extends Phaser.Scene {
         // text on screen
         if(this.textTimerKnife> 0 && this.textTimerKnife < 150) {
             this.textTimerKnife += 1;
+            if(this.textTimerKnife == 2){
+                this.sound.play("itemtake");
+            }
         } 
         else if(this.textTimerKnife >= 150){
             // hide text
