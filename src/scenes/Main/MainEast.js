@@ -52,7 +52,7 @@ class MainEast extends Phaser.Scene {
 
 
         this.hammerIm = this.add.sprite(650,350, 'drawer_hammer');
-        this.hammerIm.setVisible(true);
+    
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
         this.textTimerHammer = 0;
@@ -78,6 +78,7 @@ class MainEast extends Phaser.Scene {
             this.hammer.on('pointerdown', (pointer) => {
                 this.hammer.interText.setVisible(true);
                 this.textTimerHammer = 1;
+                hammerGot = 1;
             });
         }
         // text on screen
@@ -88,6 +89,10 @@ class MainEast extends Phaser.Scene {
             // hide text
             this.hammer.interText.setVisible(false);
             this.textTimerHammer = 0;
+        }
+        
+        if(hammerGot == 1){
+            this.hammerIm.setVisible(false);
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////

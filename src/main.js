@@ -33,6 +33,8 @@ let switchGot = 0;
 let lightState = 0;
 
 // puzzle 3
+let knifeGot = 0;
+let hammerGot = 0;
 
 // puzzle 4
 let rag = 0;
