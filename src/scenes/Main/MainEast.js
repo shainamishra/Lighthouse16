@@ -12,6 +12,7 @@ class MainEast extends Phaser.Scene {
         this.load.image('farpaint', './assets/puzzle3/overlays/framed painting.png');
         this.load.image('painting', './assets/puzzle3/overlays/painting.png');
         this.load.image('ripPainting', './assets/puzzle3/overlays/rippedPainting.png');
+        this.load.audio('itemtake', './assets/sfx/ItemTake.wav');
     }
 
     create() {
@@ -80,6 +81,7 @@ class MainEast extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
         this.textTimerHammer = 0;
+        this.textTimerPainting = 0;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -106,11 +108,11 @@ class MainEast extends Phaser.Scene {
             });
         }
         
-        if(this.textTimerHammer == 0){
+        if(this.textTimerPainting == 0){
             this.paintingHit.on('pointerdown', (pointer) => {
                 this.hammer.interText.setVisible(false);
                 this.hammer.setVisible(false);
-                this.textTimerHammer = 1;
+                this.textTimerPainting = 1;
 
                 if(knifeGot == 0){
                     this.painting.setVisible(true);
@@ -126,14 +128,13 @@ class MainEast extends Phaser.Scene {
         // text on screen
         if(this.textTimerHammer > 0 && this.textTimerHammer < 150) {
             this.textTimerHammer += 1;
+            if(this.textTimerHammer == 2){
+                this.sound.play("itemtake");
+            }
         } 
         else if(this.textTimerHammer >= 150){
             // hide text
             this.hammer.interText.setVisible(false);
-            this.painting.setVisible(false);
-            this.ripPainting.setVisible(false);
-            this.painting.interText.setVisible(false);
-            this.ripPainting.interText.setVisible(false);
             this.textTimerHammer = 0;
 
             if(hammerGot == 0){
@@ -146,6 +147,19 @@ class MainEast extends Phaser.Scene {
             this.hammerIm.setVisible(false);
         }
 
+        if(this.textTimerPainting > 0 && this.textTimerPainting < 150){
+            this.textTimerPainting += 1;
+            if(knifeGot == 1 && this.textTimerPainting ==2){
+                this.sound.play("itemtake");
+            }
+        }
+        else if(this.textTimerPainting >=150){
+            this.painting.setVisible(false);
+            this.ripPainting.setVisible(false);
+            this.painting.interText.setVisible(false);
+            this.ripPainting.interText.setVisible(false);
+            this.textTimerPainting = 0;
+        }
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // scene change on keypress
         if(Phaser.Input.Keyboard.JustDown(keyA)){
