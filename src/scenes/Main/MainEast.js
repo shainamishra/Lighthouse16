@@ -6,9 +6,10 @@ class MainEast extends Phaser.Scene {
     preload() {
         // images
         this.load.image('mainEast', './assets/puzzle3/overlays/base.png');
-
+        this.load.image('drawer', './assets/puzzle3/overlays/drawer.png');
         this.load.image('hitbox', './assets/HitBox2.png');
         this.load.image('drawer_hammer', './assets/puzzle3/overlays/drawerhammer.png');
+        this.load.image('farpaint', './assets/puzzle3/overlays/framed painting.png');
     }
 
     create() {
@@ -37,6 +38,9 @@ class MainEast extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
         // lights off CN
+        this.painting = this.add.sprite(650, 350, 'farpaint');
+        this.drawer = this.add.sprite(650,350,'drawer');
+
         this.hammer = this.add.sprite(500, 450, 'hitbox');
         this.hammer.setDisplaySize(100, 100);
         this.hammer.setInteractive({
@@ -47,7 +51,7 @@ class MainEast extends Phaser.Scene {
         this.hammer.interText.setVisible(false);
 
 
-        this.hammerIm = this.add.sprite(0,0, 'drawer_hammer');
+        this.hammerIm = this.add.sprite(650,350, 'drawer_hammer');
         this.hammerIm.setVisible(true);
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
