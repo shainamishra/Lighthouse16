@@ -99,19 +99,7 @@ class MainEast extends Phaser.Scene {
                 hammerGot = 1;
             });
         }
-/*
-else if(this.textTimerDock == 0 && scopeGot > 0){
-            this.pillars.interText = this.add.text(320, 70, 'There are two large stone \n pillars standing out in the sea');
-            this.pillars.interText.setFontSize(50);
-            this.pillars.interText.setVisible(false);
-            this.pillars.on('pointerdown', (pointer) => {
-                this.fishingpole.interText.setVisible(false);
-                this.pillars.interText.setVisible(true);
-                this.rocks.setVisible(true);
-                this.textTimerDock = 1;
-                this.hotOn = false;
-            });
-            */
+        
         if(this.textTimerHammer == 0){
             this.paintingHit.on('pointerdown', (pointer) => {
                 this.hammer.interText.setVisible(false);
