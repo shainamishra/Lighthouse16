@@ -19,7 +19,7 @@ class Menu extends Phaser.Scene {
         this.load.image('set3', './assets/transitions/spread3.png');
         this.load.image('set4', './assets/transitions/spread4.png');
         this.load.image('set5', './assets/transitions/spread5.png');
-        this.load.image('end', './assets/End.png');
+        this.load.image('set6', './assets/transitions/spread6.png');
 
         // table of contents in card box
         this.load.image('content1', './assets/toc/1.png');
@@ -34,6 +34,10 @@ class Menu extends Phaser.Scene {
         this.load.image('velvet1', './assets/cards/velvet1.png');
         this.load.image('velvet4', './assets/cards/velvet4.png');
         this.load.image('velvet5', './assets/cards/velvet5.png');
+        
+        // toc 
+        this.load.image('6overlay', './assets/transitions/6TOC.png');
+        this.load.image('7overlay', './assets/transitions/7TOC.png');
     }
 
     create() {
