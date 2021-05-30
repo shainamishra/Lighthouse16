@@ -98,11 +98,11 @@ class LookoutSouth extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // items
-        this.ragHot= this.add.sprite(460, 660, 'ragHot');
+        this.ragHot= this.add.image(460, 660, 'ragHot');
         this.ragHot.setDisplaySize(50, 50);
         this.ragHot.setVisible(false);
 
-        this.ropeHot = this.add.sprite(560, 660, 'ropeHot');
+        this.ropeHot = this.add.image(560, 660, 'ropeHot');
         this.ropeHot.setDisplaySize(50, 50);
         this.ropeHot.setVisible(false);
 
@@ -116,10 +116,10 @@ class LookoutSouth extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
-        this.add.rectangle(0, 0, 10, game.config.height, 0x8a8a8a).setOrigin(0, 0);
-        this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x8a8a8a).setOrigin(0, 0);
-        this.add.rectangle(0, 0, game.config.width, 10, 0x8a8a8a).setOrigin(0, 0);
-        this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x8a8a8a).setOrigin(0, 0);
+        this.add.rectangle(0, 0, 10, game.config.height, 0x2c2b45).setOrigin(0, 0);
+        this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x2c2b45).setOrigin(0, 0);
+        this.add.rectangle(0, 0, game.config.width, 10, 0x2c2b45).setOrigin(0, 0);
+        this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x2c2b45).setOrigin(0, 0);
     }
     
     update() {

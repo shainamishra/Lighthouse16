@@ -11,6 +11,12 @@ class LookoutWest extends Phaser.Scene {
         this.load.image('scales', './assets/puzzle4/overlays/scales.png');
         this.load.image('westLight', './assets/puzzle4/overlays/blank_wall_light.png');
 
+
+        // images
+        this.load.image('scales_hole', './assets/puzzle4/scalesWindow/scalesHole.png');
+        this.load.image('even', './assets/puzzle4/scalesWindow/scales_even.png');
+        this.load.image('uneven', './assets/puzzle4/scalesWindow/scales_uneven.png');
+
         // hitbox
         this.load.image('hitbox', './assets/HitBox2.png');
 
@@ -70,11 +76,6 @@ class LookoutWest extends Phaser.Scene {
             useHandCursor: true
         });
 
-        // window light
-        this.light = this.add.image(640, 360, 'westLight');
-        this.light.setDisplaySize(1280, 720);
-        this.light.setVisible(false);
-
         // scales
         this.scales = this.add.image(640, 350, 'scales');
         this.scales.setDisplaySize(1280, 720);
@@ -87,6 +88,12 @@ class LookoutWest extends Phaser.Scene {
         this.outline.interText = this.add.text(200, 550, 'You opened a hatch in the wall.');
         this.outline.interText.setFontSize(50);
         this.outline.interText.setVisible(false);
+
+        // window light
+        this.light = this.add.image(640, 360, 'westLight');
+        this.light.setDisplaySize(1280, 720);
+        this.light.alpha = 0.5;
+        this.light.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // hot bar 
@@ -115,10 +122,10 @@ class LookoutWest extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
-        this.add.rectangle(0, 0, 10, game.config.height, 0x8a8a8a).setOrigin(0, 0);
-        this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x8a8a8a).setOrigin(0, 0);
-        this.add.rectangle(0, 0, game.config.width, 10, 0x8a8a8a).setOrigin(0, 0);
-        this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x8a8a8a).setOrigin(0, 0);
+        this.add.rectangle(0, 0, 10, game.config.height, 0x2c2b45).setOrigin(0, 0);
+        this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x2c2b45).setOrigin(0, 0);
+        this.add.rectangle(0, 0, game.config.width, 10, 0x2c2b45).setOrigin(0, 0);
+        this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x2c2b45).setOrigin(0, 0);
     }
     
     update() {
@@ -150,8 +157,9 @@ class LookoutWest extends Phaser.Scene {
                 this.textTimer = 1;
                 hatch = 1;
             }
-            if(hatch == 1){
+            if(hatch == 1 && this.textTimer == 0){
                 // open scales image
+                this.scene.switch("lookoutScales");
             }
         });
 
