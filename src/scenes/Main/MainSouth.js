@@ -5,8 +5,8 @@ class MainSouth extends Phaser.Scene {
 
     preload() {
         // images
-        this.load.image('mainSouth', './assets/puzzle3/wall3.png');
-
+        this.load.image('mainSouth', './assets/puzzle3/overlays/base.png');
+        this.load.image('southinitial', './assets/puzzle3/overlays/skull and hatch.png');
         this.load.image('hitbox', './assets/HitBox2.png');
     }
 
@@ -36,6 +36,8 @@ class MainSouth extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
         // lights off CN
+        this.initial = this.add.sprite(300, 150, 'southinitial');
+        
         this.skull = this.add.sprite(975, 150, 'hitbox');
         this.skull.setDisplaySize(150, 200);
         this.skull.setInteractive({
