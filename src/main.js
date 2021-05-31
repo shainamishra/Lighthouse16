@@ -2,7 +2,7 @@ let config = {
     type: Phaser.CANVAS,
     width: 1280,
     height: 720,
-    scene: [ Menu, Instruction, Spread1, Inventory, IslandNorth, IslandWest, IslandEast, IslandSouth, Spread2, CellarNorth, CellarWest, CellarEast, CellarSouth, Spread3, MainNorth, MainWest, MainEast, MainSouth, Spread4,  Scales, LookoutNorth, LookoutWest, LookoutEast, LookoutSouth, Spread5, Inventory7, RitualNorth, RitualWest, RitualEast, RitualSouth],
+    scene: [ Menu, Instruction, Spread1, Inventory, IslandNorth, IslandWest, IslandEast, IslandSouth, Spread2, CellarNorth, CellarWest, CellarEast, CellarSouth, Spread3, MainNorth, MainWest, MainEast, MainSouth, Spread4, LookoutNorth, LookoutWest, LookoutEast, LookoutSouth, Scales, Spread5, Inventory7, RitualNorth, RitualWest, RitualEast, RitualSouth],
   }
 
 let game = new Phaser.Game(config);
@@ -41,7 +41,8 @@ let scoinGot = 0;
 // puzzle 4
 let rag = 0;
 let windowClean = 0;
-let rock = 0;
+let citrine = 0;citrine
 let rope = 0;
 let hatch = 0;
 let weights = 0;
+let balanced = 0;

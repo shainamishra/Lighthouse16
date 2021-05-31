@@ -15,6 +15,7 @@ class LookoutNorth extends Phaser.Scene {
         this.load.image('green', './assets/puzzle4/items/green_rock.png');
         this.load.image('orange', './assets/puzzle4/items/orange_rock.png');
         this.load.image('red', './assets/puzzle4/items/red_rock.png');
+        this.load.image('yellow', './assets/puzzle4/items/citrine.png');
 
         // hitbox
         this.load.image('hitbox', './assets/HitBox.png');
@@ -834,12 +835,14 @@ class LookoutNorth extends Phaser.Scene {
         if(Phaser.Input.Keyboard.JustDown(keyS)){
             this.scene.start("lookoutSouth");
         };
-        /*
+    
+        //hatch = 1;
+        //weights = 1;
+        //citrine = 1;
         if(Phaser.Input.Keyboard.JustDown(keySPACE)){
             this.sound.get('lookout_music').stop();
             this.scene.start("spread5");
         };
-        */
     }
     
     hotBarItems(on){
@@ -850,7 +853,7 @@ class LookoutNorth extends Phaser.Scene {
                 this.ragHot.setVisible(true);
             }
 
-            if (rock == 1){
+            if (citrine == 1){
                 this.citrineHot.setVisible(true);
             }
 

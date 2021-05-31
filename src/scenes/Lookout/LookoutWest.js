@@ -10,6 +10,7 @@ class LookoutWest extends Phaser.Scene {
         this.load.image('outline', './assets/puzzle4/overlays/secret_outline.png');
         this.load.image('scales', './assets/puzzle4/overlays/scales.png');
         this.load.image('westLight', './assets/puzzle4/overlays/blank_wall_light.png');
+        this.load.image('ladder', './assets/puzzle4/overlays/ladder.png');
 
         // hitbox
         this.load.image('hitbox', './assets/HitBox2.png');
@@ -83,6 +84,21 @@ class LookoutWest extends Phaser.Scene {
         this.outline.interText.setFontSize(50);
         this.outline.interText.setVisible(false);
 
+        // ladder image
+        this.ladderIm = this.add.image(640, 360, 'ladder');
+        this.ladderIm.setDisplaySize(1280, 720);
+        this.ladderIm.setVisible(false);
+        // ladder hitbox
+        this.ladder = this.add.sprite(980, 360, 'hitbox');
+        this.ladder.setDisplaySize(240, 700);
+        this.ladder.setInteractive({
+            useHandCursor: true
+        });
+        this.ladder.interText = this.add.text(350, 400, '   Press space to\nenter the light room');
+        this.ladder.interText.setFontSize(50);
+        this.ladder.interText.setVisible(false);
+        this.ladder.setVisible(false);
+
         // window light
         this.light = this.add.image(640, 360, 'westLight');
         this.light.setDisplaySize(1280, 720);
@@ -108,6 +124,7 @@ class LookoutWest extends Phaser.Scene {
         this.citrineHot = this.add.sprite(660, 659, 'citrineHot');
         this.citrineHot.setDisplaySize(50, 50);
         this.citrineHot.setVisible(false);
+        
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
@@ -145,12 +162,15 @@ class LookoutWest extends Phaser.Scene {
         });
 
         // hatch
+        //hatch = 1;
+        //windowClean = 1;
         this.hatch.on('pointerdown', (pointer) => {
             if (hatch == 0){
                 this.scales.setVisible(true);
                 this.outline.interText.setVisible(true);
                 this.textTimer = 1;
                 hatch = 1;
+                this.itemTake.play();
             }
             if(hatch == 1 && this.textTimerHatch == 0 && this.textTimer == 0){
                 // open scales image
@@ -158,6 +178,17 @@ class LookoutWest extends Phaser.Scene {
                 this.scene.switch("lookoutScales");
             }
         });
+
+        if(balanced == 1){
+            this.ladderIm.setVisible(true);
+            this.ladder.setVisible(true);
+            this.ladder.interText.setVisible(true);
+
+            if(Phaser.Input.Keyboard.JustDown(keySPACE)){
+                this.sound.get('lookout_music').stop();
+                this.scene.start("spread5");
+            };
+        }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // text timers
@@ -205,9 +236,6 @@ class LookoutWest extends Phaser.Scene {
         if(Phaser.Input.Keyboard.JustDown(keyS)){
             this.scene.start("lookoutEast");
         };
-
-        // whenever the level is done, do:
-        // this.sound.get('cellar_music').stop();
     }
     
     hotBarItems(on){
@@ -218,7 +246,7 @@ class LookoutWest extends Phaser.Scene {
                 this.ragHot.setVisible(true);
             }
 
-            if (rock == 1){
+            if (citrine == 1){
                 this.citrineHot.setVisible(true);
             }
 

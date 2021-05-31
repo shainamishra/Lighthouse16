@@ -15,11 +15,6 @@ class Spread4 extends Phaser.Scene {
         this.load.image('ragHot', './assets/puzzle4/items/rag.png');
         this.load.image('ropeHot', './assets/puzzle4/items/rope.png');
         this.load.image('citrineHot', './assets/puzzle4/items/citrine.png');
-
-        // sclaes images
-        this.load.image('scales_hole', './assets/puzzle4/scalesWindow/scalesHole.png');
-        this.load.image('even', './assets/puzzle4/scalesWindow/scales_even.png');
-        this.load.image('uneven', './assets/puzzle4/scalesWindow/scales_uneven.png');
         
         // audio
         this.load.audio('lookout_music', './assets/sfx/Musicbox.wav');

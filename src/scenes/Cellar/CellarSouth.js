@@ -25,7 +25,7 @@ class CellarSouth extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // sfx
-        this.itemTake = this.sound.add('itemtake', {volume: 0.5});
+        this.itemTake = this.sound.add('itemtake', {volume: 0.75});
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
@@ -96,7 +96,7 @@ class CellarSouth extends Phaser.Scene {
         this.door = this.add.image(640, 360, 'door');
         this.door.setDisplaySize(1280, 720);
         this.door.setVisible(false);
-        this.door.interText = this.add.text(460, 70, 'Press  space\nto enter the\n main  room');
+        this.door.interText = this.add.text(460, 10, 'Press  space\nto enter the\n main  room');
         this.door.interText.setFontSize(50);
         this.door.interText.setVisible(false); 
 

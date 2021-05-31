@@ -124,7 +124,7 @@ class LookoutEast extends Phaser.Scene {
                     this.windowHit.interText.setVisible(true);
                     this.textTimer = 1;
                 } 
-                else if (rag == 1 && rock == 0 && windowClean == 0) {
+                else if (rag == 1 && citrine == 0 && windowClean == 0) {
                     this.rock.setVisible(true);
                     this.clean.setVisible(true);
                     this.clean.interText.setVisible(true);
@@ -137,7 +137,7 @@ class LookoutEast extends Phaser.Scene {
                     this.clean.interText.setVisible(false);
                     this.rock.interText.setVisible(true);
                     this.textTimer = 1;
-                    rock = 1;
+                    citrine = 1;
                     this.itemTake.play();
                 }
             });
@@ -157,12 +157,12 @@ class LookoutEast extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // end states
-        if (rag == 1 && windowClean == 1 && rock == 0) {
+        if (rag == 1 && windowClean == 1 && citrine == 0) {
             this.rock.setVisible(true);
             this.clean.setVisible(true);
         }
         
-        if (windowClean == 1 & rock == 1) {
+        if (windowClean == 1 & citrine == 1) {
             this.rock.setVisible(false);
             this.clean.setVisible(true);
         }
@@ -189,7 +189,7 @@ class LookoutEast extends Phaser.Scene {
                 this.ragHot.setVisible(true);
             }
 
-            if (rock == 1){
+            if (citrine == 1){
                 this.citrineHot.setVisible(true);
             }
 

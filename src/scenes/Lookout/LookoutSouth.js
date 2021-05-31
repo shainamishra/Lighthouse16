@@ -168,7 +168,7 @@ class LookoutSouth extends Phaser.Scene {
         if(windowClean == 1){
             this.lightSouth.setVisible(true);
         }
-        if(rock == 1 && rope == 1){
+        if(citrine == 1 && rope == 1){
             this.top.setVisible(true);
             this.penRope.setVisible(true);
             this.penRock.setVisible(true);
@@ -196,7 +196,7 @@ class LookoutSouth extends Phaser.Scene {
                 this.ragHot.setVisible(true);
             }
 
-            if (rock == 1){
+            if (citrine == 1){
                 this.citrineHot.setVisible(true);
             }
 

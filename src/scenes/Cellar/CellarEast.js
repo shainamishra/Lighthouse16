@@ -21,14 +21,25 @@ class CellarEast extends Phaser.Scene {
         this.load.image('pink', './assets/puzzle2/overlays/buttonsOn/buttonPink.png');
 
         // audio
-        this.load.audio('scratch2', './assets/sfx/scratch2.wav');
-        // this.sound.play("scratch2");
+        this.load.audio('scratch1', './assets/sfx/Scratch1.wav');
+        this.load.audio('scratch2', './assets/sfx/Scratch2.wav');
+        this.load.audio('scratch3', './assets/sfx/Scratch3.wav');
+        this.load.audio('scratch4', './assets/sfx/Scratch4.wav');
+        this.load.audio('scratch5', './assets/sfx/Scratch5.wav');
     }
 
     create() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // place tile sprite
         this.cellarnorth = this.add.tileSprite(0, 0, 1280, 720, 'cellar').setOrigin(0, 0); 
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // sfx
+        this.scratch1 = this.sound.add('scratch1', {volume: 0.75});
+        this.scratch2 = this.sound.add('scratch2', {volume: 0.75});
+        this.scratch3 = this.sound.add('scratch3', {volume: 0.75});
+        this.scratch4 = this.sound.add('scratch4', {volume: 0.75});
+        this.scratch5 = this.sound.add('scratch5', {volume: 0.75});
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
@@ -257,6 +268,7 @@ class CellarEast extends Phaser.Scene {
                     this.inputArr[this.inputNum] = 'yellow';
                     this.inputNum += 1;
                     this.inside = true;
+                    this.scratch2.play();
                 }
             });
 
@@ -270,6 +282,7 @@ class CellarEast extends Phaser.Scene {
                     this.inputArr[this.inputNum] = 'green';
                     this.inputNum += 1;
                     this.inside = true;
+                    this.scratch5.play();
                 }
             });
 
@@ -283,6 +296,7 @@ class CellarEast extends Phaser.Scene {
                     this.inputArr[this.inputNum] = 'cyan';
                     this.inputNum += 1;
                     this.inside = true;
+                    this.scratch1.play();
                 }
             });
 
@@ -322,6 +336,7 @@ class CellarEast extends Phaser.Scene {
                     this.inputArr[this.inputNum] = 'pink';
                     this.inputNum += 1;
                     this.inside = true;
+                    this.scratch5.play();
                 }
             });
         }
