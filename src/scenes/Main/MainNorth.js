@@ -136,7 +136,7 @@ class MainNorth extends Phaser.Scene {
 
         // text on screen
         if(this.textTimerGclock> 0 && this.textTimerGclock < 150) {
-            this.minutehand.angle += this.pointer.dragX;
+            this.minutehand.angle += this.minutehand.x;
             this.textTimerGclock += 1;
         } 
         else if(this.textTimerGclock >= 150){
