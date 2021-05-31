@@ -61,10 +61,19 @@ class MainNorth extends Phaser.Scene {
         this.clockface = this.add.sprite(650, 350, 'clock');
         this.clockface.setDisplaySize(1280, 720);
         this.clockface.setVisible(false);
-        this.hourhand = this.add.image(650,350,'hour');
+        // hour hand
+        this.hourhand = this.add.image(650, 350,'hour');
+        this.hourhand.setInteractive({
+            useHandCursor: true
+        });
         this.hourhand.setVisible(false);
-        this.minutehand = this.add.image(650,350, 'minute');
+        // minute hand
+        this.minutehand = this.add.image(650, 350, 'minute');
+        this.minutehand.setInteractive({
+            useHandCursor: true
+        });
         this.minutehand.setVisible(false);
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
         this.textTimerIndoor = 0;
@@ -85,7 +94,8 @@ class MainNorth extends Phaser.Scene {
             this.scene.switch("cardBox");
         });
 
-
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // dragging
         this.input.setDraggable(this.minutehand);
         this.input.setDraggable(this.hourhand);
         this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
