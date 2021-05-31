@@ -110,6 +110,10 @@ class LookoutSouth extends Phaser.Scene {
         this.citrineHot.setDisplaySize(50, 50);
         this.citrineHot.setVisible(false);
 
+        this.rockHot = this.add.sprite(660, 659, 'rockHot');
+        this.rockHot.setDisplaySize(50, 50);
+        this.rockHot.setVisible(false);
+        
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
         this.hotOn = true;
@@ -196,8 +200,12 @@ class LookoutSouth extends Phaser.Scene {
                 this.ragHot.setVisible(true);
             }
 
-            if (citrine == 1){
+            if (citrine == 1 && weights == 0){
                 this.citrineHot.setVisible(true);
+            }
+            else if (weights == 1){
+                this.citrineHot.setVisible(false);
+                this.rockHot.setVisible(true);
             }
 
             if (rope == 1){

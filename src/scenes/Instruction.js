@@ -32,7 +32,7 @@ class Instruction extends Phaser.Scene {
             this.scene.start("mainNorth"); 
 		});
         this.input.keyboard.on('keydown-V', () => {
-            this.scene.start("lookoutNorth"); 
+            this.scene.start("lookoutScales"); 
 		});
         this.input.keyboard.on('keydown-B', () => {
             this.scene.start("ritualNorth"); 

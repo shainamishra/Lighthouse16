@@ -18,7 +18,7 @@ class Scales extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // sfx
-        this.itemTake = this.sound.add('itemtake', {volume: 0.5});
+        //this.itemTake = this.sound.add('itemtake', {volume: 0.5});
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
@@ -31,7 +31,7 @@ class Scales extends Phaser.Scene {
         this.even.setDisplaySize(1280, 720);
         this.even.setVisible(true);
         // scales uneven
-        this.uneven = this.add.image(640, 350, 'uneven');
+        this.uneven = this.add.image(580, 340, 'uneven');
         this.uneven.setDisplaySize(1280, 720);
         this.uneven.setVisible(false);
         // scales text
@@ -115,7 +115,9 @@ class Scales extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
         this.textTimer = 0;
-        this.rocks = [this.red, this.yellow, this.orange, this.green, this.cyan, this.blue, this.purple]
+        this.rocks = [this.red, this.yellow, this.orange, this.green, this.cyan, this.blue, this.purple];
+        this.correct = ["right", "right", "right", "left", "right", "right", "right"];
+        this.scaleStatus = false;
         this.status = [];
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -175,10 +177,16 @@ class Scales extends Phaser.Scene {
                 for (var i = 0; i < 7; i++) {
                     this.status.push(this.checkPosition(this.rocks[i]));
                 }
-                console.log(this.status)
-                balanced = 1;
-                this.uneven.interText.setVisible(true); 
                 
+                console.log(this.status)
+                this.scaleStatus = this.checkCorrect(this.status, this.correct);
+
+                if(this.scaleStatus == true){
+                    balanced = 1;
+                    this.uneven.interText.setVisible(true); 
+                } else {
+                    this.rockReset();
+                }
             }
         });
 
@@ -218,6 +226,23 @@ class Scales extends Phaser.Scene {
         };
     }
 
+    rockReset(){
+        // red
+        this.red.setPosition(200, 665);
+        // orange
+        this.orange.setPosition(335, 665);
+        // yellow
+        this.yellow.setPosition(465, 665);
+        // green
+        this.green.setPosition(595, 665);
+        // cyan
+        this.cyan.setPosition(725, 665);
+        // blue
+        this.blue.setPosition(860, 665);
+        // purple
+        this.purple.setPosition(1000, 665);
+    }
+
     checkPosition(rock){
         this.posY = rock.y;
         this.posX = rock.x;
@@ -234,5 +259,14 @@ class Scales extends Phaser.Scene {
             }
         }
         return "inactive";
+    }
+
+    checkCorrect(arr1, arr2){
+        for (var i = 0; i < 7; i++) {
+            if(arr1[i] != arr2[i]){
+                return false;
+            }
+        }
+        return true;
     }
 }

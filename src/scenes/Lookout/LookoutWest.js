@@ -85,19 +85,12 @@ class LookoutWest extends Phaser.Scene {
         this.outline.interText.setVisible(false);
 
         // ladder image
-        this.ladderIm = this.add.image(640, 360, 'ladder');
-        this.ladderIm.setDisplaySize(1280, 720);
-        this.ladderIm.setVisible(false);
-        // ladder hitbox
-        this.ladder = this.add.sprite(980, 360, 'hitbox');
-        this.ladder.setDisplaySize(240, 700);
-        this.ladder.setInteractive({
-            useHandCursor: true
-        });
+        this.ladder = this.add.image(640, 360, 'ladder');
+        this.ladder.setDisplaySize(1280, 720);
+        this.ladder.setVisible(false);
         this.ladder.interText = this.add.text(350, 400, '   Press space to\nenter the light room');
         this.ladder.interText.setFontSize(50);
         this.ladder.interText.setVisible(false);
-        this.ladder.setVisible(false);
 
         // window light
         this.light = this.add.image(640, 360, 'westLight');
@@ -124,8 +117,11 @@ class LookoutWest extends Phaser.Scene {
         this.citrineHot = this.add.sprite(660, 659, 'citrineHot');
         this.citrineHot.setDisplaySize(50, 50);
         this.citrineHot.setVisible(false);
-        
 
+        this.rockHot = this.add.sprite(660, 659, 'rockHot');
+        this.rockHot.setDisplaySize(50, 50);
+        this.rockHot.setVisible(false);
+        
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
         this.hotOn = true;
@@ -180,7 +176,6 @@ class LookoutWest extends Phaser.Scene {
         });
 
         if(balanced == 1){
-            this.ladderIm.setVisible(true);
             this.ladder.setVisible(true);
             this.ladder.interText.setVisible(true);
 
@@ -246,8 +241,12 @@ class LookoutWest extends Phaser.Scene {
                 this.ragHot.setVisible(true);
             }
 
-            if (citrine == 1){
+            if (citrine == 1 && weights == 0){
                 this.citrineHot.setVisible(true);
+            }
+            else if (weights == 1){
+                this.citrineHot.setVisible(false);
+                this.rockHot.setVisible(true);
             }
 
             if (rope == 1){
