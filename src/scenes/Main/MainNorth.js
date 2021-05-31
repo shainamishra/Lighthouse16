@@ -136,9 +136,8 @@ class MainNorth extends Phaser.Scene {
 
         // text on screen
         if(this.textTimerGclock> 0 && this.textTimerGclock < 150) {
-            if (this.input.on('pointerdown', () => {
-                this.textTimerGclock = 151;
-            }));
+            this.minutehand.angle += this.minutehand.x;
+            this.textTimerGclock += 1;
         } 
         else if(this.textTimerGclock >= 150){
             // hide text
