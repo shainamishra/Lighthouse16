@@ -11,12 +11,6 @@ class LookoutWest extends Phaser.Scene {
         this.load.image('scales', './assets/puzzle4/overlays/scales.png');
         this.load.image('westLight', './assets/puzzle4/overlays/blank_wall_light.png');
 
-
-        // images
-        this.load.image('scales_hole', './assets/puzzle4/scalesWindow/scalesHole.png');
-        this.load.image('even', './assets/puzzle4/scalesWindow/scales_even.png');
-        this.load.image('uneven', './assets/puzzle4/scalesWindow/scales_uneven.png');
-
         // hitbox
         this.load.image('hitbox', './assets/HitBox2.png');
 
@@ -119,6 +113,7 @@ class LookoutWest extends Phaser.Scene {
         // god forsaken variables
         this.hotOn = true;
         this.textTimer = 0;
+        this.textTimerHatch = 0;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -157,8 +152,9 @@ class LookoutWest extends Phaser.Scene {
                 this.textTimer = 1;
                 hatch = 1;
             }
-            if(hatch == 1 && this.textTimer == 0){
+            if(hatch == 1 && this.textTimerHatch == 0 && this.textTimer == 0){
                 // open scales image
+                this.textTimerHatch = 1;
                 this.scene.switch("lookoutScales");
             }
         });
@@ -173,8 +169,16 @@ class LookoutWest extends Phaser.Scene {
             this.ragHit.interText.setVisible(false);
             this.outline.interText.setVisible(false);
             this.textTimer = 0;
+        } 
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // hatch text timers
+        if(this.textTimerHatch > 0 && this.textTimerHatch < 50) {
+            this.textTimerHatch += 1;
+        } 
+        else if(this.textTimerHatch >= 50){
+            // hide text
+            this.textTimerHatch = 0;
         }
-
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // end states
         if(rag == 1){

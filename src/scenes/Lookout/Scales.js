@@ -14,11 +14,7 @@ class Scales extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
-        keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-        keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
-        keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
-        keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
@@ -27,9 +23,9 @@ class Scales extends Phaser.Scene {
         this.even.setDisplaySize(1280, 720);
         this.even.setVisible(true);
         // scales uneven
-        this.even = this.add.image(640, 350, 'even');
-        this.even.setDisplaySize(1280, 720);
-        this.even.setVisible(false);
+        this.uneven = this.add.image(640, 350, 'uneven');
+        this.uneven.setDisplaySize(1280, 720);
+        this.uneven.setVisible(false);
 
         /*
         this.windowHit = this.add.sprite(625, 260, 'hitbox');
@@ -44,21 +40,11 @@ class Scales extends Phaser.Scene {
         */
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // inventory box set up
-        this.invent = this.add.sprite(60,60, 'inventory');
-        this.invent.setDisplaySize(100, 100);
-        this.invent.setInteractive({
-            useHandCursor: true
-        });
-
-        prevScene = this.scene.key;
-
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // close
-        this.closeInven = this.add.sprite(1220, 50, 'x');
-        this.closeInven.setDisplaySize(50, 50);
-        this.closeInven.setVisible(true);
-        this.closeInven.setInteractive({
+        this.closeLook = this.add.sprite(50, 50, 'x');
+        this.closeLook.setDisplaySize(50, 50);
+        this.closeLook.setVisible(true);
+        this.closeLook.setInteractive({
             useHandCursor: true
         });
 
@@ -76,30 +62,21 @@ class Scales extends Phaser.Scene {
     
     update() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // clicks inventory box: puts this scene to sleep (no updates), switches to cards
-        this.invent.on('pointerdown', (pointer) => {
-            this.scene.switch("cardBox");
-        });
-
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // go back to lookOut
-        this.closeInven.on('pointerdown', (pointer) => {
-            this.scene.stop("lookoutScales");
-            this.scene.wake("lookoutWest");
+        this.closeLook.on('pointerdown', () => {
+            if(this.textTimer == 0)
+                this.textTimer = 1;
+                this.scene.stop("lookoutScales");
+                this.scene.wake("lookoutWest");
         });
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // 
-        
         // text timers
         if(this.textTimer > 0 && this.textTimer < 150) {
             this.textTimer += 1;
         } 
         else if(this.textTimer >= 150){
             // hide text
-            this.windowHit.interText.setVisible(false);
-            this.clean.interText.setVisible(false);
-            this.rock.interText.setVisible(false);
             this.textTimer = 0;
         }
 
