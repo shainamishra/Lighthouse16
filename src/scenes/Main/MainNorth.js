@@ -61,9 +61,9 @@ class MainNorth extends Phaser.Scene {
         this.clockface = this.add.sprite(650, 350, 'clock');
         this.clockface.setDisplaySize(1280, 720);
         this.clockface.setVisible(false);
-        this.hourhand = this.add.sprite(650,350,'hour');
+        this.hourhand = this.add.image(650,350,'hour');
         this.hourhand.setVisible(false);
-        this.minutehand = this.add.sprite(650,350, 'minute');
+        this.minutehand = this.add.image(650,350, 'minute');
         this.minutehand.setVisible(false);
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
