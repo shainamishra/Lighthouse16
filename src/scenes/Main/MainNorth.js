@@ -86,6 +86,14 @@ class MainNorth extends Phaser.Scene {
         });
 
 
+        this.input.setDraggable(this.minutehand);
+        this.input.setDraggable(this.hourhand);
+        this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
+
+            gameObject.x = dragX;
+            gameObject.y = dragY;
+    
+        });
         // end states
         if(this.textTimerIndoor == 0){
             this.indoor.on('pointerdown', (pointer) => {
