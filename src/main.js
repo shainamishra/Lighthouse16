@@ -2,7 +2,7 @@ let config = {
     type: Phaser.CANVAS,
     width: 1280,
     height: 720,
-    scene: [ Menu, Instruction, Spread1, Inventory, IslandNorth, IslandWest, IslandEast, IslandSouth, Spread2, CellarNorth, CellarWest, CellarEast, CellarSouth, Spread3, MainNorth, MainWest, MainEast, MainSouth, Spread4, LookoutNorth, LookoutWest, LookoutEast, LookoutSouth, Scales, Spread5, Inventory7, RitualNorth, RitualWest, RitualEast, RitualSouth],
+    scene: [ Menu, Instruction, Spread1, Inventory, IslandNorth, IslandWest, IslandEast, IslandSouth, Spread2, CellarNorth, CellarWest, CellarEast, CellarSouth, Spread3, MainNorth, MainWest, MainEast, MainSouth, Spread4, LookoutNorth, LookoutWest, LookoutEast, LookoutSouth, Scales, LoadingNorth, LoadingSouth, Spread5, Inventory7, RitualNorth, RitualWest, RitualEast, RitualSouth],
   }
 
 let game = new Phaser.Game(config);
