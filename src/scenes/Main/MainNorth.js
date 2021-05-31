@@ -8,6 +8,9 @@ class MainNorth extends Phaser.Scene {
         this.load.image('mainNorth', './assets/puzzle3/wall1.png');
 
         this.load.image('hitbox', './assets/HitBox2.png');
+        this.load.image('minute', './assets/puzzle3/overlays/minute.png');
+        this.load.image('hour', './assets/puzzle3/items/hour.png');
+        this.load.image('clock', './assets/puzzle3/overlays/clockface.png');
     }
 
     create() {
@@ -33,6 +36,7 @@ class MainNorth extends Phaser.Scene {
 
         prevScene = this.scene.key;
         
+        
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
         // lights off CN
@@ -53,6 +57,14 @@ class MainNorth extends Phaser.Scene {
         this.gclock.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 100, 'The clock has stopped');
         this.gclock.interText.setFontSize(50);
         this.gclock.interText.setVisible(false);
+
+        this.clockface = this.add.sprite(650, 350, 'clock');
+        this.clockface.setDisplaySize(1280, 720);
+        this.clockface.setVisible(false);
+        this.hourhand = this.add.sprite(650,350,'hour');
+        this.hourhand.setVisible(false);
+        this.minutehand = this.add.sprite(650,350, 'minute');
+        this.minutehand.setVisible(false);
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
         this.textTimerIndoor = 0;
@@ -95,17 +107,29 @@ class MainNorth extends Phaser.Scene {
         if(this.textTimerGclock == 0){
             this.gclock.on('pointerdown', (pointer) => {
                 this.gclock.interText.setVisible(true);
+                this.clockface.setVisible(true);
+                this.hourhand.setVisible(true);
+                this.minutehand.setVisible(true);
+                this.gclock.setVisible(false);
+                this.indoor.setVisible(false);
                 this.textTimerGclock = 1;
             });
         }
 
         // text on screen
         if(this.textTimerGclock> 0 && this.textTimerGclock < 150) {
-            this.textTimerGclock += 1;
+            if (this.input.on('pointerdown', () => {
+                this.textTimerGclock = 151;
+            }));
         } 
         else if(this.textTimerGclock >= 150){
             // hide text
             this.gclock.interText.setVisible(false);
+            this.clockface.setVisible(false);
+            this.hourhand.setVisible(false);
+            this.minutehand.setVisible(false);
+            this.gclock.setVisible(true);
+            this.indoor.setVisible(true);
             this.textTimerGclock = 0;
         }
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
