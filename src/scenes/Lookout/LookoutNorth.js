@@ -765,7 +765,7 @@ class LookoutNorth extends Phaser.Scene {
             this.check3 = this.checkQueens(3);
             this.check4 = this.checkQueens(4);
 
-            // check if 1 || 2|| 3|| 4 return true
+            // check if 1 || 2|| 3 || 4 return true
             if(this.check1 == true || this.check2 == true || this.check3 == true || this.check4 == true){
                 // move on to next level
                 this.queen.interText = this.add.text(350, 550, 'You took the chakra stones.');

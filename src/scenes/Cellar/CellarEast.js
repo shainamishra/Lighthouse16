@@ -329,17 +329,14 @@ class CellarEast extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // check is button order is correct
         if(this.inputNum == 5){
-            for (var i = 0; i < 5; i++) {
-                if(this.inputArr[i] != this.correctArr[i]){
-                    // reset
-                    this.inputArr = ['', '', '', '', ''];
-                    this.inputNum = 0;
-                }
-                else{
-                    // move on to next level
-                    this.correct = true; 
-                    unlocked = 1;
-                }
+            this.correct = this.checkButtons();
+
+            if(this.correct == true){
+                this.correct = true; 
+                unlocked = 1;
+            } else {
+                this.inputArr = ['', '', '', '', ''];
+                this.inputNum = 0;
             }
         }
 
@@ -392,6 +389,24 @@ class CellarEast extends Phaser.Scene {
         if(Phaser.Input.Keyboard.JustDown(keyS)){
             this.scene.start("cellarWest");
         };
+    }
+
+    checkButtons(){
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // check is button order is correct
+        if(this.inputNum == 5){
+            for (var i = 0; i < 5; i++) {
+                if(this.inputArr[i] != this.correctArr[i]){
+                    // reset
+                    console.log(this.inputArr[i])
+                    return false;
+                }
+            }
+            // move on to next level
+            console.log("true")
+            return true;
+        }
+
     }
 
     // set all buttons to false
