@@ -24,7 +24,7 @@ class Instruction extends Phaser.Scene {
         // change scenes
         this.input.keyboard.on('keydown-Z', () => {
             this.scene.start("islandNorth"); 
-		});// change scenes
+		});
         this.input.keyboard.on('keydown-X', () => {
             this.scene.start("cellarNorth"); 
 		});

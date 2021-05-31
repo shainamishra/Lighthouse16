@@ -178,12 +178,12 @@ class IslandEast extends Phaser.Scene {
         this.hotBarItems(this.hotOn);
         
         // clicks inventory box: puts this scene to sleep (no updates), switches to cards
-        this.invent.on('pointerdown', (pointer) => {
+        this.invent.on('pointerdown', () => {
             this.scene.switch("cardBox");
         });
         
         if(this.textTimerRod == 0 && reelGot == 0){
-            this.fishingpole.on('pointerdown', (pointer) => {
+            this.fishingpole.on('pointerdown', () => {
                 this.fishingpole.interText.setVisible(true);
                 this.textTimerRod = 1;
             });
@@ -192,7 +192,7 @@ class IslandEast extends Phaser.Scene {
             this.fishingpole.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'The fishingpole brings \n     up a cage');
             this.fishingpole.interText.setFontSize(50);
             this.fishingpole.interText.setVisible(false);
-            this.fishingpole.on('pointerdown', (pointer) => {
+            this.fishingpole.on('pointerdown', () => {
                 this.fishingpole.interText.setVisible(true);
                 this.reel.setVisible(true);
                 this.rod.setVisible(false);
@@ -205,7 +205,7 @@ class IslandEast extends Phaser.Scene {
                 this.fishingpole.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'There was a telescope \n inside the cage');
                 this.fishingpole.interText.setFontSize(50);
                 this.fishingpole.interText.setVisible(false);
-            this.fishingpole.on('pointerdown', (pointer) => {
+            this.fishingpole.on('pointerdown', () => {
                 this.fishingpole.interText.setVisible(true);
                 this.rod.setVisible(false);
                 this.rodCage.setVisible(false);
@@ -232,7 +232,7 @@ class IslandEast extends Phaser.Scene {
 
         if(this.textTimerBucket == 0){
             // if click on bucket
-            this.bucket.on('pointerdown', (pointer) => {
+            this.bucket.on('pointerdown', () => {
 
                 this.bucket.interText.setVisible(true);
                 this.bucketUp.setVisible(false);
@@ -263,7 +263,7 @@ class IslandEast extends Phaser.Scene {
         if(this.textTimerDock == 0 && scopeGot == 0){
             // if click on dock
         
-            this.pillars.on('pointerdown', (pointer) => {
+            this.pillars.on('pointerdown', () => {
 
                 this.pillars.interText.setVisible(true);
                 //console.log('there is nothing here');
@@ -275,7 +275,7 @@ class IslandEast extends Phaser.Scene {
             this.pillars.interText = this.add.text(320, 70, 'There are two large stone \n pillars standing out in the sea');
             this.pillars.interText.setFontSize(50);
             this.pillars.interText.setVisible(false);
-            this.pillars.on('pointerdown', (pointer) => {
+            this.pillars.on('pointerdown', () => {
                 this.fishingpole.interText.setVisible(false);
                 this.pillars.interText.setVisible(true);
                 this.rocks.setVisible(true);
@@ -288,7 +288,7 @@ class IslandEast extends Phaser.Scene {
             this.textTimerDock += 1;
         } 
         else if(this.textTimerDock > 0 && this.textTimerDock < 300 && scopeGot > 0){
-            if (this.input.on('pointerdown', (pointer) => {
+            if (this.input.on('pointerdown', () => {
                 this.textTimerDock = 301;
             }));
         }

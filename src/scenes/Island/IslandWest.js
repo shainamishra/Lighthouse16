@@ -185,14 +185,14 @@ class IslandWest extends Phaser.Scene {
         this.hotBarItems(this.hotOn);
         
         // clicks inventory box: puts this scene to sleep (no updates), switches to cards
-        this.invent.on('pointerdown', (pointer) => {
+        this.invent.on('pointerdown', () => {
             this.scene.switch("cardBox");
         });
 
         // statue
         if(this.textTimerStatue == 0){
             // if click on lighthouse
-            this.statue.on('pointerdown', (pointer) =>{
+            this.statue.on('pointerdown', () =>{
                 this.statue.interText.setVisible(true);
                 this.textTimerStatue = 1;
             });
@@ -211,7 +211,7 @@ class IslandWest extends Phaser.Scene {
         // box
         if(this.textTimerBox == 0){
             if(unlocked == 0){
-                this.box.on('pointerdown', (pointer) =>{
+                this.box.on('pointerdown', () =>{
                     this.box.interText.setVisible(true);
                     this.combo.setVisible(true);
                     this.textTimerBox = 1;
@@ -222,21 +222,21 @@ class IslandWest extends Phaser.Scene {
                 this.box.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 150, 'You took the \nboltcutters');
                 this.box.interText.setFontSize(50);
                 this.box.interText.setVisible(false);
-                this.box.on('pointerdown', (pointer) =>{
+                this.box.on('pointerdown', () =>{
                     this.combo.setVisible(false);
                     this.textTimerBox = 1;
                 });
             }
         }
 
-        // text on screen
+        // lock input on screen
         if(this.textTimerBox > 0 && this.textTimerBox < 250 && unlocked == 0) {
             //this.textTimerBox += 1;
 
             //check num input
-            if (this.input.on('pointerdown', (pointer) => {
-                this.textTimerBox = 251;
-            }))
+            // if (this.input.on('pointerdown', () => {
+            //     this.textTimerBox = 251;
+            // }))
 
             this.inputCombo = this.checkCombo();
             if(this.inputCombo == 352){
@@ -246,6 +246,7 @@ class IslandWest extends Phaser.Scene {
             }
             else if(pos == 3){
                 this.textTimerBox = 251;
+                console.log("wrong combo");
             }
         } 
         else if(this.textTimerBox > 0 && this.textTimerBox < 250 && unlocked == 1) {
@@ -275,7 +276,7 @@ class IslandWest extends Phaser.Scene {
 
         // take boltcutters
         if(unlocked == 1){
-            this.box.on('pointerdown', (pointer) => {
+            this.box.on('pointerdown', () => {
                 this.openEmPic.setVisible(true);
                 this.openPic.setVisible(false);
                 boltGot = 1;

@@ -131,7 +131,7 @@ class Inventory extends Phaser.Scene {
     update() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // "x" to close inventory
-        this.closeInven.on('pointerdown', (pointer) => {
+        this.closeInven.on('pointerdown', () => {
             this.scene.stop("cardBox");
             this.scene.wake(prevScene);
         });
@@ -225,6 +225,7 @@ class Inventory extends Phaser.Scene {
             this.page6.setVisible(false);
             this.v4.setVisible(false);
             this.v5.setVisible(false);
+            this.v1.setVisible(false);
 
         } else if(page == 2){
             if(level > 1){
@@ -236,9 +237,11 @@ class Inventory extends Phaser.Scene {
                 this.page6.setVisible(false);
                 this.v4.setVisible(false);
                 this.v5.setVisible(false);
+                this.v1.setVisible(false);
             }
             else{
                 this.v5.setVisible(true);
+                this.v1.setVisible(false);
             }
 
         } else if(page == 3){
@@ -251,9 +254,11 @@ class Inventory extends Phaser.Scene {
                 this.page6.setVisible(false);
                 this.v4.setVisible(false);
                 this.v5.setVisible(false);
+                this.v1.setVisible(false);
             }
             else{
                 this.v4.setVisible(true);
+                this.v1.setVisible(false);
             }
 
         } else if(page == 4){
@@ -266,9 +271,11 @@ class Inventory extends Phaser.Scene {
                 this.page6.setVisible(false);
                 this.v4.setVisible(false);
                 this.v5.setVisible(false);
+                this.v1.setVisible(false);
             }
             else{
                 this.v4.setVisible(true);
+                this.v1.setVisible(false);
             }
 
         } else if(page == 5){
@@ -281,9 +288,11 @@ class Inventory extends Phaser.Scene {
                 this.page6.setVisible(false);
                 this.v4.setVisible(false);
                 this.v5.setVisible(false);
+                this.v1.setVisible(false);
             }
             else{
                 this.v4.setVisible(true);
+                this.v1.setVisible(false);
             }
             
         } else if(page == 6){
