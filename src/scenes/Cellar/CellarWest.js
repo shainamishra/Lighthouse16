@@ -23,7 +23,7 @@ class CellarWest extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // sfx
-        this.itemTake = this.sound.add('itemtake', {volume: 0.5});
+        this.itemTake = this.sound.add('itemtake', {volume: 0.75});
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
@@ -31,14 +31,6 @@ class CellarWest extends Phaser.Scene {
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // cursor
-        this.input.on('gameobjectdown', (pointer, gameObject, event) => { 
-            //console.log(pointer);
-            //console.log(gameObject);
-            //console.log(event);
-        });
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // inventory box set up

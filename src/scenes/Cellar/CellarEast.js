@@ -49,14 +49,6 @@ class CellarEast extends Phaser.Scene {
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // cursor   
-        this.input.on('gameobjectdown', (pointer, gameObject, event) => { 
-            //console.log(pointer);
-            //console.log(gameObject);
-            //console.log(event);
-        });
-
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // inventory box set up
         this.invent = this.add.sprite(60,60, 'inventory');
         this.invent.setDisplaySize(100, 100);
@@ -237,6 +229,7 @@ class CellarEast extends Phaser.Scene {
                 this.redOn.setVisible(true);
                 this.hideButtons();
                 this.textTimerButton = 1;
+                this.scratch1.play();
 
                 if(this.inputArr[this.inputNum] == '' && this.inside == false){
                     this.inputArr[this.inputNum] = 'red';
@@ -250,6 +243,7 @@ class CellarEast extends Phaser.Scene {
                 this.orangeOn.setVisible(true);
                 this.hideButtons();
                 this.textTimerButton = 1;
+                this.scratch3.play();
                 
                 if(this.inputArr[this.inputNum] == '' && this.inside == false){
                     this.inputArr[this.inputNum] = 'orange';
@@ -263,12 +257,12 @@ class CellarEast extends Phaser.Scene {
                 this.yellowOn.setVisible(true);
                 this.hideButtons();
                 this.textTimerButton = 1;
+                this.scratch2.play();
                 
                 if(this.inputArr[this.inputNum] == '' && this.inside == false){
                     this.inputArr[this.inputNum] = 'yellow';
                     this.inputNum += 1;
                     this.inside = true;
-                    this.scratch2.play();
                 }
             });
 
@@ -277,12 +271,12 @@ class CellarEast extends Phaser.Scene {
                 this.greenOn.setVisible(true);
                 this.hideButtons();
                 this.textTimerButton = 1;
+                this.scratch5.play();
                 
                 if(this.inputArr[this.inputNum] == '' && this.inside == false){
                     this.inputArr[this.inputNum] = 'green';
                     this.inputNum += 1;
                     this.inside = true;
-                    this.scratch5.play();
                 }
             });
 
@@ -291,12 +285,12 @@ class CellarEast extends Phaser.Scene {
                 this.cyanOn.setVisible(true);
                 this.hideButtons();
                 this.textTimerButton = 1;
+                this.scratch1.play();
                 
                 if(this.inputArr[this.inputNum] == '' && this.inside == false){
                     this.inputArr[this.inputNum] = 'cyan';
                     this.inputNum += 1;
                     this.inside = true;
-                    this.scratch1.play();
                 }
             });
 
@@ -305,6 +299,7 @@ class CellarEast extends Phaser.Scene {
                 this.blueOn.setVisible(true);
                 this.hideButtons();
                 this.textTimerButton = 1;
+                this.scratch3.play();
                 
                 if(this.inputArr[this.inputNum] == '' && this.inside == false){
                     this.inputArr[this.inputNum] = 'blue';
@@ -318,6 +313,7 @@ class CellarEast extends Phaser.Scene {
                 this.purpleOn.setVisible(true);
                 this.hideButtons();
                 this.textTimerButton = 1;
+                this.scratch2.play();
                 
                 if(this.inputArr[this.inputNum] == '' && this.inside == false){
                     this.inputArr[this.inputNum] = 'purple';
@@ -331,12 +327,13 @@ class CellarEast extends Phaser.Scene {
                 this.pinkOn.setVisible(true);
                 this.hideButtons();
                 this.textTimerButton = 1;
+                this.scratch5.play();
                 
                 if(this.inputArr[this.inputNum] == '' && this.inside == false){
                     this.inputArr[this.inputNum] = 'pink';
                     this.inputNum += 1;
                     this.inside = true;
-                    this.scratch5.play();
+                    
                 }
             });
         }
@@ -413,12 +410,10 @@ class CellarEast extends Phaser.Scene {
             for (var i = 0; i < 5; i++) {
                 if(this.inputArr[i] != this.correctArr[i]){
                     // reset
-                    console.log(this.inputArr[i])
                     return false;
                 }
             }
             // move on to next level
-            console.log("true")
             return true;
         }
 

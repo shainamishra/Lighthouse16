@@ -36,14 +36,6 @@ class CellarSouth extends Phaser.Scene {
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // cursor
-        this.input.on('gameobjectdown', (pointer, gameObject, event) => { 
-            //console.log(pointer);
-            //console.log(gameObject);
-            //console.log(event);
-        });
-
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // inventory box set up
         this.invent = this.add.sprite(60,60, 'inventory');
         this.invent.setDisplaySize(100, 100);
