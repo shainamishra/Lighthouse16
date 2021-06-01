@@ -78,13 +78,16 @@ class MainWest extends Phaser.Scene {
     
     update() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // update hotbar
+        this.hotBarItems(this.hotOn);
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // clicks inventory box: puts this scene to sleep (no updates), switches to cards
         this.invent.on('pointerdown', (pointer) => {
             this.scene.switch("cardBox");
         });
 
-
-
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // end states
         if(this.textTimerKnife == 0){
             this.knife.on('pointerdown', (pointer) => {

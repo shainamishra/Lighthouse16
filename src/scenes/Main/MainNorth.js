@@ -40,7 +40,6 @@ class MainNorth extends Phaser.Scene {
 
         prevScene = this.scene.key;
         
-        
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
         // lights off CN
@@ -124,6 +123,10 @@ class MainNorth extends Phaser.Scene {
     
     update() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // update hotbar
+        this.hotBarItems(this.hotOn);
+        
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // clicks inventory box: puts this scene to sleep (no updates), switches to cards
         this.invent.on('pointerdown', (pointer) => {
             this.scene.switch("cardBox");
@@ -198,6 +201,7 @@ class MainNorth extends Phaser.Scene {
             this.scene.start("spread4");
         };
     }
+
     hotBarItems(on){
         if(on == true){
             this.hotbar.setVisible(true);
