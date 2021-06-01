@@ -143,6 +143,9 @@ class MainEast extends Phaser.Scene {
         if(this.textTimerPainting > 0 && this.textTimerPainting < 150){
             this.textTimerPainting += 1;
             if(knifeGot == 1 && this.textTimerPainting == 2){
+                if(pcoinGot ==0){
+                    pcoinGot += 1;
+                }
                 this.sound.play("itemtake");
             }
         }

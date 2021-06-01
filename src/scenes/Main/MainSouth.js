@@ -135,7 +135,9 @@ class MainSouth extends Phaser.Scene {
                 });
         }
         if(this.textTimerCoin > 0 && this.textTimerCoin <150){
-            scoinGot = 1;
+            if(scoinGot ==0){
+                scoinGot = 1;
+            }
             this.textTimerCoin += 1;
             if(this.textTimerCoin == 2){
                 this.sound.play("itemtake");

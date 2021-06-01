@@ -123,30 +123,28 @@ class MainNorth extends Phaser.Scene {
         }
 
         if(this.textTimerGclock == 0){
-            this.gclock.on('pointerdown', (pointer) => {
+            if(scoinGot == 1 && pcoinGot == 1){
+                this.gclock.on('pointerdown', (pointer) => {
+                    this.scene.start("clockpuzzle")
+                });
+                
+            }
+            else{
+                this.gclock.on('pointerdown', (pointer) => {
                 this.gclock.interText.setVisible(true);
-                this.clockface.setVisible(true);
-                this.hourhand.setVisible(true);
-                this.minutehand.setVisible(true);
-                this.gclock.setVisible(false);
-                this.indoor.setVisible(false);
+                
                 this.textTimerGclock = 1;
-            });
+                });
+            }
         }
 
         // text on screen
         if(this.textTimerGclock> 0 && this.textTimerGclock < 150) {
-            this.minutehand.angle += this.minutehand.x;
             this.textTimerGclock += 1;
         } 
         else if(this.textTimerGclock >= 150){
             // hide text
             this.gclock.interText.setVisible(false);
-            this.clockface.setVisible(false);
-            this.hourhand.setVisible(false);
-            this.minutehand.setVisible(false);
-            this.gclock.setVisible(true);
-            this.indoor.setVisible(true);
             this.textTimerGclock = 0;
         }
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
