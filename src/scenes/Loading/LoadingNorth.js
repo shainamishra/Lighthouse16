@@ -88,7 +88,7 @@ class LoadingNorth extends Phaser.Scene {
         });
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // window
+        // 
         if(this.textTimer == 0){
             //this.windowHit.on('pointerdown', (pointer) => {
             //});
@@ -99,8 +99,8 @@ class LoadingNorth extends Phaser.Scene {
             this.textTimer += 1;
         } 
         else if(this.textTimer >= 150){
-            // hide text
             this.textTimer = 0;
+            // hide text
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
