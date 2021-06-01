@@ -7,9 +7,6 @@ class LoadingSouth extends Phaser.Scene {
         // images
         this.load.image('betweenHatch', './assets/loadingRoom/betweenHatch.png');
         this.load.image('betweenLadder', './assets/loadingRoom/betweenLadder.png');
-        this.load.image('betweenRoom', './assets/loadingRoom/betweenRoom.png');
-        this.load.image('spreadEmpty', './assets/loadingRoom/finalSpreadEmpty.png');
-        this.load.image('spread', './assets/loadingRoom/finalSpread.png');
 
         // hitbox
         this.load.image('hitbox', './assets/HitBox2.png');
@@ -37,26 +34,16 @@ class LoadingSouth extends Phaser.Scene {
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
-        /*
-        this.windowHit = this.add.sprite(625, 260, 'hitbox');
-        this.windowHit.setDisplaySize(475, 475);
-        this.windowHit.setInteractive({
-            useHandCursor: true
-        });
-        this.windowHit.interText = this.add.text(350, 550, 'The window is dirty.');
-        this.windowHit.interText.setFontSize(50);
-        this.windowHit.interText.setVisible(false);
-        this.windowHit.setVisible(true);
+        this.ladder = this.add.sprite(640, 360, 'betweenLadder');
+        this.ladder.setDisplaySize(1280, 720);
+        this.ladder.setVisible(true);
 
-        // overlays
-        // clean window
-        this.clean = this.add.image(640, 360, 'clean');
-        this.clean.setDisplaySize(1280, 720);
-        this.clean.interText = this.add.text(350, 550, 'You cleaned the window.');
-        this.clean.interText.setFontSize(50);
-        this.clean.interText.setVisible(false);
-        this.clean.setVisible(false);
-        */
+        this.levelText = this.add.sprite(675, 196, 'hitbox');
+        this.levelText.setDisplaySize(40, 60);
+        this.levelText.interText = this.add.text(240, 150, 'Press space to\n  enter  the\n  light room');
+        this.levelText.interText.setFontSize(50);
+        this.levelText.interText.setVisible(true);
+        this.levelText.setVisible(true);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // inventory box set up
@@ -88,43 +75,15 @@ class LoadingSouth extends Phaser.Scene {
         });
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // window
-        if(this.textTimer == 0){
-            //this.windowHit.on('pointerdown', (pointer) => {
-            //});
-        }
-
-        // text timers
-        if(this.textTimer > 0 && this.textTimer < 150) {
-            this.textTimer += 1;
-        } 
-        else if(this.textTimer >= 150){
-            // hide text
-            this.textTimer = 0;
-        }
-
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // end states
-        /*
-        if (rag == 1 && windowClean == 1 && citrine == 0) {
-            this.rock.setVisible(true);
-            this.clean.setVisible(true);
-        }
-        
-        if (windowClean == 1 & citrine == 1) {
-            this.rock.setVisible(false);
-            this.clean.setVisible(true);
-        }
-        */
-
-
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // scene change on keypress
         if(Phaser.Input.Keyboard.JustDown(keyD)){
             this.scene.start("loadingNorth");
         };
         if(Phaser.Input.Keyboard.JustDown(keyA)){
             this.scene.start("loadingNorth");
+        };
+        if(Phaser.Input.Keyboard.JustDown(keySPACE)){
+            this.scene.start("spread5");
         };
     }
 }

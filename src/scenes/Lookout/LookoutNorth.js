@@ -848,7 +848,7 @@ class LookoutNorth extends Phaser.Scene {
 
         if(Phaser.Input.Keyboard.JustDown(keySPACE)){
             this.sound.get('lookout_music').stop();
-            this.scene.start("spread5");
+            this.scene.start("loadingNorth");
         };
     }
     
