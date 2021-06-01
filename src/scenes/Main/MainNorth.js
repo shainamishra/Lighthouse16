@@ -96,7 +96,7 @@ class MainNorth extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // dragging
-        this.input.setDraggable(this.minutehand);
+        /*this.input.setDraggable(this.minutehand);
         this.input.setDraggable(this.hourhand);
         this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
 
@@ -104,6 +104,7 @@ class MainNorth extends Phaser.Scene {
             gameObject.y = dragY;
     
         });
+        */
         // end states
         if(this.textTimerIndoor == 0){
             this.indoor.on('pointerdown', (pointer) => {
@@ -125,7 +126,8 @@ class MainNorth extends Phaser.Scene {
         if(this.textTimerGclock == 0){
             if(scoinGot == 1 && pcoinGot == 1){
                 this.gclock.on('pointerdown', (pointer) => {
-                    this.scene.start("clockpuzzle")
+                    this.scene.start("clockpuzzle");
+                    this.scene.pause("mainNorth");
                 });
                 
             }
