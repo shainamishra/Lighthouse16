@@ -214,5 +214,12 @@ class MainNorth extends Phaser.Scene {
                 this.pcoinHot.setVisible(true);
             }
         }
+        else{
+            this.hotbar.setVisible(false);
+            this.hammerHot.setVisible(false);
+            this.knifeHot.setVisible(false);
+            this.scoinHot.setVisible(false);
+            this.pcoinHot.setVisible(false);
+        }
     }
 }
