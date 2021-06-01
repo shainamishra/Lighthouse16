@@ -60,6 +60,10 @@ class MainWest extends Phaser.Scene {
         this.food.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'Ugh. The food has long rotted');
         this.food.interText.setFontSize(50);
         this.food.interText.setVisible(false);
+
+        this.hotbar = this.add.image(640, 350, 'hotbar');
+        this.hotbar.setDisplaySize(1280, 720);
+        this.hotbar.setVisible(true);
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
         this.textTimerKnife =0;
@@ -133,5 +137,10 @@ class MainWest extends Phaser.Scene {
         if(Phaser.Input.Keyboard.JustDown(keyS)){
             this.scene.start("mainEast");
         };
+    }
+    hotBarItems(on){
+        if(on == true){
+            this.hotbar.setVisible(true);
+        }
     }
 }

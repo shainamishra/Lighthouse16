@@ -77,7 +77,10 @@ class MainEast extends Phaser.Scene {
         this.paintingHit.setInteractive({
             useHandCursor: true
         });
-    
+        
+        this.hotbar = this.add.image(640, 350, 'hotbar');
+        this.hotbar.setDisplaySize(1280, 720);
+        this.hotbar.setVisible(true);
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
         this.textTimerHammer = 0;
@@ -177,5 +180,10 @@ class MainEast extends Phaser.Scene {
         if(Phaser.Input.Keyboard.JustDown(keyS)){
             this.scene.start("mainWest");
         };
+    }
+    hotBarItems(on){
+        if(on == true){
+            this.hotbar.setVisible(true);
+        }
     }
 }

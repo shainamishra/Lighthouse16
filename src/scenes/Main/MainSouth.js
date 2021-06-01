@@ -62,6 +62,9 @@ class MainSouth extends Phaser.Scene {
         this.scoinbox.interText.setFontSize(50);
         this.scoinbox.interText.setVisible(false);
 
+        this.hotbar = this.add.image(640, 350, 'hotbar');
+        this.hotbar.setDisplaySize(1280, 720);
+        this.hotbar.setVisible(true);
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
         this.textTimerSkull = 0;
@@ -159,5 +162,10 @@ class MainSouth extends Phaser.Scene {
         if(Phaser.Input.Keyboard.JustDown(keyS)){
             this.scene.start("mainNorth");
         };
+    }
+    hotBarItems(on){
+        if(on == true){
+            this.hotbar.setVisible(true);
+        }
     }
 }

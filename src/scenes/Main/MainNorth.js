@@ -74,6 +74,9 @@ class MainNorth extends Phaser.Scene {
         });
         this.minutehand.setVisible(false);
 
+        this.hotbar = this.add.image(640, 350, 'hotbar');
+        this.hotbar.setDisplaySize(1280, 720);
+        this.hotbar.setVisible(true);
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
         this.textTimerIndoor = 0;
@@ -162,5 +165,10 @@ class MainNorth extends Phaser.Scene {
         if(Phaser.Input.Keyboard.JustDown(keySPACE)){
             this.scene.start("spread4");
         };
+    }
+    hotBarItems(on){
+        if(on == true){
+            this.hotbar.setVisible(true);
+        }
     }
 }

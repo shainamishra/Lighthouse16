@@ -45,8 +45,8 @@ class Clock extends Phaser.Scene {
         this.exitPuzzle.on('pointerdown', () => {
             if(this.textTimerClockP == 0){
                 this.textTimerClockP = 1;
-                this.scene.stop("clockpuzzle");
-                this.scene.wake("mainNorth");
+                //this.scene.stop("clockpuzzle");
+                this.scene.switch("mainNorth");
             }
         });
       
