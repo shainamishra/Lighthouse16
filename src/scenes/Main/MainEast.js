@@ -13,6 +13,10 @@ class MainEast extends Phaser.Scene {
         this.load.image('painting', './assets/puzzle3/overlays/painting.png');
         this.load.image('ripPainting', './assets/puzzle3/overlays/rippedPainting.png');
         this.load.audio('itemtake', './assets/sfx/ItemTake.wav');
+        this.load.image('hammerhot', './assets/puzzle3/items/hammer.png');
+        this.load.image('knifehot', './assets/puzzle3/items/knife.png');
+        this.load.image('coin1hot', './assets/puzzle3/overlays/coin1.png');
+        this.load.image('coin2hot', './assets/puzzle3/overlays/coin2.png');
     }
 
     create() {
@@ -81,10 +85,39 @@ class MainEast extends Phaser.Scene {
         this.hotbar = this.add.image(640, 350, 'hotbar');
         this.hotbar.setDisplaySize(1280, 720);
         this.hotbar.setVisible(true);
+
+        this.hammerHot = this.add.sprite(460, 659, 'hammerhot');
+        this.hammerHot.setDisplaySize(60, 60);
+        this.hammerHot.setInteractive({
+            useHandCursor: true
+        });
+        this.hammerHot.setVisible(false);
+
+        this.knifeHot = this.add.sprite(560, 660, 'knifehot');
+        this.knifeHot.setDisplaySize(75, 75);
+        this.knifeHot.setInteractive({
+            useHandCursor: true
+        });
+        this.knifeHot.setVisible(false);
+
+        this.scoinHot = this.add.sprite(655, 660, 'coin1hot');
+        this.scoinHot.setDisplaySize(80, 80);
+        this.scoinHot.setInteractive({
+            useHandCursor: true
+        });
+        this.scoinHot.setVisible(false);
+
+        this.pcoinHot = this.add.sprite(755, 659, 'coin2hot');
+        this.pcoinHot.setDisplaySize(70, 70);
+        this.pcoinHot.setInteractive({
+            useHandCursor: true
+        });
+        this.pcoinHot.setVisible(false);
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
         this.textTimerHammer = 0;
         this.textTimerPainting = 0;
+        this.hotOn = true;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -188,6 +221,26 @@ class MainEast extends Phaser.Scene {
     hotBarItems(on){
         if(on == true){
             this.hotbar.setVisible(true);
+            if(hammerGot == 1){
+                this.hammerHot.setVisible(true);
+            }
+            if(knifeGot == 1){
+                this.knifeHot.setVisible(true);
+            }
+            if(scoinGot == 1){
+                this.scoinHot.setVisible(true);
+            }
+            if(pcoinGot == 1){
+                this.pcoinHot.setVisible(true);
+            }
+        }
+        else{
+            this.hotbar.setVisible(false);
+            this.hammerHot.setVisible(false);
+            this.knifeHot.setVisible(false);
+            this.scoinHot.setVisible(false);
+            this.pcoinHot.setVisible(false);
+        
         }
     }
 }
