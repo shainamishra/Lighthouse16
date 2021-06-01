@@ -126,8 +126,7 @@ class MainNorth extends Phaser.Scene {
         if(this.textTimerGclock == 0){
             if(scoinGot == 1 && pcoinGot == 1){
                 this.gclock.on('pointerdown', (pointer) => {
-                    this.scene.start("clockpuzzle");
-                    this.scene.pause("mainNorth");
+                    this.scene.switch("clockpuzzle");
                 });
                 
             }

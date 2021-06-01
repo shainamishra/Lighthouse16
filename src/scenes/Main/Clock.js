@@ -30,6 +30,7 @@ class Clock extends Phaser.Scene {
         this.exitPuzzle.setInteractive({
             useHandCursor: true
         });
+        this.textTimerClockP = 0;
     }
 
     update(){
@@ -41,9 +42,21 @@ class Clock extends Phaser.Scene {
             this.minutehand.angle += 1;
         };
 
-        this.exitPuzzle.on('pointerdown', (pointer) => {
-            this.scene.stop("clockpuzzle");
-            this.scene.start("mainNorth");
+        this.exitPuzzle.on('pointerdown', () => {
+            if(this.textTimerClockP == 0){
+                this.textTimerClockP = 1;
+                this.scene.stop("clockpuzzle");
+                this.scene.wake("mainNorth");
+            }
         });
+      
+        if(this.textTimerClockP > 0 && this.textTimerClockP < 150) {
+            this.textTimerClockP += 1;
+        } 
+        else if(this.textTimerClockP >= 150){
+    
+            this.textTimerClockP = 0;
+        }
+
     }
 }
