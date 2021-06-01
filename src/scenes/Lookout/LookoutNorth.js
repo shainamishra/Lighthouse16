@@ -841,10 +841,6 @@ class LookoutNorth extends Phaser.Scene {
         };
     
         // delete this
-        hatch = 1;
-        weights = 1;
-        citrine = 1;
-        balanced = 1;
 
         if(Phaser.Input.Keyboard.JustDown(keySPACE)){
             this.sound.get('lookout_music').stop();
