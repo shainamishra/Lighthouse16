@@ -40,7 +40,7 @@ class LookoutEast extends Phaser.Scene {
         this.windowHit.setInteractive({
             useHandCursor: true
         });
-        this.windowHit.interText = this.add.text(350, 550, 'The window is dirty.');
+        this.windowHit.interText = this.add.text(350, 550, 'The window is dirty');
         this.windowHit.interText.setFontSize(50);
         this.windowHit.interText.setVisible(false);
         this.windowHit.setVisible(true);
@@ -49,7 +49,7 @@ class LookoutEast extends Phaser.Scene {
         // clean window
         this.clean = this.add.image(640, 360, 'clean');
         this.clean.setDisplaySize(1280, 720);
-        this.clean.interText = this.add.text(350, 550, 'You cleaned the window.');
+        this.clean.interText = this.add.text(300, 550, 'You cleaned the window');
         this.clean.interText.setFontSize(50);
         this.clean.interText.setVisible(false);
         this.clean.setVisible(false);
@@ -57,7 +57,7 @@ class LookoutEast extends Phaser.Scene {
         // citrine window
         this.rock = this.add.image(640, 360, 'citrine_window');
         this.rock.setDisplaySize(1280, 720);
-        this.rock.interText = this.add.text(250, 550, 'You took the piece of citrine.');
+        this.rock.interText = this.add.text(200, 550, 'You took the piece of citrine');
         this.rock.interText.setFontSize(50);
         this.rock.interText.setVisible(false);
         this.rock.setVisible(false);

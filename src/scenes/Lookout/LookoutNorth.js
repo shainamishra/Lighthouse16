@@ -801,7 +801,7 @@ class LookoutNorth extends Phaser.Scene {
             }
             else{
                 // reset
-                this.queen.interText = this.add.text(350, 550, 'The pattern didnt work.');
+                this.queen.interText = this.add.text(1020, 170, 'The\npattern\ndidnt\nwork');
                 this.queen.interText.setFontSize(50);
                 this.showQueenTimer = 1;
 
@@ -827,14 +827,14 @@ class LookoutNorth extends Phaser.Scene {
         // end states
         if(windowClean == 1 && weights == 0){
             this.lightNorth.setVisible(true);
-            //this.stoneRow.setVisible(true);
             this.queenText.setVisible(true);
             this.state = true;
         }
         if(weights == 1){
-            this.queen.interText = this.add.text(325, 550, 'You took the chakra stones.');
+            this.queen.interText = this.add.text(1020, 170, 'You\ntook\nthe\nchakra\nstones');
             this.queen.interText.setFontSize(50);
             this.queen.interText.setVisible(false);
+            this.queenText.setVisible(true);
             this.stoneRow.setVisible(false);
 
             this.lightNorth.setVisible(true);

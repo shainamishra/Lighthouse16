@@ -60,7 +60,7 @@ class LookoutSouth extends Phaser.Scene {
         this.ropeHit.setInteractive({
             useHandCursor: true
         });
-        this.ropeHit.interText = this.add.text(350, 550, 'You took the rope.');
+        this.ropeHit.interText = this.add.text(440, 500, 'You took the rope');
         this.ropeHit.interText.setFontSize(50);
         this.ropeHit.interText.setVisible(false);
         this.ropeHit.setVisible(true);

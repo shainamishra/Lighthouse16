@@ -58,7 +58,7 @@ class LookoutWest extends Phaser.Scene {
         this.ragHit.setInteractive({
             useHandCursor: true
         });
-        this.ragHit.interText = this.add.text(350, 550, 'You took the rag.');
+        this.ragHit.interText = this.add.text(400, 500, 'You took the rag');
         this.ragHit.interText.setFontSize(50);
         this.ragHit.interText.setVisible(false);
         this.ragHit.setVisible(true);
@@ -80,7 +80,7 @@ class LookoutWest extends Phaser.Scene {
         this.outline = this.add.image(640, 350, 'outline');
         this.outline.setDisplaySize(1280, 720);
         this.outline.setVisible(false);
-        this.outline.interText = this.add.text(200, 550, 'You opened a hatch in the wall.');
+        this.outline.interText = this.add.text(200, 550, 'You opened a hatch in the wall');
         this.outline.interText.setFontSize(50);
         this.outline.interText.setVisible(false);
 
@@ -159,11 +159,13 @@ class LookoutWest extends Phaser.Scene {
 
         // hatch
         // delete this
+        /*
         rag = 1;
         hatch = 1;
         windowClean = 1;
         weights = 1;
         citrine = 1;
+        */
         this.hatch.on('pointerdown', (pointer) => {
             if (hatch == 0){
                 this.scales.setVisible(true);
