@@ -21,12 +21,7 @@ class Scales extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // sfx
-        //this.itemTake = this.sound.add('itemtake', {volume: 0.5});
         this.unlock = this.sound.add('unlock', {volume: 0.75});
-
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // define keys
-        keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
@@ -120,8 +115,10 @@ class Scales extends Phaser.Scene {
         // god forsaken variables
         this.textTimer = 0;
         this.rocks = [this.red, this.yellow, this.orange, this.green, this.cyan, this.blue, this.purple];
-        this.correct = ["right", "right", "right", "left", "right", "right", "right"];
-        this.scaleStatus = false;
+        this.correct1 = ["right", "right", "right", "left", "right", "right", "right"];
+        this.correct2 = ["left", "left", "left", "right", "left", "left", "left"];
+        this.scaleStatus1 = false;
+        this.scaleStatus2 = false;
         this.status = [];
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -180,9 +177,10 @@ class Scales extends Phaser.Scene {
                     this.status.push(this.checkPosition(this.rocks[i]));
                 }
                 
-                this.scaleStatus = this.checkCorrect(this.status, this.correct);
+                this.scaleStatus1 = this.checkCorrect1(this.status, this.correct1);
+                this.scaleStatus2 = this.checkCorrect2(this.status, this.correct2);
 
-                if(this.scaleStatus == true){
+                if(this.scaleStatus1 == true || this.scaleStatus2 == true){
                     balanced = 1;
                     this.unlock.play();
                     this.uneven.interText.setVisible(true); 
@@ -260,7 +258,16 @@ class Scales extends Phaser.Scene {
         return "inactive";
     }
 
-    checkCorrect(arr1, arr2){
+    checkCorrect1(arr1, arr2){
+        for (var i = 0; i < 7; i++) {
+            if(arr1[i] != arr2[i]){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    checkCorrect2(arr1, arr2){
         for (var i = 0; i < 7; i++) {
             if(arr1[i] != arr2[i]){
                 return false;
