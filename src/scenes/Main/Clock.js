@@ -19,6 +19,10 @@ class Clock extends Phaser.Scene {
         this.hourhand.setInteractive({
             useHandCursor: true
         });
+        this.hourhand.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'The hatch behind you unlocked');
+        this.hourhand.interText.setFontSize(50);
+        this.hourhand.interText.setVisible(false);
+
 
         this.minutehand = this.add.image(650, 350, 'minute');
         this.minutehand.setInteractive({
@@ -35,12 +39,17 @@ class Clock extends Phaser.Scene {
 
     update(){
         if(Phaser.Input.Keyboard.JustDown(keyA)){
-            this.minutehand.angle -= 1;
+            this.minutehand.angle -= 5;
         };
 
         if(Phaser.Input.Keyboard.JustDown(keyD)){
-            this.minutehand.angle += 1;
+            this.minutehand.angle += 5;
         };
+
+        if(this.minutehand.angle == 180){
+            clockUnlock =1;
+            this.hourhand.interText.setVisible(true);
+        }
 
         this.exitPuzzle.on('pointerdown', () => {
             if(this.textTimerClockP == 0){
