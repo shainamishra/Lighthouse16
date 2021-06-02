@@ -31,9 +31,7 @@ class LookoutWest extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-        keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-        keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -234,9 +232,6 @@ class LookoutWest extends Phaser.Scene {
         };
         if(Phaser.Input.Keyboard.JustDown(keyD)){
             this.scene.start("lookoutNorth");
-        };
-        if(Phaser.Input.Keyboard.JustDown(keyS)){
-            this.scene.start("lookoutEast");
         };
     }
     

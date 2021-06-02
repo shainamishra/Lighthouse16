@@ -20,7 +20,7 @@ class LookoutNorth extends Phaser.Scene {
         this.load.image('yellow', './assets/puzzle4/items/citrine.png');
 
         // hitbox
-        this.load.image('hitbox', './assets/HitBox.png');
+        this.load.image('hitbox', './assets/HitBox2.png');
 
         // audio
         this.load.audio('itemtake', './assets/sfx/ItemTake.wav');
@@ -38,9 +38,7 @@ class LookoutNorth extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-        keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-        keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -848,9 +846,6 @@ class LookoutNorth extends Phaser.Scene {
         };
         if(Phaser.Input.Keyboard.JustDown(keyD)){
             this.scene.start("lookoutEast");
-        };
-        if(Phaser.Input.Keyboard.JustDown(keyS)){
-            this.scene.start("lookoutSouth");
         };
     
         /*

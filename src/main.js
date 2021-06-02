@@ -2,7 +2,13 @@ let config = {
     type: Phaser.CANVAS,
     width: 1280,
     height: 720,
-    scene: [ Menu, Instruction, Spread1, Inventory, IslandNorth, IslandWest, IslandEast, IslandSouth, Spread2, CellarNorth, CellarWest, CellarEast, CellarSouth, Spread3, MainNorth, MainWest, MainEast, MainSouth, Clock, Spread4, LookoutNorth, LookoutWest, LookoutEast, LookoutSouth, Scales, LoadingNorth, LoadingSouth, Spread5, Inventory7, RitualNorth, RitualWest, RitualEast, RitualSouth],
+    scene: [ Menu, Instruction, Spread1, Inventory, 
+            IslandNorth, IslandWest, IslandEast, IslandSouth, 
+            Spread2, CellarNorth, CellarWest, CellarEast, CellarSouth, 
+            Spread3, MainNorth, MainWest, MainEast, MainSouth, Clock, 
+            Spread4, LookoutNorth, LookoutWest, LookoutEast, LookoutSouth, Scales, 
+            LoadingNorth, LoadingSouth, 
+            Spread5, Inventory7, RitualNorth, Pentagram, Bookshelf, RitualWest, RitualEast, RitualSouth],
   }
 
 let game = new Phaser.Game(config);
@@ -51,3 +57,7 @@ let balanced = 0;
 
 // puzzle 5
 let note = 0;
+// reuse knifeGot
+let matches = 0;
+// reuse lightState
+// reuse deskKey

@@ -217,13 +217,6 @@ class Scales extends Phaser.Scene {
             this.blue.setVisible(false);
             this.purple.setVisible(false);
         }
-
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // scene change on keypress
-        if(Phaser.Input.Keyboard.JustDown(keyS)){
-            this.scene.stop("lookoutScales");
-            this.scene.wake("lookoutWest");
-        };
     }
 
     rockReset(){
