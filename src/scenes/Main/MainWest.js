@@ -77,11 +77,11 @@ class MainWest extends Phaser.Scene {
         this.hammerHot.setVisible(false);
 
         this.knifeHot = this.add.sprite(560, 660, 'knifehot');
-        this.knifeHot.setDisplaySize(75, 75);
+        this.knifeHot.setDisplaySize(65, 65);
         this.knifeHot.setInteractive({
             useHandCursor: true
         });
-        this.knifeHot.setVisible(false);
+        this.knifeHot.setVisible(true);
 
         this.scoinHot = this.add.sprite(655, 660, 'coin1hot');
         this.scoinHot.setDisplaySize(80, 80);

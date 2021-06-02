@@ -89,7 +89,7 @@ class MainNorth extends Phaser.Scene {
         this.hammerHot.setVisible(false);
 
         this.knifeHot = this.add.sprite(560, 660, 'knifehot');
-        this.knifeHot.setDisplaySize(75, 75);
+        this.knifeHot.setDisplaySize(65, 65);
         this.knifeHot.setInteractive({
             useHandCursor: true
         });
