@@ -7,7 +7,7 @@ class LookoutWest extends Phaser.Scene {
         // images
         this.load.image('lookoutWest', './assets/puzzle4/blank_wall.png');
         this.load.image('rag', './assets/puzzle4/overlays/rag.png');
-        this.load.image('outline', './assets/puzzle4/secret_outline.png');
+        this.load.image('outline', './assets/puzzle4/overlays/secret_outline.png');
         this.load.image('scales', './assets/puzzle4/overlays/scales.png');
         this.load.image('westLight', './assets/puzzle4/overlays/blank_wall_light.png');
         this.load.image('ladder', './assets/puzzle4/overlays/ladder.png');
@@ -158,6 +158,7 @@ class LookoutWest extends Phaser.Scene {
         });
 
         // hatch
+        rag = 1;
         hatch = 1;
         windowClean = 1;
         this.hatch.on('pointerdown', (pointer) => {
