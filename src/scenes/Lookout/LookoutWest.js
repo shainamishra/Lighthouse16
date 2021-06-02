@@ -158,9 +158,12 @@ class LookoutWest extends Phaser.Scene {
         });
 
         // hatch
+        // delete this
         rag = 1;
         hatch = 1;
         windowClean = 1;
+        weights = 1;
+        citrine = 1;
         this.hatch.on('pointerdown', (pointer) => {
             if (hatch == 0){
                 this.scales.setVisible(true);

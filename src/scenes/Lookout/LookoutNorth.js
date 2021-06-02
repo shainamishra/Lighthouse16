@@ -5,8 +5,10 @@ class LookoutNorth extends Phaser.Scene {
 
     preload() {
         // images
-        this.load.image('lookoutNorth', './assets/puzzle4/nQueenTemp.png');
+        this.load.image('lookoutNorth', './assets/puzzle4/nqueens.png');
         this.load.image('lightNorth', './assets/puzzle4/overlays/light_over_chart.png');
+        this.load.image('queenStones', './assets/puzzle4/overlays/nqueenStones.png');
+        this.load.image('queenText', './assets/puzzle4/overlays/nqueensText.png');
 
         // rocks
         this.load.image('purple', './assets/puzzle4/items/purple_rock.png');
@@ -54,12 +56,12 @@ class LookoutNorth extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // board hit boxes
         // board
-        this.queen = this.add.sprite(650, 320, 'hitbox');
-        this.queen.setDisplaySize(450, 450);
+        this.queen = this.add.sprite(700, 320, 'hitbox');
+        this.queen.setDisplaySize(630, 510);
         this.queen.setInteractive({
             useHandCursor: true
         });
-        this.queen.interText = this.add.text(350, 550, 'An empty board.');
+        this.queen.interText = this.add.text(1020, 170, 'These\nlook\nlike\nchakra\nstones');
         this.queen.interText.setFontSize(50);
         this.queen.interText.setVisible(false);
         this.queen.setVisible(true);
@@ -293,12 +295,6 @@ class LookoutNorth extends Phaser.Scene {
         this.six6.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // light
-        this.lightNorth = this.add.image(640, 360, 'lightNorth');
-        this.lightNorth.setDisplaySize(1280, 720);
-        this.lightNorth.setVisible(false);
-
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // hot bar 
         this.hotbar = this.add.image(640, 350, 'hotbar');
         this.hotbar.setDisplaySize(1280, 720);
@@ -324,6 +320,14 @@ class LookoutNorth extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         //rocks
+        this.stoneRow = this.add.image(640, 360, 'queenStones');
+        this.stoneRow.setDisplaySize(1280, 720);
+        this.stoneRow.setVisible(true);
+
+        this.queenText = this.add.image(640, 370, 'queenText');
+        this.queenText.setDisplaySize(1280, 720);
+        this.queenText.setVisible(false);
+
         this.purple = this.add.image(this.setX, this.setY, 'purple');
         this.purple.setDisplaySize(60, 60);
         this.purple.setVisible(false);
@@ -347,6 +351,12 @@ class LookoutNorth extends Phaser.Scene {
         this.red = this.add.image(this.setX, this.setY, 'red');
         this.red.setDisplaySize(60, 60);
         this.red.setVisible(false);
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // light
+        this.lightNorth = this.add.image(640, 360, 'lightNorth');
+        this.lightNorth.setDisplaySize(1280, 720);
+        this.lightNorth.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
@@ -773,7 +783,7 @@ class LookoutNorth extends Phaser.Scene {
             // check if 1 || 2|| 3 || 4 return true
             if(this.check1 == true || this.check2 == true || this.check3 == true || this.check4 == true){
                 // move on to next level
-                this.queen.interText = this.add.text(350, 550, 'You took the chakra stones.');
+                this.queen.interText = this.add.text(1020, 170, 'You\ntook\nthe\nchakra\nstones');
                 this.queen.interText.setFontSize(50);
                 this.showQueenTimer = 1;
                 this.itemTake.play();
@@ -817,12 +827,15 @@ class LookoutNorth extends Phaser.Scene {
         // end states
         if(windowClean == 1 && weights == 0){
             this.lightNorth.setVisible(true);
+            //this.stoneRow.setVisible(true);
+            this.queenText.setVisible(true);
             this.state = true;
         }
         if(weights == 1){
-            this.queen.interText = this.add.text(350, 550, 'You took the chakra stones.');
+            this.queen.interText = this.add.text(325, 550, 'You took the chakra stones.');
             this.queen.interText.setFontSize(50);
             this.queen.interText.setVisible(false);
+            this.stoneRow.setVisible(false);
 
             this.lightNorth.setVisible(true);
             this.state = false;
@@ -840,11 +853,12 @@ class LookoutNorth extends Phaser.Scene {
             this.scene.start("lookoutSouth");
         };
     
+        /*
         // delete this
         hatch = 1;
         weights = 1;
         citrine = 1;
-        balanced = 1;
+        balanced = 1;*/
 
         if(Phaser.Input.Keyboard.JustDown(keySPACE)){
             this.sound.get('lookout_music').stop();
