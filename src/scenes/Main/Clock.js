@@ -19,7 +19,7 @@ class Clock extends Phaser.Scene {
         this.hourhand.setInteractive({
             useHandCursor: true
         });
-        this.hourhand.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'The door behind you unlocked');
+        this.hourhand.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'The hatch behind you unlocked');
         this.hourhand.interText.setFontSize(50);
         this.hourhand.interText.setVisible(false);
 
@@ -47,6 +47,7 @@ class Clock extends Phaser.Scene {
         };
 
         if(this.minutehand.angle == 180){
+            clockUnlock =1;
             this.hourhand.interText.setVisible(true);
         }
 

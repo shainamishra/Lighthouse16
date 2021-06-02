@@ -38,6 +38,7 @@ let hammerGot = 0;
 let skullsmash = 0;
 let scoinGot = 0;
 let pcoinGot = 0;
+let clockUnlock = 0;
 
 // puzzle 4
 let rag = 0;
