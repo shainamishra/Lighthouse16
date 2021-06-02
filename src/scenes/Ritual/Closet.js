@@ -7,7 +7,7 @@ class Closet extends Phaser.Scene {
         // scales images
         this.load.image('closet', './assets/puzzle5/closeups/closet_clock.png');
         this.load.image('clockUnlock', './assets/puzzle5/closeups/closet_clock_open.png');
-        this.load.image('note', './assets/puzzle5/overlays/closet_note.png');
+        this.load.image('closetNote', './assets/puzzle5/overlays/closet_note.png');
 
 
         // audio
@@ -31,7 +31,7 @@ class Closet extends Phaser.Scene {
         this.unlock.setVisible(false);
 
         // note
-        this.note = this.add.image(640, 360, 'note');
+        this.note = this.add.image(640, 360, 'closetNote');
         this.note.setDisplaySize(1280, 720);
         this.note.setVisible(false);
         // note hit
