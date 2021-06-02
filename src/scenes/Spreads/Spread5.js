@@ -20,13 +20,8 @@ class Spread5 extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-        keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
-        keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-        keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
-        keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-
-        // hover testing nonsense
         
+        // hover testing nonsense
         this.one = this.add.sprite(190, 340, 'cardHit');
         this.one.setDisplaySize(240, 420);
         this.one.setVisible(true);
@@ -81,6 +76,7 @@ class Spread5 extends Phaser.Scene {
         lightState = 0;
         knifeGot = 0;
         deskKey = 0;
+        clockUnlock = 0;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders

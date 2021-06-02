@@ -6,6 +6,9 @@ class Closet extends Phaser.Scene {
     preload(){
         // scales images
         this.load.image('closet', './assets/puzzle5/closeups/closet_clock.png');
+        this.load.image('clockUnlock', './assets/puzzle5/closeups/closet_clock_open.png');
+        this.load.image('note', './assets/puzzle5/overlays/closet_note.png');
+
 
         // audio
         this.load.audio('unlock', './assets/sfx/doorUnlock2.wav');
@@ -22,6 +25,22 @@ class Closet extends Phaser.Scene {
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
+        // unlock
+        this.unlock = this.add.image(640, 360, 'clockUnlock');
+        this.unlock.setDisplaySize(1280, 720);
+        this.unlock.setVisible(false);
+
+        // note
+        this.note = this.add.image(640, 360, 'note');
+        this.note.setDisplaySize(1280, 720);
+        this.note.setVisible(false);
+        // note hit
+        this.noteHit = this.add.image(615, 485, 'hitbox');
+        this.noteHit.setDisplaySize(100, 20);
+        this.noteHit.setVisible(false);
+        this.noteHit.setInteractive({
+            useHandCursor: true
+        });
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // close
@@ -41,6 +60,7 @@ class Closet extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
         this.textTimer = 0;
+        this.textVar = 150;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -64,27 +84,49 @@ class Closet extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
 
-        // will need to do the clicks for the hand movement
+        // will need to do the clicks for the hand movement and actually set this up
+        clockUnlock = 1;
+
+        if(clockUnlock == 1 && paper == 0){
+            this.note.setVisible(true);
+            this.noteHit.setVisible(true);
+        }
+
+        if(this.textTimer == 0 && paper == 0){
+            this.noteHit.on('pointerdown', () => {
+                this.textVar = 150;
+                this.textTimer = 1;
+                paper = 1;
+            });
+        }
         
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // text timers
-        if(this.textTimer > 0 && this.textTimer < 150) {
+        if(this.textTimer > 0 && this.textTimer < this.textVar) {
             this.textTimer += 1;
         } 
-        else if(this.textTimer >= 150){
+        else if(this.textTimer >= this.textVar){
             // hide text
             this.textTimer = 0;
         }
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // end states
-        if(lightState == 0){
-            // lights are on
+        if(lightState == 1){
             this.dark.setVisible(false);
-        } else if(lightState == 1){
-            // lights are off 
+        } else if(lightState == 2){
             this.dark.setVisible(true);
+        }
+
+        if(clockUnlock == 1 && paper == 0){
+            this.unlock.setVisible(true);
+            this.note.setVisible(true);
+        }
+        if (paper == 1){
+            this.unlock.setVisible(true);
+            this.note.setVisible(false);
+            this.noteHit.setVisible(false);
         }
     }
 }

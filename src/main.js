@@ -62,3 +62,5 @@ let note = 0;
 let matches = 0;
 // reuse lightState
 // reuse deskKey
+// reuse clockUnlock
+let paper = 0;
