@@ -8,7 +8,7 @@ let config = {
             Spread3, MainNorth, MainWest, MainEast, MainSouth, Clock, 
             Spread4, LookoutNorth, LookoutWest, LookoutEast, LookoutSouth, Scales, 
             LoadingNorth, LoadingSouth, 
-            Spread5, Inventory7, RitualNorth, Pentagram, Bookshelf, RitualWest, RitualEast, RitualSouth],
+            Spread5, Inventory7, RitualNorth, Pentagram, Bookshelf, RitualWest, Closet, RitualEast, RitualSouth],
   }
 
 let game = new Phaser.Game(config);
@@ -49,13 +49,14 @@ let clockUnlock = 0;
 // puzzle 4
 let rag = 0;
 let windowClean = 0;
-let citrine = 0;citrine
+let citrine = 0;
 let rope = 0;
 let hatch = 0;
 let weights = 0;
 let balanced = 0;
 
 // puzzle 5
+let inRitual = 0;
 let note = 0;
 // reuse knifeGot
 let matches = 0;

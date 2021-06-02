@@ -106,6 +106,7 @@ class RitualNorth extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
+        inRitual = 1;
         this.textTimer = 0;
         this.timeVar = 150;
         this.hotOn = true;

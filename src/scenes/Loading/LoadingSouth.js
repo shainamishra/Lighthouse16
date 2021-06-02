@@ -56,9 +56,6 @@ class LoadingSouth extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
         this.textTimer = 0;
-        lightState = 0;
-        knifeGot = 0;
-        deskKey = 0;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -80,11 +77,22 @@ class LoadingSouth extends Phaser.Scene {
         if(Phaser.Input.Keyboard.JustDown(keyD)){
             this.scene.start("loadingNorth");
         };
+        
         if(Phaser.Input.Keyboard.JustDown(keyA)){
             this.scene.start("loadingNorth");
         };
+
         if(Phaser.Input.Keyboard.JustDown(keySPACE)){
-            this.scene.start("spread5");
+            if(inRitual == 0){
+                this.scene.start("spread5");
+            }
+            else {
+                console.log(inRitual)
+                this.scene.stop("loadingSouth");
+                this.scene.wake("ritualSouth");
+            }
         };
+
+        
     }
 }

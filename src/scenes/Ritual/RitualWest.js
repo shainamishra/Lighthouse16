@@ -66,7 +66,7 @@ class RitualWest extends Phaser.Scene {
         this.matchesHot.setVisible(false);
 
         this.knifeHot = this.add.sprite(560, 660, 'knifeRitual');
-        this.knifeHot.setDisplaySize(65, 65);
+        this.knifeHot.setDisplaySize(100, 65);
         this.knifeHot.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -36,6 +36,14 @@ class RitualSouth extends Phaser.Scene {
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
+        // hatch hit
+        this.hatchHit = this.add.image(240, 655, 'hitbox');
+        this.hatchHit.setDisplaySize(340, 100);
+        this.hatchHit.setVisible(true);
+        this.hatchHit.setInteractive({
+            useHandCursor: true
+        });
+
         // switch on
         this.on = this.add.image(640, 360, 'switchOn');
         this.on.setDisplaySize(1280, 720);
@@ -52,6 +60,14 @@ class RitualSouth extends Phaser.Scene {
             useHandCursor: true
         });
 
+        // closet hit
+        this.closetHit = this.add.image(940, 335, 'hitbox');
+        this.closetHit.setDisplaySize(380, 570);
+        this.closetHit.setVisible(true);
+        this.closetHit.setInteractive({
+            useHandCursor: true
+        });
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // hot bar 
         this.hotbar = this.add.image(640, 350, 'hotbarRitual');
@@ -65,7 +81,7 @@ class RitualSouth extends Phaser.Scene {
         this.matchesHot.setVisible(false);
 
         this.knifeHot = this.add.sprite(560, 660, 'knifeRitual');
-        this.knifeHot.setDisplaySize(65, 65);
+        this.knifeHot.setDisplaySize(100, 65);
         this.knifeHot.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -91,6 +107,16 @@ class RitualSouth extends Phaser.Scene {
         this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x61282f).setOrigin(0, 0);
         this.add.rectangle(0, 0, game.config.width, 10, 0x61282f).setOrigin(0, 0);
         this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x61282f).setOrigin(0, 0);
+    
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // scene changes
+        this.input.keyboard.on('keydown-A', () => {
+            this.scene.start("ritualEast"); 
+		});
+
+        this.input.keyboard.on('keydown-D', () => {
+            this.scene.start("ritualWest"); 
+		});
     }
     
     update() {
@@ -126,6 +152,26 @@ class RitualSouth extends Phaser.Scene {
             }
         });
 
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // scene switches
+        // closet
+        this.closetHit.on('pointerdown', (pointer) => {
+            if(deskKey == 1 && this.textTimer == 0){
+                this.textTimer = 1;
+                this.timeVar = 50;
+                this.scene.switch("ritualCloset");
+            }
+        });
+
+        this.hatchHit.on('pointerdown', (pointer) => {
+            if(this.textTimer == 0){
+                this.textTimer = 1;
+                this.timeVar = 50;
+                this.scene.switch("loadingSouth");
+            }
+        });
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // text timers
         if(this.textTimer > 0 && this.textTimer < this.timeVar) {
@@ -151,15 +197,6 @@ class RitualSouth extends Phaser.Scene {
             this.on.setVisible(true);
             this.off.setVisible(false);
         } 
-        
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // scene change on keypress
-        if(Phaser.Input.Keyboard.JustDown(keyA)){
-            this.scene.start("ritualEast");
-        };
-        if(Phaser.Input.Keyboard.JustDown(keyD)){
-            this.scene.start("ritualWest");
-        };
     }
     
     hotBarItems(on){

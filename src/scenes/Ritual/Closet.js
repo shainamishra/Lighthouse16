@@ -1,11 +1,11 @@
-class Pentagram extends Phaser.Scene {
+class Closet extends Phaser.Scene {
     constructor() {
-        super("ritualPentagram");
+        super("ritualCloset");
     }
 
     preload(){
         // scales images
-        this.load.image('pentagram', './assets/puzzle5/pentagram/ritual_closeup.png');
+        this.load.image('closet', './assets/puzzle5/closeups/closet_clock.png');
 
         // audio
         this.load.audio('unlock', './assets/sfx/doorUnlock2.wav');
@@ -14,7 +14,7 @@ class Pentagram extends Phaser.Scene {
     create() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // place tile sprite
-        this.bg = this.add.tileSprite(0, 0, 1280, 720, 'pentagram').setOrigin(0, 0); 
+        this.bg = this.add.tileSprite(0, 0, 1280, 720, 'closet').setOrigin(0, 0); 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // sfx
@@ -56,13 +56,15 @@ class Pentagram extends Phaser.Scene {
         this.closeLook.on('pointerdown', () => {
             if(this.textTimer == 0){
                 this.textTimer = 1;
-                this.scene.stop("ritualPentagram");
-                this.scene.wake("ritualNorth");
+                this.scene.stop("ritualCloset");
+                this.scene.wake("ritualSouth");
             }
         });
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
+
+        // will need to do the clicks for the hand movement
         
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -74,6 +76,7 @@ class Pentagram extends Phaser.Scene {
             // hide text
             this.textTimer = 0;
         }
+        
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // end states
         if(lightState == 0){

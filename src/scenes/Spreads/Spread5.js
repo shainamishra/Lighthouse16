@@ -75,10 +75,12 @@ class Spread5 extends Phaser.Scene {
         this.instruct.setDisplaySize(1280, 720);
         this.instruct.setVisible(true);
 
-
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // set level
+        // set variables
         level = 5;
+        lightState = 0;
+        knifeGot = 0;
+        deskKey = 0;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders

@@ -139,6 +139,7 @@ class Scales extends Phaser.Scene {
                 this.scene.wake("lookoutWest");
             }
         });
+        
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // text timers
         if(this.textTimer > 0 && this.textTimer < 150) {
