@@ -57,7 +57,7 @@ class MainNorth extends Phaser.Scene {
         this.gclock.setInteractive({
             useHandCursor: true
         });
-        this.gclock.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 100, 'The clock has stopped');
+        this.gclock.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 100, 'The clock is missing\nthe minute hand');
         this.gclock.interText.setFontSize(50);
         this.gclock.interText.setVisible(false);
 
@@ -162,7 +162,7 @@ class MainNorth extends Phaser.Scene {
         }
 
         if(this.textTimerGclock == 0){
-            if(scoinGot == 1 && pcoinGot == 1){
+            if(pcoinGot == 1){
                 this.gclock.on('pointerdown', (pointer) => {
                     this.scene.switch("clockpuzzle");
                 });
