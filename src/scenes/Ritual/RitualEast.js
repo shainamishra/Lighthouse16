@@ -175,7 +175,7 @@ class RitualEast extends Phaser.Scene {
             this.inputCombo = this.checkCombo();
             if(this.inputCombo == 523){
                 unlocked = 1;
-                this.textTimerBox = this.timeVar + 1;
+                this.textTimer = this.timeVar + 1;
                 //chage to chain break
                 //this.sound.play("itemtake");
 
@@ -185,15 +185,19 @@ class RitualEast extends Phaser.Scene {
                 this.digit2.interText.setVisible(false);
                 this.digit3.interText.setVisible(false);
             }
+            else if (pos == 3 && this.inputCombo != 0){
+                this.textTimer = 251;
+            }
         }
-        if(this.textTimerBox >= 250){
+        if(this.textTimer >= 250){
             // hide text
             //this.box.interText.setVisible(false);
             this.combo.setVisible(false);
-            this.textTimerBox = 0;
+            this.textTimer = 0;
             this.digit1.interText.setVisible(false);
             this.digit2.interText.setVisible(false);
             this.digit3.interText.setVisible(false);
+            this.inputCombo = 0;
             combo = '';
             pos = 0;
         }
