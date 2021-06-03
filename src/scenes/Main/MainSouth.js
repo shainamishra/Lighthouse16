@@ -192,7 +192,7 @@ class MainSouth extends Phaser.Scene {
 
         if(clockUnlock ==1){
             this.ladder.setVisible(true);
-            if(Phaser.Input.Keyboard.JustDown(keySpace)){
+            if(Phaser.Input.Keyboard.JustDown(keySPACE)){
 
                 this.scenes.start("LookoutNorth");
             }
