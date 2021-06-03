@@ -13,7 +13,7 @@ class MainSouth extends Phaser.Scene {
         this.load.audio('itemtake', './assets/sfx/ItemTake.wav');
         this.load.image('hammerhot', './assets/puzzle3/items/hammer.png');
         this.load.image('knifehot', './assets/puzzle3/items/knife.png');
-        this.load.image('coin1hot', './assets/puzzle3/overlays/coin1.png');
+        this.load.image('coin1hot', './assets/puzzle3/overlays/coin2.png');
         this.load.image('hand', './assets/puzzle3/items/minute hand.png');
         this.load.image('ladder', './assets/puzzle3/items/hatch ladder.png');
     }
@@ -192,9 +192,9 @@ class MainSouth extends Phaser.Scene {
 
         if(clockUnlock ==1){
             this.ladder.setVisible(true);
-            if(Phaser.Input.Keyboard.JustDown(keySpace)){
+            if(Phaser.Input.Keyboard.JustDown(keySPACE)){
 
-                this.scenes.start("LookoutNorth");
+                this.scene.start("LookoutNorth");
             }
         }
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
