@@ -15,7 +15,7 @@ class MainEast extends Phaser.Scene {
         this.load.audio('itemtake', './assets/sfx/ItemTake.wav');
         this.load.image('hammerhot', './assets/puzzle3/items/hammer.png');
         this.load.image('knifehot', './assets/puzzle3/items/knife.png');
-        this.load.image('coin1hot', './assets/puzzle3/overlays/coin1.png');
+        this.load.image('coin1hot', './assets/puzzle3/overlays/coin2.png');
         this.load.image('hand', './assets/puzzle3/items/minute hand.png');
     }
 
