@@ -779,7 +779,7 @@ class LookoutNorth extends Phaser.Scene {
             this.check4 = this.checkQueens(4);
 
             // check if 1 || 2|| 3 || 4 return true
-            if(this.check1 == true || this.check2 == true || this.check3 == true || this.check4 == true){
+            if((this.check1 == true || this.check2 == true || this.check3 == true || this.check4 == true) && weights == 0){
                 // move on to next level
                 this.queen.interText = this.add.text(1020, 170, 'You\ntook\nthe\nchakra\nstones');
                 this.queen.interText.setFontSize(50);
@@ -797,7 +797,7 @@ class LookoutNorth extends Phaser.Scene {
                 this.orange.setVisible(false);
                 this.red.setVisible(false);
             }
-            else{
+            else if (weights == 0) {
                 // reset
                 this.queen.interText = this.add.text(1020, 170, 'The\npattern\ndidnt\nwork');
                 this.queen.interText.setFontSize(50);
