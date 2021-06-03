@@ -6,8 +6,8 @@ class RitualSouth extends Phaser.Scene {
     preload() {
         // images
         this.load.image('ritualSouth', './assets/puzzle5/ritualSouth.png');
-        this.load.image('switchOn', './assets/puzzle5/overlays/ritualSouth_switch_on.png');
-        this.load.image('switchOff', './assets/puzzle5/overlays/ritualSouth_switch_off.png');
+        this.load.image('switchOnRitual', './assets/puzzle5/overlays/ritualSouth_switch_on.png');
+        this.load.image('switchOffRitual', './assets/puzzle5/overlays/ritualSouth_switch_off.png');
         this.load.image('message', './assets/puzzle5/overlays/ritualSouth_message.png');
 
         this.load.image('hitbox', './assets/HitBox2.png');
@@ -45,11 +45,11 @@ class RitualSouth extends Phaser.Scene {
         });
 
         // switch on
-        this.on = this.add.image(640, 360, 'switchOn');
+        this.on = this.add.image(640, 360, 'switchOnRitual');
         this.on.setDisplaySize(1280, 720);
         this.on.setVisible(true);
         // switch off
-        this.off = this.add.image(640, 360, 'switchOff');
+        this.off = this.add.image(640, 360, 'switchOffRitual');
         this.off.setDisplaySize(1280, 720);
         this.off.setVisible(false);
         // switch hit

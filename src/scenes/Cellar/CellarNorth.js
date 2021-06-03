@@ -95,9 +95,7 @@ class CellarNorth extends Phaser.Scene {
         }
 
         // delete this
-        /*
         unlocked = 1;
-        */
         // end states
         if(unlocked == 1){
             if(Phaser.Input.Keyboard.JustDown(keySPACE)){
