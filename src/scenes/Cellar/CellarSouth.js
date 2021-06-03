@@ -210,7 +210,10 @@ class CellarSouth extends Phaser.Scene {
         }
 
         // end states 
+        // delete this
+        /*
         unlocked == 1
+        */
         if(unlocked == 1){
             this.door.setVisible(true);
             this.door.interText.setVisible(true); 

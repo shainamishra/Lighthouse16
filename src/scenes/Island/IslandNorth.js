@@ -185,8 +185,10 @@ class IslandNorth extends Phaser.Scene {
         
         // show open state
         // delete this
+        /*
         boltGot = 1; 
         unlocked = 2;
+        */
         if(boltGot == 1 && unlocked == 2){
             this.cellOpen.setVisible(true);
             this.cellOpen.interText.setVisible(true); 
