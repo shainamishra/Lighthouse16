@@ -10,6 +10,7 @@ class Spread5 extends Phaser.Scene {
         this.load.image('info2-5', './assets/info/world.png');
         this.load.image('info3-5', './assets/info/star.png');
         this.load.image('info4-5', './assets/info/hierophant.png');
+
     }
 
     create() {
@@ -77,6 +78,9 @@ class Spread5 extends Phaser.Scene {
         knifeGot = 0;
         deskKey = 0;
         clockUnlock = 0;
+        unlocked = 0;
+        pos = 0;
+        combo = '';
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders

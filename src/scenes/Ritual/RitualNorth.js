@@ -10,13 +10,13 @@ class RitualNorth extends Phaser.Scene {
         this.load.image('matches', './assets/puzzle5/overlays/ritualNorth_matches.png');
         this.load.image('darkRitual', './assets/puzzle2/overlays/lightsOff.png');
 
+        this.load.image('hitbox', './assets/HitBox2.png');
+
         // hotbar
         this.load.image('hotbarRitual', './assets/hotbar.png');
         this.load.image('knifeRitual', './assets/puzzle5/items/hotbar_knife.png');
-        this.load.image('matchesHot', './assets/puzzle5/items/hotbar_matches.png');
-
-
-        this.load.image('hitbox', './assets/HitBox2.png');
+        this.load.image('matchesRitual', './assets/puzzle5/items/hotbar_matches.png');
+        this.load.image('keyRitual', './assets/puzzle5/items/hotbar_key.png');
     }
 
     create() {
@@ -90,13 +90,17 @@ class RitualNorth extends Phaser.Scene {
  
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // items
-        this.matchesHot = this.add.sprite(460, 659, 'matchesHot');
+        this.matchesHot = this.add.sprite(460, 659, 'matchesRitual');
         this.matchesHot.setDisplaySize(80, 40);
         this.matchesHot.setVisible(false);
 
         this.knifeHot = this.add.sprite(560, 660, 'knifeRitual');
         this.knifeHot.setDisplaySize(100, 65);
         this.knifeHot.setVisible(false);
+
+        this.keyHot = this.add.sprite(660, 659, 'keyRitual');
+        this.keyHot.setDisplaySize(70, 60);
+        this.keyHot.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // dark
@@ -223,11 +227,16 @@ class RitualNorth extends Phaser.Scene {
                 this.matchesHot.setVisible(true);
             }
 
+            if (deskKey == 1){
+                this.keyHot.setVisible(true);
+            }
+
         }
         else {
             this.hotbar.setVisible(false);
             this.knifeHot.setVisible(false);
             this.matchesHot.setVisible(false);
+            this.keyHot.setVisible(false);
         }
     }
 }

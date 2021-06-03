@@ -61,13 +61,17 @@ class RitualWest extends Phaser.Scene {
  
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // items
-        this.matchesHot = this.add.sprite(460, 659, 'matchesHot');
+        this.matchesHot = this.add.sprite(460, 659, 'matchesRitual');
         this.matchesHot.setDisplaySize(80, 40);
         this.matchesHot.setVisible(false);
 
         this.knifeHot = this.add.sprite(560, 660, 'knifeRitual');
         this.knifeHot.setDisplaySize(100, 65);
         this.knifeHot.setVisible(false);
+
+        this.keyHot = this.add.sprite(660, 659, 'keyRitual');
+        this.keyHot.setDisplaySize(70, 60);
+        this.keyHot.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // dark
@@ -162,11 +166,16 @@ class RitualWest extends Phaser.Scene {
                 this.matchesHot.setVisible(true);
             }
 
+            if (deskKey == 1){
+                this.keyHot.setVisible(true);
+            }
+
         }
         else {
             this.hotbar.setVisible(false);
             this.knifeHot.setVisible(false);
             this.matchesHot.setVisible(false);
+            this.keyHot.setVisible(false);
         }
     }
 }

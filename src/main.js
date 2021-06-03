@@ -64,3 +64,6 @@ let matches = 0;
 // reuse deskKey
 // reuse clockUnlock
 let paper = 0;
+// reuse unlocked
+// reuse pos
+// reuse combo
