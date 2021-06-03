@@ -6,6 +6,7 @@ class Bookshelf extends Phaser.Scene {
     preload(){
         // scales images
         this.load.image('books', './assets/puzzle5/closeups/ritualNorth_bookshelf.png');
+        this.load.image('firebook', './assets/puzzle5/bookshelf/ritualNorth_firebook.png');
 
         // audio
         this.load.audio('unlock', './assets/sfx/doorUnlock2.wav');
@@ -22,6 +23,17 @@ class Bookshelf extends Phaser.Scene {
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
+        // firebook
+        this.firebookHit = this.add.sprite(1155, 405, 'hitbox');
+        this.firebookHit.setDisplaySize(70, 500);
+        this.firebookHit.setVisible(true);
+        this.firebookHit.setInteractive({
+            useHandCursor: true
+        });
+        // dark
+        this.firebook = this.add.image(640, 360, 'firebook');
+        this.firebook.setDisplaySize(1280, 720);
+        this.firebook.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // close
@@ -60,14 +72,32 @@ class Bookshelf extends Phaser.Scene {
                 this.scene.wake("ritualNorth");
             }
         });
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // books
+        this.firebookHit.on('pointerdown', () => {
+            if(this.textTimer == 0){
+                this.firebook.setVisible(true);
+                this.textTimer = 1;
+            }
+        });
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // text timers
         if(this.textTimer > 0 && this.textTimer < 150) {
             this.textTimer += 1;
+
+            // hide other hitboxes
+            this.firebookHit.setVisible(false);
         } 
         else if(this.textTimer >= 150){
             // hide text
             this.textTimer = 0;
+
+            // hide books
+            this.firebook.setVisible(false);
+
+            // show hitboxes
+            this.firebookHit.setVisible(true);
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////

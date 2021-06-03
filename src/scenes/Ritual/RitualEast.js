@@ -10,6 +10,13 @@ class RitualEast extends Phaser.Scene {
         this.load.image('comboRitual', './assets/puzzle5/overlays/ritualEast_lock.png');
         this.load.image('cabinetRitual', './assets/puzzle5/cabinet/ritualEast_cabinet.png');
 
+        // cabinet
+        this.load.image('bleach', './assets/puzzle5/cabinet/ritualEast_bleach.png');
+        this.load.image('candles', './assets/puzzle5/cabinet/ritualEast_candles.png');
+        this.load.image('fertilizer', './assets/puzzle5/cabinet/ritualEast_fertilizer.png');
+        this.load.image('insecticide', './assets/puzzle5/cabinet/ritualEast_insecticide.png');
+        this.load.image('salt', './assets/puzzle5/cabinet/ritualEast_salt.png');
+
         this.load.image('hitbox', './assets/HitBox2.png');
     }
 
@@ -155,7 +162,7 @@ class RitualEast extends Phaser.Scene {
 
                 if(unlocked == 1){
                     this.textTimer = 1;
-                    this.timeVar = 50;
+                    this.timeVar = 20;
                     this.scene.switch("ritualCabinet");
                 }
             });
@@ -178,6 +185,17 @@ class RitualEast extends Phaser.Scene {
                 this.digit2.interText.setVisible(false);
                 this.digit3.interText.setVisible(false);
             }
+        }
+        if(this.textTimerBox >= 250){
+            // hide text
+            //this.box.interText.setVisible(false);
+            this.combo.setVisible(false);
+            this.textTimerBox = 0;
+            this.digit1.interText.setVisible(false);
+            this.digit2.interText.setVisible(false);
+            this.digit3.interText.setVisible(false);
+            combo = '';
+            pos = 0;
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////

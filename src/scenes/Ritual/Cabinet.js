@@ -4,7 +4,7 @@ class Cabinet extends Phaser.Scene {
     }
 
     preload(){
-        // scales images
+        // images
 
         // audio
         this.load.audio('unlock', './assets/sfx/doorUnlock2.wav');
@@ -20,7 +20,66 @@ class Cabinet extends Phaser.Scene {
         this.unlock = this.sound.add('unlock', {volume: 0.75});
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // objects
+        // chemicals images
+        // bleachIm
+        this.bleachIm = this.add.image(640, 360, 'bleach');
+        this.bleachIm.setDisplaySize(1280, 720);
+        this.bleachIm.setVisible(true);
+        // bleach hitbox
+        this.bleach = this.add.sprite(900, 220, 'hitbox');
+        this.bleach.setDisplaySize(280, 320);
+        this.bleach.setVisible(true);
+        this.bleach.setInteractive({
+            useHandCursor: true
+        });
+
+        // fertilizer
+        this.fertilizerIm = this.add.image(640, 360, 'fertilizer');
+        this.fertilizerIm.setDisplaySize(1280, 730);
+        this.fertilizerIm.setVisible(true);
+        // fertilizer hitbox
+        this.fertilizer = this.add.sprite(320, 220, 'hitbox');
+        this.fertilizer.setDisplaySize(200, 280);
+        this.fertilizer.setVisible(true);
+        this.fertilizer.setInteractive({
+            useHandCursor: true
+        });
+
+        // insect im
+        this.insecticideIm = this.add.image(640, 362, 'insecticide');
+        this.insecticideIm.setDisplaySize(1280, 720);
+        this.insecticideIm.setVisible(true);
+        // insect hitbox
+        this.insecticide = this.add.sprite(638, 235, 'hitbox');
+        this.insecticide.setDisplaySize(130, 260);
+        this.insecticide.setVisible(true);
+        this.insecticide.setInteractive({
+            useHandCursor: true
+        });
+
+        // salt im
+        this.saltIm = this.add.image(640, 360, 'salt');
+        this.saltIm.setDisplaySize(1280, 720);
+        this.saltIm.setVisible(true);
+        // salt hitbox
+        this.salt = this.add.sprite(305, 557, 'hitbox');
+        this.salt.setDisplaySize(170, 250);
+        this.salt.setVisible(true);
+        this.salt.setInteractive({
+            useHandCursor: true
+        });
+
+        // candle im
+        this.candleIm = this.add.image(640, 360, 'candles');
+        this.candleIm.setDisplaySize(1280, 720);
+        this.candleIm.setVisible(true);
+        // candle hitbox
+        this.candle = this.add.sprite(770, 625, 'hitbox');
+        this.candle.setDisplaySize(505, 130);
+        this.candle.setVisible(true);
+        this.candle.setInteractive({
+            useHandCursor: true
+        });
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // close

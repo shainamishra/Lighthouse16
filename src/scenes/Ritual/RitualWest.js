@@ -117,7 +117,7 @@ class RitualWest extends Phaser.Scene {
                 else if (this.textTimer == 0) {
                     this.journal.setVisible(true);
                     this.textTimer = 1;
-                    this.timeVar = 150;
+                    this.timeVar = 250;
                 }
             });
         }
