@@ -83,10 +83,10 @@ class LookoutWest extends Phaser.Scene {
         this.outline.interText.setVisible(false);
 
         // ladder image
-        this.ladder = this.add.image(640, 360, 'ladder');
+        this.ladder = this.add.image(800, 360, 'ladder');
         this.ladder.setDisplaySize(1280, 720);
         this.ladder.setVisible(false);
-        this.ladder.interText = this.add.text(350, 400, '   Press space to\nenter the light room');
+        this.ladder.interText = this.add.text(350, 430, 'Press space to\ngo up the ladder');
         this.ladder.interText.setFontSize(50);
         this.ladder.interText.setVisible(false);
 
