@@ -194,7 +194,7 @@ class MainSouth extends Phaser.Scene {
             this.ladder.setVisible(true);
             if(Phaser.Input.Keyboard.JustDown(keySPACE)){
 
-                this.scene.start("LookoutNorth");
+                this.scene.start("spread4");
             }
         }
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
