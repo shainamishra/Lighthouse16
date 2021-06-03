@@ -69,7 +69,7 @@ class LoadingNorth extends Phaser.Scene {
         this.noteHit.interText = this.add.text(500, 650, 'A note');
         this.noteHit.interText.setFontSize(50);
         this.noteHit.interText.setVisible(false);
-        this.noteHit.setVisible(true);
+        this.noteHit.setVisible(false);
 
         // spread 5
         this.spread5 = this.add.sprite(640, 360, 'spread5');
@@ -116,6 +116,7 @@ class LoadingNorth extends Phaser.Scene {
                 level = 5;
                 this.spread5.setVisible(true);
                 this.frameHit.interText.setVisible(true);
+                this.noteHit.setVisible(true);
                 this.textTimer = 1;
                 this.itemTake.play();
             });
@@ -123,6 +124,7 @@ class LoadingNorth extends Phaser.Scene {
             this.noteHit.on('pointerdown', (pointer) => {
                 note = 1;
                 this.note.setVisible(true);
+                this.noteHit.setVisible(true);
                 this.noteHit.interText.setVisible(true);
                 this.textTimer = 1;
                 this.itemTake.play();
