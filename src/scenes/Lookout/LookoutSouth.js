@@ -33,9 +33,7 @@ class LookoutSouth extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-        keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-        keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -60,7 +58,7 @@ class LookoutSouth extends Phaser.Scene {
         this.ropeHit.setInteractive({
             useHandCursor: true
         });
-        this.ropeHit.interText = this.add.text(350, 550, 'You took the rope.');
+        this.ropeHit.interText = this.add.text(440, 500, 'You took the rope');
         this.ropeHit.interText.setFontSize(50);
         this.ropeHit.interText.setVisible(false);
         this.ropeHit.setVisible(true);
@@ -186,9 +184,6 @@ class LookoutSouth extends Phaser.Scene {
         };
         if(Phaser.Input.Keyboard.JustDown(keyD)){
             this.scene.start("lookoutWest");
-        };
-        if(Phaser.Input.Keyboard.JustDown(keyS)){
-            this.scene.start("lookoutNorth");
         };
     }
     

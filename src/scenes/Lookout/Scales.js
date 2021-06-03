@@ -6,9 +6,12 @@ class Scales extends Phaser.Scene {
     preload(){
         // scales images
         this.load.image('scales_hole', './assets/puzzle4/scalesWindow/scalesHole.png');
-        this.load.image('even', './assets/puzzle4/scalesWindow/scales_even.png');
-        this.load.image('uneven', './assets/puzzle4/scalesWindow/scales_uneven.png');
+        this.load.image('even', './assets/puzzle4/scalesWindow/balanced.png');
+        this.load.image('uneven', './assets/puzzle4/scalesWindow/rightHeavy.png');
         this.load.image('button', './assets/puzzle4/scalesWindow/weigh_button.png');
+
+        // audio
+        this.load.audio('unlock', './assets/sfx/doorUnlock2.wav');
     }
 
     create() {
@@ -18,24 +21,20 @@ class Scales extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // sfx
-        //this.itemTake = this.sound.add('itemtake', {volume: 0.5});
-
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // define keys
-        keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+        this.unlock = this.sound.add('unlock', {volume: 0.75});
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
         // scales even
         this.even = this.add.image(640, 350, 'even');
         this.even.setDisplaySize(1280, 720);
-        this.even.setVisible(true);
+        this.even.setVisible(false);
         // scales uneven
-        this.uneven = this.add.image(580, 340, 'uneven');
+        this.uneven = this.add.image(640, 350, 'uneven');
         this.uneven.setDisplaySize(1280, 720);
-        this.uneven.setVisible(false);
+        this.uneven.setVisible(true);
         // scales text
-        this.uneven.interText = this.add.text(250, 650, 'The scales are unbalanced');
+        this.uneven.interText = this.add.text(250, 650, 'The scales are balanced');
         this.uneven.interText.setFontSize(50);
         this.uneven.interText.setVisible(false); 
 
@@ -116,8 +115,10 @@ class Scales extends Phaser.Scene {
         // god forsaken variables
         this.textTimer = 0;
         this.rocks = [this.red, this.yellow, this.orange, this.green, this.cyan, this.blue, this.purple];
-        this.correct = ["right", "right", "right", "left", "right", "right", "right"];
-        this.scaleStatus = false;
+        this.correct1 = ["right", "right", "right", "left", "right", "right", "right"];
+        this.correct2 = ["left", "left", "left", "right", "left", "left", "left"];
+        this.scaleStatus1 = false;
+        this.scaleStatus2 = false;
         this.status = [];
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -138,6 +139,7 @@ class Scales extends Phaser.Scene {
                 this.scene.wake("lookoutWest");
             }
         });
+        
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // text timers
         if(this.textTimer > 0 && this.textTimer < 150) {
@@ -160,10 +162,8 @@ class Scales extends Phaser.Scene {
         this.input.setDraggable(this.purple);
 
         this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
-
             gameObject.x = dragX;
             gameObject.y = dragY;
-    
         });
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -178,11 +178,12 @@ class Scales extends Phaser.Scene {
                     this.status.push(this.checkPosition(this.rocks[i]));
                 }
                 
-                console.log(this.status)
-                this.scaleStatus = this.checkCorrect(this.status, this.correct);
+                this.scaleStatus1 = this.checkCorrect1(this.status, this.correct1);
+                this.scaleStatus2 = this.checkCorrect2(this.status, this.correct2);
 
-                if(this.scaleStatus == true){
+                if(this.scaleStatus1 == true || this.scaleStatus2 == true){
                     balanced = 1;
+                    this.unlock.play();
                     this.uneven.interText.setVisible(true); 
                 } else {
                     this.rockReset();
@@ -204,8 +205,8 @@ class Scales extends Phaser.Scene {
         }
 
         if(balanced == 1){
-            this.even.setVisible(false);
-            this.uneven.setVisible(true);
+            this.even.setVisible(true);
+            this.uneven.setVisible(false);
             this.weighIm.setVisible(false);
             this.weigh.setVisible(false);
 
@@ -217,13 +218,6 @@ class Scales extends Phaser.Scene {
             this.blue.setVisible(false);
             this.purple.setVisible(false);
         }
-
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // scene change on keypress
-        if(Phaser.Input.Keyboard.JustDown(keyS)){
-            this.scene.stop("lookoutScales");
-            this.scene.wake("lookoutWest");
-        };
     }
 
     rockReset(){
@@ -248,20 +242,26 @@ class Scales extends Phaser.Scene {
         this.posX = rock.x;
 
         if (this.posY < 500){
-            console.log("active")
             if (this.posX < 560){
-                console.log("left")
                 return "left";
             }
             if (this.posX > 650){
-                console.log("right")
                 return "right";
             }
         }
         return "inactive";
     }
 
-    checkCorrect(arr1, arr2){
+    checkCorrect1(arr1, arr2){
+        for (var i = 0; i < 7; i++) {
+            if(arr1[i] != arr2[i]){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    checkCorrect2(arr1, arr2){
         for (var i = 0; i < 7; i++) {
             if(arr1[i] != arr2[i]){
                 return false;

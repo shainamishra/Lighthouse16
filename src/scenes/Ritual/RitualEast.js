@@ -18,9 +18,7 @@ class RitualEast extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-        keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-        keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -35,11 +33,34 @@ class RitualEast extends Phaser.Scene {
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
-        // lights off CN
+        
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // hot bar 
+        this.hotbar = this.add.image(640, 350, 'hotbarRitual');
+        this.hotbar.setDisplaySize(1280, 720);
+        this.hotbar.setVisible(true);
+ 
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // items
+        this.matchesHot = this.add.sprite(460, 659, 'matchesHot');
+        this.matchesHot.setDisplaySize(80, 40);
+        this.matchesHot.setVisible(false);
+
+        this.knifeHot = this.add.sprite(560, 660, 'knifeRitual');
+        this.knifeHot.setDisplaySize(100, 65);
+        this.knifeHot.setVisible(false);
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // dark
+        this.dark = this.add.image(640, 360, 'darkRitual');
+        this.dark.setDisplaySize(1280, 720);
+        this.dark.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
-        
+        this.hotOn = true;
+        this.timeVar = 150;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -51,14 +72,34 @@ class RitualEast extends Phaser.Scene {
     
     update() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // update hotbar
+        this.hotBarItems(this.hotOn);
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // clicks inventory box: puts this scene to sleep (no updates), switches to cards
         this.invent.on('pointerdown', (pointer) => {
             this.scene.switch("cardBox7");
         });
 
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // text timers
+        if(this.textTimer > 0 && this.textTimer < this.timeVar) {
+            this.textTimer += 1;
+        } 
+        else if(this.textTimer >= this.timeVar){
+            // hide text
+            this.textTimer = 0;
+        }
 
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // end states
-        
+        if(lightState == 1){
+            // lights are off 
+            this.dark.setVisible(true);
+        } else if(lightState == 2){
+            // lights are on
+            this.dark.setVisible(false);
+        } 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // scene change on keypress
@@ -68,8 +109,25 @@ class RitualEast extends Phaser.Scene {
         if(Phaser.Input.Keyboard.JustDown(keyD)){
             this.scene.start("ritualSouth");
         };
-        if(Phaser.Input.Keyboard.JustDown(keyS)){
-            this.scene.start("ritualWest");
-        };
+    }
+    
+    hotBarItems(on){
+        if(on == true){
+            this.hotbar.setVisible(true);
+
+            if (knifeGot == 1){
+                this.knifeHot.setVisible(true);
+            }
+
+            if (matches == 1){
+                this.matchesHot.setVisible(true);
+            }
+
+        }
+        else {
+            this.hotbar.setVisible(false);
+            this.knifeHot.setVisible(false);
+            this.matchesHot.setVisible(false);
+        }
     }
 }

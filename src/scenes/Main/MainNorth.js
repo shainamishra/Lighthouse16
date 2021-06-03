@@ -25,9 +25,7 @@ class MainNorth extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-        keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-        keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -113,6 +111,22 @@ class MainNorth extends Phaser.Scene {
         this.textTimerIndoor = 0;
         this.textTimerGclock = 0;
         this.hotOn = true;
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // scene change on keypress
+        this.input.keyboard.on('keydown-A', () => {
+            this.scene.start("mainWest"); 
+		});
+
+        this.input.keyboard.on('keydown-D', () => {
+            this.scene.start("mainEast"); 
+		});
+
+        // add the finish check to this @DarenBartolucci
+        this.input.keyboard.on('keydown-SPACE', () => {
+            this.scene.start("spread4"); 
+		});
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
         this.add.rectangle(0, 0, 10, game.config.height, 0x61282f).setOrigin(0, 0);
@@ -186,20 +200,6 @@ class MainNorth extends Phaser.Scene {
             this.gclock.interText.setVisible(false);
             this.textTimerGclock = 0;
         }
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // scene change on keypress
-        if(Phaser.Input.Keyboard.JustDown(keyA)){
-            this.scene.start("mainWest");
-        };
-        if(Phaser.Input.Keyboard.JustDown(keyD)){
-            this.scene.start("mainEast");
-        };
-        if(Phaser.Input.Keyboard.JustDown(keyS)){
-            this.scene.start("mainSouth");
-        };
-        if(Phaser.Input.Keyboard.JustDown(keySPACE)){
-            this.scene.start("spread4");
-        };
     }
 
     hotBarItems(on){

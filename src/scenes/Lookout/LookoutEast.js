@@ -28,9 +28,7 @@ class LookoutEast extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-        keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-        keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -40,7 +38,7 @@ class LookoutEast extends Phaser.Scene {
         this.windowHit.setInteractive({
             useHandCursor: true
         });
-        this.windowHit.interText = this.add.text(350, 550, 'The window is dirty.');
+        this.windowHit.interText = this.add.text(350, 550, 'The window is dirty');
         this.windowHit.interText.setFontSize(50);
         this.windowHit.interText.setVisible(false);
         this.windowHit.setVisible(true);
@@ -49,7 +47,7 @@ class LookoutEast extends Phaser.Scene {
         // clean window
         this.clean = this.add.image(640, 360, 'clean');
         this.clean.setDisplaySize(1280, 720);
-        this.clean.interText = this.add.text(350, 550, 'You cleaned the window.');
+        this.clean.interText = this.add.text(300, 550, 'You cleaned the window');
         this.clean.interText.setFontSize(50);
         this.clean.interText.setVisible(false);
         this.clean.setVisible(false);
@@ -57,7 +55,7 @@ class LookoutEast extends Phaser.Scene {
         // citrine window
         this.rock = this.add.image(640, 360, 'citrine_window');
         this.rock.setDisplaySize(1280, 720);
-        this.rock.interText = this.add.text(250, 550, 'You took the piece of citrine.');
+        this.rock.interText = this.add.text(200, 550, 'You took the piece of citrine');
         this.rock.interText.setFontSize(50);
         this.rock.interText.setVisible(false);
         this.rock.setVisible(false);
@@ -179,9 +177,6 @@ class LookoutEast extends Phaser.Scene {
         };
         if(Phaser.Input.Keyboard.JustDown(keyD)){
             this.scene.start("lookoutSouth");
-        };
-        if(Phaser.Input.Keyboard.JustDown(keyS)){
-            this.scene.start("lookoutWest");
         };
     }
     

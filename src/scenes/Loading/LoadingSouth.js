@@ -27,9 +27,7 @@ class LoadingSouth extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-        keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-        keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -79,11 +77,22 @@ class LoadingSouth extends Phaser.Scene {
         if(Phaser.Input.Keyboard.JustDown(keyD)){
             this.scene.start("loadingNorth");
         };
+        
         if(Phaser.Input.Keyboard.JustDown(keyA)){
             this.scene.start("loadingNorth");
         };
+
         if(Phaser.Input.Keyboard.JustDown(keySPACE)){
-            this.scene.start("spread5");
+            if(inRitual == 0){
+                this.scene.start("spread5");
+            }
+            else {
+                console.log(inRitual)
+                this.scene.stop("loadingSouth");
+                this.scene.wake("ritualSouth");
+            }
         };
+
+        
     }
 }
