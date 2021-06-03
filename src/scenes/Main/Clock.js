@@ -36,18 +36,21 @@ class Clock extends Phaser.Scene {
             useHandCursor: true
         });
         this.textTimerClockP = 0;
+        this.timesbuttonpressed = 0;
     }
 
     update(){
         if(Phaser.Input.Keyboard.JustDown(keyA)){
             this.minutehand.angle -= 5;
-        };
+            this.timesbuttonpressed -= 1;
+        }
 
         if(Phaser.Input.Keyboard.JustDown(keyD)){
             this.minutehand.angle += 5;
-        };
+            this.timesbuttonpressed += 1;
+        }
 
-        if(this.minutehand.angle == 180){
+        if(this.timesbuttonpressed == 36){
             clockUnlock = 1;
             this.hourhand.interText.setVisible(true);
         }
