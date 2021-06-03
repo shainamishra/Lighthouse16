@@ -13,7 +13,7 @@ class MainWest extends Phaser.Scene {
         this.load.image('hammerhot', './assets/puzzle3/items/hammer.png');
         this.load.image('knifehot', './assets/puzzle3/items/knife.png');
         this.load.image('coin1hot', './assets/puzzle3/overlays/coin1.png');
-        this.load.image('coin2hot', './assets/puzzle3/overlays/coin2.png');
+        this.load.image('hand', './assets/puzzle3/items/minute hand.png');
     }
 
     create() {
@@ -79,7 +79,7 @@ class MainWest extends Phaser.Scene {
         this.knifeHot.setInteractive({
             useHandCursor: true
         });
-        this.knifeHot.setVisible(true);
+        this.knifeHot.setVisible(false);
 
         this.scoinHot = this.add.sprite(655, 660, 'coin1hot');
         this.scoinHot.setDisplaySize(80, 80);
@@ -88,12 +88,12 @@ class MainWest extends Phaser.Scene {
         });
         this.scoinHot.setVisible(false);
 
-        this.pcoinHot = this.add.sprite(755, 659, 'coin2hot');
-        this.pcoinHot.setDisplaySize(70, 70);
-        this.pcoinHot.setInteractive({
+        this.handHot = this.add.sprite(755, 659, 'hand');
+        this.handHot.setDisplaySize(70, 70);
+        this.handHot.setInteractive({
             useHandCursor: true
         });
-        this.pcoinHot.setVisible(false);
+        this.handHot.setVisible(false);
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
         this.textTimerKnife =0;
@@ -182,7 +182,7 @@ class MainWest extends Phaser.Scene {
                 this.scoinHot.setVisible(true);
             }
             if(pcoinGot == 1){
-                this.pcoinHot.setVisible(true);
+                this.handHot.setVisible(true);
             }
         }
         else{
@@ -190,7 +190,7 @@ class MainWest extends Phaser.Scene {
             this.hammerHot.setVisible(false);
             this.knifeHot.setVisible(false);
             this.scoinHot.setVisible(false);
-            this.pcoinHot.setVisible(false);
+            this.handHot.setVisible(false);
         
         }
     }
