@@ -86,7 +86,7 @@ class MainEast extends Phaser.Scene {
         // ripped painting
         this.ripPainting = this.add.sprite(650, 350, 'ripPainting');
         this.ripPainting.setVisible(false);
-        this.ripPainting.interText = this.add.text(borderUISize + borderPadding * 20 + 250, borderUISize + borderPadding * 2, 'You cut the painting.\nThe minute hand was inside');
+        this.ripPainting.interText = this.add.text(borderUISize + borderPadding * 20 + 250, borderUISize + borderPadding * 2, 'You cut the painting.\nThe minute hand was\ninside');
         this.ripPainting.interText.setFontSize(50);
         this.ripPainting.interText.setVisible(false);
         // painting hit
