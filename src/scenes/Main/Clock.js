@@ -7,6 +7,7 @@ class Clock extends Phaser.Scene {
         this.load.image('hour', './assets/puzzle3/items/hour.png');
         this.load.image('clock', './assets/puzzle3/overlays/clockface.png');
         this.load.audio('doorun', './assets/sfx/doorUnlock.wav');
+        this.load.audio('clockbgm', './assets/sfx/Musicbox_clock');
     }
     
     create(){

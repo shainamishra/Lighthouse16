@@ -15,6 +15,7 @@ class MainNorth extends Phaser.Scene {
         this.load.image('knifehot', './assets/puzzle3/items/knife.png');
         this.load.image('coin1hot', './assets/puzzle3/overlays/coin2.png');
         this.load.image('hand', './assets/puzzle3/items/minute hand.png');
+       
     }
 
     create() {
@@ -38,6 +39,7 @@ class MainNorth extends Phaser.Scene {
 
         prevScene = this.scene.key;
         
+     
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
         // lights off CN

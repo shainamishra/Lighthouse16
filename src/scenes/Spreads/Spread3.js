@@ -10,13 +10,15 @@ class Spread3 extends Phaser.Scene {
         this.load.image('info2-3', './assets/info/emperor.png');
         this.load.image('info3-3', './assets/info/lovers.png');
         this.load.image('info4-3', './assets/info/wheelOfFortune.png');
+        this.load.audio('clockbgm', './assets/sfx/Musicbox_clock.wav');
     }
 
     create() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // place tile sprite
         this.bg = this.add.tileSprite(0, 0, 1280, 720, 'bg3').setOrigin(0, 0); 
-
+        this.clockBGM = this.sound.add('clockbgm', {volume: 0.2, loop: true});
+        this.clockBGM.play();
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
