@@ -57,7 +57,11 @@ class MainSouth extends Phaser.Scene {
         this.smashed = this.add.sprite(620, 375, 'broke');
         
         this.ladder = this.add.sprite(620, 350, 'ladder');
+        this.ladder.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'Press space to climb up');
+        this.ladder.interText.setFontSize(50);
+        this.ladder.interText.setVisible(false);
         this.ladder.setVisible(false);
+
 
         this.scoin = this.add.sprite(620, 830, 'floorcoin');
         this.scoinbox = this.add.sprite(930, 650, 'hitbox');
@@ -196,6 +200,7 @@ class MainSouth extends Phaser.Scene {
 
         if(clockUnlock ==1){
             this.ladder.setVisible(true);
+            this.ladder.interText.setVisible(true);
             if(Phaser.Input.Keyboard.JustDown(keySPACE)){
                 this.sound.get('clockbgm').stop();
                 this.scene.start("spread4");
