@@ -121,7 +121,24 @@ class Cabinet extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
+        // candles
+        this.candle.on('pointerdown', () => {
+            candles = 1;
+        });
+
+        this.fertilizer.on('pointerdown', () => {
+            chemical = 1;
+        });
         
+        this.insecticide.on('pointerdown', () => {
+            chemical = 2;
+        });
+        this.bleach.on('pointerdown', () => {
+            chemical = 3;
+        });
+        this.salt.on('pointerdown', () => {
+            chemical = 4;
+        });
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // text timers

@@ -93,6 +93,27 @@ class RitualEast extends Phaser.Scene {
         this.keyHot.setDisplaySize(70, 60);
         this.keyHot.setVisible(false);
 
+        this.candleHot = this.add.sprite(753, 654, 'candleHot');
+        this.candleHot.setDisplaySize(70, 60);
+        this.candleHot.setVisible(false);
+
+        // chemicals
+        this.bleachHot = this.add.sprite(845, 659, 'bleachHot');
+        this.bleachHot.setDisplaySize(48, 54);
+        this.bleachHot.setVisible(false);
+
+        this.fertilizerHot = this.add.sprite(845, 660, 'fertilizerHot');
+        this.fertilizerHot.setDisplaySize(39, 54);
+        this.fertilizerHot.setVisible(false);
+
+        this.insecticideHot = this.add.sprite(845, 659, 'insecticideHot');
+        this.insecticideHot.setDisplaySize(28, 60);
+        this.insecticideHot.setVisible(false);
+
+        this.saltHot = this.add.sprite(845, 659, 'saltHot');
+        this.saltHot.setDisplaySize(36, 60);
+        this.saltHot.setVisible(false);
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // digits
         this.digit1 = this.add.sprite(50, 50, 'hitbox2');
@@ -247,6 +268,32 @@ class RitualEast extends Phaser.Scene {
             if (deskKey == 1){
                 this.keyHot.setVisible(true);
             }
+            
+            if (candles == 1){
+                this.candleHot.setVisible(true);
+            }
+
+            if (chemical == 1){
+                this.fertilizerHot.setVisible(true);
+                this.insecticideHot.setVisible(false);
+                this.bleachHot.setVisible(false);
+                this.saltHot.setVisible(false);
+            } else if (chemical == 2){
+                this.fertilizerHot.setVisible(false);
+                this.insecticideHot.setVisible(true);
+                this.bleachHot.setVisible(false);
+                this.saltHot.setVisible(false);
+            } else if (chemical == 3){
+                this.fertilizerHot.setVisible(false);
+                this.insecticideHot.setVisible(false);
+                this.bleachHot.setVisible(true);
+                this.saltHot.setVisible(false);
+            } else if (chemical == 4){
+                this.fertilizerHot.setVisible(false);
+                this.insecticideHot.setVisible(false);
+                this.bleachHot.setVisible(false);
+                this.saltHot.setVisible(true);
+            } 
 
         }
         else {
@@ -254,6 +301,13 @@ class RitualEast extends Phaser.Scene {
             this.knifeHot.setVisible(false);
             this.matchesHot.setVisible(false);
             this.keyHot.setVisible(false);
+            this.candleHot.setVisible(false);
+
+            // chemicals
+            this.fertilizerHot.setVisible(false);
+            this.insecticideHot.setVisible(false);
+            this.bleachHot.setVisible(false);
+            this.saltHot.setVisible(false);
         }
     }
 

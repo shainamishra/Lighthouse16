@@ -67,3 +67,5 @@ let paper = 0;
 // reuse unlocked
 // reuse pos
 // reuse combo
+let candles = 0;
+let chemical = 0;
