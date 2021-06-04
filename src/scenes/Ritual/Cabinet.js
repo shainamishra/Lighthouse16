@@ -139,20 +139,22 @@ class Cabinet extends Phaser.Scene {
         // objects
         // candles
         if(this.textTimer == 0){
-            this.candle.on('pointerdown', () => {
-                candles = 1;
-                this.timeVar = 75;
-                this.textTimer = 1;
+            if(candles == 0){
+                this.candle.on('pointerdown', () => {
+                    candles = 1;
+                    this.timeVar = 75;
+                    this.textTimer = 1;
 
-                this.candleIm.setVisible(false);
+                    this.candleIm.setVisible(false);
 
-                // change text
-                this.candle.interText.setVisible(true);
-                this.fertilizer.interText.setVisible(false);
-                this.insecticide.interText.setVisible(false);
-                this.bleach.interText.setVisible(false);
-                this.salt.interText.setVisible(false);
-            });
+                    // change text
+                    this.candle.interText.setVisible(true);
+                    this.fertilizer.interText.setVisible(false);
+                    this.insecticide.interText.setVisible(false);
+                    this.bleach.interText.setVisible(false);
+                    this.salt.interText.setVisible(false);
+                });
+            }
 
             this.fertilizer.on('pointerdown', () => {
                 chemical = 1;
@@ -232,6 +234,7 @@ class Cabinet extends Phaser.Scene {
             this.textTimer += 1;
         } 
         else if(this.textTimer >= this.timeVar){
+            this.textTimer = 0;
             // hide text
             this.candle.interText.setVisible(false);
             this.fertilizer.interText.setVisible(false);
@@ -248,5 +251,58 @@ class Cabinet extends Phaser.Scene {
             // lights are off 
             this.dark.setVisible(true);
         }
+
+        if(candles == 1){
+            this.candle.setVisible(false);
+            this.candleIm.setVisible(false);
+        }
+        if (chemical == 1){
+            // hitboxes
+            this.fertilizer.setVisible(false);
+            this.insecticide.setVisible(true);
+            this.bleach.setVisible(true);
+            this.salt.setVisible(true);
+            // images
+            this.fertilizerIm.setVisible(false);
+            this.insecticideIm.setVisible(true);
+            this.bleachIm.setVisible(true);
+            this.saltIm.setVisible(true);
+
+        } else if (chemical == 2){
+            // hitboxes
+            this.fertilizer.setVisible(true);
+            this.insecticide.setVisible(false);
+            this.bleach.setVisible(true);
+            this.salt.setVisible(true);
+            // images
+            this.fertilizerIm.setVisible(true);
+            this.insecticideIm.setVisible(false);
+            this.bleachIm.setVisible(true);
+            this.saltIm.setVisible(true);
+
+        } else if (chemical == 3){
+            // hitboxes
+            this.fertilizer.setVisible(true);
+            this.insecticide.setVisible(true);
+            this.bleach.setVisible(false);
+            this.salt.setVisible(true);
+            // images
+            this.fertilizerIm.setVisible(true);
+            this.insecticideIm.setVisible(true);
+            this.bleachIm.setVisible(false);
+            this.saltIm.setVisible(true);
+
+        } else if (chemical == 4){
+            // hitboxes
+            this.fertilizer.setVisible(true);
+            this.insecticide.setVisible(true);
+            this.bleach.setVisible(true);
+            this.salt.setVisible(false);
+            // images
+            this.fertilizerIm.setVisible(true);
+            this.insecticideIm.setVisible(true);
+            this.bleachIm.setVisible(true);
+            this.saltIm.setVisible(false);
+        } 
     }
 }
