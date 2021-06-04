@@ -179,7 +179,7 @@ class IslandEast extends Phaser.Scene {
             this.scene.switch("cardBox");
         });
         
-        if(this.textTimerRod == 0 && reelGot == 0){
+        if(this.textTimerRod == 0 && reelGot == 0 && scopeGot == 0){
             this.fishingpole.on('pointerdown', () => {
                 this.fishingpole.interText.setVisible(true);
                 this.textTimerRod = 1;
@@ -195,10 +195,12 @@ class IslandEast extends Phaser.Scene {
                 this.rod.setVisible(false);
                 this.rodCage.setVisible(true);
                 this.textTimerRod = 1;
+                this.reelHot.setVisible(false);
                 scopeGot = 1;
+                reelGot = 0;
             });
         }
-        if(this.textTimerRod == 0 && reelGot == 1 && scopeGot == 1){
+        if(this.textTimerRod == 0 && scopeGot == 1){
                 this.fishingpole.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'There was a telescope \n inside the cage');
                 this.fishingpole.interText.setFontSize(50);
                 this.fishingpole.interText.setVisible(false);
@@ -235,7 +237,9 @@ class IslandEast extends Phaser.Scene {
                 this.bucketUp.setVisible(false);
                 this.bucketEm.setVisible(true);
                 this.textTimerBucket = 1;
-                keyGot = 1;
+                if(reelGot == 0 && scopeGot == 0){
+                    keyGot = 1;
+                }
             });
         }
         if(this.textTimerBucket == 1 && keyGot == 1){

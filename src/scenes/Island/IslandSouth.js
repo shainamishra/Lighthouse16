@@ -170,7 +170,9 @@ class IslandSouth extends Phaser.Scene {
                 this.graveboxEmpty.setVisible(true);
                 this.gravebox.interText.setVisible(true);
                 this.textTimerGBox = 1;
+                this.keyHot.setVisible(false);
                 reelGot =1 ;
+                keyGot =0;
             });
         }
         if(this.textTimerGBox == 1 && reelGot == 1){

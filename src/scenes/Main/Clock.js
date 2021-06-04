@@ -6,6 +6,8 @@ class Clock extends Phaser.Scene {
         this.load.image('minute', './assets/puzzle3/overlays/minute.png');
         this.load.image('hour', './assets/puzzle3/items/hour.png');
         this.load.image('clock', './assets/puzzle3/overlays/clockface.png');
+        this.load.audio('doorun', './assets/sfx/doorUnlock.wav');
+        
     }
     
     create(){
@@ -45,11 +47,17 @@ class Clock extends Phaser.Scene {
         if(Phaser.Input.Keyboard.JustDown(keyA)){
             this.minutehand.angle -= 5;
             this.timesbuttonpressed -= 1;
+            if(this.timesbuttonpressed == -36){
+                this.sound.play("doorun");
+            }
         }
 
         if(Phaser.Input.Keyboard.JustDown(keyD)){
             this.minutehand.angle += 5;
             this.timesbuttonpressed += 1;
+            if(this.timesbuttonpressed == 36){
+                this.sound.play("doorun");
+            }
         }
 
         if(this.timesbuttonpressed == 36 || this.timesbuttonpressed == -36){
