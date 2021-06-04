@@ -152,7 +152,6 @@ class IslandSouth extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         if(this.textTimerGraves == 0){
-            // if click on lighthouse
             this.graves.on('pointerdown', (pointer) => {
                 this.graves.interText.setVisible(true);
                 this.textTimerGraves = 1;
@@ -170,7 +169,6 @@ class IslandSouth extends Phaser.Scene {
         }
 
         if(this.textTimerGBox == 0 && keyGot == 0){
-            // if click on lighthouse
             this.gravebox.on('pointerdown', (pointer) => {
                 this.gravebox.interText.setVisible(true);
                 this.textTimerGBox = 1;
