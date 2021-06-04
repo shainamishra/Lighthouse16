@@ -197,7 +197,7 @@ class MainSouth extends Phaser.Scene {
         if(clockUnlock ==1){
             this.ladder.setVisible(true);
             if(Phaser.Input.Keyboard.JustDown(keySPACE)){
-
+                this.sound.get('clockbgm').stop();
                 this.scene.start("spread4");
             }
         }
