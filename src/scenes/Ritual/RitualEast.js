@@ -155,12 +155,12 @@ class RitualEast extends Phaser.Scene {
         // box
         if(this.textTimer == 0){
             this.cabinentHit.on('pointerdown', () =>{
-                if(unlocked == 0){
+                if(unlocked == 0 && this.textTimer == 0){
                     this.combo.setVisible(true);
                     this.textTimer = 1;
                 }
 
-                if(unlocked == 1){
+                if(unlocked == 1 && this.textTimer == 0){
                     this.textTimer = 1;
                     this.timeVar = 20;
                     this.scene.switch("ritualCabinet");
@@ -171,12 +171,12 @@ class RitualEast extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // text timers
         // lock input on screen
-        if(this.textTimer > 0 && this.textTimer < this.timeVar && unlocked == 0) {
+        if(unlocked == 0) {
             this.inputCombo = this.checkCombo();
             if(this.inputCombo == 523){
                 unlocked = 1;
                 this.textTimer = this.timeVar + 1;
-                //chage to chain break
+                // chage to chain break
                 //this.sound.play("itemtake");
 
                 this.combo.setVisible(false);
@@ -186,10 +186,14 @@ class RitualEast extends Phaser.Scene {
                 this.digit3.interText.setVisible(false);
             }
             else if (pos == 3 && this.inputCombo != 0){
-                this.textTimer = 251;
+                this.textTimer = this.timeVar + 1;
             }
         }
-        if(this.textTimer >= 250){
+
+        if(this.textTimer > 0 && this.textTimer < this.timeVar && unlocked == 1) {
+            this.textTimer += 1;
+        }
+        else if(this.textTimer >= this.timeVar){
             // hide text
             //this.box.interText.setVisible(false);
             this.combo.setVisible(false);
