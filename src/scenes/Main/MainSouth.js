@@ -56,7 +56,7 @@ class MainSouth extends Phaser.Scene {
 
         this.smashed = this.add.sprite(620, 375, 'broke');
         
-        this.ladder = this.add.sprite(620, 380, 'ladder');
+        this.ladder = this.add.sprite(620, 350, 'ladder');
         this.ladder.setVisible(false);
 
         this.scoin = this.add.sprite(620, 830, 'floorcoin');
