@@ -6,6 +6,11 @@ class Pentagram extends Phaser.Scene {
     preload(){
         // scales images
         this.load.image('pentagram', './assets/puzzle5/pentagram/ritual_closeup.png');
+        this.load.image('candlesPent', './assets/puzzle5/pentagram/ritual_closeup_candles.png');
+        this.load.image('firePentNormal', './assets/puzzle5/pentagram/ritual_closeup_normal.png');
+        this.load.image('firePentGreen', './assets/puzzle5/pentagram/ritual_closeup_green.png');
+        this.load.image('firePentPurple', './assets/puzzle5/pentagram/ritual_closeup_purple.png');
+        this.load.image('firePentYellow', './assets/puzzle5/pentagram/ritual_closeup_yellow.png');
 
         // audio
         this.load.audio('unlock', './assets/sfx/doorUnlock2.wav');
@@ -14,7 +19,7 @@ class Pentagram extends Phaser.Scene {
     create() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // place tile sprite
-        this.bg = this.add.tileSprite(0, 0, 1280, 720, 'pentagram').setOrigin(0, 0); 
+        this.bg = this.add.tileSprite(0, 3, 1280, 720, 'pentagram').setOrigin(0, 0); 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // sfx
@@ -22,6 +27,26 @@ class Pentagram extends Phaser.Scene {
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
+        // candle + fire
+        this.candlesPent = this.add.image(640, 360, 'candlesPent');
+        this.candlesPent.setDisplaySize(1280, 720);
+        this.candlesPent.setVisible(false);
+        // normal
+        this.firePentNormal = this.add.image(640, 360, 'firePentNormal');
+        this.firePentNormal.setDisplaySize(1280, 720);
+        this.firePentNormal.setVisible(false);
+        // green
+        this.firePentGreen = this.add.image(640, 360, 'firePentGreen');
+        this.firePentGreen.setDisplaySize(1280, 720);
+        this.firePentGreen.setVisible(false);
+        // purple
+        this.firePentPurple = this.add.image(640, 360, 'firePentPurple');
+        this.firePentPurple.setDisplaySize(1280, 720);
+        this.firePentPurple.setVisible(false);
+        // yellow
+        this.firePentYellow = this.add.image(640, 360, 'firePentYellow');
+        this.firePentYellow.setDisplaySize(1280, 720);
+        this.firePentYellow.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // close
@@ -82,6 +107,13 @@ class Pentagram extends Phaser.Scene {
         } else if(lightState == 1){
             // lights are off 
             this.dark.setVisible(true);
+        }
+
+        if(candles == 1){
+            this.candlesPent.setVisible(true);
+            if(matches == 1){
+                this.firePentNormal.setVisible(true);
+            }
         }
     }
 }

@@ -140,7 +140,7 @@ class Inventory7 extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // "x" to close inventory
         this.closeInven.on('pointerdown', (pointer) => {
-            this.scene.stop("cardBox");
+            this.scene.stop("cardBox7");
             this.scene.wake(prevScene);
         });
 

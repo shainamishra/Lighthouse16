@@ -8,6 +8,7 @@ class LookoutWest extends Phaser.Scene {
         this.load.image('lookoutWest', './assets/puzzle4/blank_wall.png');
         this.load.image('rag', './assets/puzzle4/overlays/rag.png');
         this.load.image('outline', './assets/puzzle4/overlays/secret_outline.png');
+        this.load.image('scalesUnbalanced', './assets/puzzle4/overlays/secret_scales.png');
         this.load.image('scales', './assets/puzzle4/overlays/scales.png');
         this.load.image('westLight', './assets/puzzle4/overlays/blank_wall_light.png');
         this.load.image('ladder', './assets/puzzle4/overlays/ladder.png');
@@ -36,13 +37,29 @@ class LookoutWest extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // inventory box set up
-        this.invent = this.add.sprite(60,60, 'inventory');
+        this.invent = this.add.sprite(60, 60, 'hitbox');
         this.invent.setDisplaySize(100, 100);
         this.invent.setInteractive({
             useHandCursor: true
         });
-
+        // invent image
+        this.inventIm = this.add.image(630, 350, 'inventory');
+        this.inventIm.setDisplaySize(1280, 720);
+        this.inventIm.setVisible(true);
+        
         prevScene = this.scene.key;
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // help icon set up
+        this.help = this.add.sprite(1223, 60, 'hitbox');
+        this.help.setDisplaySize(85, 85);
+        this.help.setInteractive({
+            useHandCursor: true
+        });
+        // help image
+        this.helpIm = this.add.image(660, 355, 'help');
+        this.helpIm.setDisplaySize(1280, 720);
+        this.helpIm.setVisible(true);
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
@@ -69,6 +86,10 @@ class LookoutWest extends Phaser.Scene {
             useHandCursor: true
         });
 
+        // scales unbalanced
+        this.scalesUn = this.add.image(640, 350, 'scalesUnbalanced');
+        this.scalesUn.setDisplaySize(1280, 720);
+        this.scalesUn.setVisible(false);
         // scales
         this.scales = this.add.image(640, 350, 'scales');
         this.scales.setDisplaySize(1280, 720);
@@ -145,6 +166,14 @@ class LookoutWest extends Phaser.Scene {
             this.scene.switch("cardBox");
         });
 
+        // clicks help box: puts this scene to sleep (no updates), switches to cards
+        this.help.on('pointerdown', (pointer) => {
+            if(this.textTimer == 0){
+                this.scene.switch("instructionScene");
+                this.textTimer = 1;
+            }
+        });
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // rag
         this.ragHit.on('pointerdown', (pointer) => {
@@ -155,18 +184,14 @@ class LookoutWest extends Phaser.Scene {
             this.textTimer = 1;
         });
 
-        // hatch
-        // delete this
-        /*
-        rag = 1;
-        hatch = 1;
-        windowClean = 1;
-        weights = 1;
-        citrine = 1;
-        */
         this.hatch.on('pointerdown', (pointer) => {
             if (hatch == 0){
-                this.scales.setVisible(true);
+                if (balanced == 0){
+                    this.scalesUn.setVisible(true);
+                }
+                else{
+                    this.scales.setVisible(true);
+                }
                 this.outline.interText.setVisible(true);
                 this.textTimer = 1;
                 hatch = 1;
@@ -180,6 +205,8 @@ class LookoutWest extends Phaser.Scene {
         });
 
         if(balanced == 1){
+            this.scalesUn.setVisible(false);
+            this.scales.setVisible(true);
             this.ladder.setVisible(true);
             this.ladder.interText.setVisible(true);
 
@@ -222,7 +249,14 @@ class LookoutWest extends Phaser.Scene {
             this.hatch.setVisible(true);
         }
         if(hatch == 1){
-            this.scales.setVisible(true);
+            if (balanced == 0){
+                this.scalesUn.setVisible(true);
+                this.scales.setVisible(false);
+            }
+            else{
+                this.scalesUn.setVisible(false);
+                this.scales.setVisible(true);
+            }
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////

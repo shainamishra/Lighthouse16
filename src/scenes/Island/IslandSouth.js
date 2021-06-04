@@ -25,24 +25,30 @@ class IslandSouth extends Phaser.Scene {
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
 
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // cursor
-        this.input.on('gameobjectdown', (pointer, gameObject, event) => { 
-            //console.log(pointer);
-            //console.log(gameObject);
-            //console.log(event);
-        });
-        
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////
-
         // inventory box set up
-        this.invent = this.add.sprite(60,60, 'inventory');
+        this.invent = this.add.sprite(60, 60, 'hitbox');
         this.invent.setDisplaySize(100, 100);
         this.invent.setInteractive({
             useHandCursor: true
         });
-
+        // invent image
+        this.inventIm = this.add.image(630, 350, 'inventory');
+        this.inventIm.setDisplaySize(1280, 720);
+        this.inventIm.setVisible(true);
+        
         prevScene = this.scene.key;
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // help icon set up
+        this.help = this.add.sprite(1223, 60, 'hitbox');
+        this.help.setDisplaySize(85, 85);
+        this.help.setInteractive({
+            useHandCursor: true
+        });
+        // help image
+        this.helpIm = this.add.image(660, 355, 'help');
+        this.helpIm.setDisplaySize(1280, 720);
+        this.helpIm.setVisible(true);
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // graves
@@ -136,6 +142,15 @@ class IslandSouth extends Phaser.Scene {
             this.scene.switch("cardBox");
         });
 
+        // clicks help box: puts this scene to sleep (no updates), switches to cards
+        this.help.on('pointerdown', (pointer) => {
+            if(this.textTimerGraves == 0){
+                this.scene.switch("instructionScene");
+                this.textTimerGraves = 1;
+            }
+        });
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         if(this.textTimerGraves == 0){
             // if click on lighthouse
             this.graves.on('pointerdown', (pointer) => {

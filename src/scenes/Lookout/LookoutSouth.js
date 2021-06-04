@@ -9,10 +9,11 @@ class LookoutSouth extends Phaser.Scene {
         this.load.image('lightSouth', './assets/puzzle4/overlays/light_over_diagrams.png');
         this.load.image('rope', './assets/puzzle4/overlays/rope_overlay.png');
 
-        // penfulum parts
+        // pendulum parts
+        this.load.image('pendulum', './assets/puzzle4/overlays/pendulum.png');
         this.load.image('pendulum_top', './assets/puzzle4/overlays/pendulum_top.png');
-        this.load.image('pendulum_rope', './assets/puzzle4/overlays/pendulum_rope.png');
-        this.load.image('pendulum_rock', './assets/puzzle4/overlays/pendulum_rock.png');
+        this.load.spritesheet('swing', './assets/puzzle4/overlays/pendulumAnim.png', {frameWidth: 250, frameHeight: 264, startFrame: 0, endFrame: 7});
+        
 
         // hitbox
         this.load.image('hitbox', './assets/HitBox2.png');
@@ -38,13 +39,29 @@ class LookoutSouth extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // inventory box set up
-        this.invent = this.add.sprite(60,60, 'inventory');
+        this.invent = this.add.sprite(60, 60, 'hitbox');
         this.invent.setDisplaySize(100, 100);
         this.invent.setInteractive({
             useHandCursor: true
         });
-
+        // invent image
+        this.inventIm = this.add.image(630, 350, 'inventory');
+        this.inventIm.setDisplaySize(1280, 720);
+        this.inventIm.setVisible(true);
+        
         prevScene = this.scene.key;
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // help icon set up
+        this.help = this.add.sprite(1223, 60, 'hitbox');
+        this.help.setDisplaySize(85, 85);
+        this.help.setInteractive({
+            useHandCursor: true
+        });
+        // help image
+        this.helpIm = this.add.image(660, 355, 'help');
+        this.helpIm.setDisplaySize(1280, 720);
+        this.helpIm.setVisible(true);
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
@@ -63,25 +80,25 @@ class LookoutSouth extends Phaser.Scene {
         this.ropeHit.interText.setVisible(false);
         this.ropeHit.setVisible(true);
 
-        // pendulum top
-        this.top = this.add.image(875, 340, 'pendulum_top');
-        this.top.setDisplaySize(1280, 720);
-        this.top.setVisible(false);
-        // pendulum rope
-        this.penRope = this.add.image(875, 340, 'pendulum_rope');
-        this.penRope.setDisplaySize(1280, 720);
-        this.penRope.setVisible(false);
-        // pendulum rock
-        this.penRock = this.add.image(880, 340, 'pendulum_rock');
-        this.penRock.setDisplaySize(1280, 720);
-        this.penRock.setVisible(false);
-        // pendulum rock hit box
-        this.penRockHit = this.add.image(880, 400, 'hitbox');
-        this.penRockHit.setDisplaySize(35, 80);
-        this.penRockHit.setInteractive({
+        // pendulum
+        this.pendulum = this.add.sprite(870, 326, 'pendulum');
+        this.pendulum.setDisplaySize(1280, 720);
+        this.pendulum.setVisible(false);
+        // pendulum hit box
+        this.penHit = this.add.image(875, 265, 'hitbox');
+        this.penHit.setDisplaySize(40, 320);
+        this.penHit.setInteractive({
             useHandCursor: true
         });
-        this.penRockHit.setVisible(true);
+        this.penHit.setVisible(false);
+
+        // pen anim
+        this.anims.create({
+            key: 'swing',
+            frames: this.anims.generateFrameNumbers('swing', { start: 0, end: 6, first: 0}),
+            frameRate: 6,
+            repeat: -1
+        });
 
         // light
         this.lightSouth = this.add.image(640, 360, 'lightSouth');
@@ -115,6 +132,8 @@ class LookoutSouth extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
         this.hotOn = true;
+        this.textTimer = 0;
+        this.animOn = 0;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -135,6 +154,15 @@ class LookoutSouth extends Phaser.Scene {
             this.scene.switch("cardBox");
         });
 
+        // clicks help box: puts this scene to sleep (no updates), switches to cards
+        this.help.on('pointerdown', (pointer) => {
+            console.log('in')
+            if(this.textTimer == 0){
+                this.scene.switch("instructionScene");
+                this.textTimer = 1;
+            }
+        });
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // rope
         this.ropeHit.on('pointerdown', (pointer) => {
@@ -147,9 +175,10 @@ class LookoutSouth extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // pendulum anim
-        this.penRockHit.on('pointerdown', (pointer) => {
-            console.log("pendulum")
-            // start animation
+        this.penHit.on('pointerdown', (pointer) => {
+            this.animOn = 1;
+            this.add.sprite(875, 220, 'hitbox').play('swing');
+            this.pendulum.setVisible(false);
         });
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -171,10 +200,10 @@ class LookoutSouth extends Phaser.Scene {
             this.lightSouth.setVisible(true);
         }
         if(citrine == 1 && rope == 1){
-            this.top.setVisible(true);
-            this.penRope.setVisible(true);
-            this.penRock.setVisible(true);
-            this.penRockHit.setVisible(true);
+            this.penHit.setVisible(true);
+            if(this.animOn == 0){
+                this.pendulum.setVisible(true);
+            }
         }
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////

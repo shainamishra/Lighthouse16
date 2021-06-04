@@ -9,6 +9,7 @@ class Scales extends Phaser.Scene {
         this.load.image('even', './assets/puzzle4/scalesWindow/balanced.png');
         this.load.image('uneven', './assets/puzzle4/scalesWindow/rightHeavy.png');
         this.load.image('button', './assets/puzzle4/scalesWindow/weigh_button.png');
+        this.load.image('instructScales', './assets/puzzle4/scalesWindow/scales_instructions.png');
 
         // audio
         this.load.audio('unlock', './assets/sfx/doorUnlock2.wav');
@@ -25,6 +26,11 @@ class Scales extends Phaser.Scene {
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
+        // instructions
+        this.instruct = this.add.image(640, 350, 'instructScales');
+        this.instruct.setDisplaySize(1280, 720);
+        this.instruct.setVisible(true);
+
         // scales even
         this.even = this.add.image(640, 350, 'even');
         this.even.setDisplaySize(1280, 720);

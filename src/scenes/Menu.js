@@ -6,6 +6,8 @@ class Menu extends Phaser.Scene {
     preload(){
         // load assets
         this.load.image('start', './assets/start.png');
+        this.load.image('inventory', './assets/inventory.png');
+        this.load.image('help', './assets/help.png');
         this.load.audio('CrashingWaves', './assets/sfx/CrashingWave2.wav');
         this.load.audio('menu_music', './assets/sfx/theLighthouse.wav');
 
@@ -42,7 +44,7 @@ class Menu extends Phaser.Scene {
 
     create() {
         // title
-        this.title = this.add.tileSprite(0, 0, 1280, 720, 'start').setOrigin(0, 0);
+        this.title = this.add.tileSprite(0, 10, 1280, 720, 'start').setOrigin(0, 0);
 
         // borders
         this.add.rectangle(0, 0, 10, game.config.height, 0x042630).setOrigin(0, 0);

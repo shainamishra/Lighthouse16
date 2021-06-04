@@ -16,33 +16,43 @@ class Instruction extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // change scenes
         this.input.keyboard.on('keydown-SPACE', () => {
-			this.sound.play("CrashingWaves");
-            this.scene.start("spread1"); 
+            if(level == 0){
+                this.sound.play("CrashingWaves");
+                this.scene.start("spread1"); 
+            }
 		});
 
         // TAKE OUT THIS TIME, SHAINA!!!!!
-        // change scenes
+        // delete
         this.input.keyboard.on('keydown-Z', () => {
-            this.scene.start("spread1"); 
-		});
-        this.input.keyboard.on('keydown-X', () => {
-            this.scene.start("spread2"); 
-		});
-        this.input.keyboard.on('keydown-C', () => {
-            this.scene.start("spread3"); 
-		});
-        this.input.keyboard.on('keydown-V', () => {
-            this.scene.start("spread4"); 
-		});
-        this.input.keyboard.on('keydown-B', () => {
             this.scene.start("ritualNorth"); 
 		});
-        
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // close
+        this.closeInven = this.add.sprite(50, 50, 'x');
+        this.closeInven.setDisplaySize(50, 50);
+        this.closeInven.setVisible(false);
+        this.closeInven.setInteractive({
+            useHandCursor: true
+        });
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
         this.add.rectangle(0, 0, 10, game.config.height, 0x042630).setOrigin(0, 0);
         this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x042630).setOrigin(0, 0);
         this.add.rectangle(0, 0, game.config.width, 10, 0x042630).setOrigin(0, 0);
         this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x042630).setOrigin(0, 0);
+    }
+
+    update(){
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // "x" to close inventory
+        if(level > 0){
+            this.closeInven.setVisible(true);
+            this.closeInven.on('pointerdown', () => {
+                this.scene.stop("instructionScene");
+                this.scene.wake(prevScene);
+            });
+        }
     }
 }

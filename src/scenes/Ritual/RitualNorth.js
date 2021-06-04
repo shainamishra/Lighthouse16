@@ -9,7 +9,6 @@ class RitualNorth extends Phaser.Scene {
         this.load.image('knife', './assets/puzzle5/overlays/ritualNorth_knife.png');
         this.load.image('matches', './assets/puzzle5/overlays/ritualNorth_matches.png');
         this.load.image('darkRitual', './assets/puzzle2/overlays/lightsOff.png');
-
         this.load.image('hitbox', './assets/HitBox2.png');
 
         // hotbar
@@ -24,9 +23,20 @@ class RitualNorth extends Phaser.Scene {
         this.load.image('fertilizerHot', './assets/puzzle5/items/hotbar_fertilizer.png');
         this.load.image('insecticideHot', './assets/puzzle5/items/hotbar_insecticide.png');
         this.load.image('saltHot', './assets/puzzle5/items/hotbar_salt.png');
+
+        // candle + fire
+        this.load.image('candles', './assets/puzzle5/overlays/ritualNorth_candles.png');
+        this.load.image('fireNormal', './assets/puzzle5/overlays/ritualNorth_candles_normal.png');
+        this.load.image('fireGreen', './assets/puzzle5/overlays/ritualNorth_candles_green.png');
+        this.load.image('firePurple', './assets/puzzle5/overlays/ritualNorth_candles_purple.png');
+        this.load.image('fireYellow', './assets/puzzle5/overlays/ritualNorth_candles_yellow.png');
     }
 
     create() {
+        //delete this or move it somewhere else; the inventory x doesnt show up if the level = 0, 
+        //skipping to the ritual means that the level isnt being set anywhere; this should be fine 
+        //if we respawn in the lookout since lookout -> spread5 -> ritual
+        level = 4;
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // place tile sprite
         this.cellarnorth = this.add.tileSprite(0, 0, 1280, 720, 'ritualNorth').setOrigin(0, 0); 
@@ -39,13 +49,29 @@ class RitualNorth extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // inventory box set up
-        this.invent = this.add.sprite(60,60, 'inventory');
+        this.invent = this.add.sprite(60, 60, 'hitbox');
         this.invent.setDisplaySize(100, 100);
         this.invent.setInteractive({
             useHandCursor: true
         });
-
+        // invent image
+        this.inventIm = this.add.image(630, 350, 'inventory');
+        this.inventIm.setDisplaySize(1280, 720);
+        this.inventIm.setVisible(true);
+        
         prevScene = this.scene.key;
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // help icon set up
+        this.help = this.add.sprite(1223, 60, 'hitbox');
+        this.help.setDisplaySize(85, 85);
+        this.help.setInteractive({
+            useHandCursor: true
+        });
+        // help image
+        this.helpIm = this.add.image(660, 355, 'help');
+        this.helpIm.setDisplaySize(1280, 720);
+        this.helpIm.setVisible(true);
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
@@ -90,6 +116,28 @@ class RitualNorth extends Phaser.Scene {
         this.knifeIm.setVisible(true);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // candle + fire
+        this.candles = this.add.image(640, 360, 'candles');
+        this.candles.setDisplaySize(1280, 720);
+        this.candles.setVisible(false);
+        // normal
+        this.fireNormal = this.add.image(640, 360, 'fireNormal');
+        this.fireNormal.setDisplaySize(1280, 720);
+        this.fireNormal.setVisible(false);
+        // green
+        this.fireGreen = this.add.image(640, 360, 'fireGreen');
+        this.fireGreen.setDisplaySize(1280, 720);
+        this.fireGreen.setVisible(false);
+        // purple
+        this.firePurple = this.add.image(640, 360, 'firePurple');
+        this.firePurple.setDisplaySize(1280, 720);
+        this.firePurple.setVisible(false);
+        // yellow
+        this.fireYellow = this.add.image(640, 360, 'fireYellow');
+        this.fireYellow.setDisplaySize(1280, 720);
+        this.fireYellow.setVisible(false);
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // hot bar 
         this.hotbar = this.add.image(640, 350, 'hotbarRitual');
         this.hotbar.setDisplaySize(1280, 720);
@@ -104,7 +152,7 @@ class RitualNorth extends Phaser.Scene {
         this.knifeHot = this.add.sprite(560, 660, 'knifeRitual');
         this.knifeHot.setDisplaySize(100, 65);
         this.knifeHot.setVisible(false);
-
+        
         this.keyHot = this.add.sprite(660, 659, 'keyRitual');
         this.keyHot.setDisplaySize(70, 60);
         this.keyHot.setVisible(false);
@@ -160,6 +208,14 @@ class RitualNorth extends Phaser.Scene {
         // clicks inventory box: puts this scene to sleep (no updates), switches to cards
         this.invent.on('pointerdown', (pointer) => {
             this.scene.switch("cardBox7");
+        });
+
+        // clicks help box: puts this scene to sleep (no updates), switches to cards
+        this.help.on('pointerdown', (pointer) => {
+            if(this.textTimer == 0){
+                this.scene.switch("instructionScene");
+                this.textTimer = 1;
+            }
         });
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -232,6 +288,15 @@ class RitualNorth extends Phaser.Scene {
             this.matches.setVisible(false);
             this.matchesIm.setVisible(false);
         }
+
+        if(candles == 1){
+            this.candles.setVisible(true);
+
+            if(matches == 1){
+                this.fireNormal.setVisible(true);
+            }
+        }
+        candles = 1;
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // scene change on keypress

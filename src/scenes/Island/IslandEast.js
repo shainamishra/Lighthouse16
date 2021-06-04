@@ -32,26 +32,32 @@ class IslandEast extends Phaser.Scene {
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // cursor
-        this.input.on('gameobjectdown', (pointer, gameObject, event) => { 
-            //console.log(pointer);
-            //console.log(gameObject);
-            //console.log(event);
-        });
-
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        
         // inventory box set up
-        this.invent = this.add.sprite(60,60, 'inventory');
+        this.invent = this.add.sprite(60, 60, 'hitbox');
         this.invent.setDisplaySize(100, 100);
         this.invent.setInteractive({
             useHandCursor: true
         });
-
+        // invent image
+        this.inventIm = this.add.image(630, 350, 'inventory');
+        this.inventIm.setDisplaySize(1280, 720);
+        this.inventIm.setVisible(true);
+        
         prevScene = this.scene.key;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        
+        // help icon set up
+        this.help = this.add.sprite(1223, 60, 'hitbox');
+        this.help.setDisplaySize(85, 85);
+        this.help.setInteractive({
+            useHandCursor: true
+        });
+        // help image
+        this.helpIm = this.add.image(660, 355, 'help');
+        this.helpIm.setDisplaySize(1280, 720);
+        this.helpIm.setVisible(true);
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // rod
         this.rod = this.add.sprite(650, 350, 'rod');
         this.rod.setDisplaySize(1280, 720);
@@ -178,7 +184,16 @@ class IslandEast extends Phaser.Scene {
         this.invent.on('pointerdown', () => {
             this.scene.switch("cardBox");
         });
-        
+
+        // clicks help box: puts this scene to sleep (no updates), switches to cards
+        this.help.on('pointerdown', (pointer) => {
+            if(this.textTimerBucket == 0){
+                this.scene.switch("instructionScene");
+                this.textTimerBucket = 1;
+            }
+        });
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         if(this.textTimerRod == 0 && reelGot == 0 && scopeGot == 0){
             this.fishingpole.on('pointerdown', () => {
                 this.fishingpole.interText.setVisible(true);
@@ -220,10 +235,10 @@ class IslandEast extends Phaser.Scene {
         }
 
         // text on screen
-        if(this.textTimerRod > 0 && this.textTimerRod < 150) {
+        if(this.textTimerRod > 0 && this.textTimerRod < 80) {
             this.textTimerRod += 1;
         } 
-        else if(this.textTimerRod >= 100){
+        else if(this.textTimerRod >= 80){
             // hide text
             this.fishingpole.interText.setVisible(false);
             this.textTimerRod = 0;
