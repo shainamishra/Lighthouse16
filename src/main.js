@@ -8,7 +8,8 @@ let config = {
             Spread3, MainNorth, MainWest, MainEast, MainSouth, Clock, 
             Spread4, LookoutNorth, LookoutWest, LookoutEast, LookoutSouth, Scales, 
             LoadingNorth, LoadingSouth, 
-            Spread5, Inventory7, RitualNorth, Pentagram, Bookshelf, RitualWest, Closet, RitualEast, Cabinet, RitualSouth],
+            Spread5, Inventory7, RitualNorth, Pentagram, Bookshelf, RitualWest, Closet, RitualEast, Cabinet, RitualSouth,
+            Lose, Win, ClownNorth, ClownSouth, ClownEast, ClownWest],
   }
 
 let game = new Phaser.Game(config);

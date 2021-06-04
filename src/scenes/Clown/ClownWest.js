@@ -1,16 +1,20 @@
-class Win extends Phaser.Scene {
+class ClownWest extends Phaser.Scene {
     constructor() {
-        super("endWin");
+        super("clownWest");
     }
 
     preload(){
         // images
+        this.load.image('', './assets/clown/.png');
 
 
         // audio
     }
 
-    create() {
+    create() { 
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // place tile sprite
+        this.bg = this.add.tileSprite(0, 0, 1280, 720, '').setOrigin(0, 0); 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders

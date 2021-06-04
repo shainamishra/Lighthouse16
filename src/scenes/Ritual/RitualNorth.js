@@ -306,6 +306,9 @@ class RitualNorth extends Phaser.Scene {
         if(Phaser.Input.Keyboard.JustDown(keyD)){
             this.scene.start("ritualEast");
         };
+        if(Phaser.Input.Keyboard.JustDown(keySPACE)){
+            this.scene.start("endLose");
+        };
     }
     
     hotBarItems(on){

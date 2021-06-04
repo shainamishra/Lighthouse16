@@ -4,7 +4,7 @@ class Pentagram extends Phaser.Scene {
     }
 
     preload(){
-        // scales images
+        // images
         this.load.image('pentagram', './assets/puzzle5/pentagram/ritual_closeup.png');
         this.load.image('candlesPent', './assets/puzzle5/pentagram/ritual_closeup_candles.png');
         this.load.image('firePentNormal', './assets/puzzle5/pentagram/ritual_closeup_normal.png');
