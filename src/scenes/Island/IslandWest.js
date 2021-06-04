@@ -14,6 +14,7 @@ class IslandWest extends Phaser.Scene {
 
         // audio
         this.load.audio('itemtake', './assets/sfx/ItemTake.wav');
+        this.load.audio('wrong', './assets/sfx/Wrong.wav');
     }
 
     create() {
@@ -236,6 +237,7 @@ class IslandWest extends Phaser.Scene {
             }
             else if(pos == 3){
                 this.textTimerBox = 251;
+                this.sound.play("wrong");
                 console.log("wrong combo");
             }
         } 
