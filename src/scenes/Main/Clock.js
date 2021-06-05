@@ -16,8 +16,8 @@ class Clock extends Phaser.Scene {
        
         this.clockface = this.add.sprite(650, 350, 'clock');
         this.clockface.setDisplaySize(1280, 720);
-        this.clockface.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'Press A/D to move hand');
-        this.clockface.interText.setFontSize(50);
+        this.clockface.interText = this.add.text(borderUISize + borderPadding * 20 + 630, borderUISize + borderPadding * 2, 'Press A/D\n to move\n   hand');
+        this.clockface.interText.setFontSize(50)
 
         this.hourhand = this.add.image(650, 350,'hour');
         this.hourhand.setInteractive({
