@@ -104,8 +104,8 @@ class IslandWest extends Phaser.Scene {
         this.box.interText.setVisible(false);
 
         // combo pop up
-        this.combo = this.add.image(630, 490, 'combo');
-        this.combo.setDisplaySize(600, 300);
+        this.combo = this.add.image(640, 350, 'combo');
+        this.combo.setDisplaySize(1280, 720);
         this.combo.setVisible(false);
  
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -156,7 +156,7 @@ class IslandWest extends Phaser.Scene {
         this.digit1 = this.add.sprite(50, 50, 'hitbox2');
         this.digit1.setDisplaySize(50, 50);
         this.digit1.setVisible(false);
-        this.digit1.interText = this.add.text(430, 455, '1');
+        this.digit1.interText = this.add.text(415, 350, '1');
         this.digit1.interText.setFontSize(50);
         this.digit1.interText.setVisible(false);
 
@@ -164,7 +164,7 @@ class IslandWest extends Phaser.Scene {
         this.digit2 = this.add.sprite(50, 50, 'hitbox2');
         this.digit2.setDisplaySize(50, 50);
         this.digit2.setVisible(false);
-        this.digit2.interText = this.add.text(615, 455, '1');
+        this.digit2.interText = this.add.text(605, 350, '1');
         this.digit2.interText.setFontSize(50);
         this.digit2.interText.setVisible(false);
 
@@ -172,7 +172,7 @@ class IslandWest extends Phaser.Scene {
         this.digit3 = this.add.sprite(50, 50, 'hitbox2');
         this.digit3.setDisplaySize(50, 50);
         this.digit3.setVisible(false);
-        this.digit3.interText = this.add.text(800, 455, '1');
+        this.digit3.interText = this.add.text(777, 350, '1');
         this.digit3.interText.setFontSize(50);
         this.digit3.interText.setVisible(false);
 
@@ -342,7 +342,7 @@ class IslandWest extends Phaser.Scene {
             if (pos == 0){
                 combo = combo.concat('100');
                 pos = 1;
-                this.digit1.interText = this.add.text(430, 455, '1');
+                this.digit1.interText = this.add.text(415, 350, '1');
                 this.digit1.interText.setFontSize(50);
                 this.digit1.interText.setVisible(true);
 
@@ -350,14 +350,14 @@ class IslandWest extends Phaser.Scene {
             else if (pos == 1){
                 combo = combo.concat('+ 10');
                 pos = 2;
-                this.digit2.interText = this.add.text(615, 455, '1');
+                this.digit2.interText = this.add.text(605, 350, '1');
                 this.digit2.interText.setFontSize(50);
                 this.digit2.interText.setVisible(true);
             } 
             else if (pos == 2){
                 combo = combo.concat('+ 1');
                 pos = 3;
-                this.digit3.interText = this.add.text(800, 455, '1');
+                this.digit3.interText = this.add.text(777, 350, '1');
                 this.digit3.interText.setFontSize(50);
                 this.digit3.interText.setVisible(true);
             }
@@ -368,21 +368,21 @@ class IslandWest extends Phaser.Scene {
             if (pos == 0){
                 combo = combo.concat('200');
                 pos = 1;
-                this.digit1.interText = this.add.text(430, 455, '2');
+                this.digit1.interText = this.add.text(415, 350, '2');
                 this.digit1.interText.setFontSize(50);
                 this.digit1.interText.setVisible(true);
             } 
             else if (pos == 1){
                 combo = combo.concat('+ 20');
                 pos = 2;
-                this.digit2.interText = this.add.text(615, 455, '2');
+                this.digit2.interText = this.add.text(605, 350, '2');
                 this.digit2.interText.setFontSize(50);
                 this.digit2.interText.setVisible(true);
             } 
             else if (pos == 2){
                 combo = combo.concat('+ 2');
                 pos = 3;
-                this.digit3.interText = this.add.text(800, 455, '2');
+                this.digit3.interText = this.add.text(777, 350, '2');
                 this.digit3.interText.setFontSize(50);
                 this.digit3.interText.setVisible(true);
             }
@@ -393,21 +393,21 @@ class IslandWest extends Phaser.Scene {
             if (pos == 0){
                 combo = combo.concat('300');
                 pos = 1;
-                this.digit1.interText = this.add.text(430, 455, '3');
+                this.digit1.interText = this.add.text(415, 350, '3');
                 this.digit1.interText.setFontSize(50);
                 this.digit1.interText.setVisible(true);
             } 
             else if (pos == 1){
                 combo = combo.concat('+ 30');
                 pos = 2;
-                this.digit2.interText = this.add.text(615, 455, '3');
+                this.digit2.interText = this.add.text(605, 350, '3');
                 this.digit2.interText.setFontSize(50);
                 this.digit2.interText.setVisible(true);
             } 
             else if (pos == 2){
                 combo = combo.concat('+ 3');
                 pos = 3;
-                this.digit3.interText = this.add.text(800, 455, '3');
+                this.digit3.interText = this.add.text(777, 350, '3');
                 this.digit3.interText.setFontSize(50);
                 this.digit3.interText.setVisible(true);
             }
@@ -418,21 +418,21 @@ class IslandWest extends Phaser.Scene {
             if (pos == 0){
                 combo = combo.concat('400');
                 pos = 1;
-                this.digit1.interText = this.add.text(430, 455, '4');
+                this.digit1.interText = this.add.text(415, 350, '4');
                 this.digit1.interText.setFontSize(50);
                 this.digit1.interText.setVisible(true);
             } 
             else if (pos == 1){
                 combo = combo.concat('+ 40');
                 pos = 2;
-                this.digit2.interText = this.add.text(615, 455, '4');
+                this.digit2.interText = this.add.text(605, 350, '4');
                 this.digit2.interText.setFontSize(50);
                 this.digit2.interText.setVisible(true);
             } 
             else if (pos == 2){
                 combo = combo.concat('+ 4');
                 pos = 3;
-                this.digit3.interText = this.add.text(800, 455, '4');
+                this.digit3.interText = this.add.text(777, 350, '4');
                 this.digit3.interText.setFontSize(50);
                 this.digit3.interText.setVisible(true);
             }
@@ -443,21 +443,21 @@ class IslandWest extends Phaser.Scene {
             if (pos == 0){
                 combo = combo.concat('500');
                 pos = 1;
-                this.digit1.interText = this.add.text(430, 455, '5');
+                this.digit1.interText = this.add.text(415, 350, '5');
                 this.digit1.interText.setFontSize(50);
                 this.digit1.interText.setVisible(true);
             } 
             else if (pos == 1){
                 combo = combo.concat('+ 50');
                 pos = 2;
-                this.digit2.interText = this.add.text(615, 455, '5');
+                this.digit2.interText = this.add.text(605, 350, '5');
                 this.digit2.interText.setFontSize(50);
                 this.digit2.interText.setVisible(true);
             } 
             else if (pos == 2){
                 combo = combo.concat('+ 5');
                 pos = 3;
-                this.digit3.interText = this.add.text(800, 455, '5');
+                this.digit3.interText = this.add.text(777, 350, '5');
                 this.digit3.interText.setFontSize(50);
                 this.digit3.interText.setVisible(true);
             }
@@ -468,21 +468,21 @@ class IslandWest extends Phaser.Scene {
             if (pos == 0){
                 combo = combo.concat('600');
                 pos = 1;
-                this.digit1.interText = this.add.text(430, 455, '6');
+                this.digit1.interText = this.add.text(415, 350, '6');
                 this.digit1.interText.setFontSize(50);
                 this.digit1.interText.setVisible(true);
             } 
             else if (pos == 1){
                 combo = combo.concat('+ 60');
                 pos = 2;
-                this.digit2.interText = this.add.text(615, 455, '6');
+                this.digit2.interText = this.add.text(605, 350, '6');
                 this.digit2.interText.setFontSize(50);
                 this.digit2.interText.setVisible(true);
             } 
             else if (pos == 2){
                 combo = combo.concat('+ 6');
                 pos = 3;
-                this.digit3.interText = this.add.text(800, 455, '6');
+                this.digit3.interText = this.add.text(777, 350, '6');
                 this.digit3.interText.setFontSize(50);
                 this.digit3.interText.setVisible(true);
             }
@@ -493,21 +493,21 @@ class IslandWest extends Phaser.Scene {
             if (pos == 0){
                 combo = combo.concat('700');
                 pos = 1;
-                this.digit1.interText = this.add.text(430, 455, '7');
+                this.digit1.interText = this.add.text(415, 350, '7');
                 this.digit1.interText.setFontSize(50);
                 this.digit1.interText.setVisible(true);
             } 
             else if (pos == 1){
                 combo = combo.concat('+ 70');
                 pos = 2;
-                this.digit2.interText = this.add.text(615, 455, '7');
+                this.digit2.interText = this.add.text(605, 350, '7');
                 this.digit2.interText.setFontSize(50);
                 this.digit2.interText.setVisible(true);
             } 
             else if (pos == 2){
                 combo = combo.concat('+ 7');
                 pos = 3;
-                this.digit3.interText = this.add.text(800, 455, '7');
+                this.digit3.interText = this.add.text(777, 350, '7');
                 this.digit3.interText.setFontSize(50);
                 this.digit3.interText.setVisible(true);
             }
@@ -518,21 +518,21 @@ class IslandWest extends Phaser.Scene {
             if (pos == 0){
                 combo = combo.concat('800');
                 pos = 1;
-                this.digit1.interText = this.add.text(430, 455, '8');
+                this.digit1.interText = this.add.text(415, 350, '8');
                 this.digit1.interText.setFontSize(50);
                 this.digit1.interText.setVisible(true);
             } 
             else if (pos == 1){
                 combo = combo.concat('+ 80');
                 pos = 2;
-                this.digit2.interText = this.add.text(615, 455, '8');
+                this.digit2.interText = this.add.text(605, 350, '8');
                 this.digit2.interText.setFontSize(50);
                 this.digit2.interText.setVisible(true);
             } 
             else if (pos == 2){
                 combo = combo.concat('+ 8');
                 pos = 3;
-                this.digit3.interText = this.add.text(800, 455, '8');
+                this.digit3.interText = this.add.text(777, 350, '8');
                 this.digit3.interText.setFontSize(50);
                 this.digit3.interText.setVisible(true);
             }
@@ -543,21 +543,21 @@ class IslandWest extends Phaser.Scene {
             if (pos == 0){
                 combo = combo.concat('900');
                 pos = 1;
-                this.digit1.interText = this.add.text(430, 455, '9');
+                this.digit1.interText = this.add.text(415, 350, '9');
                 this.digit1.interText.setFontSize(50);
                 this.digit1.interText.setVisible(true);
             } 
             else if (pos == 1){
                 combo = combo.concat('+ 90');
                 pos = 2;
-                this.digit2.interText = this.add.text(615, 455, '9');
+                this.digit2.interText = this.add.text(605, 350, '9');
                 this.digit2.interText.setFontSize(50);
                 this.digit2.interText.setVisible(true);
             } 
             else if (pos == 2){
                 combo = combo.concat('+ 9');
                 pos = 3;
-                this.digit3.interText = this.add.text(800, 455, '9');
+                this.digit3.interText = this.add.text(777, 350, '9');
                 this.digit3.interText.setFontSize(50);
                 this.digit3.interText.setVisible(true);
             }
