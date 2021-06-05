@@ -369,6 +369,10 @@ class Inventory extends Phaser.Scene {
     pageTurn(page)
     {
         if(page == 1){
+            this.one_2.setVisible(false);
+            this.two_2.setVisible(false);
+            this.three_2.setVisible(false);
+            this.four_2.setVisible(false);
             this.page1.setVisible(true);
             this.page2.setVisible(false);
             this.page3.setVisible(false);
@@ -381,6 +385,14 @@ class Inventory extends Phaser.Scene {
 
         } else if(page == 2){
             if(level > 1){
+                this.info1_2 = this.add.image(650, 350, 'info1-2');
+                this.info1_2.setVisible(false);
+                this.info2_2 = this.add.image(650, 350, 'info2-2');
+                this.info2_2.setVisible(false);
+                this.info3_2 = this.add.image(650, 350, 'info3-2');
+                this.info3_2.setVisible(false);
+                this.info4_2 = this.add.image(650, 350, 'info4-2');
+                this.info4_2.setVisible(false);
                 this.one_2.setVisible(true);
                 this.two_2.setVisible(true);
                 this.three_2.setVisible(true);
@@ -431,12 +443,64 @@ class Inventory extends Phaser.Scene {
                 this.v1.setVisible(false);
             }
             else{
+                this.one_2.setVisible(false);
+                this.two_2.setVisible(false);
+                this.three_2.setVisible(false);
+                this.four_2.setVisible(false);
                 this.v5.setVisible(true);
                 this.v1.setVisible(false);
             }
 
         } else if(page == 3){
             if(level > 2){
+                this.info1_2 = this.add.image(650, 350, 'info1-3');
+                this.info1_2.setVisible(false);
+                this.info2_2 = this.add.image(650, 350, 'info2-3');
+                this.info2_2.setVisible(false);
+                this.info3_2 = this.add.image(650, 350, 'info3-3');
+                this.info3_2.setVisible(false);
+                this.info4_2 = this.add.image(650, 350, 'info4-3');
+                this.info4_2.setVisible(false);
+                this.one_2.setVisible(true);
+                this.two_2.setVisible(true);
+                this.three_2.setVisible(true);
+                this.four_2.setVisible(true);
+                this.one_2.on('pointerover', (pointer) => {
+                    this.info1_2.setVisible(true);
+                });
+                // if hover off card1
+                this.one_2.on('pointerout', (pointer) => {
+                    this.info1_2.setVisible(false);
+                });
+        
+                // if hover on card2
+                this.two_2.on('pointerover', (pointer) => {
+                    this.info2_2.setVisible(true);
+                });
+                // if hover off card2
+                this.two_2.on('pointerout', (pointer) => {
+                    this.info2_2.setVisible(false);
+                });
+        
+                // if hover on card3
+                this.three_2.on('pointerover', (pointer) => {
+                    this.info3_2.setVisible(true);
+                });
+                // if hover off card3
+                this.three_2.on('pointerout', (pointer) => {
+                    this.info3_2.setVisible(false);
+                });
+        
+                // if hover on card4
+                this.four_2.on('pointerover', (pointer) => {
+                    this.info4_2.setVisible(true);
+                });
+                // if hover off card4
+                this.four_2.on('pointerout', (pointer) => {
+                    this.info4_2.setVisible(false);
+                });
+                
+
                 this.page1.setVisible(false);
                 this.page2.setVisible(false);
                 this.page3.setVisible(true);
@@ -449,12 +513,59 @@ class Inventory extends Phaser.Scene {
                 this.v1.setVisible(false);
             }
             else{
+                this.one_2.setVisible(false);
+                this.two_2.setVisible(false);
+                this.three_2.setVisible(false);
+                this.four_2.setVisible(false);
                 this.v4.setVisible(true);
                 this.v1.setVisible(false);
             }
 
         } else if(page == 4){
             if(level > 3){
+                this.info1_2 = this.add.image(650, 350, 'info1-4');
+                this.info1_2.setVisible(false);
+                this.info2_2 = this.add.image(650, 350, 'info2-4');
+                this.info2_2.setVisible(false);
+                this.info3_2 = this.add.image(650, 350, 'info3-4');
+                this.info3_2.setVisible(false);
+                this.info4_2 = this.add.image(650, 350, 'info4-4');
+                this.info4_2.setVisible(false);
+                this.one_2.setVisible(true);
+                this.two_2.setVisible(true);
+                this.three_2.setVisible(true);
+                this.four_2.setVisible(true);
+                this.one_2.on('pointerout', (pointer) => {
+                    this.info1_2.setVisible(false);
+                });
+        
+                // if hover on card2
+                this.two_2.on('pointerover', (pointer) => {
+                    this.info2_2.setVisible(true);
+                });
+                // if hover off card2
+                this.two_2.on('pointerout', (pointer) => {
+                    this.info2_2.setVisible(false);
+                });
+        
+                // if hover on card3
+                this.three_2.on('pointerover', (pointer) => {
+                    this.info3_2.setVisible(true);
+                });
+                // if hover off card3
+                this.three_2.on('pointerout', (pointer) => {
+                    this.info3_2.setVisible(false);
+                });
+        
+                // if hover on card4
+                this.four_2.on('pointerover', (pointer) => {
+                    this.info4_2.setVisible(true);
+                });
+                // if hover off card4
+                this.four_2.on('pointerout', (pointer) => {
+                    this.info4_2.setVisible(false);
+                });
+
                 this.page1.setVisible(false);
                 this.page2.setVisible(false);
                 this.page3.setVisible(false);
@@ -466,12 +577,61 @@ class Inventory extends Phaser.Scene {
                 this.v1.setVisible(false);
             }
             else{
+                this.one_2.setVisible(false);
+                this.two_2.setVisible(false);
+                this.three_2.setVisible(false);
+                this.four_2.setVisible(false);
                 this.v4.setVisible(true);
                 this.v1.setVisible(false);
             }
 
         } else if(page == 5){
             if(level > 4){
+                this.info1_2 = this.add.image(650, 350, 'info1-5');
+                this.info1_2.setVisible(false);
+                this.info2_2 = this.add.image(650, 350, 'info2-5');
+                this.info2_2.setVisible(false);
+                this.info3_2 = this.add.image(650, 350, 'info3-5');
+                this.info3_2.setVisible(false);
+                this.info4_2 = this.add.image(650, 350, 'info4-5');
+                this.info4_2.setVisible(false);
+                this.one_2.setVisible(true);
+                this.two_2.setVisible(true);
+                this.three_2.setVisible(true);
+                this.four_2.setVisible(true);
+                this.one_2.on('pointerover', (pointer) => {
+                    this.info1_2.setVisible(true);
+                });
+                this.one_2.on('pointerout', (pointer) => {
+                    this.info1_2.setVisible(false);
+                });
+        
+                // if hover on card2
+                this.two_2.on('pointerover', (pointer) => {
+                    this.info2_2.setVisible(true);
+                });
+                // if hover off card2
+                this.two_2.on('pointerout', (pointer) => {
+                    this.info2_2.setVisible(false);
+                });
+        
+                // if hover on card3
+                this.three_2.on('pointerover', (pointer) => {
+                    this.info3_2.setVisible(true);
+                });
+                // if hover off card3
+                this.three_2.on('pointerout', (pointer) => {
+                    this.info3_2.setVisible(false);
+                });
+        
+                // if hover on card4
+                this.four_2.on('pointerover', (pointer) => {
+                    this.info4_2.setVisible(true);
+                });
+                // if hover off card4
+                this.four_2.on('pointerout', (pointer) => {
+                    this.info4_2.setVisible(false);
+                });
                 this.page1.setVisible(false);
                 this.page2.setVisible(false);
                 this.page3.setVisible(false);
@@ -483,6 +643,10 @@ class Inventory extends Phaser.Scene {
                 this.v1.setVisible(false);
             }
             else{
+                this.one_2.setVisible(false);
+                this.two_2.setVisible(false);
+                this.three_2.setVisible(false);
+                this.four_2.setVisible(false);
                 this.v4.setVisible(true);
                 this.v1.setVisible(false);
             }
