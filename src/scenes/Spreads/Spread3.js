@@ -6,10 +6,7 @@ class Spread3 extends Phaser.Scene {
     preload() {
         // images
         this.load.image('bg3', './assets/transitions/spread3.png');
-        this.load.image('info1-3', './assets/info/justice.png');
-        this.load.image('info2-3', './assets/info/emperor.png');
-        this.load.image('info3-3', './assets/info/lovers.png');
-        this.load.image('info4-3', './assets/info/wheelOfFortune.png');
+        
         this.load.audio('clockbgm', './assets/sfx/Musicbox_clock.wav');
     }
 

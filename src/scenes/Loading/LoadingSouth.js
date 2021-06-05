@@ -113,7 +113,6 @@ class LoadingSouth extends Phaser.Scene {
                 this.scene.start("spread5");
             }
             else {
-                console.log(inRitual)
                 this.scene.stop("loadingSouth");
                 this.scene.wake("ritualSouth");
             }

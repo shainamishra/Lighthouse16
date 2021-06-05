@@ -40,6 +40,33 @@ class Menu extends Phaser.Scene {
         // toc 
         this.load.image('6overlay', './assets/transitions/6TOC.png');
         this.load.image('7overlay', './assets/transitions/7TOC.png');
+
+        // info sheets
+        this.load.image('info1', './assets/info/highPriestess.png');
+        this.load.image('info2', './assets/info/death.png');
+        this.load.image('info3', './assets/info/Fool.png');
+        this.load.image('info4', './assets/info/moon.png');
+        this.load.image('info5', './assets/info/hermit.png');
+
+        this.load.image('info1-2', './assets/info/hangedMan.png');
+        this.load.image('info2-2', './assets/info/chariot.png');
+        this.load.image('info3-2', './assets/info/strength.png');
+        this.load.image('info4-2', './assets/info/devil.png');
+
+        this.load.image('info1-3', './assets/info/justice.png');
+        this.load.image('info2-3', './assets/info/emperor.png');
+        this.load.image('info3-3', './assets/info/lovers.png');
+        this.load.image('info4-3', './assets/info/wheelOfFortune.png');
+        
+        this.load.image('info1-4', './assets/info/temperance.png');
+        this.load.image('info2-4', './assets/info/magician.png');
+        this.load.image('info3-4', './assets/info/empress.png');
+        this.load.image('info4-4', './assets/info/sun.png');
+
+        this.load.image('info1-5', './assets/info/judgement.png');
+        this.load.image('info2-5', './assets/info/world.png');
+        this.load.image('info3-5', './assets/info/star.png');
+        this.load.image('info4-5', './assets/info/hierophant.png');
     }
 
     create() {

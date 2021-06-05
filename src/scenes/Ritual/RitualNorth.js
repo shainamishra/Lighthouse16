@@ -33,10 +33,6 @@ class RitualNorth extends Phaser.Scene {
     }
 
     create() {
-        //delete this or move it somewhere else; the inventory x doesnt show up if the level = 0, 
-        //skipping to the ritual means that the level isnt being set anywhere; this should be fine 
-        //if we respawn in the lookout since lookout -> spread5 -> ritual
-        level = 4;
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // place tile sprite
         this.cellarnorth = this.add.tileSprite(0, 0, 1280, 720, 'ritualNorth').setOrigin(0, 0); 

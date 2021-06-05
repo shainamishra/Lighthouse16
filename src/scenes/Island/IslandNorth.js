@@ -207,10 +207,6 @@ class IslandNorth extends Phaser.Scene {
         }
         
         // show open state
-        // delete this
-        boltGot = 1; 
-        unlocked = 2;
-        
         if(boltGot == 1 && unlocked == 2){
             this.cellOpen.setVisible(true);
             this.cellOpen.interText.setVisible(true); 
@@ -228,6 +224,12 @@ class IslandNorth extends Phaser.Scene {
         if(Phaser.Input.Keyboard.JustDown(keyD)){
             this.scene.start("islandEast");
         };
+
+        // delete this
+        if(Phaser.Input.Keyboard.JustDown(keySPACE)){
+                this.sound.get('menu_music').stop();
+                this.scene.start("spread2");
+            };
     }
 
     hotBarItems(on){
