@@ -13,7 +13,6 @@ class LookoutSouth extends Phaser.Scene {
         this.load.image('pendulum', './assets/puzzle4/overlays/pendulum.png');
         this.load.image('pendulum_top', './assets/puzzle4/overlays/pendulum_top.png');
         this.load.spritesheet('swing', './assets/puzzle4/overlays/pendulumAnim.png', {frameWidth: 250, frameHeight: 264, startFrame: 0, endFrame: 7});
-        
 
         // hitbox
         this.load.image('hitbox', './assets/HitBox2.png');
@@ -96,7 +95,7 @@ class LookoutSouth extends Phaser.Scene {
         this.anims.create({
             key: 'swing',
             frames: this.anims.generateFrameNumbers('swing', { start: 0, end: 6, first: 0}),
-            frameRate: 6,
+            frameRate: 5,
             repeat: -1
         });
 
@@ -156,7 +155,6 @@ class LookoutSouth extends Phaser.Scene {
 
         // clicks help box: puts this scene to sleep (no updates), switches to cards
         this.help.on('pointerdown', (pointer) => {
-            console.log('in')
             if(this.textTimer == 0){
                 this.scene.switch("instructionScene");
                 this.textTimer = 1;

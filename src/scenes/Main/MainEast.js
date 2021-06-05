@@ -164,7 +164,6 @@ class MainEast extends Phaser.Scene {
         // click on hammer
         if(this.textTimerHammer == 0){
             this.hammer.on('pointerdown', (pointer) => {
-                console.log("hit")
                 this.hammer.interText.setVisible(true);
                 this.hammer.setVisible(false);
                 this.textTimerHammer = 1;

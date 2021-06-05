@@ -11,6 +11,14 @@ class Pentagram extends Phaser.Scene {
         this.load.image('firePentGreen', './assets/puzzle5/pentagram/ritual_closeup_green.png');
         this.load.image('firePentPurple', './assets/puzzle5/pentagram/ritual_closeup_purple.png');
         this.load.image('firePentYellow', './assets/puzzle5/pentagram/ritual_closeup_yellow.png');
+        this.load.image('matches', './assets/puzzle5/pentagram/ritual_matches.png');
+
+        // cards
+        this.load.image('card1', './assets/puzzle5/pentagram/ritual_card1.png');
+        this.load.image('card2', './assets/puzzle5/pentagram/ritual_card2.png');
+        this.load.image('card3', './assets/puzzle5/pentagram/ritual_card3.png');
+        this.load.image('card4', './assets/puzzle5/pentagram/ritual_card4.png');
+        this.load.image('card5', './assets/puzzle5/pentagram/ritual_card5.png');
 
         // audio
         this.load.audio('unlock', './assets/sfx/doorUnlock2.wav');
@@ -49,6 +57,70 @@ class Pentagram extends Phaser.Scene {
         this.firePentYellow.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // cards
+        // card5
+        this.card5 = this.add.sprite(155, 628, 'card5');
+        this.card5.setDisplaySize(170, 96);
+        this.card5.setVisible(true);
+        this.card5.setInteractive({
+            useHandCursor: true
+        });
+        // card4
+        this.card4 = this.add.sprite(155, 628, 'card4');
+        this.card4.setDisplaySize(170, 96);
+        this.card4.setVisible(true);
+        this.card4.setInteractive({
+            useHandCursor: true
+        });
+        // card3
+        this.card3 = this.add.sprite(155, 628, 'card3');
+        this.card3.setDisplaySize(170, 96);
+        this.card3.setVisible(true);
+        this.card3.setInteractive({
+            useHandCursor: true
+        });
+        // card2
+        this.card2 = this.add.sprite(155, 628, 'card2');
+        this.card2.setDisplaySize(170, 96);
+        this.card2.setVisible(true);
+        this.card2.setInteractive({
+            useHandCursor: true
+        });
+        // card1
+        this.card1 = this.add.sprite(155, 628, 'card1');
+        this.card1.setDisplaySize(170, 96);
+        this.card1.setVisible(true);
+        this.card1.setInteractive({
+            useHandCursor: true
+        });
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // objects
+        // matches
+        this.matches = this.add.sprite(1160, 170, 'hotbox');
+        this.matches.setDisplaySize(100, 200);
+        this.matches.setVisible(true);
+        this.matches.setInteractive({
+            useHandCursor: true
+        });
+
+        // knife
+        this.knife = this.add.sprite(170, 170, 'hotbox');
+        this.knife.setDisplaySize(100, 200);
+        this.knife.setVisible(true);
+        this.knife.setInteractive({
+            useHandCursor: true
+        });
+
+        //// chemicals - set this as a hitbox with a seperate image layer
+        this.chem = this.add.sprite(1160, 600, 'hotbox');
+        this.chem.setDisplaySize(170, 96);
+        this.chem.setVisible(true);
+        this.knife.setInteractive({
+            useHandCursor: true
+        });
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // close
         this.closeLook = this.add.sprite(50, 50, 'x');
         this.closeLook.setDisplaySize(50, 50);
@@ -66,6 +138,10 @@ class Pentagram extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
         this.textTimer = 0;
+        this.cards = [this.card1, this.card2, this.card3, this.card4, this.card5];
+        this.correct = [1, 3, 5, 2, 4];
+        this.cardStatus = false;
+        this.status = [];
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -87,8 +163,59 @@ class Pentagram extends Phaser.Scene {
         });
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // objects
+        // dragging
+        if(cards == 0){
+            this.input.setDraggable(this.card1);
+            this.input.setDraggable(this.card2);
+            this.input.setDraggable(this.card3);
+            this.input.setDraggable(this.card4);
+            this.input.setDraggable(this.card5);
+        }
+
+        this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
+            gameObject.x = dragX;
+            gameObject.y = dragY;
+        });
         
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // objects
+        this.matches.on('pointerdown', () => {
+
+        });
+        
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // knife
+        this.knife.on('pointerdown', () => {
+            if(this.textTimer == 0){
+                this.textTimer = 1;
+                this.status = [];
+
+                // check position
+                for (var i = 0; i < 5; i++) {
+                    this.status.push(this.checkPosition(this.cards[i]));
+                }
+                
+                this.cardStatus = this.checkCorrect(this.status, this.correct);
+
+                if(this.cardStatus == true || this.cardStatus == true){
+                    cards = 1;
+                    //this.unlock.play();
+                    
+                    this.card1.input.draggable = false;
+                    this.card2.input.draggable = false;
+                    this.card3.input.draggable = false;
+                    this.card4.input.draggable = false;
+                    this.card5.input.draggable = false;
+                } else {
+                    this.cardReset();
+                }
+            }
+        });
+        
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // do something like the combo where it only ends after all 3 items are clicked on
+        // could do a str = [chem, matches, knife]
+        // if str.length != 3 // setVisible(false) to image and hitbox after clicked on once
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // text timers
@@ -111,9 +238,71 @@ class Pentagram extends Phaser.Scene {
 
         if(candles == 1){
             this.candlesPent.setVisible(true);
-            if(matches == 1){
-                this.firePentNormal.setVisible(true);
+        }
+
+        if(cards == 1){
+            this.card1.setInteractive({
+                useHandCursor: false
+            });
+            this.card2.setInteractive({
+                useHandCursor: false
+            });
+            this.card3.setInteractive({
+                useHandCursor: false
+            });
+            this.card4.setInteractive({
+                useHandCursor: false
+            });
+            this.card5.setInteractive({
+                useHandCursor: false
+            });
+        }
+    }
+    cardReset(){
+        this.card1.setPosition(155, 628);
+        this.card2.setPosition(155, 628);
+        this.card3.setPosition(155, 628);
+        this.card4.setPosition(155, 628);
+        this.card5.setPosition(155, 628);
+    }
+
+    checkPosition(card){
+        this.posY = card.y;
+        this.posX = card.x;
+
+        if (this.posX > 330){
+            if (this.posY < 260){
+                // 1
+                return 1;
+            }
+            if (this.posY >= 260 && this.posY < 450){
+                // 2 or 5
+                if (this.posX > 655){
+                    return 2;
+                }
+                else{
+                    return 5;
+                }
+            }
+            if (this.posY >= 450){
+                // 3 or 4
+                if (this.posX > 655){
+                    return 3;
+                }
+                else{
+                    return 4;
+                }
             }
         }
+        return 0;
+    }
+
+    checkCorrect(arr1, arr2){
+        for (var i = 0; i < 5; i++) {
+            if(arr1[i] != arr2[i]){
+                return false;
+            }
+        }
+        return true;
     }
 }

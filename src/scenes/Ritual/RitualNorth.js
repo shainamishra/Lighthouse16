@@ -287,12 +287,8 @@ class RitualNorth extends Phaser.Scene {
 
         if(candles == 1){
             this.candles.setVisible(true);
-
-            if(matches == 1){
-                this.fireNormal.setVisible(true);
-            }
         }
-        candles = 1;
+        //candles = 1;
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // scene change on keypress
