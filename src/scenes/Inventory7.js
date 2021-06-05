@@ -7,12 +7,18 @@ class Inventory7 extends Phaser.Scene {
         this.load.image('info2-5', './assets/info/world.png');
         this.load.image('info3-5', './assets/info/star.png');
         this.load.image('info4-5', './assets/info/hierophant.png');
+
+        this.load.image('info1', './assets/info/highPriestess.png');
+        this.load.image('info2', './assets/info/death.png');
+        this.load.image('info3', './assets/info/Fool.png');
+        this.load.image('info4', './assets/info/moon.png');
+        this.load.image('info5', './assets/info/hermit.png');
     }
     create() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         this.one = this.add.sprite(150, 340, 'cardHit');
         this.one.setDisplaySize(210, 360);
-        this.one.setVisible(false);
+        this.one.setVisible(true);
         this.one.setInteractive({
             useHandCursor: true
         });
@@ -23,7 +29,7 @@ class Inventory7 extends Phaser.Scene {
 
         this.two = this.add.sprite(400, 340, 'cardHit');
         this.two.setDisplaySize(210, 360);
-        this.two.setVisible(false);
+        this.two.setVisible(true);
         this.two.setInteractive({
             useHandCursor: true
         });
@@ -34,7 +40,7 @@ class Inventory7 extends Phaser.Scene {
 
         this.three = this.add.sprite(645, 340, 'cardHit');
         this.three.setDisplaySize(210, 360);
-        this.three.setVisible(false);
+        this.three.setVisible(true);
         this.three.setInteractive({
             useHandCursor: true
         });
@@ -45,7 +51,7 @@ class Inventory7 extends Phaser.Scene {
 
         this.four = this.add.sprite(890, 340, 'cardHit');
         this.four.setDisplaySize(210, 360);
-        this.four.setVisible(false);
+        this.four.setVisible(true);
         this.four.setInteractive({
             useHandCursor: true
         });
@@ -56,7 +62,7 @@ class Inventory7 extends Phaser.Scene {
 
         this.five = this.add.sprite(1135, 340, 'cardHit');
         this.five.setDisplaySize(210, 360);
-        this.five.setVisible(false);
+        this.five.setVisible(true);
         this.five.setInteractive({
             useHandCursor: true
         });
@@ -109,6 +115,54 @@ class Inventory7 extends Phaser.Scene {
         this.four_2.setVisible(false);
         this.four_2.setInteractive({
             useHandCursor: true
+        });
+
+        this.one.on('pointerover', (pointer) => {
+            this.info1.setVisible(true);
+        });
+        // if hover off card1
+        this.one.on('pointerout', (pointer) => {
+            this.info1.setVisible(false);
+        });
+
+        // if hover on card2
+        this.two.setVisible(true);
+        this.two.on('pointerover', (pointer) => {
+            this.info2.setVisible(true);
+        });
+        // if hover off card2
+        this.two.on('pointerout', (pointer) => {
+            this.info2.setVisible(false);
+        });
+
+        // if hover on card3
+        this.three.setVisible(true);
+        this.three.on('pointerover', (pointer) => {
+            this.info3.setVisible(true);
+        });
+        // if hover off card3
+        this.three.on('pointerout', (pointer) => {
+            this.info3.setVisible(false);
+        });
+
+        // if hover on card4
+        this.four.setVisible(true);
+        this.four.on('pointerover', (pointer) => {
+            this.info4.setVisible(true);
+        });
+        // if hover off card4
+        this.four.on('pointerout', (pointer) => {
+            this.info4.setVisible(false);
+        });
+
+        // if hover on card5
+        this.five.setVisible(true);
+        this.five.on('pointerover', (pointer) => {
+            this.info5.setVisible(true);
+        });
+        // if hover off card5
+        this.five.on('pointerout', (pointer) => {
+            this.info5.setVisible(false);
         });
 
         this.info4_2 = this.add.image(650, 350, 'info4-2');
@@ -275,6 +329,8 @@ class Inventory7 extends Phaser.Scene {
         // first page
         if (this.page == 1){
             // show page1
+            this.page1.setVisible(true);
+
             this.one.setVisible(true);
             this.one.on('pointerover', (pointer) => {
                 this.info1.setVisible(true);
@@ -323,7 +379,7 @@ class Inventory7 extends Phaser.Scene {
             this.five.on('pointerout', (pointer) => {
                 this.info5.setVisible(false);
             });
-            this.page1.setVisible(true);
+            
         }
 
         // click content 1
@@ -394,19 +450,11 @@ class Inventory7 extends Phaser.Scene {
     pageTurn(page)
     {
         if(page == 1){
-            this.one_2.setVisible(false);
+            this.one_2.setVisible(false);   
             this.two_2.setVisible(false);
             this.three_2.setVisible(false);
             this.four_2.setVisible(false);
-            this.page1.setVisible(true);
-            this.page2.setVisible(false);
-            this.page3.setVisible(false);
-            this.page4.setVisible(false);
-            this.page5.setVisible(false);
-            this.page6.setVisible(false);
-            this.v4.setVisible(false);
-            this.v5.setVisible(false);
-            this.v1.setVisible(false);
+            
 
             this.page1.setVisible(true);
             this.page2.setVisible(false);
@@ -640,6 +688,10 @@ class Inventory7 extends Phaser.Scene {
             this.page7.setVisible(false);
             
         } else if(page == 6){
+            this.one_2.setVisible(false);
+            this.two_2.setVisible(false);
+            this.three_2.setVisible(false);
+            this.four_2.setVisible(false);
             this.page1.setVisible(false);
             this.page2.setVisible(false);
             this.page3.setVisible(false);
@@ -649,6 +701,10 @@ class Inventory7 extends Phaser.Scene {
             this.page7.setVisible(false);
             
         } else if(page == 7){
+            this.one_2.setVisible(false);
+            this.two_2.setVisible(false);
+            this.three_2.setVisible(false);
+            this.four_2.setVisible(false);
             this.page1.setVisible(false);
             this.page2.setVisible(false);
             this.page3.setVisible(false);
