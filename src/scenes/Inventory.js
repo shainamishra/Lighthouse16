@@ -14,8 +14,8 @@ class Inventory extends Phaser.Scene {
         this.page1.setVisible(false);
         
         this.one = this.add.sprite(150, 340, 'cardHit');
-        this.one.bgDisplaySize(210, 360);
-        this.one.bgVisible(false);
+        this.one.setDisplaySize(210, 360);
+        this.one.setVisible(false);
         this.one.setInteractive({
             useHandCursor: true
         });
