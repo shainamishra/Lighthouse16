@@ -5,9 +5,7 @@ class Spread1 extends Phaser.Scene {
 
     preload() {
         // images
-        this.load.image('bg1', './assets/transitions/spread1.png');
         this.load.image('cardHit', './assets/cards/hitbox.png');
-        this.load.image('instruct', './assets/transitions/transitionInstructions.png');
 
         // items
         this.load.image('hotbar', './assets/hotbar.png');

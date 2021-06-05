@@ -10,18 +10,20 @@ class Menu extends Phaser.Scene {
         this.load.image('help', './assets/help.png');
         this.load.audio('CrashingWaves', './assets/sfx/CrashingWave2.wav');
         this.load.audio('menu_music', './assets/sfx/theLighthouse.wav');
+        this.load.image('cardHit', './assets/cards/hitbox.png');
+        this.load.image('instruct', './assets/transitions/transitionInstructions.png');
 
         // card collection box assets -- loading them here makes the inventory load almost seamlessly
         this.load.image('x', './assets/x.png');
         this.load.image('velvetbg', './assets/transitions/velvetbg.png');
 
-        // sets are placeholders
-        this.load.image('set1', './assets/transitions/spread1.png');
-        this.load.image('set2', './assets/transitions/spread2.png');
-        this.load.image('set3', './assets/transitions/spread3.png');
-        this.load.image('set4', './assets/transitions/spread4.png');
-        this.load.image('set5', './assets/transitions/spread5.png');
+        // sets
+        this.load.image('bg1', './assets/transitions/spread1.png');
+        this.load.image('bg2', './assets/transitions/spread2.png');
+        this.load.image('bg3', './assets/transitions/spread3.png');
+        this.load.image('bg4', './assets/transitions/spread4.png');
         this.load.image('set6', './assets/transitions/spread6.png');
+        this.load.image('bg5', './assets/transitions/spread5.png');
 
         // velvet bgs
         this.load.image('velvet1', './assets/cards/velvet1.png');

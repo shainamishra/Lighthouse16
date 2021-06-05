@@ -116,7 +116,7 @@ class Pentagram extends Phaser.Scene {
         this.chem = this.add.sprite(1160, 600, 'hotbox');
         this.chem.setDisplaySize(170, 96);
         this.chem.setVisible(true);
-        this.knife.setInteractive({
+        this.chem.setInteractive({
             useHandCursor: true
         });
 
@@ -142,6 +142,8 @@ class Pentagram extends Phaser.Scene {
         this.correct = [1, 3, 5, 2, 4];
         this.cardStatus = false;
         this.status = [];
+        this.order = [];
+        this.correctOrder = ["chemical", "matches", "knife"]
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -178,9 +180,49 @@ class Pentagram extends Phaser.Scene {
         });
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // objects
-        this.matches.on('pointerdown', () => {
+        // chem
+        this.chem.on('pointerdown', () => {
+            if(this.textTimer == 0){
+                this.textTimer = 1;
+                this.order.push("chemical");
+                this.chem.setVisible(false);
+            }
+        });
 
+        // matches
+        this.matches.on('pointerdown', () => {
+            if(this.textTimer == 0){
+                if(chemical == 1){
+                    // fertilizer
+                    // show chem im
+                    // green
+                    this.firePentGreen.setVisible(true);
+
+                } else if(chemical == 2){
+                    // insecticide
+                    // show chem im
+                    // purple
+                    this.firePentPurple.setVisible(true);
+
+                }else if(chemical == 3){
+                    // bleach
+                    // show chem im
+                    // orange
+                    this.firePentNormal.setVisible(true);
+
+                }else if(chemical == 4){
+                    // salt
+                    // show chem im
+                    // yellow
+                    this.firePentYellow.setVisible(true);
+
+                }
+
+                this.textTimer = 1;
+                this.order.push("matches");
+                console.log(this.order)
+                this.matches.setVisible(false);
+            }
         });
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -189,13 +231,16 @@ class Pentagram extends Phaser.Scene {
             if(this.textTimer == 0){
                 this.textTimer = 1;
                 this.status = [];
+                this.order.push("knife");
+                console.log(this.order)
+                this.knife.setVisible(false);
 
                 // check position
                 for (var i = 0; i < 5; i++) {
                     this.status.push(this.checkPosition(this.cards[i]));
                 }
                 
-                this.cardStatus = this.checkCorrect(this.status, this.correct);
+                this.cardStatus = this.checkCorrect(this.status, this.correct, 5);
 
                 if(this.cardStatus == true || this.cardStatus == true){
                     cards = 1;
@@ -216,6 +261,10 @@ class Pentagram extends Phaser.Scene {
         // do something like the combo where it only ends after all 3 items are clicked on
         // could do a str = [chem, matches, knife]
         // if str.length != 3 // setVisible(false) to image and hitbox after clicked on once
+        if(this.order.length == 3){
+            this.whatever = this.checkCorrect(this.order, this.correctOrder, 3);
+            console.log(this.whatever)
+        }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // text timers
@@ -226,6 +275,7 @@ class Pentagram extends Phaser.Scene {
             // hide text
             this.textTimer = 0;
         }
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // end states
         if(lightState == 0){
@@ -236,10 +286,16 @@ class Pentagram extends Phaser.Scene {
             this.dark.setVisible(true);
         }
 
+        if(matches == 0){
+            this.matches.setVisible(false);
+        }
+        // show candles
         if(candles == 1){
             this.candlesPent.setVisible(true);
         }
 
+        // have to change this in case players leave the scene and come back, it needs to be draggable
+        // stop card drag
         if(cards == 1){
             this.card1.setInteractive({
                 useHandCursor: false
@@ -258,6 +314,7 @@ class Pentagram extends Phaser.Scene {
             });
         }
     }
+
     cardReset(){
         this.card1.setPosition(155, 628);
         this.card2.setPosition(155, 628);
@@ -297,8 +354,8 @@ class Pentagram extends Phaser.Scene {
         return 0;
     }
 
-    checkCorrect(arr1, arr2){
-        for (var i = 0; i < 5; i++) {
+    checkCorrect(arr1, arr2, val){
+        for (var i = 0; i < val; i++) {
             if(arr1[i] != arr2[i]){
                 return false;
             }

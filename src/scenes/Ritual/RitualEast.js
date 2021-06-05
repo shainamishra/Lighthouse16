@@ -168,7 +168,6 @@ class RitualEast extends Phaser.Scene {
         this.timeVar = 250;
         this.inputCombo = 0;
 
-
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
         this.add.rectangle(0, 0, 10, game.config.height, 0x61282f).setOrigin(0, 0);

@@ -25,7 +25,7 @@ class Instruction extends Phaser.Scene {
         // TAKE OUT THIS TIME, SHAINA!!!!!
         // delete
         this.input.keyboard.on('keydown-Z', () => {
-            this.scene.start("ritualNorth"); 
+            this.scene.start("loadingNorth"); 
 		});
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////

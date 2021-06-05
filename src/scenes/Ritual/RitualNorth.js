@@ -25,7 +25,7 @@ class RitualNorth extends Phaser.Scene {
         this.load.image('saltHot', './assets/puzzle5/items/hotbar_salt.png');
 
         // candle + fire
-        this.load.image('candles', './assets/puzzle5/overlays/ritualNorth_candles.png');
+        this.load.image('firecandles', './assets/puzzle5/overlays/ritualNorth_candles.png');
         this.load.image('fireNormal', './assets/puzzle5/overlays/ritualNorth_candles_normal.png');
         this.load.image('fireGreen', './assets/puzzle5/overlays/ritualNorth_candles_green.png');
         this.load.image('firePurple', './assets/puzzle5/overlays/ritualNorth_candles_purple.png');
@@ -113,7 +113,7 @@ class RitualNorth extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // candle + fire
-        this.candles = this.add.image(640, 360, 'candles');
+        this.candles = this.add.image(640, 360, 'firecandles');
         this.candles.setDisplaySize(1280, 720);
         this.candles.setVisible(false);
         // normal

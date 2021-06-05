@@ -4,9 +4,6 @@ class Spread2 extends Phaser.Scene {
     }
 
     preload() {
-        // images
-        this.load.image('bg2', './assets/transitions/spread2.png');
-        
         // items
         this.load.image('key2Hot', './assets/puzzle2/items/key2.png');
         this.load.image('plateHot', './assets/puzzle2/items/switch2.png');
