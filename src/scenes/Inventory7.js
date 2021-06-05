@@ -421,6 +421,9 @@ class Inventory7 extends Phaser.Scene {
             this.page6.setVisible(false);
             this.page7.setVisible(false);
         
+            this.v4.setVisible(false);
+            this.v5.setVisible(false);
+            this.v1.setVisible(false);
         } else if(page == 2){
             this.info1_2 = this.add.image(650, 350, 'info1-2');
                 this.info1_2.setVisible(false);
