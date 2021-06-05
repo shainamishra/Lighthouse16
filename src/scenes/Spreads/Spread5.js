@@ -6,6 +6,10 @@ class Spread5 extends Phaser.Scene {
     preload() {
         // images
         this.load.image('bg5', './assets/transitions/spread5.png');
+        this.load.image('info1-5', './assets/info/judgement.png');
+        this.load.image('info2-5', './assets/info/world.png');
+        this.load.image('info3-5', './assets/info/star.png');
+        this.load.image('info4-5', './assets/info/hierophant.png');
     }
 
     create() {
