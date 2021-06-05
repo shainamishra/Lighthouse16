@@ -23,15 +23,6 @@ class Menu extends Phaser.Scene {
         this.load.image('set5', './assets/transitions/spread5.png');
         this.load.image('set6', './assets/transitions/spread6.png');
 
-        // table of contents in card box
-        this.load.image('content1', './assets/toc/1.png');
-        this.load.image('content2', './assets/toc/2.png');
-        this.load.image('content3', './assets/toc/3.png');
-        this.load.image('content4', './assets/toc/4.png');
-        this.load.image('content5', './assets/toc/5.png');
-        this.load.image('content6', './assets/toc/6.png');
-        this.load.image('content7', './assets/toc/7.png');
-
         // velvet bgs
         this.load.image('velvet1', './assets/cards/velvet1.png');
         this.load.image('velvet4', './assets/cards/velvet4.png');
