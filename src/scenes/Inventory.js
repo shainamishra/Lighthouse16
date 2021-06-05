@@ -468,6 +468,7 @@ class Inventory extends Phaser.Scene {
                 this.two_2.setVisible(true);
                 this.three_2.setVisible(true);
                 this.four_2.setVisible(true);
+                
                 this.one_2.on('pointerover', (pointer) => {
                     this.info1_2.setVisible(true);
                 });
@@ -538,6 +539,11 @@ class Inventory extends Phaser.Scene {
                 this.two_2.setVisible(true);
                 this.three_2.setVisible(true);
                 this.four_2.setVisible(true);
+
+                this.one_2.on('pointerover', (pointer) => {
+                    this.info1_2.setVisible(true);
+                });
+
                 this.one_2.on('pointerout', (pointer) => {
                     this.info1_2.setVisible(false);
                 });
