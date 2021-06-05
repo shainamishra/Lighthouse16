@@ -5,8 +5,6 @@ class Spread3 extends Phaser.Scene {
 
     preload() {
         // images
-        this.load.image('bg3', './assets/transitions/spread3.png');
-        
         this.load.audio('clockbgm', './assets/sfx/Musicbox_clock.wav');
     }
 

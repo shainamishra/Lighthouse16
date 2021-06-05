@@ -74,7 +74,7 @@ class Inventory7 extends Phaser.Scene {
         this.info5.setVisible(false);
 
         // page 2
-        this.page2 = this.add.sprite(650, 350, 'set2');
+        this.page2 = this.add.sprite(650, 350, 'bg2');
         this.page2.setDisplaySize(1280, 720);
         this.page2.setVisible(false);
         this.one_2 = this.add.sprite(190, 340, 'cardHit');
@@ -169,27 +169,27 @@ class Inventory7 extends Phaser.Scene {
         this.info4_2.setDisplaySize(1280, 720);
         this.info4_2.setVisible(false);
         // page 1
-        this.page1 = this.add.sprite(650, 350, 'set1');
+        this.page1 = this.add.sprite(650, 350, 'bg1');
         this.page1.setDisplaySize(1280, 720);
         this.page1.setVisible(false);
 
         // page 2
-        this.page2 = this.add.sprite(650, 350, 'set2');
+        this.page2 = this.add.sprite(650, 350, 'bg2');
         this.page2.setDisplaySize(1280, 720);
         this.page2.setVisible(false);
 
         // page 3
-        this.page3 = this.add.sprite(650, 350, 'set3');
+        this.page3 = this.add.sprite(650, 350, 'bg3');
         this.page3.setDisplaySize(1280, 720);
         this.page3.setVisible(false);
 
         // page 4
-        this.page4 = this.add.sprite(650, 350, 'set4');
+        this.page4 = this.add.sprite(650, 350, 'bg4');
         this.page4.setDisplaySize(1280, 720);
         this.page4.setVisible(false);
 
         // page 5
-        this.page5 = this.add.sprite(650, 350, 'set5');
+        this.page5 = this.add.sprite(650, 350, 'bg5');
         this.page5.setDisplaySize(1280, 720);
         this.page5.setVisible(false);
 

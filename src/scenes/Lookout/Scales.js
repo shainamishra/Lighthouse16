@@ -27,8 +27,8 @@ class Scales extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
         // instructions
-        this.instruct = this.add.image(640, 350, 'instructScales');
-        this.instruct.setDisplaySize(1280, 720);
+        this.instruct = this.add.image(715, 390, 'instructScales');
+        this.instruct.setDisplaySize(1180, 720);
         this.instruct.setVisible(true);
 
         // scales even

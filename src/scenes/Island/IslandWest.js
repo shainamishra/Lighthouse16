@@ -254,7 +254,6 @@ class IslandWest extends Phaser.Scene {
             else if(pos == 3){
                 this.textTimerBox = 251;
                 this.sound.play("wrong");
-                console.log("wrong combo");
             }
         } 
         else if(this.textTimerBox > 0 && this.textTimerBox < 250 && unlocked == 1) {

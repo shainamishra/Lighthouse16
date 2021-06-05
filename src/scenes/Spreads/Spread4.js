@@ -5,7 +5,6 @@ class Spread4 extends Phaser.Scene {
 
     preload() {
         // images
-        this.load.image('bg4', './assets/transitions/spread4.png');
         
         // hot bar items
         this.load.image('ragHot', './assets/puzzle4/items/rag.png');

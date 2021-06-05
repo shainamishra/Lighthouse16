@@ -5,8 +5,9 @@ class Bookshelf extends Phaser.Scene {
 
     preload(){
         // scales images
-        this.load.image('books', './assets/puzzle5/closeups/ritualNorth_bookshelf.png');
+        this.load.image('books', './assets/puzzle5/bookshelf/ritualNorth_bookshelf.png');
         this.load.image('firebook', './assets/puzzle5/bookshelf/ritualNorth_firebook.png');
+        this.load.image('garden', './assets/puzzle5/bookshelf/ritualNorth_gardening.png');
 
         // audio
         this.load.audio('unlock', './assets/sfx/doorUnlock2.wav');
@@ -23,17 +24,29 @@ class Bookshelf extends Phaser.Scene {
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
-        // firebook
+        // firebook hit
         this.firebookHit = this.add.sprite(1155, 405, 'hitbox');
         this.firebookHit.setDisplaySize(70, 500);
         this.firebookHit.setVisible(true);
         this.firebookHit.setInteractive({
             useHandCursor: true
         });
-        // dark
-        this.firebook = this.add.image(640, 360, 'firebook');
+        // firebook
+        this.firebook = this.add.image(640, 355, 'firebook');
         this.firebook.setDisplaySize(1280, 720);
         this.firebook.setVisible(false);
+
+        // garden hit
+        this.gardenHit = this.add.sprite(230, 450, 'hitbox2');
+        this.gardenHit.setDisplaySize(60, 410);
+        this.gardenHit.setVisible(true);
+        this.gardenHit.setInteractive({
+            useHandCursor: true
+        });
+        // garden
+        this.garden = this.add.image(640, 355, 'garden');
+        this.garden.setDisplaySize(1280, 720);
+        this.garden.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // close
@@ -75,29 +88,41 @@ class Bookshelf extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // books
+        // firebook
         this.firebookHit.on('pointerdown', () => {
             if(this.textTimer == 0){
                 this.firebook.setVisible(true);
                 this.textTimer = 1;
             }
         });
+        // garden
+        this.gardenHit.on('pointerdown', () => {
+            if(this.textTimer == 0){
+                this.garden.setVisible(true);
+                this.textTimer = 1;
+            }
+        });
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // text timers
-        if(this.textTimer > 0 && this.textTimer < 150) {
+        if(this.textTimer > 0 && this.textTimer < 250) {
             this.textTimer += 1;
 
             // hide other hitboxes
             this.firebookHit.setVisible(false);
+            this.gardenHit.setVisible(false);
         } 
-        else if(this.textTimer >= 150){
+        else if(this.textTimer >= 250){
             // hide text
             this.textTimer = 0;
 
             // hide books
             this.firebook.setVisible(false);
+            this.garden.setVisible(false);
 
             // show hitboxes
             this.firebookHit.setVisible(true);
+            this.gardenHit.setVisible(true);
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////

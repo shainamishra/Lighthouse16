@@ -175,6 +175,7 @@ class LoadingNorth extends Phaser.Scene {
             this.frameHit.setVisible(false);
             this.frameEm.setVisible(true);
             this.noteFrame.setVisible(true);
+            this.noteHit.setVisible(true);
         }
 
         if (note == 1) {
