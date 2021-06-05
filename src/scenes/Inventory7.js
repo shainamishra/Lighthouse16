@@ -16,6 +16,10 @@ class Inventory7 extends Phaser.Scene {
     }
     create() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        this.page1 = this.add.sprite(650, 350, 'bg1');
+        this.page1.setDisplaySize(1280, 720);
+        this.page1.setVisible(false); 
+
         this.one = this.add.sprite(150, 340, 'cardHit');
         this.one.setDisplaySize(210, 360);
         this.one.setVisible(true);
@@ -117,54 +121,7 @@ class Inventory7 extends Phaser.Scene {
             useHandCursor: true
         });
 
-        this.one.on('pointerover', (pointer) => {
-            this.info1.setVisible(true);
-        });
-        // if hover off card1
-        this.one.on('pointerout', (pointer) => {
-            this.info1.setVisible(false);
-        });
-
-        // if hover on card2
-        this.two.setVisible(true);
-        this.two.on('pointerover', (pointer) => {
-            this.info2.setVisible(true);
-        });
-        // if hover off card2
-        this.two.on('pointerout', (pointer) => {
-            this.info2.setVisible(false);
-        });
-
-        // if hover on card3
-        this.three.setVisible(true);
-        this.three.on('pointerover', (pointer) => {
-            this.info3.setVisible(true);
-        });
-        // if hover off card3
-        this.three.on('pointerout', (pointer) => {
-            this.info3.setVisible(false);
-        });
-
-        // if hover on card4
-        this.four.setVisible(true);
-        this.four.on('pointerover', (pointer) => {
-            this.info4.setVisible(true);
-        });
-        // if hover off card4
-        this.four.on('pointerout', (pointer) => {
-            this.info4.setVisible(false);
-        });
-
-        // if hover on card5
-        this.five.setVisible(true);
-        this.five.on('pointerover', (pointer) => {
-            this.info5.setVisible(true);
-        });
-        // if hover off card5
-        this.five.on('pointerout', (pointer) => {
-            this.info5.setVisible(false);
-        });
-
+    
         this.info4_2 = this.add.image(650, 350, 'info4-2');
         this.info4_2.setDisplaySize(1280, 720);
         this.info4_2.setVisible(false);
