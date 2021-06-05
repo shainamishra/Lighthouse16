@@ -3,17 +3,120 @@ class Inventory extends Phaser.Scene {
         super("cardBox");
     }
 
+    preload(){
+        
+    }
     create() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // page 1
         this.page1 = this.add.sprite(650, 350, 'set1');
         this.page1.setDisplaySize(1280, 720);
         this.page1.setVisible(false);
+        
+        this.one = this.add.sprite(150, 340, 'cardHit');
+        this.one.setDisplaySize(210, 360);
+        this.one.setVisible(false);
+        this.one.setInteractive({
+            useHandCursor: true
+        });
+
+        this.info1 = this.add.image(650, 350, 'info1');
+        this.info1.setDisplaySize(1280, 720);
+        this.info1.setVisible(false);
+
+        this.two = this.add.sprite(400, 340, 'cardHit');
+        this.two.setDisplaySize(210, 360);
+        this.two.setVisible(false);
+        this.two.setInteractive({
+            useHandCursor: true
+        });
+
+        this.info2 = this.add.image(650, 350, 'info2');
+        this.info2.setDisplaySize(1280, 720);
+        this.info2.setVisible(false);
+
+        this.three = this.add.sprite(645, 340, 'cardHit');
+        this.three.setDisplaySize(210, 360);
+        this.three.setVisible(false);
+        this.three.setInteractive({
+            useHandCursor: true
+        });
+
+        this.info3 = this.add.image(650, 350, 'info3');
+        this.info3.setDisplaySize(1280, 720);
+        this.info3.setVisible(false);
+
+        this.four = this.add.sprite(890, 340, 'cardHit');
+        this.four.setDisplaySize(210, 360);
+        this.four.setVisible(false);
+        this.four.setInteractive({
+            useHandCursor: true
+        });
+
+        this.info4 = this.add.image(650, 350, 'info4');
+        this.info4.setDisplaySize(1280, 720);
+        this.info4.setVisible(false);
+
+        this.five = this.add.sprite(1135, 340, 'cardHit');
+        this.five.setDisplaySize(210, 360);
+        this.five.setVisible(false);
+        this.five.setInteractive({
+            useHandCursor: true
+        });
+        
+       
+
+        this.info5 = this.add.image(650, 350, 'info5');
+        this.info5.setDisplaySize(1280, 720);
+        this.info5.setVisible(false);
 
         // page 2
         this.page2 = this.add.sprite(650, 350, 'set2');
         this.page2.setDisplaySize(1280, 720);
         this.page2.setVisible(false);
+        this.one_2 = this.add.sprite(190, 340, 'cardHit');
+        this.one_2.setDisplaySize(240, 420);
+        this.one_2.setVisible(false);
+        this.one_2.setInteractive({
+            useHandCursor: true
+        });
+
+        this.info1_2 = this.add.image(650, 350, 'info1-2');
+        this.info1_2.setDisplaySize(1280, 720);
+        this.info1_2.setVisible(false);
+
+        this.two_2 = this.add.sprite(485, 340, 'cardHit');
+        this.two_2.setDisplaySize(240, 420);
+        this.two_2.setVisible(false);
+        this.two_2.setInteractive({
+            useHandCursor: true
+        });
+
+        this.info2_2 = this.add.image(650, 350, 'info2-2');
+        this.info2_2.setDisplaySize(1280, 720);
+        this.info2_2.setVisible(false);
+
+        this.three_2 = this.add.sprite(795, 340, 'cardHit');
+        this.three_2.setDisplaySize(240, 420);
+        this.three_2.setVisible(false);
+        this.three_2.setInteractive({
+            useHandCursor: true
+        });
+
+        this.info3_2 = this.add.image(650, 350, 'info3-2');
+        this.info3_2.setDisplaySize(1280, 720);
+        this.info3_2.setVisible(false);
+
+        this.four_2 = this.add.sprite(1090, 340, 'cardHit');
+        this.four_2.setDisplaySize(240, 420);
+        this.four_2.setVisible(false);
+        this.four_2.setInteractive({
+            useHandCursor: true
+        });
+
+        this.info4_2 = this.add.image(650, 350, 'info4-2');
+        this.info4_2.setDisplaySize(1280, 720);
+        this.info4_2.setVisible(false);
 
         // page 3
         this.page3 = this.add.sprite(650, 350, 'set3');
@@ -157,6 +260,55 @@ class Inventory extends Phaser.Scene {
         if (this.page == 1){
             // show page1
             this.page1.setVisible(true);
+            
+            this.one.setVisible(true);
+            this.one.on('pointerover', (pointer) => {
+                this.info1.setVisible(true);
+            });
+            // if hover off card1
+            this.one.on('pointerout', (pointer) => {
+                this.info1.setVisible(false);
+            });
+    
+            // if hover on card2
+            this.two.setVisible(true);
+            this.two.on('pointerover', (pointer) => {
+                this.info2.setVisible(true);
+            });
+            // if hover off card2
+            this.two.on('pointerout', (pointer) => {
+                this.info2.setVisible(false);
+            });
+    
+            // if hover on card3
+            this.three.setVisible(true);
+            this.three.on('pointerover', (pointer) => {
+                this.info3.setVisible(true);
+            });
+            // if hover off card3
+            this.three.on('pointerout', (pointer) => {
+                this.info3.setVisible(false);
+            });
+    
+            // if hover on card4
+            this.four.setVisible(true);
+            this.four.on('pointerover', (pointer) => {
+                this.info4.setVisible(true);
+            });
+            // if hover off card4
+            this.four.on('pointerout', (pointer) => {
+                this.info4.setVisible(false);
+            });
+    
+            // if hover on card5
+            this.five.setVisible(true);
+            this.five.on('pointerover', (pointer) => {
+                this.info5.setVisible(true);
+            });
+            // if hover off card5
+            this.five.on('pointerout', (pointer) => {
+                this.info5.setVisible(false);
+            });
         }
 
         // click content 1
@@ -229,6 +381,45 @@ class Inventory extends Phaser.Scene {
 
         } else if(page == 2){
             if(level > 1){
+                this.one_2.setVisible(true);
+                this.two_2.setVisible(true);
+                this.three_2.setVisible(true);
+                this.four_2.setVisible(true);
+                this.one_2.on('pointerover', (pointer) => {
+                    this.info1_2.setVisible(true);
+                });
+                // if hover off card1
+                this.one_2.on('pointerout', (pointer) => {
+                    this.info1_2.setVisible(false);
+                });
+        
+                // if hover on card2
+                this.two_2.on('pointerover', (pointer) => {
+                    this.info2_2.setVisible(true);
+                });
+                // if hover off card2
+                this.two_2.on('pointerout', (pointer) => {
+                    this.info2_2.setVisible(false);
+                });
+        
+                // if hover on card3
+                this.three_2.on('pointerover', (pointer) => {
+                    this.info3_2.setVisible(true);
+                });
+                // if hover off card3
+                this.three_2.on('pointerout', (pointer) => {
+                    this.info3_2.setVisible(false);
+                });
+        
+                // if hover on card4
+                this.four_2.on('pointerover', (pointer) => {
+                    this.info4_2.setVisible(true);
+                });
+                // if hover off card4
+                this.four_2.on('pointerout', (pointer) => {
+                    this.info4_2.setVisible(false);
+                });
+
                 this.page1.setVisible(false);
                 this.page2.setVisible(true);
                 this.page3.setVisible(false);
@@ -252,6 +443,7 @@ class Inventory extends Phaser.Scene {
                 this.page4.setVisible(false);
                 this.page5.setVisible(false);
                 this.page6.setVisible(false);
+                
                 this.v4.setVisible(false);
                 this.v5.setVisible(false);
                 this.v1.setVisible(false);
