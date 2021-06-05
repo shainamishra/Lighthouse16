@@ -62,6 +62,7 @@ class Clock extends Phaser.Scene {
 
         if(this.timesbuttonpressed == 36 || this.timesbuttonpressed == -36){
             clockUnlock = 1;
+            this.input.keyboard.enabled = false;
             this.hourhand.interText.setVisible(true);
         }
 
