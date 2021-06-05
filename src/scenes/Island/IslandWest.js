@@ -205,7 +205,7 @@ class IslandWest extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // statue
         if(this.textTimerStatue == 0){
-            // if click on lighthouse
+
             this.statue.on('pointerdown', () =>{
                 this.statue.interText.setVisible(true);
                 this.textTimerStatue = 1;

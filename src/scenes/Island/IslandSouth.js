@@ -57,7 +57,7 @@ class IslandSouth extends Phaser.Scene {
         this.graves.setInteractive({
             useHandCursor: true
         });
-        this.graves.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'Three graves with strange\ntext instead of names\nI wonder what they mean?');
+        this.graves.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'Three graves with strange\ntext instead of names\nWhat could they mean?');
         this.graves.interText.setFontSize(50);
         this.graves.interText.setVisible(false);
 
@@ -152,7 +152,6 @@ class IslandSouth extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         if(this.textTimerGraves == 0){
-            // if click on lighthouse
             this.graves.on('pointerdown', (pointer) => {
                 this.graves.interText.setVisible(true);
                 this.textTimerGraves = 1;
@@ -170,7 +169,6 @@ class IslandSouth extends Phaser.Scene {
         }
 
         if(this.textTimerGBox == 0 && keyGot == 0){
-            // if click on lighthouse
             this.gravebox.on('pointerdown', (pointer) => {
                 this.gravebox.interText.setVisible(true);
                 this.textTimerGBox = 1;

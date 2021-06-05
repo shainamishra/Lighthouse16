@@ -57,7 +57,6 @@ class MainNorth extends Phaser.Scene {
      
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
-        // lights off CN
         this.indoor = this.add.sprite(450, 350, 'hitbox');
         this.indoor.setDisplaySize(350, 700);
         this.indoor.setInteractive({
@@ -172,16 +171,7 @@ class MainNorth extends Phaser.Scene {
         });
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // dragging
-        /*this.input.setDraggable(this.minutehand);
-        this.input.setDraggable(this.hourhand);
-        this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
-
-            gameObject.x = dragX;
-            gameObject.y = dragY;
-    
-        });
-        */
+       
         // end states
         if(this.textTimerIndoor == 0){
             this.indoor.on('pointerdown', (pointer) => {

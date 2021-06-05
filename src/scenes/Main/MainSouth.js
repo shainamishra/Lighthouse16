@@ -58,7 +58,6 @@ class MainSouth extends Phaser.Scene {
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
-        // lights off CN
         this.initial = this.add.sprite(620, 375, 'southinitial');
         
         this.skull = this.add.sprite(975, 150, 'hitbox');
@@ -153,7 +152,6 @@ class MainSouth extends Phaser.Scene {
         });
 
 
-        // end states
         // end states
         if(this.textTimerSkull == 0){
             if(hammerGot == 1){
