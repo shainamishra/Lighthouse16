@@ -126,6 +126,7 @@ class MainNorth extends Phaser.Scene {
         // god forsaken variables
         this.textTimerIndoor = 0;
         this.textTimerGclock = 0;
+        this.textTimer = 0;
         this.hotOn = true;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -171,12 +172,45 @@ class MainNorth extends Phaser.Scene {
         });
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // end states
+        // text timers
         if(this.textTimerIndoor == 0){
             this.indoor.on('pointerdown', (pointer) => {
                 this.indoor.interText.setVisible(true);
                 this.textTimerIndoor = 1;
             });
+        }
+
+        if(this.textTimerGclock == 0){
+            if(pcoinGot == 1){
+                this.gclock.on('pointerdown', (pointer) => {
+                    if(this.textTimer == 0){
+                        this.textTimer = 1;
+                        this.scene.switch("clockpuzzle");
+                    }
+                });
+                
+            }
+            else if (this.textTimer == 0){
+                if(clockUnlock == 1){
+                    this.gclock.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 100, 'The time has been set');
+                    this.gclock.interText.setFontSize(50);
+                    this.gclock.interText.setVisible(false);
+                }
+                this.gclock.on('pointerdown', (pointer) => {
+                    this.gclock.interText.setVisible(true);
+                    this.textTimerGclock = 1;
+                });
+            }
+        }
+
+        // scene switch timer
+        // text timers
+        if(this.textTimer > 0 && this.textTimer < 50) {
+            this.textTimer += 1;
+        } 
+        else if(this.textTimer >= 50){
+            // hide text
+            this.textTimer = 0;
         }
 
         // text on screen
@@ -187,28 +221,6 @@ class MainNorth extends Phaser.Scene {
             // hide text
             this.indoor.interText.setVisible(false);
             this.textTimerIndoor = 0;
-        }
-
-        if(this.textTimerGclock == 0){
-            if(pcoinGot == 1 && this.textTimerIndoor == 0){
-                this.gclock.on('pointerdown', (pointer) => {
-                    this.textTimerIndoor = 1;
-                    this.scene.switch("clockpuzzle");
-                });
-                
-            }
-            else{
-                if(clockUnlock == 1){
-                    this.gclock.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 100, 'The time has been set');
-                    this.gclock.interText.setFontSize(50);
-                    this.gclock.interText.setVisible(false);
-                }
-                this.gclock.on('pointerdown', (pointer) => {
-                this.gclock.interText.setVisible(true);
-                
-                this.textTimerGclock = 1;
-                });
-            }
         }
 
         // text on screen
