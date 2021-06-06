@@ -198,7 +198,6 @@ class MainEast extends Phaser.Scene {
                 if(knifeGot == 1){
                     this.ripPainting.setVisible(true);
                     this.ripPainting.interText.setVisible(true);
-
                 }
             });
         }
@@ -230,6 +229,7 @@ class MainEast extends Phaser.Scene {
         if(hammerGot == 1){
             this.hammerIm.setVisible(false);
         }
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // scene change on keypress
         if(Phaser.Input.Keyboard.JustDown(keyA)){
@@ -245,7 +245,7 @@ class MainEast extends Phaser.Scene {
             if(hammerGot == 1 && scoinGot == 0){
                 this.hammerHot.setVisible(true);
             }
-            if(knifeGot == 1){
+            if(knifeGot == 1 && pcoinGot == 0){
                 this.knifeHot.setVisible(true);
             }
             if(scoinGot == 1){
@@ -254,6 +254,7 @@ class MainEast extends Phaser.Scene {
             }
             if(pcoinGot == 1){
                 this.handHot.setVisible(true);
+                this.knifeHot.setVisible(false);
             }
         }
         else{
