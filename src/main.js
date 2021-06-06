@@ -71,3 +71,4 @@ let paper = 0;
 let candles = 0;
 let chemical = 0;
 let cards = 0;
+let lit = 0;

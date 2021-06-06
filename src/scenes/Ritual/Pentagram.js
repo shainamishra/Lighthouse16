@@ -191,38 +191,43 @@ class Pentagram extends Phaser.Scene {
 
         // matches
         this.matches.on('pointerdown', () => {
-            if(this.textTimer == 0){
-                if(chemical == 1){
-                    // fertilizer
-                    // show chem im
-                    // green
-                    this.firePentGreen.setVisible(true);
+            if(this.textTimer == 0 && candles == 1){
+                if(this.order[0] == "chemical"){
+                    if(chemical == 1){
+                        // fertilizer
+                        // show chem im, hide others
+                        this.firePentGreen.setVisible(true);
 
-                } else if(chemical == 2){
-                    // insecticide
-                    // show chem im
-                    // purple
-                    this.firePentPurple.setVisible(true);
+                    } else if(chemical == 2){
+                        // insecticide
+                        // show chem im, hide others
+                        this.firePentPurple.setVisible(true);
 
-                }else if(chemical == 3){
-                    // bleach
-                    // show chem im
-                    // orange
-                    this.firePentNormal.setVisible(true);
+                    }else if(chemical == 3){
+                        // bleach
+                        // show chem im, hide others
+                        this.firePentNormal.setVisible(true);
 
-                }else if(chemical == 4){
-                    // salt
-                    // show chem im
-                    // yellow
-                    this.firePentYellow.setVisible(true);
+                    }else if(chemical == 4){
+                        // salt
+                        // show chem im, hide others
+                        this.firePentYellow.setVisible(true);
 
+                    }
+                    this.textTimer = 1;
+                    this.order.push("matches");
+                    console.log(this.order)
+                    this.matches.setVisible(false);
+                    lit = 1;
                 }
-
-                this.textTimer = 1;
-                this.order.push("matches");
-                console.log(this.order)
-                this.matches.setVisible(false);
-            }
+                else{
+                    this.firePentNormal.setVisible(true);
+                    this.textTimer = 1;
+                    this.order.push("matches");
+                    this.matches.setVisible(false);
+                    lit = 2;
+                }
+            } 
         });
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -263,7 +268,6 @@ class Pentagram extends Phaser.Scene {
         // if str.length != 3 // setVisible(false) to image and hitbox after clicked on once
         if(this.order.length == 3){
             this.whatever = this.checkCorrect(this.order, this.correctOrder, 3);
-            console.log(this.whatever)
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -289,8 +293,15 @@ class Pentagram extends Phaser.Scene {
         if(matches == 0){
             this.matches.setVisible(false);
         }
+        if(knifeGot == 0){
+            this.knife.setVisible(false);
+        }
+        if(chemical == 0){
+            this.chem.setVisible(false);
+        }
+
         // show candles
-        if(candles == 1){
+        if(candles > 0){
             this.candlesPent.setVisible(true);
         }
 
