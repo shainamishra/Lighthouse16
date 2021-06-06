@@ -122,8 +122,6 @@ class CellarNorth extends Phaser.Scene {
         } else if (lightState == 1) {
             this.textDark.setVisible(true);
         }
-
-        // delete this
         
         // end states
         if(unlocked == 1){
