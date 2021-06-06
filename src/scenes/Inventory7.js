@@ -70,8 +70,6 @@ class Inventory7 extends Phaser.Scene {
         this.five.setInteractive({
             useHandCursor: true
         });
-        
-       
 
         this.info5 = this.add.image(650, 350, 'info5');
         this.info5.setDisplaySize(1280, 720);
@@ -287,7 +285,11 @@ class Inventory7 extends Phaser.Scene {
         if (this.page == 1){
             // show page1
             this.page1.setVisible(true);
-
+            //add to layer and render below everything else
+            this.layer = this.add.layer();
+            this.layer.add([this.page1]);
+            this.layer.setDepth(-1);
+;
             this.one.setVisible(true);
             this.one.on('pointerover', (pointer) => {
                 this.info1.setVisible(true);
@@ -335,8 +337,7 @@ class Inventory7 extends Phaser.Scene {
             // if hover off card5
             this.five.on('pointerout', (pointer) => {
                 this.info5.setVisible(false);
-            });
-            
+            });     
         }
 
         // click content 1

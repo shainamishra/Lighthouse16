@@ -9,7 +9,7 @@ class Spread2 extends Phaser.Scene {
         this.load.image('plateHot', './assets/puzzle2/items/switch2.png');
 
         // audio
-        this.load.audio('cellar_music', './assets/sfx/Ambience.wav');
+        this.load.audio('cellar_music', './assets/sfx/theLighthouse_underwater.wav');
     }
 
     create() {
