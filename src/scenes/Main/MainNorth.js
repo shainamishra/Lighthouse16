@@ -225,7 +225,7 @@ class MainNorth extends Phaser.Scene {
     hotBarItems(on){
         if(on == true){
             this.hotbar.setVisible(true);
-            if(hammerGot == 1){
+            if(hammerGot == 1 && scoinGot == 0){
                 this.hammerHot.setVisible(true);
             }
             if(knifeGot == 1){
@@ -233,6 +233,7 @@ class MainNorth extends Phaser.Scene {
             }
             if(scoinGot == 1){
                 this.scoinHot.setVisible(true);
+                this.hammerHot.setVisible(false);
             }
             if(pcoinGot == 1){
                 this.handHot.setVisible(true);
