@@ -135,10 +135,12 @@ class CellarNorth extends Phaser.Scene {
         if(on == true){
             this.hotbar.setVisible(true);
 
-            if (deskKey == 1){
+            if (deskKey == 1 && switchGot == 0){
                 this.key2Hot.setVisible(true);
             }
-
+            else if(switchGot== 1){
+                this.key2Hot.setVisible(false);
+            }
             if (switchGot == 1){
                 this.plateHot.setVisible(true);
             }
