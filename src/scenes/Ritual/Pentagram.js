@@ -12,6 +12,7 @@ class Pentagram extends Phaser.Scene {
         this.load.image('firePentPurple', './assets/puzzle5/pentagram/ritual_closeup_purple.png');
         this.load.image('firePentYellow', './assets/puzzle5/pentagram/ritual_closeup_yellow.png');
         this.load.image('matches', './assets/puzzle5/pentagram/ritual_matches.png');
+        this.load.image('redVig', './assets/puzzle5/overlays/redVignette.png');
 
         // cards
         this.load.image('card1', './assets/puzzle5/pentagram/ritual_card1.png');
@@ -22,6 +23,9 @@ class Pentagram extends Phaser.Scene {
 
         // audio
         this.load.audio('unlock', './assets/sfx/doorUnlock2.wav');
+
+        // anim
+        this.load.spritesheet('BLOOD', './assets/puzzle5/overlays/blood.png', {frameWidth: 414, frameHeight: 576, startFrame: 0, endFrame: 2});
     }
 
     create() {
@@ -96,6 +100,14 @@ class Pentagram extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
+        // candles
+        this.candle = this.add.sprite(170, 170, 'hotbox');
+        this.candle.setDisplaySize(100, 200);
+        this.candle.setVisible(true);
+        this.candle.setInteractive({
+            cursor: handPointer
+        });
+
         // matches
         this.matches = this.add.sprite(1160, 170, 'hotbox');
         this.matches.setDisplaySize(100, 200);
@@ -112,7 +124,7 @@ class Pentagram extends Phaser.Scene {
             cursor: handPointer
         });
 
-        //// chemicals - set this as a hitbox with a seperate image layer
+        //// chemicals
         this.chem = this.add.sprite(1160, 600, 'hotbox');
         this.chem.setDisplaySize(170, 96);
         this.chem.setVisible(true);
@@ -128,6 +140,20 @@ class Pentagram extends Phaser.Scene {
         this.closeLook.setInteractive({
             cursor: handPointer
         });
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // BLOOD
+        this.anims.create({
+            key: 'BLOOD',
+            frames: this.anims.generateFrameNumbers('BLOOD', { start: 0, end: 2, first: 0}),
+            frameRate: 1,
+            repeat: 0
+        });
+
+        this.redVig = this.add.image(640, 360, 'redVig');
+        this.redVig.setDisplaySize(1280, 720);
+        this.redVig.alpha = 0.65;
+        this.redVig.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // dark
@@ -181,6 +207,16 @@ class Pentagram extends Phaser.Scene {
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // chem
+        this.candle.on('pointerdown', () => {
+            if(this.textTimer == 0){
+                this.textTimer = 1;
+                this.candle.setVisible(false);
+                this.candlesPent.setVisible(true);
+                candles = 2;
+            }
+        });
+
+        // chem
         this.chem.on('pointerdown', () => {
             if(this.textTimer == 0){
                 this.textTimer = 1;
@@ -191,7 +227,7 @@ class Pentagram extends Phaser.Scene {
 
         // matches
         this.matches.on('pointerdown', () => {
-            if(this.textTimer == 0 && candles == 1){
+            if(this.textTimer == 0 && candles == 2){
                 if(this.order[0] == "chemical"){
                     if(chemical == 1){
                         // fertilizer
@@ -239,6 +275,9 @@ class Pentagram extends Phaser.Scene {
                 this.order.push("knife");
                 console.log(this.order)
                 this.knife.setVisible(false);
+                
+                this.add.sprite(600, 300, 'hitbox').play('BLOOD');
+                this.redVig.setVisible(true);
 
                 // check position
                 for (var i = 0; i < 5; i++) {
@@ -301,7 +340,8 @@ class Pentagram extends Phaser.Scene {
         }
 
         // show candles
-        if(candles > 0){
+        if(candles > 1){
+            this.candle.setVisible(false);
             this.candlesPent.setVisible(true);
         }
 

@@ -14,6 +14,7 @@ class Spread4 extends Phaser.Scene {
         
         // audio
         this.load.audio('lookout_music', './assets/sfx/Musicbox.wav');
+        this.load.audio('wrong', './assets/sfx/Wrong.wav');
     }
 
     create() {

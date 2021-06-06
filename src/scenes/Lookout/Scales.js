@@ -23,6 +23,7 @@ class Scales extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // sfx
         this.unlock = this.sound.add('unlock', {volume: 0.75});
+        this.wrong = this.sound.add('wrong', {volume: 3.0});
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
@@ -192,6 +193,7 @@ class Scales extends Phaser.Scene {
                     this.unlock.play();
                     this.uneven.interText.setVisible(true); 
                 } else {
+                    this.wrong.play();
                     this.rockReset();
                 }
             }

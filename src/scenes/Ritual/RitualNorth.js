@@ -284,8 +284,9 @@ class RitualNorth extends Phaser.Scene {
             this.matchesIm.setVisible(false);
         }
 
-        if(candles == 1){
+        if(candles > 1){
             this.candles.setVisible(true);
+            this.candleHot.setVisible(false);
         }
         if(lit == 1){
             if(chemical == 0){
