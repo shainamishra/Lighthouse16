@@ -66,7 +66,7 @@ class LoadingNorth extends Phaser.Scene {
         this.noteHit.setInteractive({
             useHandCursor: true
         });
-        this.noteHit.interText = this.add.text(500, 650, 'A note');
+        this.noteHit.interText = this.add.text(150, 645, 'You put the note in your inventory');
         this.noteHit.interText.setFontSize(50);
         this.noteHit.interText.setVisible(false);
         this.noteHit.setVisible(false);
@@ -108,7 +108,16 @@ class LoadingNorth extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
-        this.textTimer = 0;
+        this.textTimer = 0;        
+        if (inRitual == 0) {
+            lightState = 0;
+            knifeGot = 0;
+            deskKey = 0;
+            clockUnlock = 0;
+            unlocked = 0;
+            pos = 0;
+            combo = '';
+        }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders

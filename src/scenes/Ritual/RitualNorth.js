@@ -261,8 +261,7 @@ class RitualNorth extends Phaser.Scene {
         if(this.textTimer > 0 && this.textTimer < this.timeVar) {
             this.textTimer += 1;
         } 
-        else if(this.textTimer >= this.timeVar){
-            // hide text
+        else if(this.textTimer >= this.timeVar) {
             this.textTimer = 0;
         }
 
