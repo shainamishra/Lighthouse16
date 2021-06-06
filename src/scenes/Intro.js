@@ -14,12 +14,21 @@ class Intro extends Phaser.Scene {
         this.bg = this.add.tileSprite(0, 0, 1280, 720, 'blkbg').setOrigin(0, 0); 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        //text fades in n out and when it gets to the end go to island north
+        // text fades in n out and when it gets to the end go to island north
         //text in the corner: press space to skip faster?
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // change scene
+        this.input.keyboard.on('keydown-SPACE', () => {
+			this.sound.play("CrashingWaves"); 
+            this.scene.start("instructionScene"); 
+		});
     }
 
     update(){
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         //i guess if the player smashes the spacebar add time to the timer so it goes by faster?
+
+
     }
 }
