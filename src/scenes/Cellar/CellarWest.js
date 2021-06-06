@@ -35,7 +35,7 @@ class CellarWest extends Phaser.Scene {
         this.invent = this.add.sprite(60, 60, 'hitbox');
         this.invent.setDisplaySize(100, 100);
         this.invent.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // invent image
         this.inventIm = this.add.image(630, 350, 'inventory');
@@ -49,7 +49,7 @@ class CellarWest extends Phaser.Scene {
         this.help = this.add.sprite(1223, 60, 'hitbox');
         this.help.setDisplaySize(85, 85);
         this.help.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // help image
         this.helpIm = this.add.image(660, 355, 'help');
@@ -62,7 +62,7 @@ class CellarWest extends Phaser.Scene {
         this.shelf = this.add.sprite(920, 190, 'hitbox');
         this.shelf.setDisplaySize(450, 310);
         this.shelf.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.shelf.interText = this.add.text(80, 40, 'Nothing else to note');
         this.shelf.interText.setFontSize(50);
@@ -76,7 +76,7 @@ class CellarWest extends Phaser.Scene {
         this.desk = this.add.sprite(382, 550, 'hitbox');
         this.desk.setDisplaySize(510, 300);
         this.desk.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.desk.interText = this.add.text(700, 450, 'The desk drawer\n   is locked');
         this.desk.interText.setFontSize(50);
@@ -103,7 +103,7 @@ class CellarWest extends Phaser.Scene {
         this.key.setDisplaySize(80, 170);
         this.key.setVisible(false);
         this.key.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.key.interText = this.add.text(515, 520, 'You found a\nstrange key');
         this.key.interText.setFontSize(50);

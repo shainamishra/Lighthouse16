@@ -43,7 +43,7 @@ class IslandWest extends Phaser.Scene {
         this.invent = this.add.sprite(60, 60, 'hitbox');
         this.invent.setDisplaySize(100, 100);
         this.invent.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // invent image
         this.inventIm = this.add.image(630, 350, 'inventory');
@@ -57,7 +57,7 @@ class IslandWest extends Phaser.Scene {
         this.help = this.add.sprite(1223, 60, 'hitbox');
         this.help.setDisplaySize(85, 85);
         this.help.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // help image
         this.helpIm = this.add.image(660, 355, 'help');
@@ -69,7 +69,7 @@ class IslandWest extends Phaser.Scene {
         this.statue = this.add.sprite(850, 300, 'hitbox');
         this.statue.setDisplaySize(300,400);
         this.statue.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.statue.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'A crying statue with \nthe numeral five');
         this.statue.interText.setFontSize(50);
@@ -87,7 +87,7 @@ class IslandWest extends Phaser.Scene {
         this.open = this.add.sprite(860, 550, 'hitbox');
         this.open.setDisplaySize(220, 30);
         this.open.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         //this.open.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 150, 'A pair of bolt cutters');
         //this.open.interText.setFontSize(50);
@@ -97,7 +97,7 @@ class IslandWest extends Phaser.Scene {
         this.box = this.add.sprite(860, 550, 'hitbox');
         this.box.setDisplaySize(220, 30);
         this.box.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.box.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 150, ' The box needs a \nthree digit combo');
         this.box.interText.setFontSize(50);
@@ -119,28 +119,28 @@ class IslandWest extends Phaser.Scene {
         this.keyHot = this.add.sprite(460, 659, 'keyHot');
         this.keyHot.setDisplaySize(60, 60);
         this.keyHot.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.keyHot.setVisible(false);
 
         this.reelHot = this.add.sprite(560, 660, 'reelHot');
         this.reelHot.setDisplaySize(75, 75);
         this.reelHot.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.reelHot.setVisible(false);
 
         this.telescopeHot = this.add.sprite(655, 660, 'telescopeHot');
         this.telescopeHot.setDisplaySize(80, 80);
         this.telescopeHot.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.telescopeHot.setVisible(false);
 
         this.boltcuttersHot = this.add.sprite(755, 659, 'boltcuttersHot');
         this.boltcuttersHot.setDisplaySize(70, 70);
         this.boltcuttersHot.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.boltcuttersHot.setVisible(false);
 

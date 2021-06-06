@@ -40,7 +40,7 @@ class Spread4 extends Phaser.Scene {
         this.one.setDisplaySize(240, 420);
         this.one.setVisible(true);
         this.one.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
 
         this.info1 = this.add.image(650, 350, 'info1-4');
@@ -51,7 +51,7 @@ class Spread4 extends Phaser.Scene {
         this.two.setDisplaySize(240, 420);
         this.two.setVisible(true);
         this.two.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
 
         this.info2 = this.add.image(650, 350, 'info2-4');
@@ -62,7 +62,7 @@ class Spread4 extends Phaser.Scene {
         this.three.setDisplaySize(240, 420);
         this.three.setVisible(true);
         this.three.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
 
         this.info3 = this.add.image(650, 350, 'info3-4');
@@ -73,7 +73,7 @@ class Spread4 extends Phaser.Scene {
         this.four.setDisplaySize(240, 420);
         this.four.setVisible(true);
         this.four.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
 
         this.info4 = this.add.image(650, 350, 'info4-4');

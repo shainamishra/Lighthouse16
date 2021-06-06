@@ -38,7 +38,7 @@ class CellarSouth extends Phaser.Scene {
         this.invent = this.add.sprite(60, 60, 'hitbox');
         this.invent.setDisplaySize(100, 100);
         this.invent.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // invent image
         this.inventIm = this.add.image(630, 350, 'inventory');
@@ -52,7 +52,7 @@ class CellarSouth extends Phaser.Scene {
         this.help = this.add.sprite(1223, 60, 'hitbox');
         this.help.setDisplaySize(85, 85);
         this.help.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // help image
         this.helpIm = this.add.image(660, 355, 'help');
@@ -74,7 +74,7 @@ class CellarSouth extends Phaser.Scene {
         this.switch = this.add.sprite(940, 340, 'hitbox1');
         this.switch.setDisplaySize(60, 105);
         this.switch.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.switch.interText = this.add.text(490, 290, 'The switch\nis missing');
         this.switch.interText.setFontSize(50);

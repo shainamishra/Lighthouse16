@@ -41,7 +41,7 @@ class LookoutSouth extends Phaser.Scene {
         this.invent = this.add.sprite(60, 60, 'hitbox');
         this.invent.setDisplaySize(100, 100);
         this.invent.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // invent image
         this.inventIm = this.add.image(630, 350, 'inventory');
@@ -55,7 +55,7 @@ class LookoutSouth extends Phaser.Scene {
         this.help = this.add.sprite(1223, 60, 'hitbox');
         this.help.setDisplaySize(85, 85);
         this.help.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // help image
         this.helpIm = this.add.image(660, 355, 'help');
@@ -72,7 +72,7 @@ class LookoutSouth extends Phaser.Scene {
         this.ropeHit = this.add.sprite(1025, 625, 'hitbox');
         this.ropeHit.setDisplaySize(200, 100);
         this.ropeHit.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.ropeHit.interText = this.add.text(440, 500, 'You took the rope');
         this.ropeHit.interText.setFontSize(50);
@@ -87,7 +87,7 @@ class LookoutSouth extends Phaser.Scene {
         this.penHit = this.add.image(875, 265, 'hitbox');
         this.penHit.setDisplaySize(40, 320);
         this.penHit.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.penHit.setVisible(false);
 

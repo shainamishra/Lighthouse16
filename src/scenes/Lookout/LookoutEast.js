@@ -36,7 +36,7 @@ class LookoutEast extends Phaser.Scene {
         this.windowHit = this.add.sprite(625, 260, 'hitbox');
         this.windowHit.setDisplaySize(475, 475);
         this.windowHit.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.windowHit.interText = this.add.text(350, 550, 'The window is dirty');
         this.windowHit.interText.setFontSize(50);
@@ -65,7 +65,7 @@ class LookoutEast extends Phaser.Scene {
         this.invent = this.add.sprite(60, 60, 'hitbox');
         this.invent.setDisplaySize(100, 100);
         this.invent.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // invent image
         this.inventIm = this.add.image(630, 350, 'inventory');
@@ -79,7 +79,7 @@ class LookoutEast extends Phaser.Scene {
         this.help = this.add.sprite(1223, 60, 'hitbox');
         this.help.setDisplaySize(85, 85);
         this.help.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // help image
         this.helpIm = this.add.image(660, 355, 'help');

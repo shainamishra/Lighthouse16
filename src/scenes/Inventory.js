@@ -17,7 +17,7 @@ class Inventory extends Phaser.Scene {
         this.one.setDisplaySize(210, 360);
         this.one.setVisible(false);
         this.one.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
 
         this.info1 = this.add.image(650, 350, 'info1');
@@ -28,7 +28,7 @@ class Inventory extends Phaser.Scene {
         this.two.setDisplaySize(210, 360);
         this.two.setVisible(false);
         this.two.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
 
         this.info2 = this.add.image(650, 350, 'info2');
@@ -39,7 +39,7 @@ class Inventory extends Phaser.Scene {
         this.three.setDisplaySize(210, 360);
         this.three.setVisible(false);
         this.three.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
 
         this.info3 = this.add.image(650, 350, 'info3');
@@ -50,7 +50,7 @@ class Inventory extends Phaser.Scene {
         this.four.setDisplaySize(210, 360);
         this.four.setVisible(false);
         this.four.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
 
         this.info4 = this.add.image(650, 350, 'info4');
@@ -61,7 +61,7 @@ class Inventory extends Phaser.Scene {
         this.five.setDisplaySize(210, 360);
         this.five.setVisible(false);
         this.five.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         
        
@@ -78,7 +78,7 @@ class Inventory extends Phaser.Scene {
         this.one_2.setDisplaySize(240, 420);
         this.one_2.setVisible(false);
         this.one_2.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
 
         this.info1_2 = this.add.image(650, 350, 'info1-2');
@@ -89,7 +89,7 @@ class Inventory extends Phaser.Scene {
         this.two_2.setDisplaySize(240, 420);
         this.two_2.setVisible(false);
         this.two_2.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
 
         this.info2_2 = this.add.image(650, 350, 'info2-2');
@@ -100,7 +100,7 @@ class Inventory extends Phaser.Scene {
         this.three_2.setDisplaySize(240, 420);
         this.three_2.setVisible(false);
         this.three_2.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
 
         this.info3_2 = this.add.image(650, 350, 'info3-2');
@@ -111,7 +111,7 @@ class Inventory extends Phaser.Scene {
         this.four_2.setDisplaySize(240, 420);
         this.four_2.setVisible(false);
         this.four_2.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
 
         this.info4_2 = this.add.image(650, 350, 'info4-2');
@@ -163,7 +163,7 @@ class Inventory extends Phaser.Scene {
         this.closeInven.setDisplaySize(50, 50);
         this.closeInven.setVisible(false);
         this.closeInven.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
 
         // content1
@@ -171,7 +171,7 @@ class Inventory extends Phaser.Scene {
         this.content1.setDisplaySize(50, 70);
         this.content1.setVisible(false);
         this.content1.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         
         // content2
@@ -179,7 +179,7 @@ class Inventory extends Phaser.Scene {
         this.content2.setDisplaySize(50, 70);
         this.content2.setVisible(false);
         this.content2.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
 
         // content3
@@ -187,7 +187,7 @@ class Inventory extends Phaser.Scene {
         this.content3.setDisplaySize(50, 70);
         this.content3.setVisible(false);
         this.content3.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
 
         // content4
@@ -195,7 +195,7 @@ class Inventory extends Phaser.Scene {
         this.content4.setDisplaySize(50, 70);
         this.content4.setVisible(false);
         this.content4.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
 
         // content5
@@ -203,7 +203,7 @@ class Inventory extends Phaser.Scene {
         this.content5.setDisplaySize(50, 70);
         this.content5.setVisible(false);
         this.content5.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
 
         // content6
@@ -211,7 +211,7 @@ class Inventory extends Phaser.Scene {
         this.content6.setDisplaySize(50, 70);
         this.content6.setVisible(false);
         this.content6.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         
         // 6 page toc

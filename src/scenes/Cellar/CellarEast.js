@@ -54,7 +54,7 @@ class CellarEast extends Phaser.Scene {
         this.invent = this.add.sprite(60, 60, 'hitbox');
         this.invent.setDisplaySize(100, 100);
         this.invent.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // invent image
         this.inventIm = this.add.image(630, 350, 'inventory');
@@ -68,7 +68,7 @@ class CellarEast extends Phaser.Scene {
         this.help = this.add.sprite(1223, 60, 'hitbox');
         this.help.setDisplaySize(85, 85);
         this.help.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // help image
         this.helpIm = this.add.image(660, 355, 'help');
@@ -85,7 +85,7 @@ class CellarEast extends Phaser.Scene {
         this.red = this.add.sprite(250, 215, 'hitbox');
         this.red.setDisplaySize(50, 50);
         this.red.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.red.setVisible(true); 
 
@@ -93,7 +93,7 @@ class CellarEast extends Phaser.Scene {
         this.orange = this.add.sprite(365, 215, 'hitbox');
         this.orange.setDisplaySize(50, 50);
         this.orange.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.orange.setVisible(true); 
 
@@ -101,7 +101,7 @@ class CellarEast extends Phaser.Scene {
         this.yellow = this.add.sprite(475, 215, 'hitbox');
         this.yellow.setDisplaySize(50, 50);
         this.yellow.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.yellow.setVisible(true);
 
@@ -109,7 +109,7 @@ class CellarEast extends Phaser.Scene {
         this.green = this.add.sprite(582, 215, 'hitbox');
         this.green.setDisplaySize(50, 50);
         this.green.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.green.setVisible(true); 
 
@@ -117,7 +117,7 @@ class CellarEast extends Phaser.Scene {
         this.cyan = this.add.sprite(698, 215, 'hitbox');
         this.cyan.setDisplaySize(50, 50);
         this.cyan.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.cyan.setVisible(true);
 
@@ -125,7 +125,7 @@ class CellarEast extends Phaser.Scene {
         this.blue = this.add.sprite(807, 215, 'hitbox');
         this.blue.setDisplaySize(50, 50);
         this.blue.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.blue.setVisible(true); 
 
@@ -133,7 +133,7 @@ class CellarEast extends Phaser.Scene {
         this.purple = this.add.sprite(917, 215, 'hitbox');
         this.purple.setDisplaySize(50, 50);
         this.purple.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.purple.setVisible(true); 
 
@@ -141,7 +141,7 @@ class CellarEast extends Phaser.Scene {
         this.pink = this.add.sprite(1029, 215, 'hitbox');
         this.pink.setDisplaySize(50, 50);
         this.pink.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.pink.setVisible(true); 
 

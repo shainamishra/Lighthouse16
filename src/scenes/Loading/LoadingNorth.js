@@ -48,7 +48,7 @@ class LoadingNorth extends Phaser.Scene {
         this.frameHit = this.add.sprite(640, 196, 'hitbox');
         this.frameHit.setDisplaySize(500, 308);
         this.frameHit.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.frameHit.setVisible(true);
 
@@ -64,7 +64,7 @@ class LoadingNorth extends Phaser.Scene {
         this.noteHit = this.add.sprite(675, 196, 'hitbox');
         this.noteHit.setDisplaySize(40, 60);
         this.noteHit.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.noteHit.interText = this.add.text(150, 645, 'You put the note in your inventory');
         this.noteHit.interText.setFontSize(50);
@@ -85,7 +85,7 @@ class LoadingNorth extends Phaser.Scene {
         this.invent = this.add.sprite(60, 60, 'hitbox');
         this.invent.setDisplaySize(100, 100);
         this.invent.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // invent image
         this.inventIm = this.add.image(630, 350, 'inventory');
@@ -99,7 +99,7 @@ class LoadingNorth extends Phaser.Scene {
         this.help = this.add.sprite(1223, 60, 'hitbox');
         this.help.setDisplaySize(85, 85);
         this.help.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // help image
         this.helpIm = this.add.image(660, 355, 'help');

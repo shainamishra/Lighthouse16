@@ -32,7 +32,7 @@ class Instruction extends Phaser.Scene {
         this.clownery = this.add.sprite(340, 350, 'hitbox');
         this.clownery.setDisplaySize(50,50);
         this.clownery.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // close
@@ -40,7 +40,7 @@ class Instruction extends Phaser.Scene {
         this.closeInven.setDisplaySize(50, 50);
         this.closeInven.setVisible(false);
         this.closeInven.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders

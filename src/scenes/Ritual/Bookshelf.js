@@ -29,7 +29,7 @@ class Bookshelf extends Phaser.Scene {
         this.firebookHit.setDisplaySize(70, 500);
         this.firebookHit.setVisible(true);
         this.firebookHit.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // firebook
         this.firebook = this.add.image(640, 355, 'firebook');
@@ -41,7 +41,7 @@ class Bookshelf extends Phaser.Scene {
         this.gardenHit.setDisplaySize(60, 410);
         this.gardenHit.setVisible(true);
         this.gardenHit.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // garden
         this.garden = this.add.image(640, 355, 'garden');
@@ -54,7 +54,7 @@ class Bookshelf extends Phaser.Scene {
         this.closeLook.setDisplaySize(50, 50);
         this.closeLook.setVisible(true);
         this.closeLook.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////

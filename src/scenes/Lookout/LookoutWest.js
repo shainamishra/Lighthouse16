@@ -40,7 +40,7 @@ class LookoutWest extends Phaser.Scene {
         this.invent = this.add.sprite(60, 60, 'hitbox');
         this.invent.setDisplaySize(100, 100);
         this.invent.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // invent image
         this.inventIm = this.add.image(630, 350, 'inventory');
@@ -54,7 +54,7 @@ class LookoutWest extends Phaser.Scene {
         this.help = this.add.sprite(1223, 60, 'hitbox');
         this.help.setDisplaySize(85, 85);
         this.help.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // help image
         this.helpIm = this.add.image(660, 355, 'help');
@@ -71,7 +71,7 @@ class LookoutWest extends Phaser.Scene {
         this.ragHit = this.add.sprite(270, 650, 'hitbox');
         this.ragHit.setDisplaySize(250, 100);
         this.ragHit.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.ragHit.interText = this.add.text(400, 500, 'You took the rag');
         this.ragHit.interText.setFontSize(50);
@@ -83,7 +83,7 @@ class LookoutWest extends Phaser.Scene {
         this.hatch.setDisplaySize(230, 156);
         this.hatch.setVisible(false);
         this.hatch.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
 
         // scales unbalanced

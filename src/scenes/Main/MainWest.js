@@ -32,7 +32,7 @@ class MainWest extends Phaser.Scene {
         this.invent = this.add.sprite(60, 60, 'hitbox');
         this.invent.setDisplaySize(100, 100);
         this.invent.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // invent image
         this.inventIm = this.add.image(630, 350, 'inventory');
@@ -46,7 +46,7 @@ class MainWest extends Phaser.Scene {
         this.help = this.add.sprite(1223, 60, 'hitbox');
         this.help.setDisplaySize(85, 85);
         this.help.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // help image
         this.helpIm = this.add.image(660, 355, 'help');
@@ -61,7 +61,7 @@ class MainWest extends Phaser.Scene {
         this.knife = this.add.sprite(470, 460, 'hitbox');
         this.knife.setDisplaySize(100, 100);
         this.knife.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.knife.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 100, 'You picked up the knife');
         this.knife.interText.setFontSize(50);
@@ -73,7 +73,7 @@ class MainWest extends Phaser.Scene {
         this.food = this.add.sprite(700, 460, 'hitbox');
         this.food.setDisplaySize(250,100);
         this.food.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.food.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'Ugh. The food has long rotted');
         this.food.interText.setFontSize(50);
@@ -86,28 +86,28 @@ class MainWest extends Phaser.Scene {
         this.hammerHot = this.add.sprite(460, 659, 'hammerhot');
         this.hammerHot.setDisplaySize(60, 60);
         this.hammerHot.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.hammerHot.setVisible(false);
 
         this.knifeHot = this.add.sprite(560, 660, 'knifehot');
         this.knifeHot.setDisplaySize(65, 65);
         this.knifeHot.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.knifeHot.setVisible(false);
 
         this.scoinHot = this.add.sprite(655, 660, 'coin1hot');
         this.scoinHot.setDisplaySize(80, 80);
         this.scoinHot.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.scoinHot.setVisible(false);
 
         this.handHot = this.add.sprite(755, 659, 'hand');
         this.handHot.setDisplaySize(70, 70);
         this.handHot.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.handHot.setVisible(false);
         /////////////////////////////////////////////////////////////////////////////////////////////////////////

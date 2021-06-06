@@ -53,7 +53,7 @@ class RitualEast extends Phaser.Scene {
         this.invent = this.add.sprite(60, 60, 'hitbox');
         this.invent.setDisplaySize(100, 100);
         this.invent.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // invent image
         this.inventIm = this.add.image(630, 350, 'inventory');
@@ -67,7 +67,7 @@ class RitualEast extends Phaser.Scene {
         this.help = this.add.sprite(1223, 60, 'hitbox');
         this.help.setDisplaySize(85, 85);
         this.help.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // help image
         this.helpIm = this.add.image(660, 355, 'help');
@@ -81,7 +81,7 @@ class RitualEast extends Phaser.Scene {
         this.cabinentHit.setDisplaySize(580, 270);
         this.cabinentHit.setVisible(true);
         this.cabinentHit.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
 
         // combo pop up

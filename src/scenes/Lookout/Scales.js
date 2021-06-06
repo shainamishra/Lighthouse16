@@ -52,7 +52,7 @@ class Scales extends Phaser.Scene {
         this.weigh = this.add.image(605, 575, 'hitbox');
         this.weigh.setDisplaySize(75, 75);
         this.weigh.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.weigh.setVisible(false);
 
@@ -62,49 +62,49 @@ class Scales extends Phaser.Scene {
         this.red = this.add.image(200, 665, 'red');
         this.red.setDisplaySize(75, 75);
         this.red.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.red.setVisible(false);
         // orange
         this.orange = this.add.sprite(335, 665, 'orange');
         this.orange.setDisplaySize(75, 75);
         this.orange.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.orange.setVisible(false);
         // yellow
         this.yellow = this.add.sprite(465, 665, 'yellow');
         this.yellow.setDisplaySize(85, 85);
         this.yellow.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.yellow.setVisible(false);
         // green
         this.green = this.add.sprite(595, 665, 'green');
         this.green.setDisplaySize(75, 75);
         this.green.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.green.setVisible(false);
         // cyan
         this.cyan = this.add.sprite(725, 665, 'cyan');
         this.cyan.setDisplaySize(75, 75);
         this.cyan.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.cyan.setVisible(false);
         // blue
         this.blue = this.add.sprite(860, 665, 'blue');
         this.blue.setDisplaySize(75, 75);
         this.blue.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.blue.setVisible(false);
         // purple
         this.purple = this.add.sprite(1000, 665, 'purple');
         this.purple.setDisplaySize(75, 75);
         this.purple.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.purple.setVisible(false);
 
@@ -114,7 +114,7 @@ class Scales extends Phaser.Scene {
         this.closeLook.setDisplaySize(50, 50);
         this.closeLook.setVisible(true);
         this.closeLook.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////

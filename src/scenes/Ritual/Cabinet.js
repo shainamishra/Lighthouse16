@@ -30,7 +30,7 @@ class Cabinet extends Phaser.Scene {
         this.bleach.setDisplaySize(280, 320);
         this.bleach.setVisible(true);
         this.bleach.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.bleach.interText = this.add.text(400, 420, 'You took the bleach');
         this.bleach.interText.setFontSize(50);
@@ -45,7 +45,7 @@ class Cabinet extends Phaser.Scene {
         this.fertilizer.setDisplaySize(200, 280);
         this.fertilizer.setVisible(true);
         this.fertilizer.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.fertilizer.interText = this.add.text(400, 420, 'You took the fertilizer');
         this.fertilizer.interText.setFontSize(50);
@@ -60,7 +60,7 @@ class Cabinet extends Phaser.Scene {
         this.insecticide.setDisplaySize(130, 260);
         this.insecticide.setVisible(true);
         this.insecticide.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.insecticide.interText = this.add.text(400, 420, 'You took the insecticide');
         this.insecticide.interText.setFontSize(50);
@@ -75,7 +75,7 @@ class Cabinet extends Phaser.Scene {
         this.salt.setDisplaySize(170, 250);
         this.salt.setVisible(true);
         this.salt.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.salt.interText = this.add.text(400, 420, 'You took the salt');
         this.salt.interText.setFontSize(50);
@@ -90,7 +90,7 @@ class Cabinet extends Phaser.Scene {
         this.candle.setDisplaySize(505, 130);
         this.candle.setVisible(true);
         this.candle.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.candle.interText = this.add.text(400, 420, 'You took the candles');
         this.candle.interText.setFontSize(50);
@@ -102,7 +102,7 @@ class Cabinet extends Phaser.Scene {
         this.closeLook.setDisplaySize(50, 50);
         this.closeLook.setVisible(true);
         this.closeLook.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////

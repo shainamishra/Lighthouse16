@@ -36,7 +36,7 @@ class IslandEast extends Phaser.Scene {
         this.invent = this.add.sprite(60, 60, 'hitbox');
         this.invent.setDisplaySize(100, 100);
         this.invent.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // invent image
         this.inventIm = this.add.image(630, 350, 'inventory');
@@ -50,7 +50,7 @@ class IslandEast extends Phaser.Scene {
         this.help = this.add.sprite(1223, 60, 'hitbox');
         this.help.setDisplaySize(85, 85);
         this.help.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // help image
         this.helpIm = this.add.image(660, 355, 'help');
@@ -82,7 +82,7 @@ class IslandEast extends Phaser.Scene {
         this.fishingpole = this.add.sprite(460,300, 'hitbox');
         this.fishingpole.setDisplaySize(220, 400);
         this.fishingpole.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.fishingpole.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'The reel is missing\nfrom the fishing pole');
         this.fishingpole.interText.setFontSize(50);
@@ -92,7 +92,7 @@ class IslandEast extends Phaser.Scene {
         this.bucket = this.add.sprite(250, 440, 'hitbox');
         this.bucket.setDisplaySize(100, 110);
         this.bucket.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.bucket.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 100, 'There was a key in the bucket');
         this.bucket.interText.setFontSize(50);
@@ -112,7 +112,7 @@ class IslandEast extends Phaser.Scene {
         this.pillars = this.add.sprite(930, 250, 'hitbox');
         this.pillars.setDisplaySize(300, 100);
         this.pillars.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.pillars.interText = this.add.text(700, 300, 'You cant see much \n  past the fog');
         this.pillars.interText.setFontSize(50);
@@ -134,28 +134,28 @@ class IslandEast extends Phaser.Scene {
         this.keyHot = this.add.sprite(460, 659, 'keyHot');
         this.keyHot.setDisplaySize(60, 60);
         this.keyHot.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.keyHot.setVisible(false);
 
         this.reelHot = this.add.sprite(560, 660, 'reelHot');
         this.reelHot.setDisplaySize(75, 75);
         this.reelHot.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.reelHot.setVisible(false);
 
         this.telescopeHot = this.add.sprite(655, 660, 'telescopeHot');
         this.telescopeHot.setDisplaySize(80, 80);
         this.telescopeHot.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.telescopeHot.setVisible(false);
 
         this.boltcuttersHot = this.add.sprite(755, 659, 'boltcuttersHot');
         this.boltcuttersHot.setDisplaySize(70, 70);
         this.boltcuttersHot.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.boltcuttersHot.setVisible(false);
 

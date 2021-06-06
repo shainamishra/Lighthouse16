@@ -34,7 +34,7 @@ class MainNorth extends Phaser.Scene {
         this.invent = this.add.sprite(60, 60, 'hitbox');
         this.invent.setDisplaySize(100, 100);
         this.invent.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // invent image
         this.inventIm = this.add.image(630, 350, 'inventory');
@@ -48,7 +48,7 @@ class MainNorth extends Phaser.Scene {
         this.help = this.add.sprite(1223, 60, 'hitbox');
         this.help.setDisplaySize(85, 85);
         this.help.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // help image
         this.helpIm = this.add.image(660, 355, 'help');
@@ -60,7 +60,7 @@ class MainNorth extends Phaser.Scene {
         this.indoor = this.add.sprite(450, 350, 'hitbox');
         this.indoor.setDisplaySize(350, 700);
         this.indoor.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.indoor.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'The door leads outside...\nand it is locked');
         this.indoor.interText.setFontSize(50);
@@ -69,7 +69,7 @@ class MainNorth extends Phaser.Scene {
         this.gclock = this.add.sprite(975, 350, 'hitbox');
         this.gclock.setDisplaySize(150, 700);
         this.gclock.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.gclock.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 100, 'The clock is missing\nthe minute hand');
         this.gclock.interText.setFontSize(50);
@@ -81,13 +81,13 @@ class MainNorth extends Phaser.Scene {
         // hour hand
         this.hourhand = this.add.image(650, 350,'hour');
         this.hourhand.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.hourhand.setVisible(false);
         // minute hand
         this.minutehand = this.add.image(650, 350, 'minute');
         this.minutehand.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.minutehand.setVisible(false);
 
@@ -98,28 +98,28 @@ class MainNorth extends Phaser.Scene {
         this.hammerHot = this.add.sprite(460, 659, 'hammerhot');
         this.hammerHot.setDisplaySize(60, 60);
         this.hammerHot.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.hammerHot.setVisible(false);
 
         this.knifeHot = this.add.sprite(560, 660, 'knifehot');
         this.knifeHot.setDisplaySize(65, 65);
         this.knifeHot.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.knifeHot.setVisible(false);
 
         this.scoinHot = this.add.sprite(655, 660, 'coin1hot');
         this.scoinHot.setDisplaySize(80, 80);
         this.scoinHot.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.scoinHot.setVisible(false);
 
         this.handHot = this.add.sprite(755, 659, 'hand');
         this.handHot.setDisplaySize(70, 70);
         this.handHot.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.handHot.setVisible(false);
         /////////////////////////////////////////////////////////////////////////////////////////////////////////

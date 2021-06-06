@@ -29,7 +29,7 @@ class RitualSouth extends Phaser.Scene {
         this.invent = this.add.sprite(60, 60, 'hitbox');
         this.invent.setDisplaySize(100, 100);
         this.invent.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // invent image
         this.inventIm = this.add.image(630, 350, 'inventory');
@@ -43,7 +43,7 @@ class RitualSouth extends Phaser.Scene {
         this.help = this.add.sprite(1223, 60, 'hitbox');
         this.help.setDisplaySize(85, 85);
         this.help.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // help image
         this.helpIm = this.add.image(660, 355, 'help');
@@ -57,7 +57,7 @@ class RitualSouth extends Phaser.Scene {
         this.hatchHit.setDisplaySize(340, 100);
         this.hatchHit.setVisible(true);
         this.hatchHit.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
 
         // switch on
@@ -73,7 +73,7 @@ class RitualSouth extends Phaser.Scene {
         this.switchHit.setDisplaySize(50, 75);
         this.switchHit.setVisible(true);
         this.switchHit.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
 
         // closet hit
@@ -81,7 +81,7 @@ class RitualSouth extends Phaser.Scene {
         this.closetHit.setDisplaySize(380, 570);
         this.closetHit.setVisible(true);
         this.closetHit.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////

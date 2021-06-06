@@ -46,7 +46,7 @@ class LookoutNorth extends Phaser.Scene {
         this.invent = this.add.sprite(60, 60, 'hitbox');
         this.invent.setDisplaySize(100, 100);
         this.invent.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // invent image
         this.inventIm = this.add.image(630, 350, 'inventory');
@@ -60,7 +60,7 @@ class LookoutNorth extends Phaser.Scene {
         this.help = this.add.sprite(1223, 60, 'hitbox');
         this.help.setDisplaySize(85, 85);
         this.help.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // help image
         this.helpIm = this.add.image(660, 355, 'help');
@@ -73,7 +73,7 @@ class LookoutNorth extends Phaser.Scene {
         this.queen = this.add.sprite(700, 320, 'hitbox');
         this.queen.setDisplaySize(630, 510);
         this.queen.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.queen.interText = this.add.text(1020, 170, 'These\nlook\nlike\nchakra\nstones');
         this.queen.interText.setFontSize(50);
@@ -84,37 +84,37 @@ class LookoutNorth extends Phaser.Scene {
         this.one1 = this.add.sprite(460, 135, 'hitbox');
         this.one1.setDisplaySize(60, 60);
         this.one1.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.one1.setVisible(false);
         this.one2 = this.add.sprite(535, 135, 'hitbox');
         this.one2.setDisplaySize(60, 60);
         this.one2.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.one2.setVisible(false);
         this.one3 = this.add.sprite(612, 135, 'hitbox');
         this.one3.setDisplaySize(60, 60);
         this.one3.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.one3.setVisible(false);
         this.one4 = this.add.sprite(690, 135, 'hitbox');
         this.one4.setDisplaySize(60, 60);
         this.one4.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.one4.setVisible(false);
         this.one5 = this.add.sprite(762, 135, 'hitbox');
         this.one5.setDisplaySize(60, 60);
         this.one5.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.one5.setVisible(false);
         this.one6 = this.add.sprite(836, 135, 'hitbox');
         this.one6.setDisplaySize(60, 60);
         this.one6.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.one6.setVisible(false);
 
@@ -122,37 +122,37 @@ class LookoutNorth extends Phaser.Scene {
         this.two1 = this.add.sprite(460, 205, 'hitbox');
         this.two1.setDisplaySize(60, 60);
         this.two1.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.two1.setVisible(false);
         this.two2 = this.add.sprite(535, 205, 'hitbox');
         this.two2.setDisplaySize(60, 60);
         this.two2.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.two2.setVisible(false);
         this.two3 = this.add.sprite(612, 205, 'hitbox');
         this.two3.setDisplaySize(60, 60);
         this.two3.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.two3.setVisible(false);
         this.two4 = this.add.sprite(690, 205, 'hitbox');
         this.two4.setDisplaySize(60, 60);
         this.two4.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.two4.setVisible(false);
         this.two5 = this.add.sprite(762, 205, 'hitbox');
         this.two5.setDisplaySize(60, 60);
         this.two5.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.two5.setVisible(false);
         this.two6 = this.add.sprite(836, 205, 'hitbox');
         this.two6.setDisplaySize(60, 60);
         this.two6.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.two6.setVisible(false);
 
@@ -160,37 +160,37 @@ class LookoutNorth extends Phaser.Scene {
         this.three1 = this.add.sprite(460, 278, 'hitbox');
         this.three1.setDisplaySize(60, 60);
         this.three1.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.three1.setVisible(false);
         this.three2 = this.add.sprite(535, 278, 'hitbox');
         this.three2.setDisplaySize(60, 60);
         this.three2.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.three2.setVisible(false);
         this.three3 = this.add.sprite(612, 278, 'hitbox');
         this.three3.setDisplaySize(60, 60);
         this.three3.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.three3.setVisible(false);
         this.three4 = this.add.sprite(690, 278, 'hitbox');
         this.three4.setDisplaySize(60, 60);
         this.three4.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.three4.setVisible(false);
         this.three5 = this.add.sprite(762, 278, 'hitbox');
         this.three5.setDisplaySize(60, 60);
         this.three5.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.three5.setVisible(false);
         this.three6 = this.add.sprite(836, 278, 'hitbox');
         this.three6.setDisplaySize(60, 60);
         this.three6.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.three6.setVisible(false);
 
@@ -198,37 +198,37 @@ class LookoutNorth extends Phaser.Scene {
         this.four1 = this.add.sprite(460, 355, 'hitbox');
         this.four1.setDisplaySize(60, 60);
         this.four1.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.four1.setVisible(false);
         this.four2 = this.add.sprite(535, 355, 'hitbox');
         this.four2.setDisplaySize(60, 60);
         this.four2.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.four2.setVisible(false);
         this.four3 = this.add.sprite(612, 355, 'hitbox');
         this.four3.setDisplaySize(60, 60);
         this.four3.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.four3.setVisible(false);
         this.four4 = this.add.sprite(690, 355, 'hitbox');
         this.four4.setDisplaySize(60, 60);
         this.four4.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.four4.setVisible(false);
         this.four5 = this.add.sprite(762, 355, 'hitbox');
         this.four5.setDisplaySize(60, 60);
         this.four5.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.four5.setVisible(false);
         this.four6 = this.add.sprite(836, 355, 'hitbox');
         this.four6.setDisplaySize(60, 60);
         this.four6.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.four6.setVisible(false);
 
@@ -236,37 +236,37 @@ class LookoutNorth extends Phaser.Scene {
         this.five1 = this.add.sprite(460, 429, 'hitbox');
         this.five1.setDisplaySize(60, 60);
         this.five1.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.five1.setVisible(false);
         this.five2 = this.add.sprite(535, 429, 'hitbox');
         this.five2.setDisplaySize(60, 60);
         this.five2.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.five2.setVisible(false);
         this.five3 = this.add.sprite(612, 429, 'hitbox');
         this.five3.setDisplaySize(60, 60);
         this.five3.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.five3.setVisible(false);
         this.five4 = this.add.sprite(690, 429, 'hitbox');
         this.five4.setDisplaySize(60, 60);
         this.five4.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.five4.setVisible(false);
         this.five5 = this.add.sprite(762, 429, 'hitbox');
         this.five5.setDisplaySize(60, 60);
         this.five5.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.five5.setVisible(false);
         this.five6 = this.add.sprite(836, 429, 'hitbox');
         this.five6.setDisplaySize(60, 60);
         this.five6.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.five6.setVisible(false);
 
@@ -274,37 +274,37 @@ class LookoutNorth extends Phaser.Scene {
         this.six1 = this.add.sprite(460, 500, 'hitbox');
         this.six1.setDisplaySize(60, 60);
         this.six1.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.six1.setVisible(false);
         this.six2 = this.add.sprite(535, 500, 'hitbox');
         this.six2.setDisplaySize(60, 60);
         this.six2.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.six2.setVisible(false);
         this.six3 = this.add.sprite(612, 500, 'hitbox');
         this.six3.setDisplaySize(60, 60);
         this.six3.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.six3.setVisible(false);
         this.six4 = this.add.sprite(690, 500, 'hitbox');
         this.six4.setDisplaySize(60, 60);
         this.six4.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.six4.setVisible(false);
         this.six5 = this.add.sprite(762, 500, 'hitbox');
         this.six5.setDisplaySize(60, 60);
         this.six5.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.six5.setVisible(false);
         this.six6 = this.add.sprite(836, 500, 'hitbox');
         this.six6.setDisplaySize(60, 60);
         this.six6.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.six6.setVisible(false);
 

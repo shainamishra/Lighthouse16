@@ -63,35 +63,35 @@ class Pentagram extends Phaser.Scene {
         this.card5.setDisplaySize(170, 96);
         this.card5.setVisible(true);
         this.card5.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // card4
         this.card4 = this.add.sprite(155, 628, 'card4');
         this.card4.setDisplaySize(170, 96);
         this.card4.setVisible(true);
         this.card4.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // card3
         this.card3 = this.add.sprite(155, 628, 'card3');
         this.card3.setDisplaySize(170, 96);
         this.card3.setVisible(true);
         this.card3.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // card2
         this.card2 = this.add.sprite(155, 628, 'card2');
         this.card2.setDisplaySize(170, 96);
         this.card2.setVisible(true);
         this.card2.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // card1
         this.card1 = this.add.sprite(155, 628, 'card1');
         this.card1.setDisplaySize(170, 96);
         this.card1.setVisible(true);
         this.card1.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -101,7 +101,7 @@ class Pentagram extends Phaser.Scene {
         this.matches.setDisplaySize(100, 200);
         this.matches.setVisible(true);
         this.matches.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
 
         // knife
@@ -109,7 +109,7 @@ class Pentagram extends Phaser.Scene {
         this.knife.setDisplaySize(100, 200);
         this.knife.setVisible(true);
         this.knife.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
 
         //// chemicals - set this as a hitbox with a seperate image layer
@@ -117,7 +117,7 @@ class Pentagram extends Phaser.Scene {
         this.chem.setDisplaySize(170, 96);
         this.chem.setVisible(true);
         this.chem.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -126,7 +126,7 @@ class Pentagram extends Phaser.Scene {
         this.closeLook.setDisplaySize(50, 50);
         this.closeLook.setVisible(true);
         this.closeLook.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////

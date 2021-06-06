@@ -29,7 +29,7 @@ class IslandSouth extends Phaser.Scene {
         this.invent = this.add.sprite(60, 60, 'hitbox');
         this.invent.setDisplaySize(100, 100);
         this.invent.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // invent image
         this.inventIm = this.add.image(630, 350, 'inventory');
@@ -43,7 +43,7 @@ class IslandSouth extends Phaser.Scene {
         this.help = this.add.sprite(1223, 60, 'hitbox');
         this.help.setDisplaySize(85, 85);
         this.help.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // help image
         this.helpIm = this.add.image(660, 355, 'help');
@@ -55,7 +55,7 @@ class IslandSouth extends Phaser.Scene {
         this.graves = this.add.sprite(850, 250, 'hitbox');
         this.graves.setDisplaySize(600, 400);
         this.graves.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.graves.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'Three graves with strange\ntext instead of names\nWhat could they mean?');
         this.graves.interText.setFontSize(50);
@@ -66,7 +66,7 @@ class IslandSouth extends Phaser.Scene {
         this.gravebox.setDisplaySize(90, 82);
         this.gravebox.setVisible(true);
         this.gravebox.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.gravebox.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 150, 'A small locked box sits\ninfront of the graves');
         this.gravebox.interText.setFontSize(50);
@@ -93,28 +93,28 @@ class IslandSouth extends Phaser.Scene {
         this.keyHot = this.add.sprite(460, 659, 'keyHot');
         this.keyHot.setDisplaySize(60, 60);
         this.keyHot.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.keyHot.setVisible(false);
 
         this.reelHot = this.add.sprite(560, 660, 'reelHot');
         this.reelHot.setDisplaySize(75, 75);
         this.reelHot.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.reelHot.setVisible(false);
 
         this.telescopeHot = this.add.sprite(655, 660, 'telescopeHot');
         this.telescopeHot.setDisplaySize(80, 80);
         this.telescopeHot.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.telescopeHot.setVisible(false);
 
         this.boltcuttersHot = this.add.sprite(755, 659, 'boltcuttersHot');
         this.boltcuttersHot.setDisplaySize(70, 70);
         this.boltcuttersHot.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.boltcuttersHot.setVisible(false);
         

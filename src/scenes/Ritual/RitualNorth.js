@@ -48,7 +48,7 @@ class RitualNorth extends Phaser.Scene {
         this.invent = this.add.sprite(60, 60, 'hitbox');
         this.invent.setDisplaySize(100, 100);
         this.invent.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // invent image
         this.inventIm = this.add.image(630, 350, 'inventory');
@@ -62,7 +62,7 @@ class RitualNorth extends Phaser.Scene {
         this.help = this.add.sprite(1223, 60, 'hitbox');
         this.help.setDisplaySize(85, 85);
         this.help.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         // help image
         this.helpIm = this.add.image(660, 355, 'help');
@@ -75,7 +75,7 @@ class RitualNorth extends Phaser.Scene {
         this.bookshelf = this.add.sprite(955, 155, 'hitbox');
         this.bookshelf.setDisplaySize(560, 150);
         this.bookshelf.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.bookshelf.setVisible(true);
 
@@ -83,7 +83,7 @@ class RitualNorth extends Phaser.Scene {
         this.ritual = this.add.sprite(530, 540, 'hitbox');
         this.ritual.setDisplaySize(930, 150);
         this.ritual.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.ritual.setVisible(true);
 
@@ -91,7 +91,7 @@ class RitualNorth extends Phaser.Scene {
         this.matches = this.add.sprite(1090, 390, 'hitbox');
         this.matches.setDisplaySize(150, 50);
         this.matches.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.matches.setVisible(true);
         // match image
@@ -103,7 +103,7 @@ class RitualNorth extends Phaser.Scene {
         this.knife = this.add.sprite(875, 390, 'hitbox');
         this.knife.setDisplaySize(235, 50);
         this.knife.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.knife.setVisible(true);
         // knife image

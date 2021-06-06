@@ -40,7 +40,7 @@ class Closet extends Phaser.Scene {
         this.noteHit.setDisplaySize(150, 100);
         this.noteHit.setVisible(false);
         this.noteHit.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.noteHit.interText = this.add.text(400, 650, 'You put the note in your inventory');
         this.noteHit.interText.setFontSize(40);
@@ -57,7 +57,7 @@ class Closet extends Phaser.Scene {
         this.closeLook.setDisplaySize(50, 50);
         this.closeLook.setVisible(true);
         this.closeLook.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////

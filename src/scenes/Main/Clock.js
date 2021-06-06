@@ -21,7 +21,7 @@ class Clock extends Phaser.Scene {
 
         this.hourhand = this.add.image(650, 350,'hour');
         this.hourhand.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.hourhand.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 100, 'The hatch behind you unlocked');
         this.hourhand.interText.setFontSize(50);
@@ -30,14 +30,14 @@ class Clock extends Phaser.Scene {
 
         this.minutehand = this.add.image(650, 350, 'minute');
         this.minutehand.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.minutehand.angle = 0;
 
         this.exitPuzzle = this.add.sprite(50, 50, 'x');
         this.exitPuzzle.setDisplaySize(50, 50);
         this.exitPuzzle.setInteractive({
-            useHandCursor: true
+            cursor: handPointer
         });
         this.textTimerClockP = 0;
         this.timesbuttonpressed = 0;
