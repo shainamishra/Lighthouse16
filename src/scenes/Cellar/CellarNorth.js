@@ -74,6 +74,7 @@ class CellarNorth extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // god forsaken variables
         this.hotOn = true;
+        this.textTimer = 0;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -101,8 +102,6 @@ class CellarNorth extends Phaser.Scene {
                 this.textTimer = 1;
             }
         });
-
-        this.textTimer = 0;
         
         if (disappear == 1){
             this.plateHot.setVisible(false);
@@ -130,6 +129,12 @@ class CellarNorth extends Phaser.Scene {
                 this.scene.start("spread3");
             };
         }
+
+        // dlete this
+        if(Phaser.Input.Keyboard.JustDown(keySPACE)){
+            this.sound.get('cellar_music').stop();
+            this.scene.start("spread3");
+        };
     }
     
     hotBarItems(on){

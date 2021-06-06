@@ -205,7 +205,7 @@ class MainSouth extends Phaser.Scene {
             this.scoinbox.on('pointerdown', (pointer) => {
                 this.scoinbox.interText.setVisible(true);
                 this.textTimerCoin = 1;
-                });
+            });
         }
         if(this.textTimerCoin > 0 && this.textTimerCoin <150){
             if(scoinGot ==0){
@@ -245,7 +245,7 @@ class MainSouth extends Phaser.Scene {
             if(hammerGot == 1 && scoinGot == 0){
                 this.hammerHot.setVisible(true);
             }
-            if(knifeGot == 1){
+            if(knifeGot == 1 && pcoinGot == 0){
                 this.knifeHot.setVisible(true);
             }
             if(scoinGot == 1){
@@ -254,6 +254,7 @@ class MainSouth extends Phaser.Scene {
             }
             if(pcoinGot == 1){
                 this.handHot.setVisible(true);
+                this.knifeHot.setVisible(false);
             }
         }
         else{
