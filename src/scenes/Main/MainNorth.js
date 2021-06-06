@@ -198,6 +198,11 @@ class MainNorth extends Phaser.Scene {
                 
             }
             else{
+                if(clockUnlock == 1){
+                    this.gclock.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 100, 'The time has been set');
+                    this.gclock.interText.setFontSize(50);
+                    this.gclock.interText.setVisible(false);
+                }
                 this.gclock.on('pointerdown', (pointer) => {
                 this.gclock.interText.setVisible(true);
                 
