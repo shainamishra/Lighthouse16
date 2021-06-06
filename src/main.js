@@ -14,6 +14,9 @@ let config = {
 
 let game = new Phaser.Game(config);
 
+//custom cursor
+let handPointer = 'url(./assets/hand.png), pointer';
+
 // set UI sizes
 let borderUISize = game.config.height / 15;
 let borderPadding = borderUISize / 3;

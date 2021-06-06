@@ -66,6 +66,8 @@ class Menu extends Phaser.Scene {
         // title
         this.title = this.add.tileSprite(0, 10, 1280, 720, 'start').setOrigin(0, 0);
 
+        this.input.setDefaultCursor(handPointer);
+
         // borders
         this.add.rectangle(0, 0, 10, game.config.height, 0x042630).setOrigin(0, 0);
         this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x042630).setOrigin(0, 0);
