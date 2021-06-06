@@ -252,7 +252,7 @@ class Cabinet extends Phaser.Scene {
             this.dark.setVisible(true);
         }
 
-        if(candles == 1){
+        if(candles > 0){
             this.candle.setVisible(false);
             this.candleIm.setVisible(false);
         }

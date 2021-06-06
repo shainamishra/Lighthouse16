@@ -79,7 +79,6 @@ class Clock extends Phaser.Scene {
             this.textTimerClockP += 1;
         } 
         else if(this.textTimerClockP >= 150){
-    
             this.textTimerClockP = 0;
         }
 

@@ -5,9 +5,10 @@ class Closet extends Phaser.Scene {
 
     preload(){
         // scales images
-        this.load.image('closet', './assets/puzzle5/closeups/closet_clock.png');
-        this.load.image('clockUnlock', './assets/puzzle5/closeups/closet_clock_open.png');
-        this.load.image('closetNote', './assets/puzzle5/overlays/closet_note.png');
+        this.load.image('closet', './assets/puzzle5/closet/closet_clock.png');
+        this.load.image('clockUnlock', './assets/puzzle5/closet/closet_clock_open.png');
+        this.load.image('closetNote', './assets/puzzle5/closet/closet_note.png');
+        this.load.image('closetNoteOpen', './assets/puzzle5/closet/closet_note_open.png');
 
 
         // audio
@@ -35,12 +36,20 @@ class Closet extends Phaser.Scene {
         this.note.setDisplaySize(1280, 720);
         this.note.setVisible(false);
         // note hit
-        this.noteHit = this.add.image(615, 485, 'hitbox');
-        this.noteHit.setDisplaySize(100, 20);
+        this.noteHit = this.add.image(615, 455, 'hitbox');
+        this.noteHit.setDisplaySize(150, 100);
         this.noteHit.setVisible(false);
         this.noteHit.setInteractive({
             useHandCursor: true
         });
+        this.noteHit.interText = this.add.text(400, 650, 'You put the note in your inventory');
+        this.noteHit.interText.setFontSize(40);
+        this.noteHit.interText.setVisible(false);
+
+        // note open
+        this.noteOpen = this.add.image(640, 360, 'closetNoteOpen');
+        this.noteOpen.setDisplaySize(1280, 720);
+        this.noteOpen.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // close
@@ -94,13 +103,22 @@ class Closet extends Phaser.Scene {
 
         if(this.textTimer == 0 && paper == 0){
             this.noteHit.on('pointerdown', () => {
-                this.textVar = 150;
+                this.textVar = 300;
                 this.textTimer = 1;
+                this.noteOpen.setVisible(true);
+                this.noteHit.interText.setVisible(true);
                 paper = 1;
             });
         }
+        if(this.textTimer == 0 && paper == 1){
+            this.noteHit.on('pointerdown', () => {
+                this.textVar = 150;
+                this.textTimer = 1;
+                this.noteOpen.setVisible(false);
+                this.noteHit.interText.setVisible(true);
+            });
+        }
         
-
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // text timers
         if(this.textTimer > 0 && this.textTimer < this.textVar) {
@@ -109,13 +127,15 @@ class Closet extends Phaser.Scene {
         else if(this.textTimer >= this.textVar){
             // hide text
             this.textTimer = 0;
+            this.noteOpen.setVisible(false);
+            this.noteHit.interText.setVisible(false);
         }
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // end states
-        if(lightState == 1){
+        if(lightState == 0){
             this.dark.setVisible(false);
-        } else if(lightState == 2){
+        } else if(lightState == 1){
             this.dark.setVisible(true);
         }
 
@@ -126,7 +146,7 @@ class Closet extends Phaser.Scene {
         if (paper == 1){
             this.unlock.setVisible(true);
             this.note.setVisible(false);
-            this.noteHit.setVisible(false);
+            //this.noteHit.setVisible(false);
         }
     }
 }

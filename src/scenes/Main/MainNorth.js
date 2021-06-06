@@ -171,7 +171,6 @@ class MainNorth extends Phaser.Scene {
         });
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-       
         // end states
         if(this.textTimerIndoor == 0){
             this.indoor.on('pointerdown', (pointer) => {
@@ -191,8 +190,9 @@ class MainNorth extends Phaser.Scene {
         }
 
         if(this.textTimerGclock == 0){
-            if(pcoinGot == 1){
+            if(pcoinGot == 1 && this.textTimerIndoor == 0){
                 this.gclock.on('pointerdown', (pointer) => {
+                    this.textTimerIndoor = 1;
                     this.scene.switch("clockpuzzle");
                 });
                 

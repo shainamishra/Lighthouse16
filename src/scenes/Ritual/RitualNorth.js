@@ -222,7 +222,7 @@ class RitualNorth extends Phaser.Scene {
             this.knife.setVisible(false);
             this.knifeIm.setVisible(false);
             this.textTimer = 1;
-            this.timeVar = 150;
+            this.timeVar = 100;
             knifeGot = 1;
         });
 
@@ -232,7 +232,7 @@ class RitualNorth extends Phaser.Scene {
             this.matches.setVisible(false);
             this.matchesIm.setVisible(false);
             this.textTimer = 1;
-            this.timeVar = 150;
+            this.timeVar = 100;
             matches = 1;
         });
 
@@ -288,7 +288,21 @@ class RitualNorth extends Phaser.Scene {
         if(candles == 1){
             this.candles.setVisible(true);
         }
-        //candles = 1;
+        if(lit == 1){
+            if(chemical == 0){
+                this.fireNormal.setVisible(true);
+            } else if(chemical == 1){
+                this.fireGreen.setVisible(true);
+            } else if(chemical == 2){
+                this.firePurple.setVisible(true);
+            } else if(chemical == 3){
+                this.fireNormal.setVisible(true);
+            } else if(chemical == 4){
+                this.fireYellow.setVisible(true);
+            }
+        } else if(lit == 2){
+            this.fireNormal.setVisible(true);
+        }
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // scene change on keypress
