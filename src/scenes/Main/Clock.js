@@ -23,7 +23,7 @@ class Clock extends Phaser.Scene {
         this.hourhand.setInteractive({
             cursor: handPointer
         });
-        this.hourhand.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 100, 'The hatch behind you unlocked');
+        this.hourhand.interText = this.add.text(borderUISize + borderPadding * 20 - 360, borderUISize + borderPadding * 2, 'The hatch\nbehind you\nunlocked');
         this.hourhand.interText.setFontSize(50);
         this.hourhand.interText.setVisible(false);
 
