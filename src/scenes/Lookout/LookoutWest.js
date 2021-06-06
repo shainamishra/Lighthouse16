@@ -212,7 +212,6 @@ class LookoutWest extends Phaser.Scene {
 
             if(Phaser.Input.Keyboard.JustDown(keySPACE)){
                 this.sound.get('lookout_music').stop();
-                //this.scene.start("spread5");
                 this.scene.start("loadingNorth");
             };
         }
@@ -228,6 +227,7 @@ class LookoutWest extends Phaser.Scene {
             this.outline.interText.setVisible(false);
             this.textTimer = 0;
         } 
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // hatch text timers
         if(this.textTimerHatch > 0 && this.textTimerHatch < 50) {
@@ -237,6 +237,7 @@ class LookoutWest extends Phaser.Scene {
             // hide text
             this.textTimerHatch = 0;
         }
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // end states
         if(rag == 1){

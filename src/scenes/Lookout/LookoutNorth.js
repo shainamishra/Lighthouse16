@@ -24,6 +24,7 @@ class LookoutNorth extends Phaser.Scene {
 
         // audio
         this.load.audio('itemtake', './assets/sfx/ItemTake.wav');
+        this.load.audio('wrong', './assets/sfx/Wrong.wav');
     }
 
     create() {
@@ -34,6 +35,7 @@ class LookoutNorth extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // sfx
         this.itemTake = this.sound.add('itemtake', {volume: 0.5});
+        this.wrong = this.sound.add('wrong', {volume: 3.0});
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
@@ -342,27 +344,27 @@ class LookoutNorth extends Phaser.Scene {
         this.queenText.setDisplaySize(1280, 720);
         this.queenText.setVisible(false);
 
-        this.purple = this.add.image(this.setX, this.setY, 'purple');
+        this.purple = this.add.image(100, 100, 'purple');
         this.purple.setDisplaySize(60, 60);
         this.purple.setVisible(false);
 
-        this.blue = this.add.image(this.setX, this.setY, 'blue');
+        this.blue = this.add.image(100, 100, 'blue');
         this.blue.setDisplaySize(60, 60);
         this.blue.setVisible(false);
         
-        this.cyan = this.add.image(this.setX, this.setY, 'cyan');
+        this.cyan = this.add.image(100, 100, 'cyan');
         this.cyan.setDisplaySize(60, 60);
         this.cyan.setVisible(false);
 
-        this.green = this.add.image(this.setX, this.setY, 'green');
+        this.green = this.add.image(100, 100, 'green');
         this.green.setDisplaySize(60, 60);
         this.green.setVisible(false);
 
-        this.orange = this.add.image(this.setX, this.setY, 'orange');
+        this.orange = this.add.image(100, 100, 'orange');
         this.orange.setDisplaySize(60, 60);
         this.orange.setVisible(false);
 
-        this.red = this.add.image(this.setX, this.setY, 'red');
+        this.red = this.add.image(100, 100, 'red');
         this.red.setDisplaySize(60, 60);
         this.red.setVisible(false);
 
@@ -826,6 +828,7 @@ class LookoutNorth extends Phaser.Scene {
                 this.queen.interText = this.add.text(1020, 170, 'The\npattern\ndidnt\nwork');
                 this.queen.interText.setFontSize(50);
                 this.showQueenTimer = 1;
+                this.wrong.play();
 
                 this.purple.setVisible(false);
                 this.blue.setVisible(false);

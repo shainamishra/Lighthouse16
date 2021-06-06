@@ -139,8 +139,9 @@ class MainNorth extends Phaser.Scene {
             this.scene.start("mainEast"); 
 		});
 
-        // add the finish check to this @DarenBartolucci
+        // delete this
         this.input.keyboard.on('keydown-SPACE', () => {
+            this.sound.get('clockbgm').stop();
             this.scene.start("spread4"); 
 		});
 
