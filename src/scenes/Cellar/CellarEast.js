@@ -425,6 +425,9 @@ class CellarEast extends Phaser.Scene {
             this.dark.setVisible(true);
         }
 
+        if (disappear == 1){
+            this.plateHot.setVisible(false);
+        }
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // scene change on keypress
         if(Phaser.Input.Keyboard.JustDown(keyA)){
@@ -466,12 +469,18 @@ class CellarEast extends Phaser.Scene {
         if(on == true){
             this.hotbar.setVisible(true);
 
-            if (deskKey == 1){
+            if (deskKey == 1  && switchGot == 0){
                 this.key2Hot.setVisible(true);
             }
+            else if(switchGot== 1){
+                this.key2Hot.setVisible(false);
+            }
 
-            if (switchGot == 1){
+            if (switchGot == 1 && disappear ==0){
                 this.plateHot.setVisible(true);
+            }
+            else if(disappear == 1){
+                this.plateHot.setVisible(false);
             }
         }
         else {

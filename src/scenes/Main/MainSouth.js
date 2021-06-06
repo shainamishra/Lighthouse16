@@ -174,6 +174,8 @@ class MainSouth extends Phaser.Scene {
         if(this.textTimerSkull > 0 && this.textTimerSkull < 150) {
             this.textTimerSkull += 1;
             if(hammerGot ==1){
+                this.hammerHot.setVisible(false)
+                hammerGot = 0;
                 skullsmash =1;
             }
         } 

@@ -184,10 +184,14 @@ class CellarWest extends Phaser.Scene {
                     this.desk.interText.setVisible(false);
                     this.deskOpen.interText.setVisible(true);
                     this.deskOpen.setVisible(true);
+                    this.key2Hot.setVisible(false);
                     this.textTimerDesk = 1;
                     this.itemTake.play();
                 });
             }
+        }
+        if (disappear == 1){
+            this.plateHot.setVisible(false);
         }
 
         // desk text timer
@@ -268,12 +272,17 @@ class CellarWest extends Phaser.Scene {
         if(on == true){
             this.hotbar.setVisible(true);
 
-            if (deskKey == 1){
+            if (deskKey == 1 && switchGot == 0){
                 this.key2Hot.setVisible(true);
             }
-
-            if (switchGot == 1){
+            else if(switchGot== 1){
+                this.key2Hot.setVisible(false);
+            }
+            if (switchGot == 1 && disappear ==0){
                 this.plateHot.setVisible(true);
+            }
+            else if(disappear == 1){
+                this.plateHot.setVisible(false);
             }
         }
         else {

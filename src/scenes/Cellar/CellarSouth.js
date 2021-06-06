@@ -172,6 +172,8 @@ class CellarSouth extends Phaser.Scene {
         // switchGot
         if (switchGot == 1){
             this.switchOn.setVisible(true);
+            this.plateHot.setVisible(false);
+            disappear = 1;
         }
         
         // switch text
@@ -187,7 +189,9 @@ class CellarSouth extends Phaser.Scene {
             else if(switchGot == 1){
                 this.switch.on('pointerdown', (pointer) => {
                     // turn lights from on to off
+                    this.plateHot.setVisible(false);
                     if(lightState == 0 && this.textTimerSwitch == 0){
+                        switchGot == 2;
                         this.switchOn.setVisible(false);
                         this.switchOff.setVisible(true);
                         this.lightOn.setVisible(false);
@@ -201,9 +205,10 @@ class CellarSouth extends Phaser.Scene {
                         lightState = 1;
                         this.textTimerSwitch = 1;
                     }
-                    else if(lightState == 1 && this.textTimerSwitch == 0)
+                    else if(lightState == 1 &&  this.textTimerSwitch == 0)
                     {
                         // turn lights from off to on
+                        switchGot == 2
                         this.switchOn.setVisible(true);
                         this.switchOff.setVisible(false);
                         this.lightOn.setVisible(true);
@@ -233,9 +238,7 @@ class CellarSouth extends Phaser.Scene {
             this.textTimerSwitch = 0;
         }
 
-        // end states 
-        // delete this
-        unlocked == 1
+        
 
         if(unlocked == 1){
             this.door.setVisible(true);
@@ -272,10 +275,12 @@ class CellarSouth extends Phaser.Scene {
         if(on == true){
             this.hotbar.setVisible(true);
 
-            if (deskKey == 1){
+            if (deskKey == 1 && switchGot == 0){
                 this.key2Hot.setVisible(true);
             }
-
+            if(switchGot== 1){
+                this.key2Hot.setVisible(false);
+            }
             if (switchGot == 1){
                 this.plateHot.setVisible(true);
             }

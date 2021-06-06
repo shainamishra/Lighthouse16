@@ -189,7 +189,8 @@ class MainEast extends Phaser.Scene {
                 this.hammer.interText.setVisible(false);
                 this.hammer.setVisible(false);
                 this.textTimerPainting = 1;
-
+                this.knifeHot.setVisible(false);
+                
                 if(knifeGot == 0){
                     this.painting.setVisible(true);
                     this.painting.interText.setVisible(true);
@@ -197,6 +198,7 @@ class MainEast extends Phaser.Scene {
                 if(knifeGot == 1){
                     this.ripPainting.setVisible(true);
                     this.ripPainting.interText.setVisible(true);
+
                 }
             });
         }
@@ -208,6 +210,7 @@ class MainEast extends Phaser.Scene {
                     pcoinGot += 1;
                 }
                 this.sound.play("itemtake");
+                knifeGot == 0;
             }
         }
         else if(this.textTimerPainting >=150){
