@@ -128,5 +128,11 @@ class Intro extends Phaser.Scene {
             this.ieight.intertext.setVisible(true);
             this.introttexttimer +=1;
         } 
+        else if (this.introttexttimer > 1050 && this.introttexttimer< 1200){
+            this.introttexttimer +=1;
+        }
+        else if (this.introttexttimer == 1200){
+            this.scene.start("instructionScene"); 
+        }
     }
 }
