@@ -45,7 +45,18 @@ class Intro extends Phaser.Scene {
             this.introttexttimer +=1;
             this.bg.intertext = this.add.text(borderUISize + borderPadding * 20 -320, borderUISize + borderPadding * 2 + 100, '  Inside are layers of wooden boards\n  wrapped in velvet that are designed\n           to hold tarot cards');
             this.bg.intertext.setFontSize(50);
+            this.bg.intertext.setVisible(true);
 
+        }
+        else if(this.introttexttimer == 300){
+            this.bg.intertext.setVisible(false);
+            this.introttexttimer +=1;
+        }
+        else if (this.introttexttimer >300 && this.introttexttimer<450){
+            this.introttexttimer +=1;
+            this.bg.intertext = this.add.text(borderUISize + borderPadding * 20 -320, borderUISize + borderPadding * 2 + 100, 'The fortune teller gave me\na spread of five during our session.\nIt sits at the topmost layer.');
+            this.bg.intertext.setFontSize(50);
+            this.bg.intertext.setVisible(true);
         }
 
     }
