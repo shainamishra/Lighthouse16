@@ -5,7 +5,7 @@ class ClownNorth extends Phaser.Scene {
 
     preload(){
         // images
-        this.load.image('', './assets/clown/.png');
+        this.load.image('chantel', './assets/clown/chantel clown wall.png');
 
 
         // audio
@@ -14,7 +14,7 @@ class ClownNorth extends Phaser.Scene {
     create() { 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // place tile sprite
-        this.bg = this.add.tileSprite(0, 0, 1280, 720, '').setOrigin(0, 0); 
+        this.bg = this.add.tileSprite(0, 0, 1280, 720, 'chantel').setOrigin(0, 0); 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
