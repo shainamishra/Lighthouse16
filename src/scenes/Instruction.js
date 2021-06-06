@@ -48,6 +48,8 @@ class Instruction extends Phaser.Scene {
         this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x042630).setOrigin(0, 0);
         this.add.rectangle(0, 0, game.config.width, 10, 0x042630).setOrigin(0, 0);
         this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x042630).setOrigin(0, 0);
+
+        this.texttimer = 0;
     }
 
     update(){
@@ -60,8 +62,11 @@ class Instruction extends Phaser.Scene {
                 this.scene.wake(prevScene);
             });
         }
-        this.clownery.on('pointerdown', (pointer) => {
-            this.scene.switch("clownNorth");
-        });
+        if(this.texttimer == 0){
+            this.clownery.on('pointerdown', (pointer) => {
+            this.scene.start("clownNorth");
+            });
+            this.texttimer += 1;
+        }
     }
 }
