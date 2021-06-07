@@ -133,6 +133,7 @@ class LookoutSouth extends Phaser.Scene {
         this.hotOn = true;
         this.textTimer = 0;
         this.animOn = 0;
+        this.swingOn = 0;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -173,11 +174,13 @@ class LookoutSouth extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // pendulum anim
-        if (!this.swing.isPlaying){
+        if (this.swingOn == 0){
             this.penHit.on('pointerdown', (pointer) => {
-                this.animOn = 1;
-                this.add.sprite(875, 220, 'hitbox').play('swing');
-                this.pendulum.setVisible(false);
+                if (this.swingOn == 0){
+                    this.add.sprite(875, 220, 'hitbox').play('swing');
+                    this.pendulum.setVisible(false);
+                    this.swingOn = 1;
+                }
             });
         }
 
@@ -204,7 +207,7 @@ class LookoutSouth extends Phaser.Scene {
             pendulummade =1;
             this.citrineHot.setVisible(false);
             this.ropeHot.setVisible(false);
-            if(this.animOn == 0){
+            if(this.animOn == 0 && this.swingOn == 0){
                 this.pendulum.setVisible(true);
             }
         }

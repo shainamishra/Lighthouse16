@@ -99,5 +99,8 @@ class Menu extends Phaser.Scene {
         this.input.keyboard.on('keydown-X', () => {
             this.scene.start("pwScene"); 
 		});
+        this.input.keyboard.on('keydown-C', () => {
+            this.scene.start("instructionScene"); 
+		});
     }
 }

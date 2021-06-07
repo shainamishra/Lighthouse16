@@ -122,10 +122,8 @@ class Scales extends Phaser.Scene {
         // god forsaken variables
         this.textTimer = 0;
         this.rocks = [this.red, this.yellow, this.orange, this.green, this.cyan, this.blue, this.purple];
-        this.correct1 = ["right", "right", "right", "left", "right", "right", "right"];
-        this.correct2 = ["left", "left", "left", "right", "left", "left", "left"];
-        this.scaleStatus1 = false;
-        this.scaleStatus2 = false;
+        this.weight = [1, 1, 1, 4, 1, 5, 1];
+        this.weightStatus = false;
         this.status = [];
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -185,10 +183,9 @@ class Scales extends Phaser.Scene {
                     this.status.push(this.checkPosition(this.rocks[i]));
                 }
                 
-                this.scaleStatus1 = this.checkCorrect1(this.status, this.correct1);
-                this.scaleStatus2 = this.checkCorrect2(this.status, this.correct2);
+                this.weightStatus = this.checkWeight(this.status);
 
-                if(this.scaleStatus1 == true || this.scaleStatus2 == true){
+                if(this.weightStatus == true){
                     balanced = 1;
                     this.unlock.play();
                     this.uneven.interText.setVisible(true); 
@@ -260,21 +257,24 @@ class Scales extends Phaser.Scene {
         return "inactive";
     }
 
-    checkCorrect1(arr1, arr2){
+    checkWeight(arr1){
+        this.left = 0;
+        this.right = 0;
+        
         for (var i = 0; i < 7; i++) {
-            if(arr1[i] != arr2[i]){
-                return false;
+            if(this.status[i] == "left"){
+                this.left += this.weight[i];
+            }else if(this.status[i] == "right"){
+                this.right += this.weight[i];
             }
         }
-        return true;
-    }
-
-    checkCorrect2(arr1, arr2){
-        for (var i = 0; i < 7; i++) {
-            if(arr1[i] != arr2[i]){
-                return false;
-            }
+        
+        if((this.left == 4 && this.right == 10)){
+            return true;
         }
-        return true;
+        if((this.left == 10 && this.right == 4)){
+            return true;
+        }
+        return false;
     }
 }
