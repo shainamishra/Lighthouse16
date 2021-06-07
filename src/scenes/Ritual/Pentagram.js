@@ -461,14 +461,6 @@ class Pentagram extends Phaser.Scene {
         }
     }
 
-    cardReset(){
-        this.card1.setPosition(155, 628);
-        this.card2.setPosition(155, 628);
-        this.card3.setPosition(155, 628);
-        this.card4.setPosition(155, 628);
-        this.card5.setPosition(155, 628);
-    }
-
     checkPosition(card){
         this.posY = card.y;
         this.posX = card.x;
@@ -530,7 +522,6 @@ class Pentagram extends Phaser.Scene {
             }
 
         } else {
-            this.cardReset();
             return false;
         }
     }
