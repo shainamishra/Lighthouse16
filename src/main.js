@@ -64,6 +64,8 @@ let rope = 0;
 let hatch = 0;
 let weights = 0;
 let balanced = 0;
+let pendulummade = 0;
+
 
 // puzzle 5
 let inRitual = 0;
