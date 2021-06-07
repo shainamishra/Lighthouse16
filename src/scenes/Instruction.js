@@ -23,12 +23,6 @@ class Instruction extends Phaser.Scene {
             }
 		});
 
-        // TAKE OUT THIS TIME, SHAINA!!!!!
-        // delete
-        this.input.keyboard.on('keydown-Z', () => {
-            this.scene.start("loadingNorth"); 
-		});
-
         this.clownery = this.add.sprite(340, 350, 'hitbox');
         this.clownery.setDisplaySize(50,50);
         this.clownery.setInteractive({

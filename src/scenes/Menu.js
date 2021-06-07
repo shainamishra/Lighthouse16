@@ -83,5 +83,11 @@ class Menu extends Phaser.Scene {
 			this.sound.play("CrashingWaves");
             this.scene.start("Intro"); 
 		});
+        
+        // TAKE OUT THIS TIME, SHAINA!!!!!
+        // delete
+        this.input.keyboard.on('keydown-Z', () => {
+            this.scene.start("loadingNorth"); 
+		});
     }
 }
