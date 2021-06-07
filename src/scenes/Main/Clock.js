@@ -87,12 +87,5 @@ class Clock extends Phaser.Scene {
         else if(this.textTimerClockP >= 150){
             this.textTimerClockP = 0;
         }
-
-        // end states
-        if(lightState == 0){
-            this.dark.setVisible(false);
-        } else if(lightState == 1){
-            this.dark.setVisible(true);
-        }
     }
 }
