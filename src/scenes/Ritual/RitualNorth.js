@@ -9,6 +9,8 @@ class RitualNorth extends Phaser.Scene {
         this.load.image('knife', './assets/puzzle5/overlays/ritualNorth_knife.png');
         this.load.image('matches', './assets/puzzle5/overlays/ritualNorth_matches.png');
         this.load.image('darkRitual', './assets/puzzle2/overlays/lightsOff.png');
+        this.load.image('greenFire', './assets/puzzle5/pentagram/ritualNorth_flames.png');
+        this.load.image('towerCard', './assets/puzzle5/overlays/ritualNorth_tower.png');
         this.load.image('hitbox', './assets/HitBox2.png');
 
         // hotbar
@@ -175,6 +177,24 @@ class RitualNorth extends Phaser.Scene {
         this.saltHot.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // tower card
+        this.tower = this.add.sprite(685, 345, 'towerCard');
+        this.tower.setDisplaySize(1280, 720);
+        this.tower.setVisible(false);
+        // knife hit
+        this.towerHit = this.add.sprite(540, 550, 'hitbox');
+        this.towerHit.setDisplaySize(120, 100);
+        this.towerHit.setInteractive({
+            cursor: handPointer
+        });
+        this.towerHit.setVisible(false);
+
+        // green fire
+        this.fire = this.add.image(750, 360, 'greenFire');
+        this.fire.setDisplaySize(1280, 720);
+        this.fire.setVisible(false);
+        
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // dark
         this.dark = this.add.image(640, 360, 'darkRitual');
         this.dark.setDisplaySize(1280, 720);
@@ -186,6 +206,8 @@ class RitualNorth extends Phaser.Scene {
         this.textTimer = 0;
         this.timeVar = 150;
         this.hotOn = true;
+        this.fireTimer = 0;
+        this.fireShown = 0;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -256,6 +278,15 @@ class RitualNorth extends Phaser.Scene {
             }
         });
 
+        // tower
+        this.towerHit.on('pointerdown', (pointer) => {
+            if(this.textTimer == 0){
+                this.textTimer = 1;
+                this.timeVar = 50;
+                this.scene.switch("spread6");
+            }
+        });
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // text timers
         if(this.textTimer > 0 && this.textTimer < this.timeVar) {
@@ -263,6 +294,17 @@ class RitualNorth extends Phaser.Scene {
         } 
         else if(this.textTimer >= this.timeVar) {
             this.textTimer = 0;
+        }
+        
+        // fire text timers
+        if(this.fireTimer > 0 && this.fireTimer < 150) {
+            this.fireTimer += 1;
+        } 
+        else if(this.fireTimer >= 150){
+            // hide text
+            this.fire.setVisible(false);
+            this.tower.setVisible(true);
+            this.towerHit.setVisible(true);
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -292,9 +334,9 @@ class RitualNorth extends Phaser.Scene {
             if(chemical == 0){
                 this.fireNormal.setVisible(true);
             } else if(chemical == 1){
-                this.fireGreen.setVisible(true);
-            } else if(chemical == 2){
                 this.firePurple.setVisible(true);
+            } else if(chemical == 2){
+                this.fireGreen.setVisible(true);
             } else if(chemical == 3){
                 this.fireNormal.setVisible(true);
             } else if(chemical == 4){
@@ -304,16 +346,25 @@ class RitualNorth extends Phaser.Scene {
             this.fireNormal.setVisible(true);
         }
         
+        if(end == 1 && this.fireShown == 0){
+            this.ritual.setVisible(false);
+            this.fire.setVisible(true);
+            this.fireTimer = 1;
+            this.hotOn = false;
+            this.fireShown = 1;
+        }
+                
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // scene change on keypress
-        if(Phaser.Input.Keyboard.JustDown(keyA)){
-            this.scene.start("ritualWest");
-        };
-        if(Phaser.Input.Keyboard.JustDown(keyD)){
-            this.scene.start("ritualEast");
-        };
-        if(Phaser.Input.Keyboard.JustDown(keySPACE)){
-            this.scene.start("endWin");
+        if (end == 0){
+            if(Phaser.Input.Keyboard.JustDown(keyA)){
+                this.scene.start("ritualWest");
+            };
+            if(Phaser.Input.Keyboard.JustDown(keyD)){
+                this.scene.start("ritualEast");
+            };
+        }if(Phaser.Input.Keyboard.JustDown(keySPACE)){
+            this.scene.start("spread6");
         };
     }
     

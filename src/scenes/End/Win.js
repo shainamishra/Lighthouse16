@@ -5,14 +5,14 @@ class Win extends Phaser.Scene {
 
     preload(){
         // images
-        this.load.image('blkbg', './assets/goodend.png');
+        this.load.image('winbg', './assets/end/goodend.png');
         this.load.image('hitbox', './assets/HitBox2.png');
         // audio
     }
 
     create() {
         // place tile sprites (TAKEN FROM INTRO U GOTTA CHANGE IT)
-        this.bg = this.add.tileSprite(0, 0, 1280, 720, 'blkbg').setOrigin(0, 0); 
+        this.bg = this.add.tileSprite(0, 0, 1280, 720, 'winbg').setOrigin(0, 0); 
         this.credits = this.add.sprite(300,360, 'hitbox');
         this.credits.intertext = this.add.text(borderUISize + borderPadding * 20 + 200, borderUISize + borderPadding * 2 -60, '                   Programming\n                      Shiana\n                      Daren\n\n                       Art\n                      Rose\n                     Chantel\n                     Shaina\n\n                      Music\n                      Rosie\n\n                       SFX\n                      Daren\n                      Rosie\n                      Shaina');
         this.credits.intertext.setFontSize(30);
