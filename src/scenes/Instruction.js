@@ -58,7 +58,7 @@ class Instruction extends Phaser.Scene {
         }
         if(this.texttimer == 0){
             this.clownery.on('pointerdown', (pointer) => {
-            this.scene.start("clownNorth");
+            this.scene.start("password");
             });
             this.texttimer += 1;
         }

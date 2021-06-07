@@ -87,13 +87,21 @@ class Menu extends Phaser.Scene {
         // change scenes
         this.input.keyboard.on('keydown-SPACE', () => {
 			this.sound.play("CrashingWaves");
-            this.scene.start("Intro"); 
+            this.cameras.main.fadeOut(1000, 0, 0, 0);
+            this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
+            this.time.delayedCall(1000, () => {
+                    this.scene.start('Intro');
+                });
+            }); 
 		});
         
         // TAKE OUT THIS TIME, SHAINA!!!!!
         // delete
         this.input.keyboard.on('keydown-Z', () => {
             this.scene.start("loadingNorth"); 
+		});
+        this.input.keyboard.on('keydown-X', () => {
+            this.scene.start("endLose"); 
 		});
     }
 }

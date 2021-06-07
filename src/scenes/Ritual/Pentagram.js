@@ -361,6 +361,10 @@ class Pentagram extends Phaser.Scene {
                 this.val = this.int/200;
                 this.dead.alpha = this.val;
                 this.dead.setVisible(true);
+
+                if(this.dead.alpha == 1){
+                    this.scene.start('endLose');
+                }
             }
             else {
                 console.log("else")

@@ -92,7 +92,7 @@ class LookoutSouth extends Phaser.Scene {
         this.penHit.setVisible(false);
 
         // pen anim
-        this.anims.create({
+        this.swing = this.anims.create({
             key: 'swing',
             frames: this.anims.generateFrameNumbers('swing', { start: 0, end: 6, first: 0}),
             frameRate: 5,
@@ -173,11 +173,13 @@ class LookoutSouth extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // pendulum anim
-        this.penHit.on('pointerdown', (pointer) => {
-            this.animOn = 1;
-            this.add.sprite(875, 220, 'hitbox').play('swing');
-            this.pendulum.setVisible(false);
-        });
+        if (!this.swing.isPlaying){
+            this.penHit.on('pointerdown', (pointer) => {
+                this.animOn = 1;
+                this.add.sprite(875, 220, 'hitbox').play('swing');
+                this.pendulum.setVisible(false);
+            });
+        }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // text timers

@@ -1,16 +1,16 @@
 class Password extends Phaser.Scene {
     constructor() {
-        super("Password");
+        super("password");
     }
 
     preload(){
-        this.load.image('', './assets/transitions/velvetbg.png');
+        this.load.image('hi', './assets/blkbg.png');
     }
 
     create() { 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // place tile sprite
-        this.bg = this.add.tileSprite(0, 0, 1280, 720, '').setOrigin(0, 0); 
+        this.bruhhh = this.add.tileSprite(0, 0, 1280, 720, 'hi').setOrigin(0, 0); 
 
         //add text: enter password, itll be found at the top of the tower .... something something reference humbug story book
         //text enter box
