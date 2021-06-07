@@ -96,7 +96,7 @@ class Menu extends Phaser.Scene {
             this.scene.start("loadingNorth"); 
 		});
         this.input.keyboard.on('keydown-X', () => {
-            this.scene.start("endLose"); 
+            this.scene.start("endWin"); 
 		});
     }
 }
