@@ -150,7 +150,6 @@ class Closet extends Phaser.Scene {
         if (paper == 1){
             this.unlock.setVisible(true);
             this.note.setVisible(false);
-            //this.noteHit.setVisible(false);
         }
     }
 }

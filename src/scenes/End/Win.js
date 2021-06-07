@@ -13,21 +13,26 @@ class Win extends Phaser.Scene {
     create() {
         // place tile sprites (TAKEN FROM INTRO U GOTTA CHANGE IT)
         this.bg = this.add.tileSprite(0, 0, 1280, 720, 'winbg').setOrigin(0, 0); 
-        this.credits = this.add.sprite(300,360, 'hitbox');
-        this.credits.intertext = this.add.text(borderUISize + borderPadding * 20 + 200, borderUISize + borderPadding * 2 -60, '                   Programming\n                      Shiana\n                      Daren\n\n                       Art\n                      Rose\n                     Chantel\n                     Shaina\n\n                      Music\n                      Rosie\n\n                       SFX\n                      Daren\n                      Rosie\n                      Shaina');
+        this.credits = this.add.sprite(300, 360, 'hitbox');
+        //this.credits.intertext = this.add.text(borderUISize + borderPadding * 20 + 200, borderUISize + borderPadding * 2 -40, '                   Programming\n                  Shaina Mishra\n                 Daren Bartolucci\n\n                       Art\n                   Rosie Longo\n                   Chantel Gee\n                  Shaina Mishra\n\n                      Music\n                   Rosie Longo\n\n                       SFX\n                 Daren Bartolucci\n                   Rosie Longo\n                  Shaina Mishra');
+        this.credits.intertext = this.add.text(290, 150, '                   Programming\n                  Shaina Mishra\n                 Daren Bartolucci\n                   Rosie Longo\n\n                       Art\n                   Chantel Gee\n                   Rosie Longo\n                  Shaina Mishra\n\n');
         this.credits.intertext.setFontSize(30);
         this.credits.intertext.setVisible(true);
+        this.credits.intertext2 = this.add.text(610, 150, '                      Music\n                   Rosie Longo\n\n\n\n                       SFX\n                 Daren Bartolucci\n                   Rosie Longo\n                  Shaina Mishra');
+        this.credits.intertext2.setFontSize(30);
+        this.credits.intertext2.setVisible(true);
         
-        this.sourcethanks = this.add.sprite(300,360, 'hitbox');
-        this.sourcethanks.intertext = this.add.text(borderUISize + borderPadding * 20 + 200, borderUISize + borderPadding * 2 + 30, 'Ocean sfx for island music\nsourced from freesound by Noted451\nhttps://freesound.org/people/Noted451/\nsounds/531015/\n\nRainbow fire info\nhttps://sciencenotes.org/how-to-make-\ncolored-fire/\n\nFishing advice :)\nhttps://freshwaterfishingadvice.com\n/salt-bait-fishing/');
-        this.sourcethanks.intertext.setFontSize(30);
+        this.sourcethanks = this.add.sprite(300, 360, 'hitbox');
+        this.sourcethanks.intertext = this.add.text(borderUISize + borderPadding * 20 + 260, borderUISize + borderPadding * 2 + 48, 'Ocean sfx for island music\nsourced from freesound by Noted451\nhttps://freesound.org/people/Noted451/\nsounds/531015/\n\nRainbow fire info\nhttps://sciencenotes.org/how-to-make-\ncolored-fire/\n\nFishing advice :)\nhttps://freshwaterfishingadvice.com\n/salt-bait-fishing/');
+        this.sourcethanks.intertext.setFontSize(25);
         this.sourcethanks.intertext.setVisible(false);
+        
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
-        this.add.rectangle(0, 0, 10, game.config.height, 0x2c2b45).setOrigin(0, 0);
-        this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x2c2b45).setOrigin(0, 0);
-        this.add.rectangle(0, 0, game.config.width, 10, 0x2c2b45).setOrigin(0, 0);
-        this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x2c2b45).setOrigin(0, 0);
+        this.add.rectangle(0, 0, 10, game.config.height, 0x1a1110).setOrigin(0, 0);
+        this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x1a1110).setOrigin(0, 0);
+        this.add.rectangle(0, 0, game.config.width, 10, 0x1a1110).setOrigin(0, 0);
+        this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x1a1110).setOrigin(0, 0);
 
         //tween set up
 
@@ -47,6 +52,7 @@ class Win extends Phaser.Scene {
         else if (this.wintexttimer == 500){
             this.wintexttimer +=1;
             this.credits.intertext.setVisible(false);
+            this.credits.intertext2.setVisible(false);
             this.sourcethanks.intertext.setVisible(true);
         }
         else if(this.wintexttimer > 500 && this.wintexttimer < 1000){

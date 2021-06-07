@@ -181,6 +181,7 @@ class RitualNorth extends Phaser.Scene {
         this.tower = this.add.sprite(685, 345, 'towerCard');
         this.tower.setDisplaySize(1280, 720);
         this.tower.setVisible(false);
+        
         // knife hit
         this.towerHit = this.add.sprite(540, 550, 'hitbox');
         this.towerHit.setDisplaySize(120, 100);
