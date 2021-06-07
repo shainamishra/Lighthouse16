@@ -229,10 +229,13 @@ class LookoutSouth extends Phaser.Scene {
             }
             
 
-            if (citrine == 1 && weights == 0){
+            if (citrine == 1 && weights == 0 && pendulummade == 0){
                 this.citrineHot.setVisible(true);
             }
-            else if (weights == 1 && balanced == 0){
+            else if(citrine == 1 && weights == 0 && pendulummade == 1){
+                this.citrineHot.setVisible(false);
+            }
+            if (weights == 1 && balanced == 0){
                 this.citrineHot.setVisible(false);
                 this.rockHot.setVisible(true);
             }
