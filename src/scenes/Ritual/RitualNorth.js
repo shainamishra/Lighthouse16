@@ -313,7 +313,7 @@ class RitualNorth extends Phaser.Scene {
             this.scene.start("ritualEast");
         };
         if(Phaser.Input.Keyboard.JustDown(keySPACE)){
-            this.scene.start("endLose");
+            this.scene.start("endWin");
         };
     }
     
