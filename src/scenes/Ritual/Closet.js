@@ -10,7 +10,6 @@ class Closet extends Phaser.Scene {
         this.load.image('closetNote', './assets/puzzle5/closet/closet_note.png');
         this.load.image('closetNoteOpen', './assets/puzzle5/closet/closet_note_open.png');
 
-
         // audio
         this.load.audio('unlock', './assets/sfx/doorUnlock2.wav');
     }
@@ -76,10 +75,10 @@ class Closet extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
-        this.add.rectangle(0, 0, 10, game.config.height, 0x2c2b45).setOrigin(0, 0);
-        this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x2c2b45).setOrigin(0, 0);
-        this.add.rectangle(0, 0, game.config.width, 10, 0x2c2b45).setOrigin(0, 0);
-        this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x2c2b45).setOrigin(0, 0);
+        this.add.rectangle(0, 0, 10, game.config.height, 0x261f1f).setOrigin(0, 0);
+        this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x261f1f).setOrigin(0, 0);
+        this.add.rectangle(0, 0, game.config.width, 10, 0x261f1f).setOrigin(0, 0);
+        this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x261f1f).setOrigin(0, 0);
     }
     
     update() {
@@ -88,6 +87,7 @@ class Closet extends Phaser.Scene {
         this.clockHit.on('pointerdown', () => {
             if(this.textTimer == 0){
                 this.textTimer = 1;
+                this.textVar = 50;
                 this.scene.switch("closetClock");
             }
         });
@@ -95,15 +95,13 @@ class Closet extends Phaser.Scene {
         this.closeLook.on('pointerdown', () => {
             if(this.textTimer == 0){
                 this.textTimer = 1;
+                this.textVar = 50;
                 this.scene.switch("ritualSouth");
             }
         });
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
-        // will need to do the clicks for the hand movement and actually set this up
-        //clockUnlock = 1;
-
         if(clockUnlock == 1 && paper == 0){
             this.clockHit.setVisible(false);
             this.note.setVisible(true);
@@ -152,7 +150,6 @@ class Closet extends Phaser.Scene {
         if (paper == 1){
             this.unlock.setVisible(true);
             this.note.setVisible(false);
-            //this.noteHit.setVisible(false);
         }
     }
 }
