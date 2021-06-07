@@ -6,9 +6,11 @@ class Bookshelf extends Phaser.Scene {
     preload(){
         // scales images
         this.load.image('books', './assets/puzzle5/bookshelf/ritualNorth_bookshelf.png');
-        this.load.image('firebook', './assets/puzzle5/bookshelf/ritualNorth_firebook.png');
+        this.load.image('fish', './assets/puzzle5/bookshelf/ritualNorth_fishing.png');
         this.load.image('garden', './assets/puzzle5/bookshelf/ritualNorth_gardening.png');
-
+        this.load.image('stories', './assets/puzzle5/bookshelf/ritualNorth_billy.png');
+        this.load.image('firebook', './assets/puzzle5/bookshelf/ritualNorth_firebook.png');
+        
         // audio
         this.load.audio('unlock', './assets/sfx/doorUnlock2.wav');
     }
@@ -24,6 +26,42 @@ class Bookshelf extends Phaser.Scene {
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
+        // garden hit
+        this.fishHit = this.add.sprite(145, 425, 'hitbox');
+        this.fishHit.setDisplaySize(90, 460);
+        this.fishHit.setVisible(true);
+        this.fishHit.setInteractive({
+            cursor: handPointer
+        });
+        // garden
+        this.fish = this.add.image(640, 350, 'fish');
+        this.fish.setDisplaySize(1280, 720);
+        this.fish.setVisible(false);
+
+        // garden hit
+        this.gardenHit = this.add.sprite(230, 450, 'hitbox');
+        this.gardenHit.setDisplaySize(60, 410);
+        this.gardenHit.setVisible(true);
+        this.gardenHit.setInteractive({
+            cursor: handPointer
+        });
+        // garden
+        this.garden = this.add.image(640, 350, 'garden');
+        this.garden.setDisplaySize(1280, 720);
+        this.garden.setVisible(false);
+        
+        // short stories hit
+        this.storiesHit = this.add.sprite(735, 430, 'hitbox');
+        this.storiesHit.setDisplaySize(115, 440);
+        this.storiesHit.setVisible(true);
+        this.storiesHit.setInteractive({
+            cursor: handPointer
+        });
+        // short stories
+        this.stories = this.add.image(640, 350, 'stories');
+        this.stories.setDisplaySize(1280, 720);
+        this.stories.setVisible(false);
+
         // firebook hit
         this.firebookHit = this.add.sprite(1155, 405, 'hitbox');
         this.firebookHit.setDisplaySize(70, 500);
@@ -32,21 +70,9 @@ class Bookshelf extends Phaser.Scene {
             cursor: handPointer
         });
         // firebook
-        this.firebook = this.add.image(640, 355, 'firebook');
+        this.firebook = this.add.image(640, 350, 'firebook');
         this.firebook.setDisplaySize(1280, 720);
         this.firebook.setVisible(false);
-
-        // garden hit
-        this.gardenHit = this.add.sprite(230, 450, 'hitbox2');
-        this.gardenHit.setDisplaySize(60, 410);
-        this.gardenHit.setVisible(true);
-        this.gardenHit.setInteractive({
-            cursor: handPointer
-        });
-        // garden
-        this.garden = this.add.image(640, 355, 'garden');
-        this.garden.setDisplaySize(1280, 720);
-        this.garden.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // close
@@ -88,17 +114,34 @@ class Bookshelf extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // books
-        // firebook
-        this.firebookHit.on('pointerdown', () => {
+        // fish
+        this.fishHit.on('pointerdown', () => {
             if(this.textTimer == 0){
-                this.firebook.setVisible(true);
+                this.fish.setVisible(true);
                 this.textTimer = 1;
             }
         });
+
         // garden
         this.gardenHit.on('pointerdown', () => {
             if(this.textTimer == 0){
                 this.garden.setVisible(true);
+                this.textTimer = 1;
+            }
+        });
+        
+        // stories
+        this.storiesHit.on('pointerdown', () => {
+            if(this.textTimer == 0){
+                this.stories.setVisible(true);
+                this.textTimer = 1;
+            }
+        });
+
+        // firebook
+        this.firebookHit.on('pointerdown', () => {
+            if(this.textTimer == 0){
+                this.firebook.setVisible(true);
                 this.textTimer = 1;
             }
         });
@@ -109,20 +152,26 @@ class Bookshelf extends Phaser.Scene {
             this.textTimer += 1;
 
             // hide other hitboxes
-            this.firebookHit.setVisible(false);
+            this.fishHit.setVisible(false);
             this.gardenHit.setVisible(false);
+            this.storiesHit.setVisible(false);
+            this.firebookHit.setVisible(false);
         } 
         else if(this.textTimer >= 250){
             // hide text
             this.textTimer = 0;
 
             // hide books
-            this.firebook.setVisible(false);
+            this.fish.setVisible(false);
             this.garden.setVisible(false);
+            this.stories.setVisible(false);
+            this.firebook.setVisible(false);
 
             // show hitboxes
-            this.firebookHit.setVisible(true);
+            this.fishHit.setVisible(true);
             this.gardenHit.setVisible(true);
+            this.storiesHit.setVisible(true);
+            this.firebookHit.setVisible(true);
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
