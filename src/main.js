@@ -2,7 +2,7 @@ let config = {
     type: Phaser.CANVAS,
     width: 1280,
     height: 720,
-    scene: [ Menu, Intro, Lose, Win, Instruction, Spread1, Inventory, 
+    scene: [ Menu, Intro, Lose, Win, Password, Instruction, Spread1, Inventory, 
             IslandNorth, IslandWest, IslandEast, IslandSouth, 
             Spread2, CellarNorth, CellarWest, CellarEast, CellarSouth, 
             Spread3, MainNorth, MainWest, MainEast, MainSouth, Clock, 

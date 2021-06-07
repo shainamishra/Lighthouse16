@@ -5,6 +5,7 @@ class Menu extends Phaser.Scene {
 
     preload(){
         // load assets
+        this.load.image('blkbg', './assets/blkbg.png'); //delete
         this.load.image('start', './assets/start.png');
         this.load.image('inventory', './assets/Inventory.png');
         this.load.image('help', './assets/help.png');
@@ -96,7 +97,7 @@ class Menu extends Phaser.Scene {
             this.scene.start("loadingNorth"); 
 		});
         this.input.keyboard.on('keydown-X', () => {
-            this.scene.start("endWin"); 
+            this.scene.start("pwScene"); 
 		});
     }
 }
