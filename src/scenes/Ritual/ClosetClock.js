@@ -15,7 +15,7 @@ class ClosetClock extends Phaser.Scene {
        
         this.clockface = this.add.sprite(640, 360, 'clockCloset');
         this.clockface.setDisplaySize(1280, 720);
-        this.clockface.interText = this.add.text(borderUISize + borderPadding * 20 + 610, borderUISize + borderPadding * 2 - 40, 'Press A/D\n to move\n   hand');
+        this.clockface.interText = this.add.text(borderUISize + borderPadding * 20 + 605, borderUISize + borderPadding * 2 - 40, 'Press A/D\n to move\n   hand');
         this.clockface.interText.setFontSize(50);
 
         this.hourhand = this.add.image(640, 360,'hourCloset');
@@ -48,10 +48,10 @@ class ClosetClock extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
-        this.add.rectangle(0, 0, 10, game.config.height, 0x2c2b45).setOrigin(0, 0);
-        this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x2c2b45).setOrigin(0, 0);
-        this.add.rectangle(0, 0, game.config.width, 10, 0x2c2b45).setOrigin(0, 0);
-        this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x2c2b45).setOrigin(0, 0);
+        this.add.rectangle(0, 0, 10, game.config.height, 0x261f1f).setOrigin(0, 0);
+        this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x261f1f).setOrigin(0, 0);
+        this.add.rectangle(0, 0, game.config.width, 10, 0x261f1f).setOrigin(0, 0);
+        this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x261f1f).setOrigin(0, 0);
     }
 
     update(){
@@ -91,7 +91,7 @@ class ClosetClock extends Phaser.Scene {
         else if(this.textTimerClockP >= 150){
             this.textTimerClockP = 0;
         }
-        
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // end states
         if(lightState == 0){
