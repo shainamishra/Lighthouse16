@@ -5,7 +5,7 @@ class Win extends Phaser.Scene {
 
     preload(){
         // images
-        this.load.image('blkbg', './assets/blkbg.png');
+        this.load.image('blkbg', './assets/goodend.png');
 
         // audio
     }
@@ -14,7 +14,7 @@ class Win extends Phaser.Scene {
         // place tile sprites (TAKEN FROM INTRO U GOTTA CHANGE IT)
         this.bg = this.add.tileSprite(0, 0, 1280, 720, 'blkbg').setOrigin(0, 0); 
         this.credits = this.add.sprite(300,360, 'hitbox');
-        this.credits.intertext = this.add.text(borderUISize + borderPadding * 20 - 200, borderUISize + borderPadding * 2 -75, '                   Programming\n                      Shiana\n                      Daren\n\n                       Art\n                      Rose\n                     Chantel\n                     Shaina\n\n                      Music\n                      Rosie\n\n                       SFX\n                      Daren\n                      Rosie\n                      Shaina\n\n      Ocean music sfc sourced from Noted451\nhttps://freesound.org/people/Noted451/sounds/531015/');
+        this.credits.intertext = this.add.text(borderUISize + borderPadding * 20 + 200, borderUISize + borderPadding * 2 -60, '                   Programming\n                      Shiana\n                      Daren\n\n                       Art\n                      Rose\n                     Chantel\n                     Shaina\n\n                      Music\n                      Rosie\n\n                       SFX\n                      Daren\n                      Rosie\n                      Shaina');
         this.credits.intertext.setFontSize(30);
         this.credits.intertext.setAlpha(1);
 
