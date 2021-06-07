@@ -46,6 +46,14 @@ class Closet extends Phaser.Scene {
         this.noteHit.interText.setFontSize(40);
         this.noteHit.interText.setVisible(false);
 
+        // clock hit
+        this.clockHit = this.add.image(615, 370, 'hitbox');
+        this.clockHit.setDisplaySize(250, 350);
+        this.clockHit.setVisible(true);
+        this.clockHit.setInteractive({
+            cursor: handPointer
+        });
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // close
         this.closeLook = this.add.sprite(50, 50, 'x');
@@ -77,6 +85,13 @@ class Closet extends Phaser.Scene {
     update() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // go back to lookOut
+        this.clockHit.on('pointerdown', () => {
+            if(this.textTimer == 0){
+                this.textTimer = 1;
+                this.scene.switch("closetClock");
+            }
+        });
+
         this.closeLook.on('pointerdown', () => {
             if(this.textTimer == 0){
                 this.textTimer = 1;
@@ -87,11 +102,11 @@ class Closet extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
-
         // will need to do the clicks for the hand movement and actually set this up
-        clockUnlock = 1;
+        //clockUnlock = 1;
 
         if(clockUnlock == 1 && paper == 0){
+            this.clockHit.setVisible(false);
             this.note.setVisible(true);
             this.noteHit.setVisible(true);
         }

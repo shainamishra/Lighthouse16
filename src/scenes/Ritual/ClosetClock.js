@@ -1,33 +1,32 @@
-class Clock extends Phaser.Scene {
+class ClosetClock extends Phaser.Scene {
     constructor() {
-        super("clockpuzzle");
+        super("closetClock");
     }
     preload(){
-        this.load.image('minute', './assets/puzzle3/overlays/minute.png');
-        this.load.image('hour', './assets/puzzle3/items/hour.png');
-        this.load.image('clock', './assets/puzzle3/overlays/clockface.png');
+        this.load.image('minuteCloset', './assets/puzzle3/overlays/minute.png');
+        this.load.image('hourCloset', './assets/puzzle3/items/hour.png');
+        this.load.image('clockCloset', './assets/puzzle3/overlays/clockface.png');
         this.load.audio('doorun', './assets/sfx/doorUnlock.wav');
-        
     }
     
     create(){
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
        
-        this.clockface = this.add.sprite(660, 350, 'clock');
+        this.clockface = this.add.sprite(640, 360, 'clockCloset');
         this.clockface.setDisplaySize(1280, 720);
         this.clockface.interText = this.add.text(borderUISize + borderPadding * 20 + 610, borderUISize + borderPadding * 2 - 40, 'Press A/D\n to move\n   hand');
-        this.clockface.interText.setFontSize(50)
+        this.clockface.interText.setFontSize(50);
 
-        this.hourhand = this.add.image(650, 350,'hour');
+        this.hourhand = this.add.image(640, 360,'hourCloset');
         this.hourhand.setInteractive({
             cursor: handPointer
         });
-        this.hourhand.interText = this.add.text(borderUISize + borderPadding * 20 - 360, borderUISize + borderPadding * 2, 'The hatch\nbehind you\nunlocked');
+        this.hourhand.interText = this.add.text(370, 390, 'The drawer unlocked');
         this.hourhand.interText.setFontSize(50);
-        this.hourhand.interText.setVisible(false);
+        this.hourhand.interText.setVisible(true);
 
-        this.minutehand = this.add.image(650, 350, 'minute');
+        this.minutehand = this.add.image(640, 360, 'minuteCloset');
         this.minutehand.setInteractive({
             cursor: handPointer
         });
@@ -40,6 +39,12 @@ class Clock extends Phaser.Scene {
         });
         this.textTimerClockP = 0;
         this.timesbuttonpressed = 0;
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // dark
+        this.dark = this.add.image(640, 360, 'darkRitual');
+        this.dark.setDisplaySize(1280, 720);
+        this.dark.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -67,17 +72,18 @@ class Clock extends Phaser.Scene {
         }
 
         if(this.timesbuttonpressed == 36 || this.timesbuttonpressed == -36){
-            clockUnlock = 1;
-            pcoinGot = 0;
-            this.input.keyboard.enabled = false;
             this.hourhand.interText.setVisible(true);
+            this.clockface.interText.setVisible(false);
+            clockUnlock = 1;
+            this.input.keyboard.enabled = false;
         }
 
         this.exitPuzzle.on('pointerdown', () => {
             if(this.textTimerClockP == 0){
+                console.log("in")
                 this.textTimerClockP = 1;
-                //this.scene.stop("clockpuzzle");
-                this.scene.switch("mainNorth");
+                this.scene.stop("clockCloset");
+                this.scene.wake("ritualCloset");
             }
         });
       
@@ -88,11 +94,5 @@ class Clock extends Phaser.Scene {
             this.textTimerClockP = 0;
         }
 
-        // end states
-        if(lightState == 0){
-            this.dark.setVisible(false);
-        } else if(lightState == 1){
-            this.dark.setVisible(true);
-        }
     }
 }
