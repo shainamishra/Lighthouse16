@@ -893,20 +893,32 @@ class LookoutNorth extends Phaser.Scene {
         if(on == true){
             this.hotbar.setVisible(true);
 
-            if (rag == 1){
+            if (rag == 1 && windowClean == 0){
                 this.ragHot.setVisible(true);
             }
+            else if (windowClean == 1){
+                this.ragHot.setVisible(false);
+            }
 
-            if (citrine == 1 && weights == 0){
+            if (citrine == 1 && weights == 0 && pendulummade == 0){
                 this.citrineHot.setVisible(true);
             }
-            else if (weights == 1){
+            else if(citrine == 1 && weights == 0 && pendulummade == 1){
+                this.citrineHot.setVisible(false);
+            }
+            if (weights == 1 && balanced == 0){
                 this.citrineHot.setVisible(false);
                 this.rockHot.setVisible(true);
             }
+            else if (balanced == 1){
+                this.rockHot.setVisible(false);
+            }
 
-            if (rope == 1){
+            if (rope == 1 && pendulummade == 0){
                 this.ropeHot.setVisible(true);
+            }
+            else if(pendulummade == 0){
+                this.ropeHot.setVisible(false);
             }
         }
         else {
