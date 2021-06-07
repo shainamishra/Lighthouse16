@@ -16,14 +16,14 @@ class Clock extends Phaser.Scene {
        
         this.clockface = this.add.sprite(640, 360, 'clock');
         this.clockface.setDisplaySize(1280, 720);
-        this.clockface.interText = this.add.text(borderUISize + borderPadding * 20 + 610, borderUISize + borderPadding * 2 - 40, 'Press A/D\n to move\n   hand');
+        this.clockface.interText = this.add.text(borderUISize + borderPadding * 20 + 595, borderUISize + borderPadding * 2 - 40, 'Press A/D\n to move\n   hand');
         this.clockface.interText.setFontSize(50)
 
         this.hourhand = this.add.image(640, 360, 'hour');
         this.hourhand.setInteractive({
             cursor: handPointer
         });
-        this.hourhand.interText = this.add.text(borderUISize + borderPadding * 20 - 360, borderUISize + borderPadding * 2, 'The hatch\nbehind you\nunlocked');
+        this.hourhand.interText = this.add.text(borderUISize + borderPadding * 20 - 330, borderUISize + borderPadding * 2, 'The hatch\nbehind you\nunlocked');
         this.hourhand.interText.setFontSize(50);
         this.hourhand.interText.setVisible(false);
 
@@ -76,8 +76,8 @@ class Clock extends Phaser.Scene {
         this.exitPuzzle.on('pointerdown', () => {
             if(this.textTimerClockP == 0){
                 this.textTimerClockP = 1;
-                //this.scene.stop("clockpuzzle");
-                this.scene.switch("mainNorth");
+                this.scene.stop("clockpuzzle");
+                this.scene.wake("mainNorth");
             }
         });
       
