@@ -89,9 +89,7 @@ class IslandWest extends Phaser.Scene {
         this.open.setInteractive({
             cursor: handPointer
         });
-        //this.open.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2 + 150, 'A pair of bolt cutters');
-        //this.open.interText.setFontSize(50);
-        //this.open.interText.setVisible(false);
+        
 
         // box
         this.box = this.add.sprite(860, 550, 'hitbox');
@@ -248,8 +246,6 @@ class IslandWest extends Phaser.Scene {
             this.inputCombo = this.checkCombo();
             if(this.inputCombo == 352){
                 unlocked = 1;
-                //this.textTimerBox = 250;
-                //this.sound.play("itemtake");
             }
             else if(pos == 3){
                 this.textTimerBox = 251;
