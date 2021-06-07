@@ -11,13 +11,13 @@ class LookoutNorth extends Phaser.Scene {
         this.load.image('queenText', './assets/puzzle4/overlays/nqueensText.png');
 
         // rocks
-        this.load.image('purple', './assets/puzzle4/items/purple_rock.png');
-        this.load.image('blue', './assets/puzzle4/items/blue_rock.png');
-        this.load.image('cyan', './assets/puzzle4/items/cyan_rock.png');
-        this.load.image('green', './assets/puzzle4/items/green_rock.png');
-        this.load.image('orange', './assets/puzzle4/items/orange_rock.png');
-        this.load.image('red', './assets/puzzle4/items/red_rock.png');
-        this.load.image('yellow', './assets/puzzle4/items/citrine.png');
+        this.load.image('purpleRock', './assets/puzzle4/items/purple_rock.png');
+        this.load.image('blueRock', './assets/puzzle4/items/blue_rock.png');
+        this.load.image('cyanRock', './assets/puzzle4/items/cyan_rock.png');
+        this.load.image('greenRock', './assets/puzzle4/items/green_rock.png');
+        this.load.image('orangeRock', './assets/puzzle4/items/orange_rock.png');
+        this.load.image('yellowRock', './assets/puzzle4/items/citrine.png');
+        this.load.image('redRock', './assets/puzzle4/items/red_rock.png');
 
         // hitbox
         this.load.image('hitbox', './assets/HitBox2.png');
@@ -344,27 +344,27 @@ class LookoutNorth extends Phaser.Scene {
         this.queenText.setDisplaySize(1280, 720);
         this.queenText.setVisible(false);
 
-        this.purple = this.add.image(100, 100, 'purple');
+        this.purple = this.add.image(100, 100, 'purpleRock');
         this.purple.setDisplaySize(60, 60);
         this.purple.setVisible(false);
 
-        this.blue = this.add.image(100, 100, 'blue');
+        this.blue = this.add.image(100, 100, 'blueRock');
         this.blue.setDisplaySize(60, 60);
         this.blue.setVisible(false);
         
-        this.cyan = this.add.image(100, 100, 'cyan');
+        this.cyan = this.add.image(100, 100, 'cyanRock');
         this.cyan.setDisplaySize(60, 60);
         this.cyan.setVisible(false);
 
-        this.green = this.add.image(100, 100, 'green');
+        this.green = this.add.image(100, 100, 'greenRock');
         this.green.setDisplaySize(60, 60);
         this.green.setVisible(false);
 
-        this.orange = this.add.image(100, 100, 'orange');
+        this.orange = this.add.image(100, 100, 'orangeRock');
         this.orange.setDisplaySize(60, 60);
         this.orange.setVisible(false);
 
-        this.red = this.add.image(100, 100, 'red');
+        this.red = this.add.image(100, 100, 'redRock');
         this.red.setDisplaySize(60, 60);
         this.red.setVisible(false);
 

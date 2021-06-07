@@ -60,49 +60,49 @@ class Scales extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // rocks
         // red
-        this.red = this.add.image(200, 665, 'red');
+        this.red = this.add.image(200, 665, 'redRock');
         this.red.setDisplaySize(75, 75);
         this.red.setInteractive({
             cursor: handPointer
         });
         this.red.setVisible(false);
         // orange
-        this.orange = this.add.sprite(335, 665, 'orange');
+        this.orange = this.add.sprite(335, 665, 'orangeRock');
         this.orange.setDisplaySize(75, 75);
         this.orange.setInteractive({
             cursor: handPointer
         });
         this.orange.setVisible(false);
         // yellow
-        this.yellow = this.add.sprite(465, 665, 'yellow');
+        this.yellow = this.add.sprite(465, 665, 'yellowRock');
         this.yellow.setDisplaySize(85, 85);
         this.yellow.setInteractive({
             cursor: handPointer
         });
         this.yellow.setVisible(false);
         // green
-        this.green = this.add.sprite(595, 665, 'green');
+        this.green = this.add.sprite(595, 665, 'greenRock');
         this.green.setDisplaySize(75, 75);
         this.green.setInteractive({
             cursor: handPointer
         });
         this.green.setVisible(false);
         // cyan
-        this.cyan = this.add.sprite(725, 665, 'cyan');
+        this.cyan = this.add.sprite(725, 665, 'cyanRock');
         this.cyan.setDisplaySize(75, 75);
         this.cyan.setInteractive({
             cursor: handPointer
         });
         this.cyan.setVisible(false);
         // blue
-        this.blue = this.add.sprite(860, 665, 'blue');
+        this.blue = this.add.sprite(860, 665, 'blueRock');
         this.blue.setDisplaySize(75, 75);
         this.blue.setInteractive({
             cursor: handPointer
         });
         this.blue.setVisible(false);
         // purple
-        this.purple = this.add.sprite(1000, 665, 'purple');
+        this.purple = this.add.sprite(1000, 665, 'purpleRock');
         this.purple.setDisplaySize(75, 75);
         this.purple.setInteractive({
             cursor: handPointer
