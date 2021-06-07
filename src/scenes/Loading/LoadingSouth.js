@@ -85,7 +85,7 @@ class LoadingSouth extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // clicks inventory box: puts this scene to sleep (no updates), switches to cards
         this.invent.on('pointerdown', (pointer) => {
-            this.scene.switch("cardBox");
+            this.scene.switch("cardBox7");
         });
 
         // clicks help box: puts this scene to sleep (no updates), switches to cards

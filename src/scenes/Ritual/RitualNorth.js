@@ -332,6 +332,9 @@ class RitualNorth extends Phaser.Scene {
             if (deskKey == 1){
                 this.keyHot.setVisible(true);
             }
+            else{
+                this.keyHot.setVisible(false);
+            }
             
             if (candles == 1){
                 this.candleHot.setVisible(true);

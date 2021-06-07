@@ -60,6 +60,12 @@ class Menu extends Phaser.Scene {
         this.load.image('info2-5', './assets/info/world.png');
         this.load.image('info3-5', './assets/info/star.png');
         this.load.image('info4-5', './assets/info/hierophant.png');
+
+        // notes
+        this.load.image('note1', './assets/puzzle5/notes/puzzle1_answer.png');
+        this.load.image('note2', './assets/puzzle5/notes/closet_note_big.png');
+        this.load.image('note3', './assets/puzzle5/notes/ritual_coin.png');
+        this.load.image('note4', './assets/puzzle5/notes/loading_note.png');
     }
 
     create() {

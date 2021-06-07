@@ -86,6 +86,8 @@ class Inventory7 extends Phaser.Scene {
             cursor: handPointer
         });
 
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // info
         this.info1_2 = this.add.image(650, 350, 'info1-2');
         this.info1_2.setDisplaySize(1280, 720);
         this.info1_2.setVisible(false);
@@ -119,10 +121,11 @@ class Inventory7 extends Phaser.Scene {
             cursor: handPointer
         });
 
-    
         this.info4_2 = this.add.image(650, 350, 'info4-2');
         this.info4_2.setDisplaySize(1280, 720);
         this.info4_2.setVisible(false);
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // page 1
         this.page1 = this.add.sprite(650, 350, 'bg1');
         this.page1.setDisplaySize(1280, 720);
@@ -181,6 +184,25 @@ class Inventory7 extends Phaser.Scene {
             cursor: handPointer
         });
 
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // notes
+        this.note1 = this.add.sprite(660, 330, 'note1');
+        this.note1.setDisplaySize(1280, 720);
+        this.note1.setVisible(false);
+
+        this.note2 = this.add.sprite(630, 360, 'note2');
+        this.note2.setDisplaySize(1280, 720);
+        this.note2.setVisible(false);
+
+        this.note3 = this.add.sprite(655, 320, 'note3');
+        this.note3.setDisplaySize(1280, 720);
+        this.note3.setVisible(false);
+
+        this.note4 = this.add.sprite(650, 350, 'note4');
+        this.note4.setDisplaySize(1280, 720);
+        this.note4.setVisible(false);
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // content1
         this.content1 = this.add.sprite(105, 665, 'hitbox');
         this.content1.setDisplaySize(50, 70);
@@ -257,7 +279,7 @@ class Inventory7 extends Phaser.Scene {
     update() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // "x" to close inventory
-        this.closeInven.on('pointerdown', (pointer) => {
+        this.closeInven.on('pointerdown', () => {
             this.scene.stop("cardBox7");
             this.scene.wake(prevScene);
         });
@@ -289,7 +311,6 @@ class Inventory7 extends Phaser.Scene {
             this.layer = this.add.layer();
             this.layer.add([this.page1]);
             this.layer.setDepth(-1);
-;
             this.one.setVisible(true);
             this.one.on('pointerover', (pointer) => {
                 this.info1.setVisible(true);
@@ -425,6 +446,12 @@ class Inventory7 extends Phaser.Scene {
             this.v4.setVisible(false);
             this.v5.setVisible(false);
             this.v1.setVisible(false);
+
+            // notes
+            this.note1.setVisible(false);
+            this.note2.setVisible(false);
+            this.note3.setVisible(false);
+            this.note4.setVisible(false);
         } else if(page == 2){
             this.info1_2 = this.add.image(650, 350, 'info1-2');
                 this.info1_2.setVisible(false);
@@ -479,6 +506,12 @@ class Inventory7 extends Phaser.Scene {
             this.page5.setVisible(false);
             this.page6.setVisible(false);
             this.page7.setVisible(false);
+
+            // notes
+            this.note1.setVisible(false);
+            this.note2.setVisible(false);
+            this.note3.setVisible(false);
+            this.note4.setVisible(false);
 
         } else if(page == 3){
             this.info1_2 = this.add.image(650, 350, 'info1-3');
@@ -537,6 +570,12 @@ class Inventory7 extends Phaser.Scene {
             this.page6.setVisible(false);
             this.page7.setVisible(false);
 
+            // notes
+            this.note1.setVisible(false);
+            this.note2.setVisible(false);
+            this.note3.setVisible(false);
+            this.note4.setVisible(false);
+
         } else if(page == 4){
             this.info1_2 = this.add.image(650, 350, 'info1-4');
                 this.info1_2.setVisible(false);
@@ -594,6 +633,12 @@ class Inventory7 extends Phaser.Scene {
             this.page6.setVisible(false);
             this.page7.setVisible(false);
 
+            // notes
+            this.note1.setVisible(false);
+            this.note2.setVisible(false);
+            this.note3.setVisible(false);
+            this.note4.setVisible(false);
+
         } else if(page == 5){
             this.info1_2 = this.add.image(650, 350, 'info1-5');
                 this.info1_2.setVisible(false);
@@ -647,6 +692,12 @@ class Inventory7 extends Phaser.Scene {
             this.page5.setVisible(true);
             this.page6.setVisible(false);
             this.page7.setVisible(false);
+
+            // notes
+            this.note1.setVisible(false);
+            this.note2.setVisible(false);
+            this.note3.setVisible(false);
+            this.note4.setVisible(false);
             
         } else if(page == 6){
             this.one_2.setVisible(false);
@@ -660,6 +711,12 @@ class Inventory7 extends Phaser.Scene {
             this.page5.setVisible(false);
             this.page6.setVisible(true);
             this.page7.setVisible(false);
+
+            // notes
+            this.note1.setVisible(false);
+            this.note2.setVisible(false);
+            this.note3.setVisible(false);
+            this.note4.setVisible(false);
             
         } else if(page == 7){
             this.one_2.setVisible(false);
@@ -673,6 +730,18 @@ class Inventory7 extends Phaser.Scene {
             this.page5.setVisible(false);
             this.page6.setVisible(false);
             this.page7.setVisible(true);
+
+            // notes
+            this.note1.setVisible(true);
+            this.note3.setVisible(true);
+
+            if (paper == 1){
+                this.note2.setVisible(true);
+            }
+            
+            if (note == 1){
+                this.note4.setVisible(true);
+            }
         }
     }
 }    

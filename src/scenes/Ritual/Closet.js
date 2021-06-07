@@ -42,14 +42,9 @@ class Closet extends Phaser.Scene {
         this.noteHit.setInteractive({
             cursor: handPointer
         });
-        this.noteHit.interText = this.add.text(400, 650, 'You put the note in your inventory');
+        this.noteHit.interText = this.add.text(200, 650, 'You put the note in your inventory');
         this.noteHit.interText.setFontSize(40);
         this.noteHit.interText.setVisible(false);
-
-        // note open
-        this.noteOpen = this.add.image(640, 360, 'closetNoteOpen');
-        this.noteOpen.setDisplaySize(1280, 720);
-        this.noteOpen.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // close
@@ -105,7 +100,6 @@ class Closet extends Phaser.Scene {
             this.noteHit.on('pointerdown', () => {
                 this.textVar = 300;
                 this.textTimer = 1;
-                this.noteOpen.setVisible(true);
                 this.noteHit.interText.setVisible(true);
                 paper = 1;
             });
@@ -114,7 +108,6 @@ class Closet extends Phaser.Scene {
             this.noteHit.on('pointerdown', () => {
                 this.textVar = 150;
                 this.textTimer = 1;
-                this.noteOpen.setVisible(false);
                 this.noteHit.interText.setVisible(true);
             });
         }
@@ -127,7 +120,6 @@ class Closet extends Phaser.Scene {
         else if(this.textTimer >= this.textVar){
             // hide text
             this.textTimer = 0;
-            this.noteOpen.setVisible(false);
             this.noteHit.interText.setVisible(false);
         }
         

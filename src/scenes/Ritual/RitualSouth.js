@@ -167,6 +167,7 @@ class RitualSouth extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // clicks inventory box: puts this scene to sleep (no updates), switches to cards
+        prevScene = this.scene.key;
         this.invent.on('pointerdown', (pointer) => {
             this.scene.switch("cardBox7");
         });
@@ -210,6 +211,7 @@ class RitualSouth extends Phaser.Scene {
                 this.textTimer = 1;
                 this.timeVar = 50;
                 this.scene.switch("ritualCloset");
+                deskKey = 2;
             }
         });
 

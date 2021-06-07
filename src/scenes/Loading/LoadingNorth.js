@@ -56,17 +56,13 @@ class LoadingNorth extends Phaser.Scene {
         this.noteFrame = this.add.sprite(643, 375, 'frameNote');
         this.noteFrame.setDisplaySize(1280, 720);
         this.noteFrame.setVisible(false);
-        // empty frame
-        this.note = this.add.sprite(640, 370, 'note');
-        this.note.setDisplaySize(1280, 720);
-        this.note.setVisible(false);
         // note
         this.noteHit = this.add.sprite(675, 196, 'hitbox');
         this.noteHit.setDisplaySize(40, 60);
         this.noteHit.setInteractive({
             cursor: handPointer
         });
-        this.noteHit.interText = this.add.text(150, 645, 'You put the note in your inventory');
+        this.noteHit.interText = this.add.text(140, 645, 'You put the note in your inventory');
         this.noteHit.interText.setFontSize(50);
         this.noteHit.interText.setVisible(false);
         this.noteHit.setVisible(false);
@@ -131,7 +127,7 @@ class LoadingNorth extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // clicks inventory box: puts this scene to sleep (no updates), switches to cards
         this.invent.on('pointerdown', (pointer) => {
-            this.scene.switch("cardBox");
+            this.scene.switch("cardBox7");
         });
 
         // clicks help box: puts this scene to sleep (no updates), switches to cards
@@ -156,7 +152,6 @@ class LoadingNorth extends Phaser.Scene {
 
             this.noteHit.on('pointerdown', (pointer) => {
                 note = 1;
-                this.note.setVisible(true);
                 this.noteHit.setVisible(true);
                 this.noteHit.interText.setVisible(true);
                 this.textTimer = 1;
@@ -174,7 +169,6 @@ class LoadingNorth extends Phaser.Scene {
             this.spread5.setVisible(false);
             this.frameHit.interText.setVisible(false);
             this.noteHit.interText.setVisible(false);
-            this.note.setVisible(false);
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
