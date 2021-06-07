@@ -110,7 +110,7 @@ class Closet extends Phaser.Scene {
 
         if(this.textTimer == 0 && paper == 0){
             this.noteHit.on('pointerdown', () => {
-                this.textVar = 300;
+                this.textVar = 100;
                 this.textTimer = 1;
                 this.noteHit.interText.setVisible(true);
                 paper = 1;

@@ -6,10 +6,10 @@ class RitualNorth extends Phaser.Scene {
     preload() {
         // images
         this.load.image('ritualNorth', './assets/puzzle5/ritualNorth_circle.png');
+        this.load.image('ritualNorthClean', './assets/puzzle5/ritualNorth.png');
         this.load.image('knife', './assets/puzzle5/overlays/ritualNorth_knife.png');
         this.load.image('matches', './assets/puzzle5/overlays/ritualNorth_matches.png');
         this.load.image('darkRitual', './assets/puzzle2/overlays/lightsOff.png');
-        this.load.image('greenFire', './assets/puzzle5/pentagram/ritualNorth_flames.png');
         this.load.image('towerCard', './assets/puzzle5/overlays/ritualNorth_tower.png');
         this.load.image('hitbox', './assets/HitBox2.png');
 
@@ -32,19 +32,25 @@ class RitualNorth extends Phaser.Scene {
         this.load.image('fireGreen', './assets/puzzle5/overlays/ritualNorth_candles_green.png');
         this.load.image('firePurple', './assets/puzzle5/overlays/ritualNorth_candles_purple.png');
         this.load.image('fireYellow', './assets/puzzle5/overlays/ritualNorth_candles_yellow.png');
+        this.load.spritesheet('greenFire', './assets/puzzle5/overlays/ritualNorth_flames.png', {frameWidth: 1280, frameHeight: 720, startFrame: 0, endFrame: 3});
+
     }
 
     create() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // place tile sprite
         this.cellarnorth = this.add.tileSprite(0, 0, 1280, 720, 'ritualNorth').setOrigin(0, 0); 
+        // clean bg
+        this.cleanbg = this.add.image(640, 360, 'ritualNorthClean');
+        this.cleanbg.setDisplaySize(1280, 720);
+        this.cleanbg.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-
+        
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // inventory box set up
         this.invent = this.add.sprite(60, 60, 'hitbox');
@@ -197,9 +203,12 @@ class RitualNorth extends Phaser.Scene {
         this.towerHit.setVisible(false);
 
         // green fire
-        this.fire = this.add.image(750, 360, 'greenFire');
-        this.fire.setDisplaySize(1280, 720);
-        this.fire.setVisible(false);
+        this.fire = this.anims.create({
+            key: 'greenFire',
+            frames: this.anims.generateFrameNumbers('greenFire', { start: 0, end: 3, first: 0}),
+            frameRate: 1,
+            repeat: 0
+        });
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // dark
@@ -308,12 +317,11 @@ class RitualNorth extends Phaser.Scene {
         }
         
         // fire text timers
-        if(this.fireTimer > 0 && this.fireTimer < 150) {
+        if(this.fireTimer > 0 && this.fireTimer < 170) {
             this.fireTimer += 1;
         } 
-        else if(this.fireTimer >= 150){
+        else if(this.fireTimer >= 170){
             // hide text
-            this.fire.setVisible(false);
             this.tower.setVisible(true);
             this.towerHit.setVisible(true);
         }
@@ -358,8 +366,9 @@ class RitualNorth extends Phaser.Scene {
         }
         
         if(end == 1 && this.fireShown == 0){
+            this.cleanbg.setVisible(true);
             this.ritual.setVisible(false);
-            this.fire.setVisible(true);
+            this.add.sprite(630, 380, 'hitbox').play('greenFire');
             this.fireTimer = 1;
             this.hotOn = false;
             this.fireShown = 1;
