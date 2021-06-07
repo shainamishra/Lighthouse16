@@ -207,7 +207,7 @@ class RitualSouth extends Phaser.Scene {
         // scene switches
         // closet
         this.closetHit.on('pointerdown', (pointer) => {
-            if(deskKey == 1 && this.textTimer == 0){
+            if(deskKey > 0 && this.textTimer == 0){
                 this.textTimer = 1;
                 this.timeVar = 50;
                 this.scene.switch("ritualCloset");

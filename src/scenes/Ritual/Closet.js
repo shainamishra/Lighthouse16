@@ -95,8 +95,7 @@ class Closet extends Phaser.Scene {
         this.closeLook.on('pointerdown', () => {
             if(this.textTimer == 0){
                 this.textTimer = 1;
-                this.scene.stop("ritualCloset");
-                this.scene.wake("ritualSouth");
+                this.scene.switch("ritualSouth");
             }
         });
 

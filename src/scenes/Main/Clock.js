@@ -14,12 +14,12 @@ class Clock extends Phaser.Scene {
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
        
-        this.clockface = this.add.sprite(660, 350, 'clock');
+        this.clockface = this.add.sprite(640, 360, 'clock');
         this.clockface.setDisplaySize(1280, 720);
         this.clockface.interText = this.add.text(borderUISize + borderPadding * 20 + 610, borderUISize + borderPadding * 2 - 40, 'Press A/D\n to move\n   hand');
         this.clockface.interText.setFontSize(50)
 
-        this.hourhand = this.add.image(650, 350,'hour');
+        this.hourhand = this.add.image(640, 360, 'hour');
         this.hourhand.setInteractive({
             cursor: handPointer
         });
@@ -27,7 +27,7 @@ class Clock extends Phaser.Scene {
         this.hourhand.interText.setFontSize(50);
         this.hourhand.interText.setVisible(false);
 
-        this.minutehand = this.add.image(650, 350, 'minute');
+        this.minutehand = this.add.image(640, 360, 'minute');
         this.minutehand.setInteractive({
             cursor: handPointer
         });

@@ -22,9 +22,9 @@ class ClosetClock extends Phaser.Scene {
         this.hourhand.setInteractive({
             cursor: handPointer
         });
-        this.hourhand.interText = this.add.text(370, 390, 'The drawer unlocked');
+        this.hourhand.interText = this.add.text(370, 395, 'The drawer unlocked');
         this.hourhand.interText.setFontSize(50);
-        this.hourhand.interText.setVisible(true);
+        this.hourhand.interText.setVisible(false);
 
         this.minutehand = this.add.image(640, 360, 'minuteCloset');
         this.minutehand.setInteractive({
@@ -80,10 +80,8 @@ class ClosetClock extends Phaser.Scene {
 
         this.exitPuzzle.on('pointerdown', () => {
             if(this.textTimerClockP == 0){
-                console.log("in")
                 this.textTimerClockP = 1;
-                this.scene.stop("clockCloset");
-                this.scene.wake("ritualCloset");
+                this.scene.switch("ritualCloset");
             }
         });
       
