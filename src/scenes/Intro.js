@@ -15,7 +15,7 @@ class Intro extends Phaser.Scene {
         // place tile sprites
         this.bg = this.add.tileSprite(0, 0, 1280, 720, 'blkbg').setOrigin(0, 0); 
         this.ione = this.add.sprite(300,360, 'hitbox');
-        this.ione.intertext = this.add.text(borderUISize + borderPadding * 20 -340, borderUISize + borderPadding * 2 + 200, '        As I approached the island,\nI glanced down at the strange wooden box\n    the old fortune teller had given me. ');
+        this.ione.intertext = this.add.text(borderUISize + borderPadding * 20 -340, borderUISize + borderPadding * 2 + 200, '        As I approached the island,\nI glanced down at the strange wooden box\n   the old fortune teller had given me. ');
         this.ione.intertext.setFontSize(50);
         this.ione.intertext.setAlpha(1);
        
@@ -30,12 +30,12 @@ class Intro extends Phaser.Scene {
         this.ithree.intertext.setAlpha(0);
 
         this.ifour = this.add.sprite(300,360, 'hitbox');
-        this.ifour.intertext = this.add.text(borderUISize + borderPadding * 20 -300, borderUISize + borderPadding * 2 + 200, '        She told me it would be\n filled if I ascended the lighthouse.\nWhy I was meant to fill it or how I am\n  supposed to do it, I do not know.');
+        this.ifour.intertext = this.add.text(borderUISize + borderPadding * 20 -300, borderUISize + borderPadding * 2 + 150, '        She told me it would be\n filled if I ascended the lighthouse.\nWhy I was meant to fill it or how I am\n  supposed to do it, I do not know.');
         this.ifour.intertext.setFontSize(50);
         this.ifour.intertext.setAlpha(0);
 
         this.ifive = this.add.sprite(300,360, 'hitbox');
-        this.ifive.intertext = this.add.text(borderUISize + borderPadding * 20 -350, borderUISize + borderPadding * 2 + 200, '         She simply assured me that\nthe cards would manifest themselves to me.');
+        this.ifive.intertext = this.add.text(borderUISize + borderPadding * 20 -350, borderUISize + borderPadding * 2 + 200, '     She simply assured me that the\n  cards would manifest themselves to me.');
         this.ifive.intertext.setFontSize(50);
         this.ifive.intertext.setAlpha(0);
 
@@ -82,26 +82,26 @@ class Intro extends Phaser.Scene {
     update(){
         if (Phaser.Input.Keyboard.JustDown(keySPACE)){
             if (!this.tweenIn.isPlaying()){               
-            this.tweenOut = this.tweens.add({
-                targets: prevText,
-                alpha: {from: 1, to: 0},
-                ease: 'Linear',
-                duration: 1000,
-            });
-            this.tweenIn = this.tweens.add({
-                targets: nextText,
-                alpha: {from: 0, to: 1},
-                ease: 'Linear',
-                duration: 1000,
-                delay: 1200,
-            });
-            this.tweenIn.on('complete', () => {
-                this.textList.shift();
-                prevText = this.textList[0];
-                nextText = this.textList[1];
-            });
+                this.tweenOut = this.tweens.add({
+                    targets: prevText,
+                    alpha: {from: 1, to: 0},
+                    ease: 'Linear',
+                    duration: 1000,
+                });
+                this.tweenIn = this.tweens.add({
+                    targets: nextText,
+                    alpha: {from: 0, to: 1},
+                    ease: 'Linear',
+                    duration: 1000,
+                    delay: 1200,
+                });
+                this.tweenIn.on('complete', () => {
+                    this.textList.shift();
+                    prevText = this.textList[0];
+                    nextText = this.textList[1];
+                });
             }
-            else if(this.textList.length == 1){
+            if(this.textList.length < 2){
                 this.sound.play("CrashingWaves");
                 this.scene.start("instructionScene"); 
             }
