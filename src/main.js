@@ -26,6 +26,11 @@ let keySPACE, keyW, keyA, keyS, keyD, keyI, key1, key2, key3, key4, key5, key6, 
 
 // global variables
 let prevScene = '';
+
+//intro
+let prevText;
+let nextText;
+
 // puzzle 1
 let level = 0;
 let keyGot = 0;
