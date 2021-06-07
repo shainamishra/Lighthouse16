@@ -52,12 +52,21 @@ class Intro extends Phaser.Scene {
         this.ieight.intertext = this.add.text(borderUISize + borderPadding * 20 -350, borderUISize + borderPadding * 2 + 200, '      And so to settle this, I arrive.');
         this.ieight.intertext.setFontSize(50);
         this.ieight.intertext.setAlpha(0);
+        
+        this.spaceText = this.add.text(borderUISize + borderPadding * 30, borderUISize + borderPadding * 2 + 600, 'Press space to continue');
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // borders
+        this.add.rectangle(0, 0, 10, game.config.height, 0x042630).setOrigin(0, 0);
+        this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x042630).setOrigin(0, 0);
+        this.add.rectangle(0, 0, game.config.width, 10, 0x042630).setOrigin(0, 0);
+        this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x042630).setOrigin(0, 0);
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+        //tween set up 
         this.textList = [this.ione.intertext, this.itwo.intertext, this.ithree.intertext, this.ifour.intertext, this.ifive.intertext, this.isix.intertext, this.iseven.intertext, this.ieight.intertext];
 
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
-        //tween set up
         prevText = this.textList[0];
         nextText = this.textList[1];
 
@@ -91,11 +100,10 @@ class Intro extends Phaser.Scene {
                 nextText = this.textList[1];
             });
             }
-            else if(this.textList.length == 0){
+            else if(this.textList.length == 1){
                 this.sound.play("CrashingWaves");
                 this.scene.start("instructionScene"); 
             }
         }
     }
-
 }
