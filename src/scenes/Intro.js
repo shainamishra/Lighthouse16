@@ -11,6 +11,7 @@ class Intro extends Phaser.Scene {
 
     create() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        this.cameras.main.fadeIn(1000, 0, 0, 0)
         // place tile sprites
         this.bg = this.add.tileSprite(0, 0, 1280, 720, 'blkbg').setOrigin(0, 0); 
         this.ione = this.add.sprite(300,360, 'hitbox');

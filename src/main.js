@@ -2,14 +2,14 @@ let config = {
     type: Phaser.CANVAS,
     width: 1280,
     height: 720,
-    scene: [ Menu, Intro, Instruction, Spread1, Inventory, 
+    scene: [ Menu, Intro, Lose, Win, Instruction, Spread1, Inventory, 
             IslandNorth, IslandWest, IslandEast, IslandSouth, 
             Spread2, CellarNorth, CellarWest, CellarEast, CellarSouth, 
             Spread3, MainNorth, MainWest, MainEast, MainSouth, Clock, 
             Spread4, LookoutNorth, LookoutWest, LookoutEast, LookoutSouth, Scales, 
             LoadingNorth, LoadingSouth, 
-            Spread5, Inventory7, RitualNorth, Pentagram, Bookshelf, RitualWest, Closet, ClosetClock, RitualEast, Cabinet, RitualSouth,
-            Spread6, Lose, Win, ClownNorth, ClownSouth, ClownEast, ClownWest],
+            Spread5, Inventory7, RitualNorth, Pentagram, Bookshelf, RitualWest, Closet, RitualEast, Cabinet, RitualSouth,
+            Spread6, ClownNorth, ClownSouth, ClownEast, ClownWest],
   }
 
 let game = new Phaser.Game(config);

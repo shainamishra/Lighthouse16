@@ -4,18 +4,19 @@ class Lose extends Phaser.Scene {
     }
 
     preload(){
-        // images
         this.load.image('gameover', './assets/end/gameover.png');
+        this.load.audio('cellar_music', './assets/sfx/theLighthouse_underwater.wav');
     }
 
     create() { 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        this.cameras.main.fadeIn(1000, 0, 0, 0)
         // place tile sprite
         this.bg = this.add.tileSprite(0, 0, 1280, 720, 'gameover').setOrigin(0, 0); 
 
         // music
-        this.cellarBGM = this.sound.add('cellar_music', {volume: 0.1, loop: true});
-        this.cellarBGM.play();
+        this.loseBGM = this.sound.add('cellar_music', {volume: 0.1, loop: true});
+        this.loseBGM.play();
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -26,6 +27,8 @@ class Lose extends Phaser.Scene {
     }
     
     update() {
-        //return to puzzle 5 loading room to try again
+        this.input.keyboard.on('keydown-SPACE', () => {
+            this.scene.start("loadingNorth"); 
+		});
     }
 }
