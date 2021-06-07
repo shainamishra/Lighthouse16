@@ -207,8 +207,8 @@ class MainEast extends Phaser.Scene {
             if(knifeGot == 1 && this.textTimerPainting == 2){
                 if(pcoinGot ==0){
                     pcoinGot += 1;
+                    this.sound.play("itemtake");
                 }
-                this.sound.play("itemtake");
                 knifeGot == 0;
             }
         }
