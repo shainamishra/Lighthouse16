@@ -15,7 +15,7 @@ class ClosetClock extends Phaser.Scene {
        
         this.clockface = this.add.sprite(640, 360, 'clockCloset');
         this.clockface.setDisplaySize(1280, 720);
-        this.clockface.interText = this.add.text(borderUISize + borderPadding * 20 + 605, borderUISize + borderPadding * 2 - 40, 'Press A/D\n to move\n   hand');
+        this.clockface.interText = this.add.text(borderUISize + borderPadding * 20 + 600, borderUISize + borderPadding * 2 - 40, 'Press A/D\n to move\n   hand');
         this.clockface.interText.setFontSize(50);
 
         this.hourhand = this.add.image(640, 360,'hourCloset');
