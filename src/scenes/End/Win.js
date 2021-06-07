@@ -49,7 +49,7 @@ class Win extends Phaser.Scene {
             this.credits.intertext.setVisible(false);
             this.sourcethanks.intertext.setVisible(true);
         }
-        else if(this.wintexttimer > 500 && this.wintexttimer < 999){
+        else if(this.wintexttimer > 500 && this.wintexttimer < 1000){
             this.wintexttimer +=1;
  
         }
