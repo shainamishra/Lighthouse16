@@ -12,7 +12,7 @@ class Pentagram extends Phaser.Scene {
         this.load.image('firePentPurple', './assets/puzzle5/pentagram/ritual_closeup_purple.png');
         this.load.image('firePentYellow', './assets/puzzle5/pentagram/ritual_closeup_yellow.png');
         this.load.image('redVig', './assets/puzzle5/overlays/redVignette.png');
-        this.load.image('greenFire', './assets/puzzle5/pentagram/ritualNorth_flames.png');
+        this.load.image('dead', './assets/puzzle5/overlays/dead.png');
 
         // cards
         this.load.image('card1', './assets/puzzle5/pentagram/ritual_card1.png');
@@ -187,10 +187,17 @@ class Pentagram extends Phaser.Scene {
             repeat: 0
         });
 
+        // red vig
         this.redVig = this.add.image(640, 360, 'redVig');
         this.redVig.setDisplaySize(1280, 720);
         this.redVig.alpha = 0.50;
         this.redVig.setVisible(false);
+
+        // dead
+        this.dead = this.add.image(640, 360, 'dead');
+        this.dead.setDisplaySize(1280, 720);
+        this.dead.alpha = 0.10;
+        this.dead.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // dark
@@ -209,6 +216,8 @@ class Pentagram extends Phaser.Scene {
         this.order = [];
         this.correctOrder = ["chemical", "matches", "knife"]
         this.chemSet = 0;
+        this.val = 0;
+        this.int = 1;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -277,12 +286,12 @@ class Pentagram extends Phaser.Scene {
                     if(chemical == 1){
                         // fertilizer
                         // show chem im, hide others
-                        this.firePentGreen.setVisible(true);
+                        this.firePentPurple.setVisible(true);
 
                     } else if(chemical == 2){
                         // insecticide
                         // show chem im, hide others
-                        this.firePentPurple.setVisible(true);
+                        this.firePentGreen.setVisible(true);
 
                     }else if(chemical == 3){
                         // bleach
@@ -293,7 +302,6 @@ class Pentagram extends Phaser.Scene {
                         // salt
                         // show chem im, hide others
                         this.firePentYellow.setVisible(true);
-
                     }
                     lit = 1;
                 }
@@ -335,23 +343,28 @@ class Pentagram extends Phaser.Scene {
                 
                 this.cardStatus = this.checkCorrect(this.status, this.correct, 5);
                 this.final = this.checkRitual(this.cardStatus);
+                this.closeLook.setVisible(false);
             }
         });
 
-        if(this.final == true && this.textTimer == 0 && this.fireTimer == 0 && flame == 0){
-            // show green flame
-            // green fire
-            this.fire = this.add.image(750, 360, 'greenFire');
-            this.fire.setDisplaySize(1280, 720);
-            this.fire.setVisible(true);
-            this.fireTimer = 1;
-            flame = 1;
-
+        if(this.final == true && this.cardStatus == true && this.textTimer == 0 && this.bloodTimer == 0 && chemical == 2){
             // hide shit
             this.closeLook.setVisible(false);
+            end = 1;
+            this.scene.stop("ritualPentagram");
+            this.scene.wake("ritualNorth");
         }
-        else {
+        else if ((this.final == false || this.cardStatus == false || chemical != 2) && this.textTimer == 0 && this.bloodTimer == 0) {
             // die
+            if(this.val < 100){
+                this.int += 1;
+                this.val = this.int/200;
+                this.dead.alpha = this.val;
+                this.dead.setVisible(true);
+            }
+            else {
+                console.log("else")
+            }
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -371,16 +384,6 @@ class Pentagram extends Phaser.Scene {
         else if(this.bloodTimer >= 200){
             // hide text
             this.bloodTimer = 0;
-        }
-
-        // fire text timers
-        if(this.fireTimer > 0 && this.fireTimer < 150) {
-            this.fireTimer += 1;
-        } 
-        else if(this.fireTimer >= 150){
-            // hide text
-            this.fireTimer = 0;
-            this.fire.setVisible(false);
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////

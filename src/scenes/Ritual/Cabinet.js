@@ -37,7 +37,7 @@ class Cabinet extends Phaser.Scene {
         this.bleach.interText.setVisible(false);
 
         // fertilizer
-        this.fertilizerIm = this.add.image(640, 360, 'fertilizer');
+        this.fertilizerIm = this.add.image(640, 357, 'fertilizer');
         this.fertilizerIm.setDisplaySize(1280, 730);
         this.fertilizerIm.setVisible(true);
         // fertilizer hitbox
@@ -52,7 +52,7 @@ class Cabinet extends Phaser.Scene {
         this.fertilizer.interText.setVisible(false);
 
         // insect im
-        this.insecticideIm = this.add.image(640, 362, 'insecticide');
+        this.insecticideIm = this.add.image(640, 355, 'insecticide');
         this.insecticideIm.setDisplaySize(1280, 720);
         this.insecticideIm.setVisible(true);
         // insect hitbox

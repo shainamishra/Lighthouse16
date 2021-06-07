@@ -22,8 +22,8 @@ class Menu extends Phaser.Scene {
         this.load.image('bg2', './assets/transitions/spread2.png');
         this.load.image('bg3', './assets/transitions/spread3.png');
         this.load.image('bg4', './assets/transitions/spread4.png');
-        this.load.image('set6', './assets/transitions/spread6.png');
         this.load.image('bg5', './assets/transitions/spread5.png');
+        this.load.image('bg6', './assets/transitions/spread6.png');
 
         // velvet bgs
         this.load.image('velvet1', './assets/cards/velvet1.png');
