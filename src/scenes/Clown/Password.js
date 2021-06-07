@@ -1,19 +1,24 @@
 class Password extends Phaser.Scene {
     constructor() {
-        super("password");
-    }
-
-    preload(){
-        this.load.image('hi', './assets/blkbg.png');
+        super("pwScene");
     }
 
     create() { 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // place tile sprite
-        this.bruhhh = this.add.tileSprite(0, 0, 1280, 720, 'hi').setOrigin(0, 0); 
+        this.bruhhh = this.add.tileSprite(0, 0, 1280, 720, 'blkbg').setOrigin(0, 0); 
+
+        this.closePW = this.add.sprite(50, 50, 'x');
+        this.closePW.setDisplaySize(50, 50);
+        this.closePW.setInteractive({
+            cursor: handPointer
+        });
+        //text enter box
+        this.add.rectangle(330, 300, 600, 100, 0x808080).setOrigin(0,0);
+
+        this.hint = this.add.text(borderUISize + borderPadding * 20 -200, borderUISize + borderPadding * 2 + 100, 'Normally sweet, once we were a deadly treat.');
+        this.hint.setFontSize(35);
 
         //add text: enter password, itll be found at the top of the tower .... something something reference humbug story book
-        //text enter box
         //enter the clown room? yes -> chantels room if no ->go back to instructions
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -24,6 +29,9 @@ class Password extends Phaser.Scene {
     }
     
     update() {
-
+        this.closePW.on('pointerdown', () => {
+            this.scene.stop("pwScene");
+            this.scene.start("instructionScene");
+        });
     }
 }
