@@ -83,6 +83,9 @@ class RitualEast extends Phaser.Scene {
         this.cabinentHit.setInteractive({
             cursor: handPointer
         });
+        this.cabinentHit.interText = this.add.text(925, 265, 'The cabinet\n  needs a\nthree digit\n   combo');
+        this.cabinentHit.interText.setFontSize(50);
+        this.cabinentHit.interText.setVisible(false);
 
         // combo pop up
         this.combo = this.add.image(640, 360, 'comboRitual');
@@ -203,6 +206,7 @@ class RitualEast extends Phaser.Scene {
                 if(unlocked == 0 && this.textTimer == 0){
                     this.combo.setVisible(true);
                     this.textTimer = 1;
+                    this.cabinentHit.interText.setVisible(true);
                 }
 
                 if(unlocked == 1 && this.textTimer == 0){
@@ -214,7 +218,6 @@ class RitualEast extends Phaser.Scene {
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // text timers
         // lock input on screen
         if(unlocked == 0) {
             this.inputCombo = this.checkCombo();
@@ -235,6 +238,7 @@ class RitualEast extends Phaser.Scene {
             }
         }
 
+        // text timers
         if(this.textTimer > 0 && this.textTimer < this.timeVar && unlocked == 1) {
             this.textTimer += 1;
         }
@@ -246,6 +250,7 @@ class RitualEast extends Phaser.Scene {
             this.digit1.interText.setVisible(false);
             this.digit2.interText.setVisible(false);
             this.digit3.interText.setVisible(false);
+            this.cabinentHit.interText.setVisible(false);
             this.inputCombo = 0;
             combo = '';
             pos = 0;

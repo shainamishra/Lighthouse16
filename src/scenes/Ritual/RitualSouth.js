@@ -75,6 +75,12 @@ class RitualSouth extends Phaser.Scene {
         this.switchHit.setInteractive({
             cursor: handPointer
         });
+        this.switchHit.interTextOff = this.add.text(740, 420, 'You turned the\n  lights off');
+        this.switchHit.interTextOff.setFontSize(50);
+        this.switchHit.interTextOff.setVisible(false);
+        this.switchHit.interTextOn = this.add.text(740, 420, 'You turned the\n  lights  on');
+        this.switchHit.interTextOn.setFontSize(50);
+        this.switchHit.interTextOn.setVisible(false);
 
         // closet hit
         this.closetHit = this.add.image(940, 335, 'hitbox');
@@ -83,6 +89,9 @@ class RitualSouth extends Phaser.Scene {
         this.closetHit.setInteractive({
             cursor: handPointer
         });
+        this.closetHit.interText = this.add.text(840, 85, ' The\n door\n  is\nlocked');
+        this.closetHit.interText.setFontSize(50);
+        this.closetHit.interText.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // hot bar 
@@ -192,13 +201,17 @@ class RitualSouth extends Phaser.Scene {
                 // turn lights off
                 this.textTimer = 1;
                 lightState = 1;
-                this.timeVar = 50;
+                this.timeVar = 100;
+                this.switchHit.interTextOff.setVisible(true);
+                this.switchHit.interTextOn.setVisible(false);
             }
             else if (lightState == 1 && this.textTimer == 0){
                 // turn lights on
                 this.textTimer = 1;
                 lightState = 2;
-                this.timeVar = 50;
+                this.timeVar = 100;
+                this.switchHit.interTextOff.setVisible(false);
+                this.switchHit.interTextOn.setVisible(true);
             }
         });
 
@@ -207,6 +220,11 @@ class RitualSouth extends Phaser.Scene {
         // scene switches
         // closet
         this.closetHit.on('pointerdown', (pointer) => {
+            if(deskKey == 0 && this.textTimer == 0){
+                this.closetHit.interText.setVisible(true);
+                this.textTimer = 1;
+                this.timeVar = 100;
+            }
             if(deskKey > 0 && this.textTimer == 0){
                 this.textTimer = 1;
                 this.timeVar = 50;
@@ -231,6 +249,9 @@ class RitualSouth extends Phaser.Scene {
         else if(this.textTimer >= this.timeVar){
             // hide text
             this.textTimer = 0;
+            this.closetHit.interText.setVisible(false);
+            this.switchHit.interTextOff.setVisible(false);
+            this.switchHit.interTextOn.setVisible(false);
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -41,7 +41,7 @@ class Closet extends Phaser.Scene {
         this.noteHit.setInteractive({
             cursor: handPointer
         });
-        this.noteHit.interText = this.add.text(200, 650, 'You put the note in your inventory');
+        this.noteHit.interText = this.add.text(220, 650, 'You put the note in your inventory');
         this.noteHit.interText.setFontSize(40);
         this.noteHit.interText.setVisible(false);
 

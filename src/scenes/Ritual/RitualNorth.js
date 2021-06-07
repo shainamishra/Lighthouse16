@@ -96,11 +96,14 @@ class RitualNorth extends Phaser.Scene {
             cursor: handPointer
         });
         this.matches.setVisible(true);
+        this.matches.interText = this.add.text(35, 260, 'You took the matches');
+        this.matches.interText.setFontSize(50);
+        this.matches.interText.setVisible(false);
         // match image
         this.matchesIm = this.add.image(640, 360, 'matches');
         this.matchesIm.setDisplaySize(1280, 720);
         this.matchesIm.setVisible(true);
-
+        
         // knife hit
         this.knife = this.add.sprite(875, 390, 'hitbox');
         this.knife.setDisplaySize(235, 50);
@@ -108,6 +111,9 @@ class RitualNorth extends Phaser.Scene {
             cursor: handPointer
         });
         this.knife.setVisible(true);
+        this.knife.interText = this.add.text(65, 170, 'You took the knife');
+        this.knife.interText.setFontSize(50);
+        this.knife.interText.setVisible(false);
         // knife image
         this.knifeIm = this.add.image(640, 360, 'knife');
         this.knifeIm.setDisplaySize(1280, 720);
@@ -182,7 +188,7 @@ class RitualNorth extends Phaser.Scene {
         this.tower.setDisplaySize(1280, 720);
         this.tower.setVisible(false);
         
-        // knife hit
+        // tower hit
         this.towerHit = this.add.sprite(540, 550, 'hitbox');
         this.towerHit.setDisplaySize(120, 100);
         this.towerHit.setInteractive({
@@ -244,6 +250,7 @@ class RitualNorth extends Phaser.Scene {
             // hide knife
             this.knife.setVisible(false);
             this.knifeIm.setVisible(false);
+            this.knife.interText.setVisible(true);
             this.textTimer = 1;
             this.timeVar = 100;
             knifeGot = 1;
@@ -254,6 +261,7 @@ class RitualNorth extends Phaser.Scene {
             // hide matches
             this.matches.setVisible(false);
             this.matchesIm.setVisible(false);
+            this.matches.interText.setVisible(true);
             this.textTimer = 1;
             this.timeVar = 100;
             matches = 1;
@@ -295,6 +303,8 @@ class RitualNorth extends Phaser.Scene {
         } 
         else if(this.textTimer >= this.timeVar) {
             this.textTimer = 0;
+            this.knife.interText.setVisible(false);
+            this.matches.interText.setVisible(false);
         }
         
         // fire text timers

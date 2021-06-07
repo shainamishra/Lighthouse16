@@ -54,10 +54,16 @@ class RitualWest extends Phaser.Scene {
         // table hitbox
         this.tableHit = this.add.image(400, 392, 'hitbox');
         this.tableHit.setDisplaySize(700, 100);
-        this.tableHit.setVisible(false);
+        this.tableHit.setVisible(true);
         this.tableHit.setInteractive({
             cursor: handPointer
         });
+        this.tableHit.interText1 = this.add.text(175, 520, '   A\njournal');
+        this.tableHit.interText1.setFontSize(50);
+        this.tableHit.interText1.setVisible(false);
+        this.tableHit.interText2 = this.add.text(125, 520, ' A\nkey');
+        this.tableHit.interText2.setFontSize(50);
+        this.tableHit.interText2.setVisible(false);
 
         // key
         this.key = this.add.image(640, 360, 'keyTable');
@@ -151,22 +157,21 @@ class RitualWest extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
-        if(lightState > 0){
-            this.tableHit.setVisible(true);
-            this.tableHit.on('pointerdown', (pointer) => {
-                if(deskKey == 0){
-                    this.key.setVisible(true);
-                    this.textTimer = 1;
-                    this.timeVar = 100;
-                    deskKey = 1;
-                }
-                else if (this.textTimer == 0) {
-                    this.journal.setVisible(true);
-                    this.textTimer = 1;
-                    this.timeVar = 250;
-                }
-            });
-        }
+        this.tableHit.on('pointerdown', (pointer) => {
+            if(lightState > 0 && deskKey == 0){
+                this.key.setVisible(true);
+                this.tableHit.interText2.setVisible(true);
+                this.textTimer = 1;
+                this.timeVar = 100;
+                deskKey = 1;
+            }
+            else if (this.textTimer == 0) {
+                this.journal.setVisible(true);
+                this.tableHit.interText1.setVisible(true);
+                this.textTimer = 1;
+                this.timeVar = 250;
+            }
+        });
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // text timers
@@ -178,6 +183,8 @@ class RitualWest extends Phaser.Scene {
             this.textTimer = 0;
             this.key.setVisible(false);
             this.journal.setVisible(false);
+            this.tableHit.interText1.setVisible(false);
+            this.tableHit.interText2.setVisible(false);
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
