@@ -41,6 +41,7 @@ let combo = '';
 let pos = 0;
 let boltGot = 0;
 let unlocked = 0;
+let keyused = 0;
 
 // puzzle 2
 let deskKey = 0;
