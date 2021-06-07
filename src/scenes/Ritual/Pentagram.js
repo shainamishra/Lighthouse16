@@ -11,7 +11,6 @@ class Pentagram extends Phaser.Scene {
         this.load.image('firePentGreen', './assets/puzzle5/pentagram/ritual_closeup_green.png');
         this.load.image('firePentPurple', './assets/puzzle5/pentagram/ritual_closeup_purple.png');
         this.load.image('firePentYellow', './assets/puzzle5/pentagram/ritual_closeup_yellow.png');
-        this.load.image('matches', './assets/puzzle5/pentagram/ritual_matches.png');
         this.load.image('redVig', './assets/puzzle5/overlays/redVignette.png');
         this.load.image('greenFire', './assets/puzzle5/pentagram/ritualNorth_flames.png');
 
@@ -21,6 +20,15 @@ class Pentagram extends Phaser.Scene {
         this.load.image('card3', './assets/puzzle5/pentagram/ritual_card3.png');
         this.load.image('card4', './assets/puzzle5/pentagram/ritual_card4.png');
         this.load.image('card5', './assets/puzzle5/pentagram/ritual_card5.png');
+
+        // items
+        this.load.image('pentMatches', './assets/puzzle5/pentagram/ritual items/ritual_closeup_matches.png');
+        this.load.image('pentCandles', './assets/puzzle5/pentagram/ritual items/ritual_closeup_candleBox.png');
+        this.load.image('pentKnife', './assets/puzzle5/pentagram/ritual items/ritual_closeup_knife.png');
+        this.load.image('pentBleach', './assets/puzzle5/pentagram/ritual items/ritual_closeup_bleach.png');
+        this.load.image('pentFert', './assets/puzzle5/pentagram/ritual items/ritual_closeup_fert.png');
+        this.load.image('pentInsect', './assets/puzzle5/pentagram/ritual items/ritual_closeup_insecticide.png');
+        this.load.image('pentSalt', './assets/puzzle5/pentagram/ritual items/ritual_closeup_salt.png');
 
         // audio
         this.load.audio('unlock', './assets/sfx/doorUnlock2.wav');
@@ -102,36 +110,64 @@ class Pentagram extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
         // candles
-        this.candle = this.add.sprite(170, 170, 'hotbox');
-        this.candle.setDisplaySize(100, 200);
+        this.candle = this.add.sprite(150, 150, 'hitbox');
+        this.candle.setDisplaySize(250, 150);
         this.candle.setVisible(true);
         this.candle.setInteractive({
             cursor: handPointer
         });
+        // pentCandles
+        this.pentCandles = this.add.image(640, 400, 'pentCandles');
+        this.pentCandles.setDisplaySize(1280, 720);
+        this.pentCandles.setVisible(false);
 
         // matches
-        this.matches = this.add.sprite(1160, 170, 'hotbox');
-        this.matches.setDisplaySize(100, 200);
+        this.matches = this.add.sprite(1150, 360, 'hitbox');
+        this.matches.setDisplaySize(70, 150);
         this.matches.setVisible(true);
         this.matches.setInteractive({
             cursor: handPointer
         });
+        // pentMatches
+        this.pentMatches = this.add.image(640, 360, 'pentMatches');
+        this.pentMatches.setDisplaySize(1280, 720);
+        this.pentMatches.setVisible(false);
 
         // knife
-        this.knife = this.add.sprite(170, 300, 'hotbox');
-        this.knife.setDisplaySize(100, 100);
+        this.knife = this.add.sprite(1150, 580, 'hitbox');
+        this.knife.setDisplaySize(70, 220);
         this.knife.setVisible(true);
         this.knife.setInteractive({
             cursor: handPointer
         });
+        // pentKnife
+        this.pentKnife = this.add.image(640, 360, 'pentKnife');
+        this.pentKnife.setDisplaySize(1280, 720);
+        this.pentKnife.setVisible(false);
 
-        //// chemicals
-        this.chem = this.add.sprite(1160, 600, 'hotbox');
-        this.chem.setDisplaySize(170, 96);
+        // chemicals
+        this.chem = this.add.sprite(1160, 120, 'hitbox');
+        this.chem.setDisplaySize(160, 200);
         this.chem.setVisible(true);
         this.chem.setInteractive({
             cursor: handPointer
         });
+        // pentBleach
+        this.pentBleach = this.add.image(640, 360, 'pentBleach');
+        this.pentBleach.setDisplaySize(1280, 720);
+        this.pentBleach.setVisible(false);
+        // pentFert
+        this.pentFert = this.add.image(640, 360, 'pentFert');
+        this.pentFert.setDisplaySize(1280, 720);
+        this.pentFert.setVisible(false);
+        // pentInsect
+        this.pentInsect = this.add.image(640, 360, 'pentInsect');
+        this.pentInsect.setDisplaySize(1280, 720);
+        this.pentInsect.setVisible(false);
+        // pentSalt
+        this.pentSalt = this.add.image(640, 360, 'pentSalt');
+        this.pentSalt.setDisplaySize(1280, 720);
+        this.pentSalt.setVisible(false);
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // close
@@ -172,6 +208,7 @@ class Pentagram extends Phaser.Scene {
         this.status = [];
         this.order = [];
         this.correctOrder = ["chemical", "matches", "knife"]
+        this.chemSet = 0;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -213,6 +250,7 @@ class Pentagram extends Phaser.Scene {
             if(this.textTimer == 0){
                 this.textTimer = 1;
                 this.candle.setVisible(false);
+                this.pentCandles.setVisible(false);
                 this.candlesPent.setVisible(true);
                 candles = 2;
             }
@@ -224,6 +262,11 @@ class Pentagram extends Phaser.Scene {
                 this.textTimer = 1;
                 this.order.push("chemical");
                 this.chem.setVisible(false);
+                this.pentFert.setVisible(false);
+                this.pentInsect.setVisible(false);
+                this.pentBleach.setVisible(false);
+                this.pentSalt.setVisible(false);
+                this.chemSet = 1;
             }
         });
 
@@ -252,19 +295,18 @@ class Pentagram extends Phaser.Scene {
                         this.firePentYellow.setVisible(true);
 
                     }
-                    this.textTimer = 1;
-                    this.order.push("matches");
-                    console.log(this.order)
-                    this.matches.setVisible(false);
                     lit = 1;
                 }
                 else{
                     this.firePentNormal.setVisible(true);
-                    this.textTimer = 1;
-                    this.order.push("matches");
-                    this.matches.setVisible(false);
                     lit = 2;
                 }
+                this.textTimer = 1;
+                this.order.push("matches");
+                console.log(this.order)
+                this.matches.setVisible(false);
+                this.pentMatches.setVisible(false);
+                matches = 2;
             } 
         });
         
@@ -272,6 +314,7 @@ class Pentagram extends Phaser.Scene {
         // knife
         this.knife.on('pointerdown', () => {
             if(this.textTimer == 0){
+                knifeGot = 2;
                 this.textTimer = 1;
                 this.bloodTimer = 1;
                 this.status = [];
@@ -280,6 +323,7 @@ class Pentagram extends Phaser.Scene {
                 console.log(this.order)
                 this.knife.setVisible(false);
                 this.closeLook.setVisible(true);
+                this.pentKnife.setVisible(false);
                 
                 this.add.sprite(600, 300, 'hitbox').play('BLOOD');
                 this.redVig.setVisible(true);
@@ -291,7 +335,6 @@ class Pentagram extends Phaser.Scene {
                 
                 this.cardStatus = this.checkCorrect(this.status, this.correct, 5);
                 this.final = this.checkRitual(this.cardStatus);
-        this.final = true;
             }
         });
 
@@ -353,15 +396,44 @@ class Pentagram extends Phaser.Scene {
         if(matches == 0){
             this.matches.setVisible(false);
         }
+        else if (matches == 1){
+            this.pentMatches.setVisible(true);
+        }
+
         if(knifeGot == 0){
             this.knife.setVisible(false);
         }
+        else if (knifeGot == 1){
+            this.pentKnife.setVisible(true);
+        }
+        
         if(chemical == 0){
             this.chem.setVisible(false);
+        } else if(chemical == 1 && this.chemSet == 0){
+            this.chem.setVisible(true);
+            this.pentFert.setVisible(true);
+        }else if(chemical == 2 && this.chemSet == 0){
+            this.chem.setVisible(true);
+            this.pentInsect.setVisible(true);
+        }else if(chemical == 3 && this.chemSet == 0){
+            this.chem.setVisible(true);
+            this.pentBleach.setVisible(true);
+        }else if(chemical == 4 && this.chemSet == 0){
+            this.chem.setVisible(true);
+            this.pentSalt.setVisible(true);
+        }else if (this.chemSet == 1){
+            this.chem.setVisible(false);
+            this.pentFert.setVisible(false);
+            this.pentInsect.setVisible(false);
+            this.pentBleach.setVisible(false);
+            this.pentSalt.setVisible(false);
         }
 
         // show candles
-        if(candles > 1){
+        if(candles == 1){
+            this.pentCandles.setVisible(true);
+        }
+        else if(candles > 1){
             this.candle.setVisible(false);
             this.candlesPent.setVisible(true);
         }
