@@ -163,7 +163,7 @@ class MainSouth extends Phaser.Scene {
             this.skull.on('pointerdown', (pointer) => {
             this.skull.interText.setVisible(true);
             if(hammerGot == 1 && skullsmash == 0){
-                this.sound.play("break");
+                this.sound.play("break", {volume: 0.2});
             }
             this.textTimerSkull = 1;
             });

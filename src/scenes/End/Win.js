@@ -6,11 +6,15 @@ class Win extends Phaser.Scene {
     preload(){
         // images
 
-
         // audio
+        this.load.audio('end', './assets/sfx/the_16th_card.wav');
     }
 
     create() {
+        //music
+        this.endBGM = this.sound.add('end', {volume: 0.2, loop: true});
+        this.endBGM.play();
+
         // place tile sprites (TAKEN FROM INTRO U GOTTA CHANGE IT)
         this.bg = this.add.tileSprite(0, 0, 1280, 720, 'blkbg').setOrigin(0, 0); 
         this.ione = this.add.sprite(300,360, 'hitbox');
