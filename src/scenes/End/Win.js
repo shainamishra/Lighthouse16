@@ -5,12 +5,20 @@ class Win extends Phaser.Scene {
 
     preload(){
         // images
+<<<<<<< HEAD
         this.load.image('blkbg', './assets/blkbg.png');
+=======
+>>>>>>> ecda6f9599f0f60766426c0029b1a5330ece9d1e
 
         // audio
+        this.load.audio('end', './assets/sfx/the_16th_card.wav');
     }
 
     create() {
+        //music
+        this.endBGM = this.sound.add('end', {volume: 0.2, loop: true});
+        this.endBGM.play();
+
         // place tile sprites (TAKEN FROM INTRO U GOTTA CHANGE IT)
         this.bg = this.add.tileSprite(0, 0, 1280, 720, 'blkbg').setOrigin(0, 0); 
         this.credits = this.add.sprite(300,360, 'hitbox');

@@ -6,15 +6,16 @@ class Lose extends Phaser.Scene {
     preload(){
         // images
         this.load.image('gameover', './assets/end/gameover.png');
-
-
-        // audio
     }
 
     create() { 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // place tile sprite
         this.bg = this.add.tileSprite(0, 0, 1280, 720, 'gameover').setOrigin(0, 0); 
+
+        // music
+        this.cellarBGM = this.sound.add('cellar_music', {volume: 0.1, loop: true});
+        this.cellarBGM.play();
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -25,6 +26,6 @@ class Lose extends Phaser.Scene {
     }
     
     update() {
-
+        //return to puzzle 5 loading room to try again
     }
 }
