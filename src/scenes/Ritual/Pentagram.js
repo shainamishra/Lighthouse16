@@ -31,7 +31,7 @@ class Pentagram extends Phaser.Scene {
         this.load.image('pentSalt', './assets/puzzle5/pentagram/ritual items/ritual_closeup_salt.png');
 
         // audio
-        this.load.audio('unlock', './assets/sfx/doorUnlock2.wav');
+        this.load.audio('knifed', './assets/sfx/knifed.wav');
 
         // anim
         this.load.spritesheet('BLOOD', './assets/puzzle5/overlays/blood.png', {frameWidth: 311, frameHeight: 433, startFrame: 0, endFrame: 2});
@@ -44,7 +44,7 @@ class Pentagram extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // sfx
-        this.unlock = this.sound.add('unlock', {volume: 0.75});
+        this.knifed = this.sound.add('knifed', {volume: 0.75});
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
@@ -326,6 +326,7 @@ class Pentagram extends Phaser.Scene {
         // knife
         this.knife.on('pointerdown', () => {
             if(this.textTimer == 0 && candles > 0){
+                this.knifed.play();
                 knifeGot = 2;
                 this.textTimer = 1;
                 this.bloodTimer = 1;
@@ -514,7 +515,6 @@ class Pentagram extends Phaser.Scene {
     checkRitual(cardStatus){
         if(cardStatus == true){
             cards = 1;
-            //this.unlock.play();
             
             this.card1.input.draggable = false;
             this.card2.input.draggable = false;

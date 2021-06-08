@@ -99,8 +99,8 @@ class Menu extends Phaser.Scene {
                 this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
                     this.time.delayedCall(500, () => {
                         this.scene.start('Intro');
-                        });
                     });
+                });
             }
         }
     }
