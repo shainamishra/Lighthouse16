@@ -5,7 +5,7 @@ class ClosetClock extends Phaser.Scene {
     preload(){
         this.load.image('minuteCloset', './assets/puzzle3/overlays/minute.png');
         this.load.image('hourCloset', './assets/puzzle3/items/hour.png');
-        this.load.image('clockCloset', './assets/puzzle3/overlays/clockface.png');
+        this.load.image('clockCloset', './assets/puzzle5/closet/closet_clock_closeup.png');
         this.load.audio('doorun', './assets/sfx/doorUnlock.wav');
     }
     

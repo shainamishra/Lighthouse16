@@ -61,7 +61,7 @@ class RitualWest extends Phaser.Scene {
         this.tableHit.interText1 = this.add.text(175, 520, '   A\njournal');
         this.tableHit.interText1.setFontSize(50);
         this.tableHit.interText1.setVisible(false);
-        this.tableHit.interText2 = this.add.text(125, 520, ' A\nkey');
+        this.tableHit.interText2 = this.add.text(235, 520, ' A\nkey');
         this.tableHit.interText2.setFontSize(50);
         this.tableHit.interText2.setVisible(false);
 
