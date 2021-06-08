@@ -1,6 +1,5 @@
 let config = {
     type: Phaser.CANVAS,
-    parent: 'Password',
     width: 1280,
     height: 720,
     scale: {

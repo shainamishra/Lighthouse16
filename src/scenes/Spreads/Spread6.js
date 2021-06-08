@@ -24,8 +24,8 @@ class Spread6 extends Phaser.Scene {
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         
         // hover testing nonsense
-        this.one = this.add.sprite(640, 340, 'cardHit');
-        this.one.setDisplaySize(320, 660);
+        this.one = this.add.sprite(640, 220, 'cardHit');
+        this.one.setDisplaySize(320, 600);
         this.one.setVisible(true);
         this.one.setInteractive({
             cursor: handPointer
@@ -53,7 +53,6 @@ class Spread6 extends Phaser.Scene {
     }
 
     update() {
-        /*
         // if hover oh card1
         this.one.on('pointerover', (pointer) => {
             this.instruct.setVisible(false);
@@ -64,7 +63,7 @@ class Spread6 extends Phaser.Scene {
             this.instruct.setVisible(true);
             this.info1.setVisible(false);
         });
-        */
+
         if(this.textTimer == 0){
             if (Phaser.Input.Keyboard.JustDown(keySPACE)) {
                 this.textTimer += 1;

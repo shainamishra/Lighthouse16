@@ -376,22 +376,22 @@ class Pentagram extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // text timers
-        if(this.textTimer > 0 && this.textTimer < 100) {
+        if(this.textTimer > 0 && this.textTimer < 50) {
             this.textTimer += 1;
         } 
-        else if(this.textTimer >= 100){
+        else if(this.textTimer >= 50){
             // hide text
             this.textTimer = 0;
         }
 
         // blood timers
-        if(this.bloodTimer > 0 && this.bloodTimer < 200) {
+        if(this.bloodTimer > 0 && this.bloodTimer < 225) {
             this.bloodTimer += 1;
             if(this.final == false){
                 this.cameras.main.shake(1000);
             }
         } 
-        else if(this.bloodTimer >= 200){
+        else if(this.bloodTimer >= 225){
             // hide text
             this.bloodTimer = 0;
         }
