@@ -4,17 +4,13 @@ class ClownEast extends Phaser.Scene {
     }
 
     preload(){
-        // images
-        this.load.image('', './assets/clown/.png');
-
-
-        // audio
+        this.load.image('rosie', './assets/rosie.png');
     }
 
     create() { 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // place tile sprite
-        this.bg = this.add.tileSprite(0, 0, 1280, 720, '').setOrigin(0, 0); 
+        this.bg = this.add.tileSprite(0, 0, 1280, 720, 'rosie').setOrigin(0, 0); 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders

@@ -2,6 +2,10 @@ let config = {
     type: Phaser.CANVAS,
     width: 1280,
     height: 720,
+    scale: {
+      mode: Phaser.Scale.FIT,
+      autoCenter: Phaser.Scale.CENTER_BOTH,
+    },
     scene: [ Menu, Intro, Win, Instruction, Password, Spread1, Inventory, 
             IslandNorth, IslandWest, IslandEast, IslandSouth, 
             Spread2, CellarNorth, CellarWest, CellarEast, CellarSouth, 
@@ -10,6 +14,10 @@ let config = {
             LoadingNorth, LoadingSouth, 
             Inventory7, RitualNorth, Pentagram, Bookshelf, RitualWest, Closet, ClosetClock, RitualEast, Cabinet, RitualSouth,
             Lose, Spread6, ClownNorth, ClownSouth, ClownEast, ClownWest],
+    //parent: divId,
+    dom: {
+        createContainer: true
+    }, 
   }
 
 let game = new Phaser.Game(config);
