@@ -88,11 +88,6 @@ class Menu extends Phaser.Scene {
         // define key and var
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         this.textTimer = 0;
-
-        // change scenes
-        this.input.keyboard.on('keydown-X', () => {
-            this.scene.start("pwScene"); 
-        });
     }
 
     update (){
