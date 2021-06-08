@@ -16,6 +16,7 @@ class LoadingNorth extends Phaser.Scene {
         this.load.image('hitbox', './assets/HitBox2.png');
 
         // audio
+        this.load.audio('ritual_music', './assets/sfx/Ritual.wav');
         this.load.audio('itemtake', './assets/sfx/ItemTake.wav');
     }
 
@@ -25,6 +26,10 @@ class LoadingNorth extends Phaser.Scene {
         this.loadingNorth = this.add.tileSprite(0, 0, 1280, 720, 'betweenRoom').setOrigin(0, 0); 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // bgm
+        this.ritualBGM = this.sound.add('ritual_music', {volume: 0.15, loop: true});
+        this.ritualBGM.play();
+
         // sfx
         this.itemTake = this.sound.add('itemtake', {volume: 0.5});
 
