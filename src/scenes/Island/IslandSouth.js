@@ -168,6 +168,10 @@ class IslandSouth extends Phaser.Scene {
             this.textTimerGraves = 0;
         }
 
+        if(keyused == 1){
+            this.graveboxClosed.setVisible(false);
+            this.graveboxEmpty.setVisible(true);
+        }
         if(this.textTimerGBox == 0 && (keyGot == 0 && keyused == 0)){
             this.gravebox.on('pointerdown', (pointer) => {
                 this.gravebox.interText.setVisible(true);
@@ -184,6 +188,7 @@ class IslandSouth extends Phaser.Scene {
                 this.gravebox.interText.setVisible(true);
                 this.textTimerGBox = 1;
                 this.keyHot.setVisible(false);
+                keyused =1;
                 reelGot =1 ;
                 keyGot =0;
             });
