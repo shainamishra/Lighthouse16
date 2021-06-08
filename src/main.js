@@ -8,7 +8,7 @@ let config = {
             Spread3, MainNorth, MainWest, MainEast, MainSouth, Clock, 
             Spread4, LookoutNorth, LookoutWest, LookoutEast, LookoutSouth, Scales, 
             LoadingNorth, LoadingSouth, 
-            Spread5, Inventory7, RitualNorth, Pentagram, Bookshelf, RitualWest, Closet, ClosetClock, RitualEast, Cabinet, RitualSouth,
+            Inventory7, RitualNorth, Pentagram, Bookshelf, RitualWest, Closet, ClosetClock, RitualEast, Cabinet, RitualSouth,
             Lose, Spread6, ClownNorth, ClownSouth, ClownEast, ClownWest],
   }
 

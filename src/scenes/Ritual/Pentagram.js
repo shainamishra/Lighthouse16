@@ -74,10 +74,15 @@ class Pentagram extends Phaser.Scene {
         // card5
         this.card5 = this.add.sprite(155, 628, 'card5');
         this.card5.setDisplaySize(170, 96);
-        this.card5.setVisible(true);
         this.card5.setInteractive({
             cursor: handPointer
         });
+        if(level == 5){
+            this.card5.setVisible(true);
+        }else{
+            this.card5.setVisible(false);
+        }
+        
         // card4
         this.card4 = this.add.sprite(155, 628, 'card4');
         this.card4.setDisplaySize(170, 96);

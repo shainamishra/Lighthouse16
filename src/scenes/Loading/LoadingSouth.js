@@ -109,8 +109,9 @@ class LoadingSouth extends Phaser.Scene {
         };
 
         if(Phaser.Input.Keyboard.JustDown(keySPACE)){
+            
             if(inRitual == 0){
-                this.scene.start("spread5");
+                this.scene.start("ritualNorth");
             }
             else {
                 this.scene.stop("loadingSouth");

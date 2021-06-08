@@ -640,7 +640,8 @@ class Inventory7 extends Phaser.Scene {
             this.note4.setVisible(false);
 
         } else if(page == 5){
-            this.info1_2 = this.add.image(650, 350, 'info1-5');
+            if(level == 5) {
+                this.info1_2 = this.add.image(650, 350, 'info1-5');
                 this.info1_2.setVisible(false);
                 this.info2_2 = this.add.image(650, 350, 'info2-5');
                 this.info2_2.setVisible(false);
@@ -685,13 +686,25 @@ class Inventory7 extends Phaser.Scene {
                 this.four_2.on('pointerout', (pointer) => {
                     this.info4_2.setVisible(false);
                 });
-            this.page1.setVisible(false);
-            this.page2.setVisible(false);
-            this.page3.setVisible(false);
-            this.page4.setVisible(false);
-            this.page5.setVisible(true);
-            this.page6.setVisible(false);
-            this.page7.setVisible(false);
+
+                this.page1.setVisible(false);
+                this.page2.setVisible(false);
+                this.page3.setVisible(false);
+                this.page4.setVisible(false);
+                this.page5.setVisible(true);
+                this.page6.setVisible(false);
+                this.page7.setVisible(false);
+            }
+            else{
+                this.page1.setVisible(false);
+                this.page2.setVisible(false);
+                this.page3.setVisible(false);
+                this.page4.setVisible(false);
+                this.v4.setVisible(true);
+                this.page5.setVisible(false);
+                this.page6.setVisible(false);
+                this.page7.setVisible(false);
+            }
 
             // notes
             this.note1.setVisible(false);
@@ -717,6 +730,7 @@ class Inventory7 extends Phaser.Scene {
             this.note2.setVisible(false);
             this.note3.setVisible(false);
             this.note4.setVisible(false);
+            this.v4.setVisible(false);
             
         } else if(page == 7){
             this.one_2.setVisible(false);
@@ -730,6 +744,7 @@ class Inventory7 extends Phaser.Scene {
             this.page5.setVisible(false);
             this.page6.setVisible(false);
             this.page7.setVisible(true);
+            this.v4.setVisible(false);
 
             // notes
             this.note1.setVisible(true);
