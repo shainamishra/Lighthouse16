@@ -9,7 +9,7 @@ Lighthouse 16 is a point-and-click horror puzzle game using Phaser 3. In Tarot, 
 
 Credits:
 Ocean sfx for island music sourced from freesound Noted45
-  nhttps://freesound.org/people/Noted451/sounds/531015/
+  https://freesound.org/people/Noted451/sounds/531015/
   
 Rainbow fire info
   https://sciencenotes.org/how-to-make-\ncolored-fire/
