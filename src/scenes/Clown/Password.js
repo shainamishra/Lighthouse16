@@ -26,12 +26,17 @@ class Password extends Phaser.Scene {
         this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x2c2b45).setOrigin(0, 0);
         this.add.rectangle(0, 0, game.config.width, 10, 0x2c2b45).setOrigin(0, 0);
         this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x2c2b45).setOrigin(0, 0);
+
+        this.textTimer = 0;
     }
     
     update() {
-        this.closePW.on('pointerdown', () => {
-            this.scene.stop("pwScene");
-            this.scene.start("instructionScene");
-        });
+        if(this.textTimer == 0){
+            this.closePW.on('pointerdown', () => {
+                this.scene.stop("pwScene");
+                this.scene.start("instructionScene");
+            });
+            this.textTimer = 1;
+        }
     }
 }

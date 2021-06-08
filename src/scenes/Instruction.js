@@ -66,12 +66,5 @@ class Instruction extends Phaser.Scene {
             });
             this.textTimer = 1;
         }
-
-        if(this.textTimer > 0 && this.textTimer < 150) {
-            this.textTimer += 1;
-        } 
-        else if(this.textTimer >= 150){
-            this.textTimer = 0;
-        }
     }
 }
