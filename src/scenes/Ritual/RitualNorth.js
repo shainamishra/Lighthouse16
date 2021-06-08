@@ -47,6 +47,9 @@ class RitualNorth extends Phaser.Scene {
         this.cleanbg.setDisplaySize(1280, 720);
         this.cleanbg.setVisible(false);
 
+        // sfx
+        this.itemTake = this.sound.add('itemtake', {volume: 0.5});
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
@@ -265,6 +268,7 @@ class RitualNorth extends Phaser.Scene {
             this.textTimer = 1;
             this.timeVar = 100;
             knifeGot = 1;
+            this.itemTake.play();
         });
 
         // matches
@@ -276,6 +280,7 @@ class RitualNorth extends Phaser.Scene {
             this.textTimer = 1;
             this.timeVar = 100;
             matches = 1;
+            this.itemTake.play();
         });
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -390,7 +395,6 @@ class RitualNorth extends Phaser.Scene {
         //delete
         if(Phaser.Input.Keyboard.JustDown(keySPACE)){
             this.sound.get('ritual_music').stop();
-            //this.scene.start("spread6");
             this.scene.start("endLose");
         };
     }

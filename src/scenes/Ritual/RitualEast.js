@@ -18,12 +18,19 @@ class RitualEast extends Phaser.Scene {
         this.load.image('salt', './assets/puzzle5/cabinet/ritualEast_salt.png');
 
         this.load.image('hitbox', './assets/HitBox2.png');
+
+        // sfx
+        this.load.audio('chain', './assets/sfx/chain.wav');
+        this.load.audio('doorun', './assets/sfx/doorUnlock.wav');
     }
 
     create() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // place tile sprite
         this.cellarnorth = this.add.tileSprite(0, 0, 1280, 720, 'ritualEast').setOrigin(0, 0); 
+
+        // sfx
+        this.chain = this.sound.add('chain', {volume: 0.2});
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
@@ -226,8 +233,7 @@ class RitualEast extends Phaser.Scene {
             if(this.inputCombo == 523){
                 unlocked = 1;
                 this.textTimer = this.timeVar + 1;
-                // chage to chain break
-                //this.sound.play("itemtake");
+                this.sound.play("doorun");
 
                 this.combo.setVisible(false);
                 this.unlocked.setVisible(true);

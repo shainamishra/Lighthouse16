@@ -11,7 +11,7 @@ class Closet extends Phaser.Scene {
         this.load.image('closetNoteOpen', './assets/puzzle5/closet/closet_note_open.png');
 
         // audio
-        this.load.audio('unlock', './assets/sfx/doorUnlock2.wav');
+        this.load.audio('tik', './assets/sfx/Clock.wav');
     }
 
     create() {
@@ -20,8 +20,14 @@ class Closet extends Phaser.Scene {
         this.bg = this.add.tileSprite(0, 0, 1280, 720, 'closet').setOrigin(0, 0); 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // sfx
-        this.unlock = this.sound.add('unlock', {volume: 0.75});
+        // bgm
+        if(sound2 == 0){
+            this.clockNoise = this.sound.add('tik', {volume: 0.15, loop: true});
+            this.clockNoise.play();
+        }
+
+        // take
+        this.itemTake = this.sound.add('itemtake', {volume: 0.5});
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
@@ -82,8 +88,9 @@ class Closet extends Phaser.Scene {
     }
     
     update() {
+        sound2 = 1;
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // go back to lookOut
+        // go to clock
         this.clockHit.on('pointerdown', () => {
             if(this.textTimer == 0){
                 this.textTimer = 1;
@@ -92,10 +99,12 @@ class Closet extends Phaser.Scene {
             }
         });
 
+        // go back to looritualSouthkOut
         this.closeLook.on('pointerdown', () => {
             if(this.textTimer == 0){
                 this.textTimer = 1;
                 this.textVar = 50;
+                this.clockNoise.stop();
                 this.scene.switch("ritualSouth");
             }
         });
@@ -114,6 +123,7 @@ class Closet extends Phaser.Scene {
                 this.textTimer = 1;
                 this.noteHit.interText.setVisible(true);
                 paper = 1;
+                this.itemTake.play();
             });
         }
         if(this.textTimer == 0 && paper == 1){

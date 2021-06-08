@@ -22,6 +22,7 @@ class Lose extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // variables
         inRitual = 0;
+        sound = 0;
         level = 4;
         this.textTimer = 0;
 
