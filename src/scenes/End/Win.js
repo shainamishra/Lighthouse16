@@ -21,9 +21,9 @@ class Win extends Phaser.Scene {
         this.credits.intertext2.setFontSize(30);
         this.credits.intertext2.setVisible(false);
         
-        this.sourcethanks = this.add.sprite(300, 360, 'hitbox');
-        this.sourcethanks.intertext = this.add.text(borderUISize + borderPadding * 20 + 250, borderUISize + borderPadding * 2 + 48, 'Ocean sfx for island music\nsourced from freesound by Noted451\nhttps://freesound.org/people/Noted451/\nsounds/531015/\n\nRainbow fire info\nhttps://sciencenotes.org/how-to-make-\ncolored-fire/\n\nFishing advice :)\nhttps://freshwaterfishingadvice.com\n/salt-bait-fishing/');
-        this.sourcethanks.intertext.setFontSize(25);
+        this.sourcethanks = this.add.sprite(300, 320, 'hitbox');
+        this.sourcethanks.intertext = this.add.text(borderUISize + borderPadding * 20 + 250, borderUISize + borderPadding * 2 + 48, 'Ocean sfx for island music\nsourced from freesound by Noted451\nhttps://freesound.org/people/Noted451/\nsounds/531015/\n\nRainbow fire info\nhttps://sciencenotes.org/how-to-make-\ncolored-fire/\n\nFishing advice :)\nhttps://freshwaterfishingadvice.com\n/salt-bait-fishing/\n\nInput text plugin and documentation\nhttps://rexrainbow.github.io/phaser3-rex-notes\n/docs/site/inputtext/\n');
+        this.sourcethanks.intertext.setFontSize(20);
         this.sourcethanks.intertext.setVisible(false);
 
         this.thanks = this.add.sprite(300,360, 'hitbox');
