@@ -170,6 +170,7 @@ class RitualEast extends Phaser.Scene {
         this.textTimer = 0;
         this.timeVar = 250;
         this.inputCombo = 0;
+        this.boxOn = false;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -204,6 +205,7 @@ class RitualEast extends Phaser.Scene {
         if(this.textTimer == 0){
             this.cabinentHit.on('pointerdown', () =>{
                 if(unlocked == 0 && this.textTimer == 0){
+                    this.boxOn = true;
                     this.combo.setVisible(true);
                     this.textTimer = 1;
                     this.cabinentHit.interText.setVisible(true);
@@ -219,7 +221,7 @@ class RitualEast extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // lock input on screen
-        if(unlocked == 0) {
+        if(unlocked == 0 && this.boxOn == true) {
             this.inputCombo = this.checkCombo();
             if(this.inputCombo == 523){
                 unlocked = 1;
@@ -252,6 +254,7 @@ class RitualEast extends Phaser.Scene {
             this.digit3.interText.setVisible(false);
             this.cabinentHit.interText.setVisible(false);
             this.inputCombo = 0;
+            this.boxOn = false;
             combo = '';
             pos = 0;
         }

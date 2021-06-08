@@ -26,6 +26,10 @@ class Bookshelf extends Phaser.Scene {
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
+        this.text = this.add.text(220, 65, 'Click and hold to read a book');
+        this.text.setFontSize(50);
+        this.text.setVisible(true);
+
         // garden hit
         this.fishHit = this.add.sprite(145, 425, 'hitbox');
         this.fishHit.setDisplaySize(90, 460);
