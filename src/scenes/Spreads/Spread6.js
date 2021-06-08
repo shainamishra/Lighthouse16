@@ -42,6 +42,7 @@ class Spread6 extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // set variables
         level = 6;
+        this.textTimer = 0;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -64,10 +65,16 @@ class Spread6 extends Phaser.Scene {
             this.info1.setVisible(false);
         });
         */
-
-        // move to puzzle 3
-        if (Phaser.Input.Keyboard.JustDown(keySPACE)) {
-            this.scene.start("endWin");  
+        if(this.textTimer == 0){
+            if (Phaser.Input.Keyboard.JustDown(keySPACE)) {
+                this.textTimer += 1;
+                this.cameras.main.fadeOut(1000, 0, 0, 0)
+                this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
+                    this.time.delayedCall(500, () => {
+                            this.scene.start('endWin');
+                        });
+                    });
+            }
         }
     }
 }
