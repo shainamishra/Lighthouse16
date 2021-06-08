@@ -37,7 +37,6 @@ class Lose extends Phaser.Scene {
         this.input.keyboard.on('keydown-SPACE', () => {
             if(this.textTimer == 0){
                 this.textTimer = 1;
-                console.log('in')
                 this.loseBGM.stop();
                 this.scene.start("loadingNorth"); 
             }

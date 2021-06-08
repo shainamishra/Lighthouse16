@@ -2,7 +2,7 @@ let config = {
     type: Phaser.CANVAS,
     width: 1280,
     height: 720,
-    scene: [ Menu, Intro, Win, Password, Instruction, Spread1, Inventory, 
+    scene: [ Menu, Intro, Win, Instruction, Password, Spread1, Inventory, 
             IslandNorth, IslandWest, IslandEast, IslandSouth, 
             Spread2, CellarNorth, CellarWest, CellarEast, CellarSouth, 
             Spread3, MainNorth, MainWest, MainEast, MainSouth, Clock, 
@@ -84,3 +84,4 @@ let chemical = 0;
 let cards = 0;
 let lit = 0;
 let end = 0;
+let sound = 0;

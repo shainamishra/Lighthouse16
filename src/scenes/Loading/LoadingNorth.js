@@ -27,8 +27,10 @@ class LoadingNorth extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // bgm
-        this.ritualBGM = this.sound.add('ritual_music', {volume: 0.15, loop: true});
-        this.ritualBGM.play();
+        if(sound == 0){
+            this.ritualBGM = this.sound.add('ritual_music', {volume: 0.15, loop: true});
+            this.ritualBGM.play();
+        }
 
         // sfx
         this.itemTake = this.sound.add('itemtake', {volume: 0.5});
@@ -133,6 +135,7 @@ class LoadingNorth extends Phaser.Scene {
     }
     
     update() {
+        sound = 1;
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // clicks inventory box: puts this scene to sleep (no updates), switches to cards
         this.invent.on('pointerdown', (pointer) => {
