@@ -361,6 +361,7 @@ class Pentagram extends Phaser.Scene {
                 this.val = this.int/200;
                 this.dead.alpha = this.val;
                 this.dead.setVisible(true);
+                this.cameras.main.shake(800);
 
                 if(this.dead.alpha == 1){
                     this.scene.start('endLose');
@@ -384,6 +385,9 @@ class Pentagram extends Phaser.Scene {
         // blood timers
         if(this.bloodTimer > 0 && this.bloodTimer < 200) {
             this.bloodTimer += 1;
+            if(this.final == false){
+                this.cameras.main.shake(1000);
+            }
         } 
         else if(this.bloodTimer >= 200){
             // hide text
