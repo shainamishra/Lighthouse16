@@ -63,7 +63,7 @@ class Win extends Phaser.Scene {
             this.credits.intertext2.setVisible(false);
             this.sourcethanks.intertext.setVisible(true);
         }
-        else if(this.wintexttimer > 1400 && this.wintexttimer < 2100){
+        else if(this.wintexttimer > 1400 && this.wintexttimer < 2300){
             this.wintexttimer +=1;
         }
         else if(this.wintexttimer == 2100){
@@ -72,7 +72,7 @@ class Win extends Phaser.Scene {
             this.return.intertext.setVisible(true);
         }
 
-        if (Phaser.Input.Keyboard.JustDown(keySPACE) && this.wintexttimer == 2100){
+        if (Phaser.Input.Keyboard.JustDown(keySPACE) && this.wintexttimer == 2300){
             this.winBGM.stop();
             this.scene.start('menuScene');
         }

@@ -253,7 +253,6 @@ class IslandEast extends Phaser.Scene {
                 this.bucketEm.setVisible(true);
                 this.textTimerBucket = 1;
                 if(reelGot == 0 && scopeGot == 0){
-                    keyused =1;
                     keyGot = 1;
                 }
             });
@@ -283,8 +282,6 @@ class IslandEast extends Phaser.Scene {
             this.pillars.on('pointerdown', () => {
 
                 this.pillars.interText.setVisible(true);
-                //console.log('there is nothing here');
-                //this.interText.setText('There is nothing else here');
                 this.textTimerDock = 1;
             });
         }
