@@ -62,8 +62,7 @@ class Instruction extends Phaser.Scene {
         this.clownery.on('pointerdown', () => {
             if(this.textTimer == 0){
                 this.textTimer = 1;
-                console.log("clown")
-                //this.scene.start("pwScene");
+                this.scene.start("pwScene");
             }
         });
 

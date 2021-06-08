@@ -1,6 +1,6 @@
 let config = {
     type: Phaser.CANVAS,
-    parent: 'Password',
+    //parent: 'div',
     width: 1280,
     height: 720,
     scale: {
@@ -15,12 +15,14 @@ let config = {
             LoadingNorth, LoadingSouth, 
             Inventory7, RitualNorth, Pentagram, Bookshelf, RitualWest, Closet, ClosetClock, RitualEast, Cabinet, RitualSouth,
             Lose, Spread6, ClownNorth, ClownSouth, ClownEast, ClownWest],
-    dom: {
-        createContainer: true
-    },
+    // dom: {
+    //     createContainer: true
+    // },
   }
 
 let game = new Phaser.Game(config);
+
+//let el = document.createElement('div');
 
 //custom cursor
 let handPointer = 'url(./assets/hand.png), pointer';
@@ -30,7 +32,7 @@ let borderUISize = game.config.height / 15;
 let borderPadding = borderUISize / 3;
 
 // reserve keyboard vars
-let keySPACE, keyW, keyA, keyS, keyD, keyI, key1, key2, key3, key4, key5, key6, key7, key8, key9;
+let keySPACE, keyENTER, keyW, keyA, keyS, keyD, keyI, key1, key2, key3, key4, key5, key6, key7, key8, key9;
 
 // global variables
 let prevScene = '';
