@@ -27,6 +27,8 @@ class Lose extends Phaser.Scene {
     }
     
     update() {
+        inRitual = 0;
+        level = 4;
         this.input.keyboard.on('keydown-SPACE', () => {
             this.scene.start("loadingNorth"); 
 		});

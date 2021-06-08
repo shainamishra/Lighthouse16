@@ -311,7 +311,6 @@ class Pentagram extends Phaser.Scene {
                 }
                 this.textTimer = 1;
                 this.order.push("matches");
-                console.log(this.order)
                 this.matches.setVisible(false);
                 this.pentMatches.setVisible(false);
                 matches = 2;
@@ -321,7 +320,7 @@ class Pentagram extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // knife
         this.knife.on('pointerdown', () => {
-            if(this.textTimer == 0){
+            if(this.textTimer == 0 && candles > 0){
                 knifeGot = 2;
                 this.textTimer = 1;
                 this.bloodTimer = 1;
@@ -366,9 +365,6 @@ class Pentagram extends Phaser.Scene {
                 if(this.dead.alpha == 1){
                     this.scene.start('endLose');
                 }
-            }
-            else {
-                console.log("else")
             }
         }
 

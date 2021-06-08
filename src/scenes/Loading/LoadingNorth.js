@@ -70,7 +70,11 @@ class LoadingNorth extends Phaser.Scene {
         // spread 5
         this.spread5 = this.add.sprite(640, 360, 'spread5');
         this.spread5.setDisplaySize(1280, 720);
-        this.spread5.setVisible(false);
+        if(level > 5){
+            this.spread5.setVisible(true);
+        } else{
+            this.spread5.setVisible(false);
+        }
 
         this.frameHit.interText = this.add.text(350, 635, 'The last tarot spread');
         this.frameHit.interText.setFontSize(50);
