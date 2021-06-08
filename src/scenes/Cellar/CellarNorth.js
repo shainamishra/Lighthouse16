@@ -106,6 +106,7 @@ class CellarNorth extends Phaser.Scene {
         if (disappear == 1){
             this.plateHot.setVisible(false);
         }
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // scene change on keypress
         if(Phaser.Input.Keyboard.JustDown(keyA)){
@@ -130,11 +131,13 @@ class CellarNorth extends Phaser.Scene {
             };
         }
 
-        // dlete this
+        // delete this
+        /*
         if(Phaser.Input.Keyboard.JustDown(keySPACE)){
             this.sound.get('cellar_music').stop();
             this.scene.start("spread3");
         };
+        */
     }
     
     hotBarItems(on){

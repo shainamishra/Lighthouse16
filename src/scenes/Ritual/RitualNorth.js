@@ -392,11 +392,13 @@ class RitualNorth extends Phaser.Scene {
                 this.scene.start("ritualEast");
             };
         }
+        /*
         //delete
         if(Phaser.Input.Keyboard.JustDown(keySPACE)){
             this.sound.get('ritual_music').stop();
             this.scene.start("endLose");
         };
+        */
     }
     
     hotBarItems(on){

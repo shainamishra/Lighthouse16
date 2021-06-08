@@ -140,10 +140,12 @@ class MainNorth extends Phaser.Scene {
 		});
 
         // delete this
+        /*
         this.input.keyboard.on('keydown-SPACE', () => {
             this.sound.get('clockbgm').stop();
             this.scene.start("spread4"); 
 		});
+        */
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders

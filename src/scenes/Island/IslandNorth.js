@@ -226,10 +226,12 @@ class IslandNorth extends Phaser.Scene {
         };
 
         // delete this
+        /*
         if(Phaser.Input.Keyboard.JustDown(keySPACE)){
-                this.sound.get('menu_music').stop();
-                this.scene.start("spread2");
-            };
+            this.sound.get('menu_music').stop();
+            this.scene.start("spread2");
+        };
+        */
     }
 
     hotBarItems(on){
