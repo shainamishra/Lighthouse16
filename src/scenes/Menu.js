@@ -90,9 +90,5 @@ class Menu extends Phaser.Scene {
 			this.sound.play("CrashingWaves");
             this.scene.start('Intro');
 		});
-        
-        this.input.keyboard.on('keydown-X', () => {
-            this.scene.start("pwScene"); 
-		});
     }
 }
