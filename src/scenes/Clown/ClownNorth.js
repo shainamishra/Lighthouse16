@@ -4,11 +4,8 @@ class ClownNorth extends Phaser.Scene {
     }
 
     preload(){
-        // images
-        this.load.image('chantel', './assets/clown/chantel clown wall.png');
-
-
-        // audio
+        this.load.image('chantel', './assets/clown/chantel.png');
+        this.load.audio('circus', './assets/sfx/the_mf_circus.m4a');
     }
 
     create() { 
