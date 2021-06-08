@@ -7,9 +7,15 @@ class ClosetClock extends Phaser.Scene {
         this.load.image('hourCloset', './assets/puzzle3/items/hour.png');
         this.load.image('clockCloset', './assets/puzzle5/closet/closet_clock_closeup.png');
         this.load.audio('doorun', './assets/sfx/doorUnlock.wav');
+        this.load.audio('unlockClockDrawer', './assets/sfx/doorUnlock2.wav');
     }
     
     create(){
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // unlock sfx
+        this.unlock = this.sound.add('unlockClockDrawer', {volume: 0.75});
+        
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
        
@@ -59,7 +65,7 @@ class ClosetClock extends Phaser.Scene {
             this.minutehand.angle -= 5;
             this.timesbuttonpressed -= 1;
             if(this.timesbuttonpressed == -36){
-                this.sound.play("doorun");
+                this.unlock.play();
             }
         }
 
@@ -67,7 +73,7 @@ class ClosetClock extends Phaser.Scene {
             this.minutehand.angle += 5;
             this.timesbuttonpressed += 1;
             if(this.timesbuttonpressed == 36){
-                this.sound.play("doorun");
+                this.unlock.play();
             }
         }
 

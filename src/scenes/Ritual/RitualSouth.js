@@ -11,6 +11,7 @@ class RitualSouth extends Phaser.Scene {
         this.load.image('message', './assets/puzzle5/overlays/ritualSouth_message.png');
 
         this.load.image('hitbox', './assets/HitBox2.png');
+        this.load.audio('doorun', './assets/sfx/doorUnlock.wav');
     }
 
     create() {
@@ -228,6 +229,7 @@ class RitualSouth extends Phaser.Scene {
             if(deskKey > 0 && this.textTimer == 0){
                 this.textTimer = 1;
                 this.timeVar = 50;
+                this.sound.play("doorun");
                 this.scene.switch("ritualCloset");
                 deskKey = 2;
             }

@@ -17,7 +17,7 @@ class Cabinet extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // sfx
-        this.unlock = this.sound.add('unlock', {volume: 0.75});
+        this.itemTake = this.sound.add('itemtake', {volume: 0.5});
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // chemicals images
@@ -144,6 +144,7 @@ class Cabinet extends Phaser.Scene {
                     candles = 1;
                     this.timeVar = 75;
                     this.textTimer = 1;
+                    this.itemTake.play();
 
                     this.candleIm.setVisible(false);
 
@@ -160,6 +161,7 @@ class Cabinet extends Phaser.Scene {
                 chemical = 1;
                 this.timeVar = 75;
                 this.textTimer = 1;
+                this.itemTake.play();
 
                 // change image
                 this.fertilizerIm.setVisible(false);
@@ -179,6 +181,7 @@ class Cabinet extends Phaser.Scene {
                 chemical = 2;
                 this.timeVar = 75;
                 this.textTimer = 1;
+                this.itemTake.play();
 
                 this.fertilizerIm.setVisible(true);
                 this.insecticideIm.setVisible(false);
@@ -196,6 +199,7 @@ class Cabinet extends Phaser.Scene {
                 chemical = 3;
                 this.timeVar = 75;
                 this.textTimer = 1;
+                this.itemTake.play();
 
                 this.fertilizerIm.setVisible(true);
                 this.insecticideIm.setVisible(true);
@@ -213,6 +217,7 @@ class Cabinet extends Phaser.Scene {
                 chemical = 4;
                 this.timeVar = 75;
                 this.textTimer = 1;
+                this.itemTake.play();
 
                 this.fertilizerIm.setVisible(true);
                 this.insecticideIm.setVisible(true);

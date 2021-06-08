@@ -93,3 +93,4 @@ let cards = 0;
 let lit = 0;
 let end = 0;
 let sound = 0;
+let sound2 = 0;

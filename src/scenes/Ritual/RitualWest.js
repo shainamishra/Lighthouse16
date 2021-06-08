@@ -17,6 +17,9 @@ class RitualWest extends Phaser.Scene {
         // place tile sprite
         this.cellarnorth = this.add.tileSprite(0, 0, 1280, 720, 'ritualWest').setOrigin(0, 0); 
 
+        // sfx
+        this.itemTake = this.sound.add('itemtake', {volume: 0.5});
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
@@ -127,6 +130,7 @@ class RitualWest extends Phaser.Scene {
         this.hotOn = true;
         this.textTimer = 0;
         this.timeVar = 150;
+        sound2 = 0;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -164,6 +168,7 @@ class RitualWest extends Phaser.Scene {
                 this.textTimer = 1;
                 this.timeVar = 100;
                 deskKey = 1;
+                this.itemTake.play();
             }
             else if (this.textTimer == 0) {
                 this.journal.setVisible(true);

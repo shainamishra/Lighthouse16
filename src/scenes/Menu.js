@@ -94,6 +94,7 @@ class Menu extends Phaser.Scene {
         // TAKE OUT THIS TIME, SHAINA!!!!!
         // delete
         this.input.keyboard.on('keydown-Z', () => {
+            this.menuBGM.stop();
             this.scene.start("loadingNorth"); 
 		});
         this.input.keyboard.on('keydown-X', () => {
