@@ -11,12 +11,19 @@ class Lose extends Phaser.Scene {
     create() { 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         this.cameras.main.fadeIn(1000, 0, 0, 0)
+
         // place tile sprite
         this.bg = this.add.tileSprite(0, 0, 1280, 720, 'gameover').setOrigin(0, 0); 
 
         // music
-        this.loseBGM = this.sound.add('cellar_music', {volume: 0.1, loop: true});
+        this.loseBGM = this.sound.add('cellar_music', {volume: 0.2, loop: true});
         this.loseBGM.play();
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // variables
+        inRitual = 0;
+        level = 4;
+        this.textTimer = 0;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -27,10 +34,12 @@ class Lose extends Phaser.Scene {
     }
     
     update() {
-        inRitual = 0;
-        level = 4;
         this.input.keyboard.on('keydown-SPACE', () => {
-            this.scene.start("loadingNorth"); 
-		});
+            if(this.textTimer == 0){
+                this.textTimer = 1;
+                this.loseBGM.stop();
+                this.scene.start("loadingNorth"); 
+            }
+        });
     }
 }

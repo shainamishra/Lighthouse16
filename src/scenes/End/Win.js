@@ -6,14 +6,10 @@ class Win extends Phaser.Scene {
     preload(){
         this.load.image('winbg', './assets/end/goodend.png');
         this.load.image('hitbox', './assets/HitBox2.png');
-        this.load.audio('winBGM', './assets/sfx/the_16th_card.m4a');
     }
 
     create() {
         this.cameras.main.fadeIn(1000, 0, 0, 0)
-        // music
-        this.winBGM = this.sound.add('winBGM', {volume: 0.2, loop: true});
-        this.winBGM.play();
 
         this.bg = this.add.tileSprite(0, 0, 1280, 720, 'winbg').setOrigin(0, 0); 
         this.credits = this.add.sprite(300, 360, 'hitbox');

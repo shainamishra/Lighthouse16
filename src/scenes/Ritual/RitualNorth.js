@@ -34,12 +34,14 @@ class RitualNorth extends Phaser.Scene {
         this.load.image('fireYellow', './assets/puzzle5/overlays/ritualNorth_candles_yellow.png');
         this.load.spritesheet('greenFire', './assets/puzzle5/overlays/ritualNorth_flames.png', {frameWidth: 1280, frameHeight: 720, startFrame: 0, endFrame: 3});
 
+        // audio
     }
 
     create() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // place tile sprite
         this.cellarnorth = this.add.tileSprite(0, 0, 1280, 720, 'ritualNorth').setOrigin(0, 0); 
+        
         // clean bg
         this.cleanbg = this.add.image(640, 360, 'ritualNorthClean');
         this.cleanbg.setDisplaySize(1280, 720);
@@ -301,6 +303,7 @@ class RitualNorth extends Phaser.Scene {
             if(this.textTimer == 0){
                 this.textTimer = 1;
                 this.timeVar = 50;
+                this.sound.get('ritual_music').stop();
                 this.scene.switch("spread6");
             }
         });
@@ -383,8 +386,12 @@ class RitualNorth extends Phaser.Scene {
             if(Phaser.Input.Keyboard.JustDown(keyD)){
                 this.scene.start("ritualEast");
             };
-        }if(Phaser.Input.Keyboard.JustDown(keySPACE)){
-            this.scene.start("spread6");
+        }
+        //delete
+        if(Phaser.Input.Keyboard.JustDown(keySPACE)){
+            this.sound.get('ritual_music').stop();
+            //this.scene.start("spread6");
+            this.scene.start("endLose");
         };
     }
     

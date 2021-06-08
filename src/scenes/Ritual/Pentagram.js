@@ -368,6 +368,7 @@ class Pentagram extends Phaser.Scene {
                 this.cameras.main.shake(800);
 
                 if(this.dead.alpha == 1){
+                    this.sound.get('ritual_music').stop();
                     this.scene.start('endLose');
                 }
             }

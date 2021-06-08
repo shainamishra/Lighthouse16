@@ -7,6 +7,7 @@ class Spread6 extends Phaser.Scene {
         // images
         this.load.image('towerInfo', './assets/info/tower.png');
         this.load.image('instruct2', './assets/transitions/finalInstruct.png');
+        this.load.audio('winBGM', './assets/sfx/the_16th_card.m4a');
     }
 
     create() {
@@ -14,6 +15,10 @@ class Spread6 extends Phaser.Scene {
         // place tile sprite
         this.bg = this.add.tileSprite(0, 0, 1280, 720, 'bg6').setOrigin(0, 0); 
 
+        // music
+        this.winBGM = this.sound.add('winBGM', {volume: 0.2, loop: true});
+        this.winBGM.play();
+        
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
