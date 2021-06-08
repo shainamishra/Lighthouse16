@@ -23,7 +23,7 @@ class Instruction extends Phaser.Scene {
             }
 		});
 
-        this.clownery = this.add.sprite(345, 345, 'hitbox2');
+        this.clownery = this.add.sprite(345, 345, 'hitbox');
         this.clownery.setDisplaySize(50,50);
         this.clownery.setInteractive({
             cursor: handPointer
@@ -62,7 +62,8 @@ class Instruction extends Phaser.Scene {
         this.clownery.on('pointerdown', () => {
             if(this.textTimer == 0){
                 this.textTimer = 1;
-                this.scene.start("pwScene");
+                console.log("clown")
+                //this.scene.start("pwScene");
             }
         });
 

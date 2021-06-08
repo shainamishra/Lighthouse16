@@ -91,16 +91,8 @@ class Menu extends Phaser.Scene {
             this.scene.start('Intro');
 		});
         
-        // TAKE OUT THIS TIME, SHAINA!!!!!
-        // delete
-        this.input.keyboard.on('keydown-Z', () => {
-            this.scene.start("loadingNorth"); 
-		});
         this.input.keyboard.on('keydown-X', () => {
             this.scene.start("pwScene"); 
-		});
-        this.input.keyboard.on('keydown-C', () => {
-            this.scene.start("instructionScene"); 
 		});
     }
 }

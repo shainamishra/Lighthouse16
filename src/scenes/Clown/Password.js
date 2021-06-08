@@ -25,22 +25,29 @@ class Password extends Phaser.Scene {
         //text enter box
         //this.add.rectangle(330, 300, 600, 100, 0x808080).setOrigin(0,0);
         this.printText = this.add.text(400, 200, '', {
-            fontSize: '25px',
+            fontSize: '35px',
         }).setOrigin(0.5).setFixedSize(100, 100);
-        //enter text
-        this.textInput = this.add.rexInputText(330, 300, 600, 100, {
+
+        //enter text (x, y, width, height, config)
+        this.inputText = this.add.rexInputText(330, 300, 600, 100, {
             type: 'textarea',
-            text: 'HEy',
+            text: 'Hey',
             fontSize: '35px',
         })
-        //     .setOrigin(0.5)
-        //     .on('click', function (textInput) {
-        //     console.log('On click');
-        // })
+            .resize(100, 100)
+            .setOrigin(0.5)
+            .on('textchange', (inputText) => {
+                printText.text = inputText.text;
+            })
+            .on('click', () => {
+                console.log('On click');
+            })
+        
+        this.add.existing(this.inputText);
 
-        //this.printText.text = inputText.text;
+        this.printText.text = this.inputText.text;
         //enter the clown room? yes -> chantels room if no ->go back to instructions
-        this.solved = this.add.text(borderUISize + borderPadding * 20 - 240, borderUISize + borderPadding * 2 + 150, '         You unlocked the clown room!\n It is recommended that you only proceed after\n         beating the game at least once.\n                   Proceed?');
+        this.solved = this.add.text(borderUISize + borderPadding * 20 - 240, borderUISize + borderPadding * 2 + 150, '         You unlocked the clown room!\n It is recommended that you only enter after\n         beating the game at least once.\n\n            To proceed, press space.');
         this.solved.setFontSize(35);
         this.solved.setAlpha(0);
         /////////////////////////////////////////////////////////////////////////////////////////////////////////

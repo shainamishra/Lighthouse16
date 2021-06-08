@@ -14,10 +14,9 @@ let config = {
             LoadingNorth, LoadingSouth, 
             Inventory7, RitualNorth, Pentagram, Bookshelf, RitualWest, Closet, ClosetClock, RitualEast, Cabinet, RitualSouth,
             Lose, Spread6, ClownNorth, ClownSouth, ClownEast, ClownWest],
-    //parent: divId,
     dom: {
         createContainer: true
-    }, 
+    },
   }
 
 let game = new Phaser.Game(config);
