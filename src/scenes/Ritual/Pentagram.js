@@ -214,6 +214,7 @@ class Pentagram extends Phaser.Scene {
         // god forsaken variables
         this.textTimer = 0;
         this.fireTimer = 0;
+        this.bloodTimer = 0;
         this.cards = [this.card1, this.card2, this.card3, this.card4, this.card5];
         this.correct = [1, 3, 5, 2, 4];
         this.cardStatus = false;
@@ -325,7 +326,11 @@ class Pentagram extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // knife
         this.knife.on('pointerdown', () => {
+            console.log("1");
+            console.log("candles:", candles);
+            console.log("timer:", this.textTimer);
             if(this.textTimer == 0 && candles > 0){
+                console.log("1.5");
                 this.knifed.play();
                 knifeGot = 2;
                 this.textTimer = 1;
@@ -347,29 +352,32 @@ class Pentagram extends Phaser.Scene {
                 }
                 
                 this.cardStatus = this.checkCorrect(this.status, this.correct, 5);
-                this.final = this.checkRitual(this.cardStatus);
+                this.win = this.checkRitual(this.cardStatus);
                 this.closeLook.setVisible(false);
+                endScene = true;
             }
         });
 
-        if(this.final == true && this.cardStatus == true && this.textTimer == 0 && this.bloodTimer == 0 && chemical == 2){
-            // hide shit
+        if(this.win == true && this.cardStatus == true && this.textTimer == 0 && this.bloodTimer == 0 && chemical == 2){
+            // win
+            console.log("2");
             this.closeLook.setVisible(false);
             end = 1;
             this.scene.stop("ritualPentagram");
             this.scene.wake("ritualNorth");
         }
-        else if ((this.final == false || this.cardStatus == false || chemical != 2) && this.textTimer == 0 && this.bloodTimer == 0) {
+        if ((this.win == false || this.cardStatus == false || chemical != 2) && this.textTimer == 0 && this.bloodTimer == 0 && endScene == true) {
             // die
             if(this.val < 100){
                 this.int += 1;
-                this.val = this.int/200;
+                this.val = this.int/300;
                 this.dead.alpha = this.val;
                 this.dead.setVisible(true);
                 this.cameras.main.shake(800);
 
-                if(this.dead.alpha == 1){
+                if(this.dead.alpha >= 1){
                     this.sound.get('ritual_music').stop();
+                    this.scene.stop("ritualPentagram");
                     this.scene.start('endLose');
                 }
             }

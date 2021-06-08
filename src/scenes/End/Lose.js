@@ -9,6 +9,7 @@ class Lose extends Phaser.Scene {
     }
 
     create() { 
+        this.sound.get('ritual_music').stop();
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         this.cameras.main.fadeIn(1000, 0, 0, 0)
 
@@ -22,8 +23,25 @@ class Lose extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // variables
         inRitual = 0;
+        note = 0;
+        knifeGot = 0;
+        matches = 0;
+        lightState = 0;
+        deskKey = 0;
+        clockUnlock = 0;
+        paper = 0;
+        unlocked = 0;
+        pos = 0;
+        combo = '';
+        candles = 0;
+        chemical = 0;
+        cards = 0;
+        lit = 0;
+        end = 0;
         sound = 0;
+        sound2 = 0;
         level = 4;
+        endScene = 0;
         this.textTimer = 0;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -35,6 +53,7 @@ class Lose extends Phaser.Scene {
     }
     
     update() {
+        this.sound.get('ritual_music').stop();
         this.input.keyboard.on('keydown-SPACE', () => {
             if(this.textTimer == 0){
                 this.textTimer = 1;

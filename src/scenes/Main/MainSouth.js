@@ -72,7 +72,7 @@ class MainSouth extends Phaser.Scene {
         this.smashed = this.add.sprite(620, 375, 'broke');
         
         this.ladder = this.add.sprite(620, 350, 'ladder');
-        this.ladder.interText = this.add.text(borderUISize + borderPadding * 20, borderUISize + borderPadding * 2, 'Press space to climb the ladder');
+        this.ladder.interText = this.add.text(600, 500, 'Press space to climb\nthe ladder');
         this.ladder.interText.setFontSize(50);
         this.ladder.interText.setVisible(false);
         this.ladder.setVisible(false);
