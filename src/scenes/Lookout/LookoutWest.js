@@ -11,7 +11,7 @@ class LookoutWest extends Phaser.Scene {
         this.load.image('scalesUnbalanced', './assets/puzzle4/overlays/secret_scales.png');
         this.load.image('scales', './assets/puzzle4/overlays/scales.png');
         this.load.image('westLight', './assets/puzzle4/overlays/blank_wall_light.png');
-        this.load.image('ladder', './assets/puzzle4/overlays/ladder.png');
+        this.load.image('ladderLookout', './assets/puzzle4/overlays/ladder.png');
 
         // hitbox
         this.load.image('hitbox', './assets/HitBox2.png');
@@ -104,13 +104,12 @@ class LookoutWest extends Phaser.Scene {
         this.outline.interText.setVisible(false);
 
         // ladder image
-        this.ladder = this.add.image(1100, 360, 'ladder');
+        this.ladder = this.add.image(800, 360, 'ladderLookout');
         this.ladder.setDisplaySize(1280, 720);
         this.ladder.setVisible(false);
         this.ladder.interText = this.add.text(350, 430, 'Press space to\ngo up the ladder');
         this.ladder.interText.setFontSize(50);
         this.ladder.interText.setVisible(false);
-
         // window light
         this.light = this.add.image(640, 360, 'westLight');
         this.light.setDisplaySize(1280, 720);

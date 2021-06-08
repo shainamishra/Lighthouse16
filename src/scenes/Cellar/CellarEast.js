@@ -37,12 +37,12 @@ class CellarEast extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // sfx
-        this.scratch1 = this.sound.add('scratch1', {volume: 0.75});
-        this.scratch2 = this.sound.add('scratch2', {volume: 0.75});
-        this.scratch3 = this.sound.add('scratch3', {volume: 0.75});
-        this.scratch4 = this.sound.add('scratch4', {volume: 0.75});
-        this.scratch5 = this.sound.add('scratch5', {volume: 0.75});
-        this.unlock = this.sound.add('unlock', {volume: 3.50});
+        this.scratch1 = this.sound.add('scratch1', {volume: 0.10});
+        this.scratch2 = this.sound.add('scratch2', {volume: 0.10});
+        this.scratch3 = this.sound.add('scratch3', {volume: 0.10});
+        this.scratch4 = this.sound.add('scratch4', {volume: 0.10});
+        this.scratch5 = this.sound.add('scratch5', {volume: 0.10});
+        this.unlock = this.sound.add('unlock', {volume: 0.75});
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define keys

@@ -16,7 +16,7 @@ class Lose extends Phaser.Scene {
         this.bg = this.add.tileSprite(0, 0, 1280, 720, 'gameover').setOrigin(0, 0); 
 
         // music
-        this.loseBGM = this.sound.add('cellar_music', {volume: 0.2, loop: true});
+        this.loseBGM = this.sound.add('cellar_music', {volume: 0.5, loop: true});
         this.loseBGM.play();
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
