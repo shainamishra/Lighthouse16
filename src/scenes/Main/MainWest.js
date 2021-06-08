@@ -55,7 +55,6 @@ class MainWest extends Phaser.Scene {
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
-        // lights off CN
         this.tableIm = this.add.sprite(350,350, 'table');
 
         this.knife = this.add.sprite(470, 460, 'hitbox');
