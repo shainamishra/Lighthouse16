@@ -23,7 +23,7 @@ class Instruction extends Phaser.Scene {
             }
 		});
 
-        this.clownery = this.add.sprite(340, 350, 'hitbox2');
+        this.clownery = this.add.sprite(345, 345, 'hitbox2');
         this.clownery.setDisplaySize(50,50);
         this.clownery.setInteractive({
             cursor: handPointer
@@ -52,18 +52,26 @@ class Instruction extends Phaser.Scene {
         // "x" to close inventory
         if(level > 0 && this.textTimer == 0){
             this.closeInven.setVisible(true);
-            this.textTimer = 1;
             this.closeInven.on('pointerdown', () => {
+                this.textTimer = 1;
                 this.scene.stop("instructionScene");
                 this.scene.wake(prevScene);
             });
         }
 
-        if(this.textTimer == 0){
-            this.clownery.on('pointerdown', (pointer) => {
-            this.scene.start("pwScene");
-            });
-            this.textTimer = 1;
+        this.clownery.on('pointerdown', () => {
+            if(this.textTimer == 0){
+                this.textTimer = 1;
+                this.scene.start("pwScene");
+            }
+        });
+
+        // text on screen
+        if(this.textTimer > 0 && this.textTimer < 50) {
+            this.textTimer += 1;
+        } 
+        else if(this.textTimer >= 50){
+            this.textTimer = 0;
         }
     }
 }
