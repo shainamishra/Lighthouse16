@@ -27,12 +27,11 @@ class ClownWest extends Phaser.Scene {
             cursor: handPointer
         });
 
-        // help
-        this.help = this.add.sprite(1223, 60, 'hitbox2');
-        this.help.setDisplaySize(85, 85);
-        this.help.setInteractive({
-            cursor: handPointer
-        });
+        //instructions to return to title
+        this.welcome = this.add.text(borderUISize + borderPadding * 20 -270, borderUISize + borderPadding * 2 - 50, "Press SPACE at any time to return to the title screen"); 
+        this.welcome.setFontSize(35);
+        this.welcome.setFill('#f29999');
+        this.welcome.setStroke('#000000', 6);
         
         // popup
         this.popup = this.add.sprite(640, 360, 'darenPop');
@@ -62,24 +61,18 @@ class ClownWest extends Phaser.Scene {
         // variables
         this.textTimer = 0;
         this.close = false;
+
+        //return to title
+        this.input.keyboard.on('keydown-SPACE', () => {
+            this.sound.get('circus').destroy();
+            this.scene.start("menuScene"); 
+		});
     }
     
     update() {
-        // instructions
-        // how to return to main menu from the clown room? leave instructions on how to leave as well :)
-        this.help.on('pointerdown', () => {
-            if(this.textTimer == 0){
-                this.help.setVisible(true);
-                this.ex.setVisible(true);
-                this.textTimer = 1;
-            }
-        });
-
         // x
         this.ex.on('pointerdown', () => {
-            this.help.setVisible(false);
             this.popup.setVisible(false);
-            this.help.setVisible(true);
             this.textTimer = 1;
             this.close = true;
         });
@@ -89,7 +82,6 @@ class ClownWest extends Phaser.Scene {
             if(this.textTimer == 0){
                 this.ex.setVisible(true);
                 this.popup.setVisible(true);
-                this.help.setVisible(false);
                 this.close = false;
                 this.textTimer = 1;
             }

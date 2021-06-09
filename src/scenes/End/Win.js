@@ -77,7 +77,7 @@ class Win extends Phaser.Scene {
         if (Phaser.Input.Keyboard.JustDown(keySPACE) && this.wintexttimer == 2300){
             this.sound.get('winBGM').destroy();
             this.winBGM.destroy();
-            this.scene.start('clownery'); //instead of menuScene
+            this.scene.start('clownery');
         }
     }
 }
