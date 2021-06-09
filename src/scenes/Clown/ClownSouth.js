@@ -5,7 +5,7 @@ class ClownSouth extends Phaser.Scene {
 
     preload(){
         this.load.image('shaina', './assets/clown/shaina.png');
-        this.load.image('shainaPop', './assets/clown/canvas.png');
+        this.load.image('shainaPop', './assets/clown/shainatalk.png');
     }
 
     create() { 
@@ -35,7 +35,7 @@ class ClownSouth extends Phaser.Scene {
         });
         
         // popup
-        this.popup = this.add.sprite(640, 360, 'chantelPop');
+        this.popup = this.add.sprite(640, 360, 'shainaPop');
         this.popup.setDisplaySize(1280, 720);
         this.popup.setVisible(false);
 

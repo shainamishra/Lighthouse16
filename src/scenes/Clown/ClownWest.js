@@ -5,7 +5,7 @@ class ClownWest extends Phaser.Scene {
 
     preload(){
         this.load.image('daren', './assets/clown/daren.png');
-        this.load.image('darenPop', './assets/clown/canvas.png');
+        this.load.image('darenPop', './assets/clown/darentalk.png');
     }
 
     create() { 
@@ -35,7 +35,7 @@ class ClownWest extends Phaser.Scene {
         });
         
         // popup
-        this.popup = this.add.sprite(640, 360, 'chantelPop');
+        this.popup = this.add.sprite(640, 360, 'darenPop');
         this.popup.setDisplaySize(1280, 720);
         this.popup.setVisible(false);
 
@@ -46,7 +46,7 @@ class ClownWest extends Phaser.Scene {
             cursor: handPointer
         });
         this.ex.setVisible(false);
-        
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
         this.add.rectangle(0, 0, 10, game.config.height, 0x2c2b45).setOrigin(0, 0);

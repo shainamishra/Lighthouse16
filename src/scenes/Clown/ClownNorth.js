@@ -5,7 +5,7 @@ class ClownNorth extends Phaser.Scene {
 
     preload(){
         this.load.image('chantel', './assets/clown/chantel.png');
-        this.load.image('chantelPop', './assets/clown/canvas.png');
+        this.load.image('chantelPop', './assets/clown/chanteltalk.png');
     }
 
     create() { 
