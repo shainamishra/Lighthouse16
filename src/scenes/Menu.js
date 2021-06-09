@@ -5,7 +5,6 @@ class Menu extends Phaser.Scene {
 
     preload(){
         // load assets
-        this.load.image('blkbg', './assets/blkbg.png'); //delete
         this.load.image('start', './assets/start.png');
         this.load.image('inventory', './assets/Inventory.png');
         this.load.image('help', './assets/help.png');
@@ -14,7 +13,7 @@ class Menu extends Phaser.Scene {
         this.load.image('cardHit', './assets/cards/hitbox.png');
         this.load.image('instruct', './assets/transitions/transitionInstructions.png');
 
-        // card collection box assets -- loading them here makes the inventory load almost seamlessly
+        // card collection box assets
         this.load.image('x', './assets/x.png');
         this.load.image('velvetbg', './assets/transitions/velvetbg.png');
 
