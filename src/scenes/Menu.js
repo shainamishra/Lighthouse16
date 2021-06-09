@@ -70,6 +70,18 @@ class Menu extends Phaser.Scene {
     }
 
     create() {
+        //this.element = this.add.dom(0, 0, 'div');
+        // scene.add.dom(x, y).createElement(tagName, style, innerText);
+        // game.domContainer.style.width = 0;
+        console.log(game.config.domCreateContainer);
+        console.log(game)
+        // this.element = this.add.dom(640, 360, 'div', 'width: 1280px; height: 720px; cursor: url("./assets/hand.png"), pointer;');
+        // console.log(this.element)
+         //this.container = this.add.container();
+        //console.log(this.container)
+        this.div = this.element = this.add.dom(640, 360, 'div', 'width: 1280px; height: 720px; cursor: url("./assets/hand.png"), pointer;');
+        //game.config.parent = 'div';
+        console.log(this.element);
         // title
         this.title = this.add.tileSprite(0, 10, 1280, 720, 'start').setOrigin(0, 0);
 
