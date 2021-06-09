@@ -9,7 +9,8 @@ class Lose extends Phaser.Scene {
     }
 
     create() { 
-        this.sound.get('ritual_music').stop();
+        this.sound.get('ritual_music').destroy();
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         this.cameras.main.fadeIn(1000, 0, 0, 0)
 
@@ -53,7 +54,6 @@ class Lose extends Phaser.Scene {
     }
     
     update() {
-        this.sound.get('ritual_music').stop();
         this.input.keyboard.on('keydown-SPACE', () => {
             if(this.textTimer == 0){
                 this.textTimer = 1;

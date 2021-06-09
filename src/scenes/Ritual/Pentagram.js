@@ -45,6 +45,12 @@ class Pentagram extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // sfx
         this.knifed = this.sound.add('knifed', {volume: 0.75});
+
+        this.ritualBGM = this.sound.add('ritual_music', {volume: 0.15, loop: true});
+        // bgm
+        if(sound == 0){
+            this.ritualBGM.play();
+        }
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // objects
@@ -326,11 +332,7 @@ class Pentagram extends Phaser.Scene {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // knife
         this.knife.on('pointerdown', () => {
-            console.log("1");
-            console.log("candles:", candles);
-            console.log("timer:", this.textTimer);
             if(this.textTimer == 0 && candles > 0){
-                console.log("1.5");
                 this.knifed.play();
                 knifeGot = 2;
                 this.textTimer = 1;
@@ -360,7 +362,6 @@ class Pentagram extends Phaser.Scene {
 
         if(this.win == true && this.cardStatus == true && this.textTimer == 0 && this.bloodTimer == 0 && chemical == 2){
             // win
-            console.log("2");
             this.closeLook.setVisible(false);
             end = 1;
             this.scene.stop("ritualPentagram");
@@ -376,7 +377,8 @@ class Pentagram extends Phaser.Scene {
                 this.cameras.main.shake(800);
 
                 if(this.dead.alpha >= 1){
-                    this.sound.get('ritual_music').stop();
+                    this.ritualBGM.stop();
+                    this.ritualBGM.destroy();
                     this.scene.stop("ritualPentagram");
                     this.scene.start('endLose');
                 }

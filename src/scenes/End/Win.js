@@ -11,13 +11,15 @@ class Win extends Phaser.Scene {
     create() {
         this.cameras.main.fadeIn(1000, 0, 0, 0)
 
+        this.winBGM = this.sound.add('winBGM', {volume: 0.2, loop: true});
+
         this.bg = this.add.tileSprite(0, 0, 1280, 720, 'winbg').setOrigin(0, 0); 
         this.credits = this.add.sprite(300, 360, 'hitbox');
         //this.credits.intertext = this.add.text(borderUISize + borderPadding * 20 + 200, borderUISize + borderPadding * 2 -40, '                   Programming\n                  Shaina Mishra\n                 Daren Bartolucci\n\n                       Art\n                   Rosie Longo\n                   Chantel Gee\n                  Shaina Mishra\n\n                      Music\n                   Rosie Longo\n\n                       SFX\n                 Daren Bartolucci\n                   Rosie Longo\n                  Shaina Mishra');
         this.credits.intertext = this.add.text(450, 120, '                   Programming\n                  Shaina Mishra\n                 Daren Bartolucci\n                   Rosie Longo\n\n                       Art\n                   Chantel Gee\n                   Rosie Longo\n                  Shaina Mishra\n\n');
         this.credits.intertext.setFontSize(30);
         this.credits.intertext.setVisible(true);
-        this.credits.intertext2 = this.add.text(450, 120, '                      Music\n                   Rosie Longo\n\n\n\n                       SFX\n                 Daren Bartolucci\n                   Rosie Longo\n                  Shaina Mishra');
+        this.credits.intertext2 = this.add.text(450, 120, '                      Music\n                   Rosie Longo\n\n\n\n                       SFX\n                   Rosie Longo\n                 Daren Bartolucci\n                  Shaina Mishra');
         this.credits.intertext2.setFontSize(30);
         this.credits.intertext2.setVisible(false);
         
@@ -73,7 +75,9 @@ class Win extends Phaser.Scene {
         }
 
         if (Phaser.Input.Keyboard.JustDown(keySPACE) && this.wintexttimer == 2300){
-            this.winBGM.stop();
+
+            this.sound.get('winBGM').destroy();
+            this.winBGM.destroy();
             this.scene.start('menuScene');
         }
     }
