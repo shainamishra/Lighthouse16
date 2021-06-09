@@ -34,7 +34,7 @@ class Win extends Phaser.Scene {
         this.thanks.intertext.setVisible(false);
 
         this.return = this.add.sprite(300,360, 'hitbox');
-        this.return.intertext = this.add.text (borderUISize + borderPadding * 20 + 100, borderUISize + borderPadding * 2 + 150, '         Press space to return to the title screen');
+        this.return.intertext = this.add.text (borderUISize + borderPadding * 20 + 100, borderUISize + borderPadding * 2 + 150, '         Press space to continue');
         this.return.intertext.setFontSize(25);
         this.return.intertext.setVisible(false);
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -75,10 +75,9 @@ class Win extends Phaser.Scene {
         }
 
         if (Phaser.Input.Keyboard.JustDown(keySPACE) && this.wintexttimer == 2300){
-
             this.sound.get('winBGM').destroy();
             this.winBGM.destroy();
-            this.scene.start('menuScene');
+            this.scene.start('clownery');
         }
     }
 }
