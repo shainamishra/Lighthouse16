@@ -4,17 +4,13 @@ class ClownWest extends Phaser.Scene {
     }
 
     preload(){
-        // images
-        this.load.image('', './assets/clown/.png');
-
-
-        // audio
+        this.load.image('daren', './assets/clown/daren.png');
     }
 
     create() { 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // place tile sprite
-        this.bg = this.add.tileSprite(0, 0, 1280, 720, '').setOrigin(0, 0); 
+        this.bg = this.add.tileSprite(0, 0, 1280, 720, 'daren').setOrigin(0, 0); 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
@@ -22,9 +18,19 @@ class ClownWest extends Phaser.Scene {
         this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x2c2b45).setOrigin(0, 0);
         this.add.rectangle(0, 0, game.config.width, 10, 0x2c2b45).setOrigin(0, 0);
         this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x2c2b45).setOrigin(0, 0);
+
+        //define keys
+        keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+        keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
     }
     
     update() {
-
+        // scene change on keypress
+        if(Phaser.Input.Keyboard.JustDown(keyA)){
+            this.scene.start("clownSouth");
+        };
+        if(Phaser.Input.Keyboard.JustDown(keyD)){
+            this.scene.start("clownNorth");
+        };
     }
 }
