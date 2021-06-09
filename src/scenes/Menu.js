@@ -100,6 +100,11 @@ class Menu extends Phaser.Scene {
         // define key and var
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         this.textTimer = 0;
+
+        //shortcut to clownery from win 
+        this.input.keyboard.on('keydown-X', () => {
+            this.scene.start("clownery"); 
+		});
     }
 
     update (){

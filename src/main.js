@@ -14,7 +14,7 @@ let config = {
             Spread4, LookoutNorth, LookoutWest, LookoutEast, LookoutSouth, Scales, 
             LoadingNorth, LoadingSouth, 
             Inventory7, RitualNorth, Pentagram, Bookshelf, RitualWest, Closet, ClosetClock, RitualEast, Cabinet, RitualSouth,
-            Lose, Spread6, ClownNorth, ClownSouth, ClownEast, ClownWest],
+            Lose, Spread6, Clownery, ClownNorth, ClownSouth, ClownEast, ClownWest],
     // dom: {
     //     createContainer: true
     // },
@@ -26,6 +26,9 @@ let game = new Phaser.Game(config);
 
 //custom cursor
 let handPointer = 'url(./assets/hand.png), pointer';
+
+//game clears prob dont need
+let gameclear = 0;
 
 // set UI sizes
 let borderUISize = game.config.height / 15;
