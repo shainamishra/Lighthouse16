@@ -5,7 +5,6 @@ class Menu extends Phaser.Scene {
 
     preload(){
         // load assets
-        this.load.image('blkbg', './assets/blkbg.png'); //delete
         this.load.image('start', './assets/start.png');
         this.load.image('inventory', './assets/Inventory.png');
         this.load.image('help', './assets/help.png');
@@ -14,7 +13,7 @@ class Menu extends Phaser.Scene {
         this.load.image('cardHit', './assets/cards/hitbox.png');
         this.load.image('instruct', './assets/transitions/transitionInstructions.png');
 
-        // card collection box assets -- loading them here makes the inventory load almost seamlessly
+        // card collection box assets
         this.load.image('x', './assets/x.png');
         this.load.image('velvetbg', './assets/transitions/velvetbg.png');
 
@@ -70,18 +69,6 @@ class Menu extends Phaser.Scene {
     }
 
     create() {
-        //this.element = this.add.dom(0, 0, 'div');
-        // scene.add.dom(x, y).createElement(tagName, style, innerText);
-        // game.domContainer.style.width = 0;
-        console.log(game.config.domCreateContainer);
-        console.log(game)
-        // this.element = this.add.dom(640, 360, 'div', 'width: 1280px; height: 720px; cursor: url("./assets/hand.png"), pointer;');
-        // console.log(this.element)
-         //this.container = this.add.container();
-        //console.log(this.container)
-        this.div = this.element = this.add.dom(640, 360, 'div', 'width: 1280px; height: 720px; cursor: url("./assets/hand.png"), pointer;');
-        //game.config.parent = 'div';
-        console.log(this.element);
         // title
         this.title = this.add.tileSprite(0, 10, 1280, 720, 'start').setOrigin(0, 0);
 
@@ -100,12 +87,6 @@ class Menu extends Phaser.Scene {
         // define key and var
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         this.textTimer = 0;
-
-        //shortcut to clownery from win 
-        this.input.keyboard.on('keydown-X', () => {
-            this.menuBGM.stop();
-            this.scene.start("clownery"); 
-		});
     }
 
     update (){

@@ -1,6 +1,5 @@
 let config = {
     type: Phaser.CANVAS,
-    //parent: 'div',
     width: 1280,
     height: 720,
     scale: {
@@ -15,14 +14,9 @@ let config = {
             LoadingNorth, LoadingSouth, 
             Inventory7, RitualNorth, Pentagram, Bookshelf, RitualWest, Closet, ClosetClock, RitualEast, Cabinet, RitualSouth,
             Lose, Spread6, Clownery, ClownNorth, ClownSouth, ClownEast, ClownWest],
-    // dom: {
-    //     createContainer: true
-    // },
   }
 
 let game = new Phaser.Game(config);
-
-//let el = document.createElement('div');
 
 //custom cursor
 let handPointer = 'url(./assets/hand.png), pointer';
