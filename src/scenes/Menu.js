@@ -103,6 +103,7 @@ class Menu extends Phaser.Scene {
 
         //shortcut to clownery from win 
         this.input.keyboard.on('keydown-X', () => {
+            this.menuBGM.stop();
             this.scene.start("clownery"); 
 		});
     }

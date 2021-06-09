@@ -4,6 +4,7 @@ class Clownery extends Phaser.Scene {
     }
     preload(){
         this.load.audio('circus', './assets/sfx/the_mf_circus.m4a');
+        this.load.image('hitbox', './assets/HitBox2.png');
     }
 
     create() { 
@@ -15,12 +16,14 @@ class Clownery extends Phaser.Scene {
         this.welcome.setFontSize(45);
 
         this.clownBGM = this.sound.add('circus', {volume: 0.1, loop: true});
+        
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
         this.add.rectangle(0, 0, 10, game.config.height, 0x2c2b45).setOrigin(0, 0);
         this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x2c2b45).setOrigin(0, 0);
         this.add.rectangle(0, 0, game.config.width, 10, 0x2c2b45).setOrigin(0, 0);
         this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x2c2b45).setOrigin(0, 0);
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // define key and var
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
