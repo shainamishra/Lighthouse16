@@ -91,3 +91,4 @@ let end = 0;
 let sound = 0;
 let sound2 = 0;
 let endScene = 0;
+let humbug = 0;

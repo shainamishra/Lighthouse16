@@ -86,6 +86,7 @@ class Menu extends Phaser.Scene {
 
         // define key and var
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+        keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         this.textTimer = 0;
     }
 
@@ -101,6 +102,13 @@ class Menu extends Phaser.Scene {
                     });
                 });
             }
+
+            /*
+            if (Phaser.Input.Keyboard.JustDown(keyA)) {
+                this.menuBGM.stop();
+                this.scene.start('clownery');
+            }
+            */
         }
     }
 }

@@ -27,6 +27,30 @@ class ClownWest extends Phaser.Scene {
             cursor: handPointer
         });
 
+        // humbug
+        this.humbug = this.add.sprite(430, 230, 'hitbox');
+        this.humbug.setDisplaySize(700, 100);
+        this.humbug.setVisible(true);
+        this.humbug.setInteractive({
+            cursor: handPointer
+        });
+        this.humbug.interText1 = this.add.text(150, 660, 'you took a humbug');
+        this.humbug.interText1.setFontSize(40);
+        this.humbug.interText1.setVisible(false);
+        this.humbug.interText1.setStroke('#000000', 6);
+        this.humbug.interText2 = this.add.text(212, 610, 'your stomach\n  hurts');
+        this.humbug.interText2.setFontSize(40);
+        this.humbug.interText2.setVisible(false);
+        this.humbug.interText2.setStroke('#000000', 6);
+        this.humbug.interText3 = this.add.text(212, 615, 'you feel\n dizzy');
+        this.humbug.interText3.setFontSize(40);
+        this.humbug.interText3.setVisible(false);
+        this.humbug.interText3.setStroke('#000000', 6);
+        this.humbug.interText4 = this.add.text(152, 615, '    you get\narsenic poisoning');
+        this.humbug.interText4.setFontSize(40);
+        this.humbug.interText4.setVisible(false);
+        this.humbug.interText4.setStroke('#000000', 6);
+
         //instructions to return to title
         this.welcome = this.add.text(borderUISize + borderPadding * 20 -270, borderUISize + borderPadding * 2 - 50, "Press SPACE at any time to return to the title screen"); 
         this.welcome.setFontSize(35);
@@ -48,10 +72,10 @@ class ClownWest extends Phaser.Scene {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // borders
-        this.add.rectangle(0, 0, 10, game.config.height, 0x2c2b45).setOrigin(0, 0);
-        this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x2c2b45).setOrigin(0, 0);
-        this.add.rectangle(0, 0, game.config.width, 10, 0x2c2b45).setOrigin(0, 0);
-        this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x2c2b45).setOrigin(0, 0);
+        this.add.rectangle(0, 0, 10, game.config.height, 0x4c7d92).setOrigin(0, 0);
+        this.add.rectangle(0, game.config.height - 10, game.config.width, 10, 0x4c7d92).setOrigin(0, 0);
+        this.add.rectangle(0, 0, game.config.width, 10, 0x4c7d92).setOrigin(0, 0);
+        this.add.rectangle(game.config.width - 10, 0, 10, game.config.height, 0x4c7d92).setOrigin(0, 0);
 
         /////////////////////////////////////////////////////////////////////////////////////
         //define keys
@@ -90,13 +114,37 @@ class ClownWest extends Phaser.Scene {
         if(this.close == true){
             this.ex.setVisible(false);
         }
+        
+        // click humbug
+        this.humbug.on('pointerdown', () => {
+            if(this.textTimer == 0){
+                if(humbug == 0 && this.textTimer == 0){
+                    this.humbug.interText1.setVisible(true);
+                    humbug = 1;
+                } else if(humbug == 1 && this.textTimer == 0){
+                    this.humbug.interText2.setVisible(true);
+                    humbug = 2;
+                }  else if(humbug == 2 && this.textTimer == 0){
+                    this.humbug.interText3.setVisible(true);
+                    humbug = 3;
+                }  else if(humbug == 3 && this.textTimer == 0){
+                    this.humbug.interText4.setVisible(true);
+                    humbug = 0;
+                } 
+                this.textTimer = 1;
+            }
+        });
 
         // text on screen
-        if(this.textTimer > 0 && this.textTimer < 50) {
+        if(this.textTimer > 0 && this.textTimer < 150) {
             this.textTimer += 1;
         } 
         else{
             this.textTimer = 0;
+            this.humbug.interText1.setVisible(false);
+            this.humbug.interText2.setVisible(false);
+            this.humbug.interText3.setVisible(false);
+            this.humbug.interText4.setVisible(false);
         }
 
         // scene change on keypress
